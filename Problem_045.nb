@@ -1,0 +1,245 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7405,        237]
+NotebookOptionsPosition[      6138,        207]
+NotebookOutlinePosition[      6483,        222]
+CellTagsIndexPosition[      6440,        219]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 45",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=45"], None},
+ ButtonNote->"https://projecteuler.net/problem=45"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"triagonal", "[", "n_", "]"}], ":=", 
+  RowBox[{"n", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"n", "+", "1"}], ")"}], "/", "2"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pentagonal", "[", "n_", "]"}], ":=", 
+  RowBox[{"n", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"3", "n"}], "-", "1"}], ")"}], "/", 
+    "2"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hexagonal", "[", "n_", "]"}], ":=", 
+  RowBox[{"n", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"2", "n"}], "-", "1"}], ")"}]}]}]}], "Input",
+ CellChangeTimes->{{3.7708646955199966`*^9, 3.770864729746183*^9}},
+ CellLabel->
+  "In[118]:=",ExpressionUUID->"97abc66e-c7cd-4760-88a4-9f44751e090e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"t", "\[Equal]", 
+    RowBox[{"triagonal", "[", "n", "]"}]}], ",", "n"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7708647493799314`*^9, 
+  3.770864785483689*^9}},ExpressionUUID->"4e3f271b-de2a-4d03-ad97-\
+42b2abeb27b6"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"n", "\[Rule]", 
+     RowBox[{
+      FractionBox["1", "2"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "-", 
+        SqrtBox[
+         RowBox[{"1", "+", 
+          RowBox[{"8", " ", "t"}]}]]}], ")"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", "\[Rule]", 
+     RowBox[{
+      FractionBox["1", "2"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", 
+        SqrtBox[
+         RowBox[{"1", "+", 
+          RowBox[{"8", " ", "t"}]}]]}], ")"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.7708647625063777`*^9, 3.7708647682387123`*^9}},
+ CellLabel->
+  "Out[123]=",ExpressionUUID->"d56d352e-ac92-4521-b06d-1c11f533c3f9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"p", "\[Equal]", 
+    RowBox[{"pentagonal", "[", "n", "]"}]}], ",", "n"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7708648288217564`*^9, 3.770864831685914*^9}},
+ CellLabel->
+  "In[124]:=",ExpressionUUID->"02b8dce8-db20-4afc-a421-9ab7d9d51541"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"n", "\[Rule]", 
+     RowBox[{
+      FractionBox["1", "6"], " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        SqrtBox[
+         RowBox[{"1", "+", 
+          RowBox[{"24", " ", "p"}]}]]}], ")"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", "\[Rule]", 
+     RowBox[{
+      FractionBox["1", "6"], " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        SqrtBox[
+         RowBox[{"1", "+", 
+          RowBox[{"24", " ", "p"}]}]]}], ")"}]}]}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.770864832193198*^9},
+ CellLabel->
+  "Out[124]=",ExpressionUUID->"eba9e285-1711-44aa-8b84-5182add499a1"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"triagonalIndex", "[", "t_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"Sqrt", "[", 
+      RowBox[{"1", "+", 
+       RowBox[{"8", "t"}]}], "]"}], "-", "1"}], ")"}], "/", 
+   "2"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pentagonalIndex", "[", "p_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "+", 
+     RowBox[{"Sqrt", "[", 
+      RowBox[{"1", "+", 
+       RowBox[{"24", "p"}]}], "]"}]}], ")"}], "/", "6"}]}]}], "Input",
+ CellChangeTimes->{{3.770864743791414*^9, 3.770864748001829*^9}, {
+  3.770864802237256*^9, 3.7708648628541555`*^9}},
+ CellLabel->
+  "In[125]:=",ExpressionUUID->"e415544e-263c-4604-9f82-98b40007d64e"],
+
+Cell["\<\
+Since hexagonal numbers increase the fastest, it is most efficient to check \
+if successive hexagonal numbers are also triagonal and pentagonal.\
+\>", "Text",
+ CellChangeTimes->{{3.7708653195031786`*^9, 
+  3.7708653630127463`*^9}},ExpressionUUID->"b4c7bcf7-64cc-4f40-b9b0-\
+036c80f843a0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "144"}], ";", 
+  RowBox[{"hn", "=", 
+   RowBox[{"hexagonal", "[", "n", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"While", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"IntegerQ", "[", 
+        RowBox[{"triagonalIndex", "[", "hn", "]"}], "]"}], "&&", 
+       RowBox[{"IntegerQ", "[", 
+        RowBox[{"pentagonalIndex", "[", "hn", "]"}], "]"}]}], ")"}]}], ",", 
+    RowBox[{
+     RowBox[{"n", "+=", "1"}], ";", 
+     RowBox[{"hn", "=", 
+      RowBox[{"hexagonal", "[", "n", "]"}]}]}]}], "]"}], ";", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"triagonalIndex", "[", "hn", "]"}], ",", 
+    RowBox[{"pentagonalIndex", "[", "hn", "]"}], ",", "n", ",", "hn"}], 
+   "}"}]}]}], "Input",
+ CellChangeTimes->{{3.7708648797316217`*^9, 3.77086488000721*^9}, {
+  3.7708649864017773`*^9, 3.7708651443860826`*^9}, {3.77086525419425*^9, 
+  3.770865284701457*^9}},
+ CellLabel->
+  "In[131]:=",ExpressionUUID->"b61c0025-8ac7-4738-8f51-8fd2ed1496be"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"55385", ",", "31977", ",", "27693", ",", "1533776805"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.7708651494576225`*^9, {3.770865276843916*^9, 3.7708652866508384`*^9}},
+ CellLabel->
+  "Out[132]=",ExpressionUUID->"910e62b6-6b0c-4674-91ff-1ea3f89e1079"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{Automatic, 124}, {42, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 733, 23, 67, "Input",ExpressionUUID->"97abc66e-c7cd-4760-88a4-9f44751e090e"],
+Cell[CellGroupData[{
+Cell[1677, 58, 278, 7, 28, "Input",ExpressionUUID->"4e3f271b-de2a-4d03-ad97-42b2abeb27b6"],
+Cell[1958, 67, 754, 25, 55, "Output",ExpressionUUID->"d56d352e-ac92-4521-b06d-1c11f533c3f9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2749, 97, 302, 7, 28, "Input",ExpressionUUID->"02b8dce8-db20-4afc-a421-9ab7d9d51541"],
+Cell[3054, 106, 682, 24, 55, "Output",ExpressionUUID->"eba9e285-1711-44aa-8b84-5182add499a1"]
+}, Open  ]],
+Cell[3751, 133, 705, 21, 48, "Input",ExpressionUUID->"e415544e-263c-4604-9f82-98b40007d64e"],
+Cell[4459, 156, 298, 6, 34, "Text",ExpressionUUID->"b4c7bcf7-64cc-4f40-b9b0-036c80f843a0"],
+Cell[CellGroupData[{
+Cell[4782, 166, 1030, 28, 86, "Input",ExpressionUUID->"b61c0025-8ac7-4738-8f51-8fd2ed1496be"],
+Cell[5815, 196, 295, 7, 32, "Output",ExpressionUUID->"910e62b6-6b0c-4674-91ff-1ea3f89e1079"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

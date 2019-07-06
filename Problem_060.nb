@@ -1,0 +1,392 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15406,        384]
+NotebookOptionsPosition[     14035,        353]
+NotebookOutlinePosition[     14379,        368]
+CellTagsIndexPosition[     14336,        365]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 60",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=60"], None},
+ ButtonNote->"https://projecteuler.net/problem=60"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[TextData[{
+ "This is one of the harder ones so far \[LongDash] it took me a few attempts \
+to arrive at the recursive approach to generating the smallest set at each ",
+ Cell[BoxData[
+  FormBox["p", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "9191b355-6f20-4f77-b43a-3b7ef9adc2a6"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.7711580861352367`*^9, 
+  3.771158134107145*^9}},ExpressionUUID->"95b27142-559d-4629-9d12-\
+a1997eb8778f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"findCommutingPrimeSet", "[", "n_", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"commutingLU", " ", "=", " ", 
+       RowBox[{"<|", "|>"}]}], ",", " ", 
+      RowBox[{"multiplierLU", " ", "=", " ", 
+       RowBox[{"<|", "|>"}]}], ",", " ", 
+      RowBox[{"p", " ", "=", " ", "3"}], ",", " ", "set", ",", " ", "sum", 
+      ",", " ", 
+      RowBox[{"minSum", " ", "=", " ", "Infinity"}], ",", " ", 
+      RowBox[{"minSet", " ", "=", " ", "None"}], ",", " ", 
+      RowBox[{"pMax", " ", "=", " ", "Infinity"}]}], "}"}], ",", "\n", "\t", 
+    RowBox[{
+     RowBox[{"While", "[", 
+      RowBox[{"True", ",", "\t", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"commutingLU", "[", "p", "]"}], " ", "=", " ", 
+         RowBox[{"<|", "|>"}]}], ";", "\n", "\t\t", 
+        RowBox[{
+         RowBox[{"multiplierLU", "[", "p", "]"}], " ", "=", " ", 
+         RowBox[{"10", "^", 
+          RowBox[{"IntegerLength", "[", "p", "]"}]}]}], ";", "\n", "\t\t", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "find", " ", "all", " ", "previous", " ", "primes", " ", "which", 
+          " ", "commute", " ", "with", " ", "p"}], " ", "*)"}], " ", "\n", 
+        "\t\t", 
+        RowBox[{"Do", "[", "\n", "\t\t\t", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"PrimeQ", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"multiplierLU", "[", "p", "]"}], "*", "q"}], " ", "+",
+                " ", "p"}], "]"}], " ", "&&", " ", 
+             RowBox[{"PrimeQ", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"multiplierLU", "[", "q", "]"}], "*", "p"}], " ", "+",
+                " ", "q"}], "]"}]}], ",", "\n", "\t\t\t\t", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"commutingLU", "[", "p", "]"}], "[", "q", "]"}], " ", 
+             "=", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"commutingLU", "[", "q", "]"}], "[", "p", "]"}], " ", 
+              "=", " ", "True"}]}]}], "\n", "\t\t\t", "]"}], ",", "\n", 
+          "\t\t\t", 
+          RowBox[{"{", 
+           RowBox[{"q", ",", " ", 
+            RowBox[{"DeleteCases", "[", 
+             RowBox[{
+              RowBox[{"Keys", "[", "commutingLU", "]"}], ",", " ", "p"}], 
+             "]"}]}], "}"}]}], "\n", "\t\t", "]"}], ";", "\n", "\t\t", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "check", " ", "for", " ", "mutually", " ", "commuting", " ", "lists",
+           " ", "involving", " ", "p"}], " ", "*)"}], "\t", "\n", "\t\t", 
+        RowBox[{"set", " ", "=", " ", 
+         RowBox[{"smallestCommutingSet", "[", 
+          RowBox[{"commutingLU", ",", " ", "p", ",", " ", 
+           RowBox[{"Keys", "[", 
+            RowBox[{"commutingLU", "[", "p", "]"}], "]"}], ",", " ", "n"}], 
+          "]"}]}], ";", "\n", "\t\t", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"set", " ", "=!=", " ", "None"}], ",", "\n", "\t\t\t", 
+          RowBox[{
+           RowBox[{"sum", " ", "=", " ", 
+            RowBox[{"Total", "[", "set", "]"}]}], ";", "\n", "\t\t\t", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"sum", " ", "<", " ", "minSum"}], ",", "\n", "\t\t\t\t", 
+             
+             RowBox[{
+              RowBox[{"minSet", " ", "=", " ", "set"}], ";", "\n", "\t\t\t\t", 
+              RowBox[{"minSum", " ", "=", " ", "sum"}], ";", "\n", "\t\t\t\t", 
+              RowBox[{"pMax", " ", "=", " ", 
+               RowBox[{"minSum", " ", "-", " ", 
+                RowBox[{"Total", "[", 
+                 RowBox[{"Take", "[", 
+                  RowBox[{
+                   RowBox[{"Keys", "[", 
+                    RowBox[{"commutingLU", "[", "p", "]"}], "]"}], ",", " ", 
+                   RowBox[{"n", "-", "1"}]}], "]"}], "]"}]}]}]}]}], "\n", 
+            "\t\t\t", "]"}]}]}], "\n", "\t\t", "]"}], ";", "\n", "\t\t", 
+        RowBox[{"p", " ", "=", " ", 
+         RowBox[{"NextPrime", "[", "p", "]"}]}], ";", "\n", "\t\t", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"Print", "[", "p", "]"}], ";", "\n", "\t\t", 
+          RowBox[{"Print", "[", "commutingLU", "]"}], ";", "\n", "\t\t", 
+          RowBox[{"Print", "[", "multiplierLU", "]"}], ";"}], "*)"}], "\n", 
+        "\t\t", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"p", " ", ">=", " ", "pMax"}], ",", " ", 
+          RowBox[{"Break", "[", "]"}]}], "]"}]}]}], "\n", "\t", "]"}], ";", 
+     "\n", "\t", "minSet"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->CompressedData["
+1:eJwdzEsowwEAx/G/iR2wmihKtFe5yPJYQ96xg13mMpFHSmbFHDyKUdhBEwfJ
+Y4e1w9TkmSGPHSTy2ppHm8esIdrw91daTZrH/7fDt8/ty2lUVTYxCIJIoYP9
+tTybK4Esdgw7XfAiYH2ArEK7F3I2pyioi94IwL/pqiDMKA2y72h55GAi/HQl
+JUMuI0wA1fVRqfD1nbkLWdamI2iI67bBWWWNHTYnVjig5XbADTVV7kc4Qam8
+sEEroaCRQ35Bvbk90k2r0KywoWt8LhvmjErFsKStTwL5PKkMmimmHJJjP9XQ
+dFOjhLkUWwvjfUOTsCO+SwcLMl6WYeDEb4bCy51tmHamtMH5wkwH9LXmX8Oe
+tAWjh1Z0HFyF30uXW3BddnoILeo4xj3+6VnhcCaiLACfYutC7gn46md8WjxD
+UJTONUF/kSikelVoh/x98hyW5x044Sen9woa2FrVC+2v4C3kGhGjgX5xtQ4q
+Rjr1UP6xuwj/ARksCHg=
+  "],
+ CellLabel->
+  "In[277]:=",ExpressionUUID->"bf59f0c5-4a1a-43bc-bb67-34218f41f0e0"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "smallestCommutingSet", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"smallestCommutingSet", "[", 
+   RowBox[{"lu_", ",", " ", "largestElement_", ",", " ", "_", ",", " ", "1"}],
+    "]"}], " ", ":=", " ", 
+  RowBox[{"{", "largestElement", "}"}]}], "\n", 
+ RowBox[{
+  RowBox[{"smallestCommutingSet", "[", 
+   RowBox[{"lu_", ",", " ", "largestElement_", ",", " ", 
+    RowBox[{"{", "}"}], ",", " ", 
+    RowBox[{"length_", " ", "/;", " ", 
+     RowBox[{"length", " ", ">", " ", "1"}]}]}], "]"}], " ", ":=", " ", 
+  "None"}], "\n", 
+ RowBox[{
+  RowBox[{"smallestCommutingSet", "[", 
+   RowBox[{
+   "lu_", ",", " ", "largestElement_", ",", " ", "otherElements_", ",", " ", 
+    "length_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"With", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", "\n", "\t\t", 
+     RowBox[{"commutingSubsets", " ", "=", " ", 
+      RowBox[{"DeleteCases", "[", "\n", "\t\t\t", 
+       RowBox[{
+        RowBox[{"Table", "[", "\n", "\t\t\t\t", 
+         RowBox[{
+          RowBox[{"smallestCommutingSet", "[", 
+           RowBox[{"lu", ",", " ", 
+            RowBox[{"otherElements", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", " ", 
+            RowBox[{"Intersection", "[", 
+             RowBox[{
+              RowBox[{"Take", "[", 
+               RowBox[{"otherElements", ",", " ", 
+                RowBox[{"k", "-", "1"}]}], "]"}], ",", " ", 
+              RowBox[{"Keys", "[", 
+               RowBox[{"lu", "[", 
+                RowBox[{"otherElements", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], "]"}], ",", 
+            " ", 
+            RowBox[{"length", " ", "-", " ", "1"}]}], "]"}], ",", "\n", 
+          "\t\t\t\t", 
+          RowBox[{"{", 
+           RowBox[{"k", ",", " ", 
+            RowBox[{"length", " ", "-", " ", "1"}], ",", " ", 
+            RowBox[{"Length", "[", "otherElements", "]"}]}], "}"}]}], "\n", 
+         "\t\t\t", "]"}], ",", "\n", "\t\t\t", "None"}], "\n", "\t\t", 
+       "]"}]}], "\n", "\t", "}"}], ",", "\n", "\t", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Length", "[", "commutingSubsets", "]"}], " ", "\[Equal]", " ",
+        "0"}], ",", "\n", "\t\t", "None", ",", "\n", "\t\t", 
+      RowBox[{"Append", "[", 
+       RowBox[{
+        RowBox[{"First", "[", 
+         RowBox[{"TakeSmallestBy", "[", 
+          RowBox[{"commutingSubsets", ",", " ", "Total", ",", " ", "1"}], 
+          "]"}], "]"}], ",", " ", "largestElement"}], "]"}]}], "\n", "\t", 
+     "]"}]}], "\n", "]"}]}]}], "Code",
+ CellChangeTimes->{{3.771150424866659*^9, 3.7711504959086075`*^9}, {
+   3.7711506347851744`*^9, 3.7711507165509233`*^9}, {3.771150753110758*^9, 
+   3.771150967192249*^9}, {3.771151006414891*^9, 3.7711511490653224`*^9}, {
+   3.771151181987583*^9, 3.771151257897374*^9}, {3.771151315297017*^9, 
+   3.7711513501265993`*^9}, {3.7711514022757215`*^9, 3.7711514969232616`*^9}, 
+   3.7711517310194206`*^9, {3.7711561959157906`*^9, 3.7711562702516785`*^9}, {
+   3.771156448935963*^9, 3.771156544452442*^9}, {3.771156704416353*^9, 
+   3.7711567189808784`*^9}, {3.7711568100034018`*^9, 3.771156903742285*^9}, {
+   3.7711569562685013`*^9, 3.7711570023008423`*^9}, {3.7711571555843654`*^9, 
+   3.7711572098305826`*^9}, 3.7711572829315453`*^9, 3.7711573241547337`*^9, {
+   3.7711574048127704`*^9, 3.7711574238091216`*^9}, {3.7711574657926083`*^9, 
+   3.7711575071231127`*^9}},ExpressionUUID->"d587e526-c281-4d5f-82e6-\
+c2c7bc5cfb74"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"verifyCommutingSet", "[", "set_", "]"}], " ", ":=", " ", 
+  RowBox[{"Table", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{"Append", "[", 
+     RowBox[{"pq", ",", " ", 
+      RowBox[{
+       RowBox[{"PrimeQ", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"pq", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"IntegerLength", "[", 
+            RowBox[{"pq", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "]"}]}]}], " ", "+", " ", 
+         RowBox[{"pq", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], "]"}], " ", "&&", " ", 
+       RowBox[{"PrimeQ", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"pq", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "*", 
+          RowBox[{"10", "^", 
+           RowBox[{"IntegerLength", "[", 
+            RowBox[{"pq", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}]}]}], " ", "+", " ", 
+         RowBox[{"pq", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}]}], "]"}], ",", "\n", "\t", 
+    RowBox[{"{", 
+     RowBox[{"pq", ",", " ", 
+      RowBox[{"Subsets", "[", 
+       RowBox[{"set", ",", " ", 
+        RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.771137775559405*^9, 3.7711379306875114`*^9}, {
+  3.7711379855822744`*^9, 3.771138019212181*^9}, {3.7711400755702715`*^9, 
+  3.7711400852762995`*^9}, {3.771140185075045*^9, 3.7711401980543633`*^9}},
+ CellLabel->"In[89]:=",ExpressionUUID->"75b0ebb2-5b27-4df8-99b8-c3cc691fc275"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sol", "=", 
+  RowBox[{"findCommutingPrimeSet", "[", "5", "]"}]}]], "Input",
+ CellChangeTimes->{{3.7711578742515783`*^9, 3.77115790192981*^9}, {
+  3.771158053227705*^9, 3.771158053810925*^9}},
+ CellLabel->
+  "In[283]:=",ExpressionUUID->"816b5c11-ee6c-4ebb-9bc8-4bf89079ea9d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"13", ",", "5197", ",", "5701", ",", "6733", ",", "8389"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.771157886503428*^9, 3.771157910154808*^9}, 
+   3.7711580625871983`*^9},
+ CellLabel->
+  "Out[283]=",ExpressionUUID->"c56189e3-8ddf-4c7f-99b4-5adaee00240f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", "sol", "]"}]], "Input",
+ CellChangeTimes->{{3.7711580561637583`*^9, 3.771158058552591*^9}},
+ CellLabel->
+  "In[284]:=",ExpressionUUID->"4aa70afb-c946-4830-8c8c-0c36a067ef40"],
+
+Cell[BoxData["26033"], "Output",
+ CellChangeTimes->{3.771158062651083*^9},
+ CellLabel->
+  "Out[284]=",ExpressionUUID->"fd2fb051-f47f-4875-9e6a-3998b5fd4b41"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"verifyCommutingSet", "[", "sol", "]"}]], "Input",
+ CellChangeTimes->{{3.77115792682187*^9, 3.771157931479636*^9}, {
+  3.7711580620638695`*^9, 3.771158062750944*^9}},
+ CellLabel->
+  "In[285]:=",ExpressionUUID->"32de8140-ce1c-489c-9183-881c61ff9830"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"13", ",", "5197", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"13", ",", "5701", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"13", ",", "6733", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"13", ",", "8389", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5197", ",", "5701", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5197", ",", "6733", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5197", ",", "8389", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5701", ",", "6733", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5701", ",", "8389", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6733", ",", "8389", ",", "True"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7711579321067796`*^9, 3.771158067212947*^9},
+ CellLabel->
+  "Out[285]=",ExpressionUUID->"79fd8154-214a-465e-9d11-c0dd81cc9b53"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 459, 11, 34, "Text",ExpressionUUID->"95b27142-559d-4629-9d12-a1997eb8778f"],
+Cell[1381, 44, 5284, 119, 573, "Code",ExpressionUUID->"bf59f0c5-4a1a-43bc-bb67-34218f41f0e0"],
+Cell[6668, 165, 3470, 74, 357, "Code",ExpressionUUID->"d587e526-c281-4d5f-82e6-c2c7bc5cfb74"],
+Cell[10141, 241, 1550, 38, 105, "Code",ExpressionUUID->"75b0ebb2-5b27-4df8-99b8-c3cc691fc275"],
+Cell[CellGroupData[{
+Cell[11716, 283, 298, 6, 28, "Input",ExpressionUUID->"816b5c11-ee6c-4ebb-9bc8-4bf89079ea9d"],
+Cell[12017, 291, 296, 7, 32, "Output",ExpressionUUID->"c56189e3-8ddf-4c7f-99b4-5adaee00240f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12350, 303, 211, 4, 28, "Input",ExpressionUUID->"4aa70afb-c946-4830-8c8c-0c36a067ef40"],
+Cell[12564, 309, 157, 3, 32, "Output",ExpressionUUID->"fd2fb051-f47f-4875-9e6a-3998b5fd4b41"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12758, 317, 272, 5, 28, "Input",ExpressionUUID->"32de8140-ce1c-489c-9183-881c61ff9830"],
+Cell[13033, 324, 974, 25, 32, "Output",ExpressionUUID->"79fd8154-214a-465e-9d11-c0dd81cc9b53"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

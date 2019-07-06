@@ -1,0 +1,422 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13899,        414]
+NotebookOptionsPosition[     11999,        374]
+NotebookOutlinePosition[     12342,        389]
+CellTagsIndexPosition[     12299,        386]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 75",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=75"], None},
+ ButtonNote->"https://projecteuler.net/problem=75"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"56e297a8-802d-48b9-9f2f-\
+ecee28c1f632"],
+
+Cell[TextData[{
+ "This solution was inspired by ",
+ ButtonBox["this excellent 3blue1brown video",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://www.youtube.com/watch?v=QJYmyhnaaek"], None},
+  ButtonNote->"https://www.youtube.com/watch?v=QJYmyhnaaek"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.771392279725111*^9, 3.771392281604885*^9}, {
+  3.7713923127664633`*^9, 
+  3.7713923460117397`*^9}},ExpressionUUID->"36bfa83f-84f3-412a-a027-\
+ddeb3db94c88"],
+
+Cell[TextData[{
+ "All Pythogorean triples can be expressed as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"k", " ", 
+    SuperscriptBox["z", "2"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "760226a7-89f5-4377-a593-52c8f3f2c52e"],
+ " for some ",
+ Cell[BoxData[
+  FormBox["z", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "daccbeff-d9ce-4f46-a451-92a3e0b6f68b"],
+ " in the complex plane with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "<", 
+    RowBox[{"arg", "(", "z", ")"}], "<", 
+    RowBox[{"\[Pi]", "/", "4"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "1e9c5449-a333-42a5-b3a8-c268f3319176"],
+ ". If we don\[CloseCurlyQuote]t care about the order of sides, it is enough \
+to consider ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "<", 
+    RowBox[{"arg", "(", "z", ")"}], "<", 
+    RowBox[{"\[Pi]", "/", "8"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "ec3ff514-c79d-46b9-8ed7-7f99413999c5"],
+ ". Consider the case ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"k", "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "322fff8b-e280-49c9-acfd-6d4d88cee19f"],
+ ". Writing ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "=", 
+    RowBox[{"x", "+", 
+     RowBox[{"\[ImaginaryI]", " ", "y"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "41aee9a3-8561-4d90-bf92-3a716cc3bc8a"],
+ ", we have ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["z", "2"], "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["x", "2"], "-", 
+       SuperscriptBox["y", "2"]}], ")"}], "+", 
+     RowBox[{"2", "x", " ", "y", " ", "\[ImaginaryI]"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e9367180-fdb9-48d2-ad21-17f634bca736"],
+ ", so the corresponding Pythogorean triple is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["x", "2"], "-", 
+      SuperscriptBox["y", "2"]}], ",", 
+     RowBox[{"2", "x", " ", "y"}], ",", 
+     RowBox[{
+      SuperscriptBox["x", "2"], "+", 
+      SuperscriptBox["y", "2"]}]}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "364630dc-6208-438e-93d4-770ec1341dc7"],
+ ", with perimeter ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"L", "=", 
+    RowBox[{"2", "x", " ", 
+     RowBox[{"(", 
+      RowBox[{"x", "+", "y"}], ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e3e69c53-3e17-40e3-a3ec-58319d21c3c1"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.7713979213233957`*^9, 3.7713982529672227`*^9}, {
+  3.7713983519305363`*^9, 
+  3.771398403769984*^9}},ExpressionUUID->"53c37866-aec0-4f26-899b-\
+629a31c6e1f3"],
+
+Cell[TextData[{
+ "One thing about the way Pythagorean triples are generated is that they don\
+\[CloseCurlyQuote]t generate the same triples with both permutations of \
+sides, e.g. ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"2", ",", "1"}], ")"}], "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{"3", ",", "4", ",", "5"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "cbc17d53-ec4e-4bc2-8d0c-11b21575c807"],
+ " but there is no ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"x", ",", "y"}], ")"}], "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{"4", ",", "3", ",", "5"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "03edfa8e-3b52-4304-8aeb-517f3e16e2c3"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.771400289364112*^9, 3.771400339790683*^9}, {
+  3.7714005133905077`*^9, 
+  3.771400563781502*^9}},ExpressionUUID->"f9ee7e28-0f82-4bf1-bb65-\
+2b6936d96c0c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "^", "2"}], "-", 
+       RowBox[{"y", "^", "2"}]}], "\[Equal]", "3"}], ",", 
+     RowBox[{
+      RowBox[{"2", "x", " ", "y"}], "\[Equal]", "4"}], ",", 
+     RowBox[{"x", ">", "0"}], ",", 
+     RowBox[{"y", ">", "0"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", "Integers"}], "]"}]], "Input",
+ CellChangeTimes->{{3.771400214892127*^9, 3.7714002527807755`*^9}},
+ CellLabel->
+  "In[127]:=",ExpressionUUID->"19c2d387-7299-48d5-8551-945533407e56"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"x", "\[Rule]", "2"}], ",", 
+    RowBox[{"y", "\[Rule]", "1"}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.7714002283465757`*^9, 3.771400253137941*^9}},
+ CellLabel->
+  "Out[127]=",ExpressionUUID->"02cfa78e-7fbb-4f5d-a129-84cc78999ede"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "^", "2"}], "-", 
+       RowBox[{"y", "^", "2"}]}], "\[Equal]", "4"}], ",", 
+     RowBox[{
+      RowBox[{"2", "x", " ", "y"}], "\[Equal]", "3"}], ",", 
+     RowBox[{"x", ">", "0"}], ",", 
+     RowBox[{"y", ">", "0"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", "Integers"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7714002617648706`*^9, 3.771400264450985*^9}},
+ CellLabel->
+  "In[128]:=",ExpressionUUID->"c98c00b1-6cf7-4de4-8140-bdd4f5bd3d45"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.771400264938308*^9},
+ CellLabel->
+  "Out[128]=",ExpressionUUID->"8acd3434-473c-4a16-a947-f9c9589f6440"]
+}, Open  ]],
+
+Cell[TextData[{
+ "This means we need to search all ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", "\[LessEqual]", "x", "\[LessEqual]", 
+    SubscriptBox["x", "max"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "b8168603-ba44-4583-b27f-41b67780a9bc"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", "\[LessEqual]", "y", "\[LessEqual]", "x"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "c5bf9c4a-c6c6-4fd1-90e4-29f68aeac27b"],
+ " to be sure that we hit all triangles. And then multiples ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"k", ">", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "4e8d1d96-0814-4a59-bb28-e6a2ef613195"],
+ " can also overlap, so the safe way to go is to create a lookup to ensure we \
+only count each triangle once."
+}], "Text",
+ CellChangeTimes->{{3.771400573574428*^9, 
+  3.771400660223916*^9}},ExpressionUUID->"d3839f13-1d67-4a08-8065-\
+271500801f95"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"xMax", "[", "L_", "]"}], "=", 
+  RowBox[{"SelectFirst", "[", 
+   RowBox[{
+    RowBox[{"x", "/.", 
+     RowBox[{"Solve", "[", 
+      RowBox[{
+       RowBox[{"L", "\[Equal]", 
+        RowBox[{"2", "x", " ", 
+         RowBox[{"(", 
+          RowBox[{"x", "+", "1"}], ")"}]}]}], ",", "x"}], "]"}]}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"#", "/.", 
+        RowBox[{"L", "\[Rule]", "1"}]}], ")"}], ">", "0"}], "&"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7713984158798313`*^9, 3.7713984706215267`*^9}},
+ CellLabel->"In[54]:=",ExpressionUUID->"de30f3b8-e269-4eb4-8f21-e151e4af580f"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", 
+    SqrtBox[
+     RowBox[{"1", "+", 
+      RowBox[{"2", " ", "L"}]}]]}], ")"}]}]], "Output",
+ CellChangeTimes->{{3.7713984346370144`*^9, 3.7713984709114647`*^9}},
+ CellLabel->"Out[54]=",ExpressionUUID->"3285363f-6857-4854-bd5d-79c66863dd67"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Lmax", " ", "=", " ", "1500000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"triangleLU", " ", "=", " ", 
+   RowBox[{"<|", "|>"}]}], ";"}], "\n", 
+ RowBox[{"Do", "[", "\n", "\t", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"key", " ", "=", " ", 
+     RowBox[{"Sort", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"x", "^", "2"}], "-", 
+         RowBox[{"y", "^", "2"}]}], ",", " ", 
+        RowBox[{"2", "x", " ", "y"}]}], "}"}], "]"}]}], ";", "\n", "\t", 
+    RowBox[{"L", " ", "=", " ", 
+     RowBox[{"2", "x", 
+      RowBox[{"(", 
+       RowBox[{"x", "+", "y"}], ")"}]}]}], ";", "\n", "\t", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"!", 
+         RowBox[{"KeyExistsQ", "[", 
+          RowBox[{"triangleLU", ",", " ", 
+           RowBox[{"k", "*", "key"}]}], "]"}]}], ",", " ", 
+        RowBox[{
+         RowBox[{"triangleLU", "[", 
+          RowBox[{"k", "*", "key"}], "]"}], " ", "=", " ", 
+         RowBox[{"k", "*", "L"}]}]}], "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", " ", "1", ",", " ", 
+        RowBox[{"Lmax", "/", "L"}]}], "}"}]}], "]"}]}], ",", "\n", "\t", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", " ", 
+     RowBox[{"xMax", "[", "Lmax", "]"}]}], "}"}], ",", "\n", "\t", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", " ", 
+     RowBox[{"x", "-", "1"}]}], "}"}]}], "\n", "]"}]}], "Code",
+ CellChangeTimes->{{3.771398735952922*^9, 3.7713987391701193`*^9}, {
+   3.7713988644880667`*^9, 3.771398907816309*^9}, {3.7713989735743914`*^9, 
+   3.7713989738782983`*^9}, 3.7713992793855867`*^9, {3.7714045909233665`*^9, 
+   3.771404774810586*^9}, {3.771404903658141*^9, 3.77140509675255*^9}, {
+   3.771405299963313*^9, 3.771405300359134*^9}},
+ CellLabel->
+  "In[180]:=",ExpressionUUID->"8b52246f-aaca-4328-aa2e-659405e0bf85"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "triangleLU", "]"}]], "Input",
+ CellChangeTimes->{{3.771404733430295*^9, 3.771404763140293*^9}},
+ CellLabel->
+  "In[183]:=",ExpressionUUID->"8a5b0e7d-613f-450d-a2ca-78f9f52ba0b0"],
+
+Cell[BoxData["1256149"], "Output",
+ CellChangeTimes->{{3.771404736179339*^9, 3.7714047787525554`*^9}, {
+   3.771405081816665*^9, 3.771405114978278*^9}, 3.7714053354995003`*^9},
+ CellLabel->
+  "Out[183]=",ExpressionUUID->"b51007da-aa51-4ff8-8e17-9bbd035ade17"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"Cases", "[", 
+   RowBox[{
+    RowBox[{"Tally", "[", 
+     RowBox[{"Values", "[", "triangleLU", "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"_", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7714047816624613`*^9, 3.7714048494993362`*^9}, {
+  3.771405106605271*^9, 3.77140514646725*^9}},
+ CellLabel->
+  "In[184]:=",ExpressionUUID->"1b802538-6254-48bf-9f96-90f28b47c7a4"],
+
+Cell[BoxData["161667"], "Output",
+ CellChangeTimes->{
+  3.7714047939148464`*^9, {3.771404843206214*^9, 3.7714048502668915`*^9}, 
+   3.7714051478997583`*^9, 3.7714053674377103`*^9},
+ CellLabel->
+  "Out[184]=",ExpressionUUID->"2ba31335-fa99-4c8d-a4dc-3de36113146d"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1502, 566},
+WindowMargins->{{7, Automatic}, {-1, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"56e297a8-802d-48b9-9f2f-ecee28c1f632"],
+Cell[919, 31, 460, 12, 34, "Text",ExpressionUUID->"36bfa83f-84f3-412a-a027-ddeb3db94c88"],
+Cell[1382, 45, 2750, 85, 58, "Text",ExpressionUUID->"53c37866-aec0-4f26-899b-629a31c6e1f3"],
+Cell[4135, 132, 964, 28, 34, "Text",ExpressionUUID->"f9ee7e28-0f82-4bf1-bb65-2b6936d96c0c"],
+Cell[CellGroupData[{
+Cell[5124, 164, 600, 17, 28, "Input",ExpressionUUID->"19c2d387-7299-48d5-8551-945533407e56"],
+Cell[5727, 183, 310, 8, 32, "Output",ExpressionUUID->"02cfa78e-7fbb-4f5d-a129-84cc78999ede"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6074, 196, 600, 17, 28, "Input",ExpressionUUID->"c98c00b1-6cf7-4de4-8140-bdd4f5bd3d45"],
+Cell[6677, 215, 170, 4, 32, "Output",ExpressionUUID->"8acd3434-473c-4a16-a947-f9c9589f6440"]
+}, Open  ]],
+Cell[6862, 222, 961, 25, 34, "Text",ExpressionUUID->"d3839f13-1d67-4a08-8065-271500801f95"],
+Cell[CellGroupData[{
+Cell[7848, 251, 651, 19, 28, "Input",ExpressionUUID->"de30f3b8-e269-4eb4-8f21-e151e4af580f"],
+Cell[8502, 272, 354, 10, 55, "Output",ExpressionUUID->"3285363f-6857-4854-bd5d-79c66863dd67"]
+}, Open  ]],
+Cell[8871, 285, 1847, 48, 195, "Code",ExpressionUUID->"8b52246f-aaca-4328-aa2e-659405e0bf85"],
+Cell[CellGroupData[{
+Cell[10743, 337, 217, 4, 28, "Input",ExpressionUUID->"8a5b0e7d-613f-450d-a2ca-78f9f52ba0b0"],
+Cell[10963, 343, 259, 4, 32, "Output",ExpressionUUID->"b51007da-aa51-4ff8-8e17-9bbd035ade17"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11259, 352, 446, 11, 28, "Input",ExpressionUUID->"1b802538-6254-48bf-9f96-90f28b47c7a4"],
+Cell[11708, 365, 263, 5, 32, "Output",ExpressionUUID->"2ba31335-fa99-4c8d-a4dc-3de36113146d"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

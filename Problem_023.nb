@@ -1,0 +1,260 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8849,        252]
+NotebookOptionsPosition[      6996,        214]
+NotebookOutlinePosition[      7340,        229]
+CellTagsIndexPosition[      7297,        226]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 23",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=23"], None},
+ ButtonNote->"https://projecteuler.net/problem=23"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"abundantQ", "[", "n_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"DivisorSigma", "[", 
+    RowBox[{"1", ",", "n"}], "]"}], ">", 
+   RowBox[{"2", "n"}]}]}]], "Input",
+ CellChangeTimes->{{3.7706422737764883`*^9, 3.7706423491676807`*^9}},
+ CellLabel->
+  "In[437]:=",ExpressionUUID->"523cbfed-8380-47a5-8ea9-9a645a373061"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nMax", "=", "28123"}], ";"}]], "Input",
+ CellChangeTimes->{{3.77064242926923*^9, 3.7706424396433563`*^9}},
+ CellLabel->
+  "In[441]:=",ExpressionUUID->"dd72d623-8900-4767-b5eb-36e9d7fe92c9"],
+
+Cell[TextData[{
+ "The first step is to calculate the list of abundant numbers up to ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["n", "max"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "4a9451a1-ca2f-4a35-ab55-a1a3d9314acf"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.7706441433223944`*^9, 
+  3.7706441739284678`*^9}},ExpressionUUID->"a5567971-d825-46b1-8bf8-\
+ced0090f5ba0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"abundants", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"Range", "[", "nMax", "]"}], ",", "abundantQ"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7706423787007866`*^9, 3.770642400032278*^9}, {
+  3.770642445303779*^9, 3.7706424640467167`*^9}, {3.7706425169482*^9, 
+  3.770642524913542*^9}, {3.7706427386615896`*^9, 3.7706427541952705`*^9}},
+ CellLabel->
+  "In[447]:=",ExpressionUUID->"224750c6-a3b9-4454-a0c3-a539ce7cc5c2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "abundants", "]"}]], "Input",
+ CellChangeTimes->{{3.770643718806808*^9, 3.770643720388648*^9}, {
+  3.77064375998442*^9, 3.7706437627967*^9}},
+ CellLabel->
+  "In[462]:=",ExpressionUUID->"b3887a01-06a4-4c1d-8214-49ecbfa2bde0"],
+
+Cell[BoxData["6965"], "Output",
+ CellChangeTimes->{3.770643720868003*^9, 3.7706437633559265`*^9},
+ CellLabel->
+  "Out[462]=",ExpressionUUID->"b5309fb1-2749-4fd6-8e2b-44c382a0d249"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now we go through and mark all numbers up to ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["n", "max"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "f5394a97-4fe1-4a84-83ba-8295d8e01713"],
+ " that can be expressed as a sum of two abundant numbers. This is naturally \
+done by repeated iteration over the list of abundant numbers, which is \
+frustratingly slow."
+}], "Text",
+ CellChangeTimes->{{3.770644180244856*^9, 3.770644253726646*^9}, {
+  3.770644351927742*^9, 3.7706444307848244`*^9}, {3.7706445235148835`*^9, 
+  3.770644523702592*^9}},ExpressionUUID->"955f3f59-b9eb-4dd6-99a6-\
+c38530745881"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"notSumOfTwoAbundants", "=", 
+   RowBox[{"Range", "[", "nMax", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"j", ",", "sum"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"j", "=", "i"}], ";", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"sum", "=", 
+            RowBox[{
+             RowBox[{"abundants", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "+", 
+             RowBox[{"abundants", "[", 
+              RowBox[{"[", "j", "]"}], "]"}]}]}], ")"}], "\[LessEqual]", 
+          "nMax"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"notSumOfTwoAbundants", "[", 
+            RowBox[{"[", "sum", "]"}], "]"}], "=", "0"}], ";", 
+          RowBox[{"j", "+=", "1"}]}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"Length", "[", "abundants", "]"}]}], "}"}]}], "]"}]}], "]"}], 
+  "//", "Timing"}]}], "Input",
+ CellChangeTimes->{{3.7706438430234966`*^9, 3.77064385180375*^9}, {
+  3.770644025339957*^9, 3.770644025515678*^9}, {3.77064427623696*^9, 
+  3.770644346654846*^9}, {3.77064448431526*^9, 3.7706444945496197`*^9}},
+ CellLabel->
+  "In[472]:=",ExpressionUUID->"f869f139-98f7-419b-af36-91fc77573298"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"24.515625`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{3.7706443747332907`*^9, 3.7706445259435987`*^9},
+ CellLabel->
+  "Out[473]=",ExpressionUUID->"23b2b17b-a695-4db7-b90c-2ba37a96b051"]
+}, Open  ]],
+
+Cell["And here is the answer:", "Text",
+ CellChangeTimes->{{3.770644918884757*^9, 
+  3.770644922400098*^9}},ExpressionUUID->"92f615d9-1e76-482c-aa1c-\
+8d59cf54340a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", "res", "]"}]], "Input",
+ CellChangeTimes->{{3.770644098651559*^9, 3.7706441178564415`*^9}},
+ CellLabel->
+  "In[474]:=",ExpressionUUID->"8f29bad8-4e76-48b0-9bb2-80e472eac67a"],
+
+Cell[BoxData["4179871"], "Output",
+ CellChangeTimes->{{3.7706440993066735`*^9, 3.770644118363721*^9}, 
+   3.7706445260235243`*^9},
+ CellLabel->
+  "Out[474]=",ExpressionUUID->"34836008-db14-4c5e-a1b8-bd60ac6d1902"]
+}, Open  ]],
+
+Cell["\<\
+Amazingly, it\[CloseCurlyQuote]s not much slower to just generate the matrix \
+of all combinations and then filter:\
+\>", "Text",
+ CellChangeTimes->{{3.770644709571985*^9, 
+  3.770644763531853*^9}},ExpressionUUID->"5410a4a4-6efe-4afa-9392-\
+a0d33d88e2e4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Total", "[", 
+   RowBox[{"Complement", "[", 
+    RowBox[{
+     RowBox[{"Range", "[", "nMax", "]"}], ",", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Union", "[", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"Outer", "[", 
+          RowBox[{"Plus", ",", "abundants", ",", "abundants"}], "]"}], "]"}], 
+        "]"}], ",", 
+       RowBox[{
+        RowBox[{"#", "\[LessEqual]", "nMax"}], "&"}]}], "]"}]}], "]"}], "]"}],
+   "//", "Timing"}]], "Input",
+ CellChangeTimes->{{3.7706445923129797`*^9, 3.77064465605737*^9}},
+ CellLabel->
+  "In[476]:=",ExpressionUUID->"27464299-2500-4baa-a28f-09361daee250"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"39.`", ",", "4179871"}], "}"}]], "Output",
+ CellChangeTimes->{3.770644644852146*^9, 3.770644698031393*^9},
+ CellLabel->
+  "Out[476]=",ExpressionUUID->"2ca11c34-1a6a-4a72-8ab7-678ae5a3298e"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 347, 9, 28, "Input",ExpressionUUID->"523cbfed-8380-47a5-8ea9-9a645a373061"],
+Cell[1269, 42, 224, 5, 28, "Input",ExpressionUUID->"dd72d623-8900-4767-b5eb-36e9d7fe92c9"],
+Cell[1496, 49, 399, 11, 34, "Text",ExpressionUUID->"a5567971-d825-46b1-8bf8-ced0090f5ba0"],
+Cell[1898, 62, 482, 11, 28, "Input",ExpressionUUID->"224750c6-a3b9-4454-a0c3-a539ce7cc5c2"],
+Cell[CellGroupData[{
+Cell[2405, 77, 262, 5, 28, "Input",ExpressionUUID->"b3887a01-06a4-4c1d-8214-49ecbfa2bde0"],
+Cell[2670, 84, 180, 3, 32, "Output",ExpressionUUID->"b5309fb1-2749-4fd6-8e2b-44c382a0d249"]
+}, Open  ]],
+Cell[2865, 90, 641, 14, 34, "Text",ExpressionUUID->"955f3f59-b9eb-4dd6-99a6-c38530745881"],
+Cell[CellGroupData[{
+Cell[3531, 108, 1374, 37, 105, "Input",ExpressionUUID->"f869f139-98f7-419b-af36-91fc77573298"],
+Cell[4908, 147, 236, 5, 32, "Output",ExpressionUUID->"23b2b17b-a695-4db7-b90c-2ba37a96b051"]
+}, Open  ]],
+Cell[5159, 155, 165, 3, 34, "Text",ExpressionUUID->"92f615d9-1e76-482c-aa1c-8d59cf54340a"],
+Cell[CellGroupData[{
+Cell[5349, 162, 211, 4, 28, "Input",ExpressionUUID->"8f29bad8-4e76-48b0-9bb2-80e472eac67a"],
+Cell[5563, 168, 213, 4, 32, "Output",ExpressionUUID->"34836008-db14-4c5e-a1b8-bd60ac6d1902"]
+}, Open  ]],
+Cell[5791, 175, 265, 6, 34, "Text",ExpressionUUID->"5410a4a4-6efe-4afa-9392-a0d33d88e2e4"],
+Cell[CellGroupData[{
+Cell[6081, 185, 655, 18, 28, "Input",ExpressionUUID->"27464299-2500-4baa-a28f-09361daee250"],
+Cell[6739, 205, 229, 5, 32, "Output",ExpressionUUID->"2ca11c34-1a6a-4a72-8ab7-678ae5a3298e"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

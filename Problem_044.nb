@@ -1,0 +1,649 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     23812,        641]
+NotebookOptionsPosition[     20665,        586]
+NotebookOutlinePosition[     21010,        601]
+CellTagsIndexPosition[     20967,        598]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 44",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=44"], None},
+ ButtonNote->"https://projecteuler.net/problem=44"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell["\<\
+I found this to be by far and away the most challenging in the first fifty \
+Euler problems. It looks like this is possibly the result of some ambiguity \
+in the wording that made it more challenging than originally intended. \
+Whatever the case, it was satisfying when I found the approach necessary to \
+reduce the search to something manageable.\
+\>", "Text",
+ CellChangeTimes->{{3.770957652931615*^9, 3.7709577946602945`*^9}, {
+  3.770960189545789*^9, 
+  3.770960201523739*^9}},ExpressionUUID->"5c55c2b3-d484-4157-b1f4-\
+2c0c5f88aa50"],
+
+Cell[TextData[{
+ "H/T to Euler project user rudimentary_lathe, who outlined the approach I \
+use here in the ",
+ ButtonBox["discussion thread",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://projecteuler.net/thread=44;page=7"], None},
+  ButtonNote->"https://projecteuler.net/thread=44;page=7"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.7709577998734326`*^9, 
+  3.770957892501402*^9}},ExpressionUUID->"eff10bee-e095-4e5a-b2a0-\
+0b89ef2fe53c"],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s first define a function to calculate the pentagonal \
+numbers ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["P", "n"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "cf73f181-b112-4a7c-ae44-219500690e39"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.7709579031708193`*^9, 3.770957917490562*^9}, {
+  3.770958875926817*^9, 
+  3.7709588821979876`*^9}},ExpressionUUID->"00a3a4d4-3b40-408b-90a6-\
+e050562b7dcc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pentagonal", "[", "n_", "]"}], ":=", 
+  RowBox[{"n", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"3", "n"}], "-", "1"}], ")"}], "/", "2"}]}]}]], "Input",
+ CellChangeTimes->{{3.770858889955512*^9, 3.770858903673746*^9}, 
+   3.770859021105051*^9, {3.770859425462138*^9, 3.770859428897582*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"6bca50cb-7d9b-4014-82a3-27173436afa2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pentagonal", "/@", 
+  RowBox[{"Range", "[", "10", "]"}]}]], "Input",
+ CellChangeTimes->{{3.770957919977847*^9, 3.7709579267806435`*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"f114747f-786f-4f7e-9f7e-f4ded1dc06c9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "5", ",", "12", ",", "22", ",", "35", ",", "51", ",", "70", ",", 
+   "92", ",", "117", ",", "145"}], "}"}]], "Output",
+ CellChangeTimes->{3.7709579271985273`*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"10163578-c4c9-4143-a6f8-7897e6342aa4"]
+}, Open  ]],
+
+Cell["\<\
+Next, since we\[CloseCurlyQuote]ll need to determine if a given number is \
+pentagonal, let\[CloseCurlyQuote]s define the inverse function:\
+\>", "Text",
+ CellChangeTimes->{{3.7709579496509156`*^9, 3.7709579843163047`*^9}, {
+  3.7709602230840592`*^9, 
+  3.770960227462343*^9}},ExpressionUUID->"e06b07b7-f0be-434c-9d40-\
+2d28e2e10d90"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"pentagonal", "[", "n", "]"}], "\[Equal]", "p"}], ",", "n"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7709559854015636`*^9, 3.7709559975746746`*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"41cdb7fe-631e-4f97-b04f-d43102023780"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"n", "\[Rule]", 
+     RowBox[{
+      FractionBox["1", "6"], " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        SqrtBox[
+         RowBox[{"1", "+", 
+          RowBox[{"24", " ", "p"}]}]]}], ")"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", "\[Rule]", 
+     RowBox[{
+      FractionBox["1", "6"], " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        SqrtBox[
+         RowBox[{"1", "+", 
+          RowBox[{"24", " ", "p"}]}]]}], ")"}]}]}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.7709560004739175`*^9, 3.7709579889040284`*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"40ea718f-3fa5-4cd8-b817-1e26eb7c90bd"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"inversePentagonal", "[", "p_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "+", 
+     RowBox[{"Sqrt", "[", 
+      RowBox[{"1", "+", 
+       RowBox[{"24", "p"}]}], "]"}]}], ")"}], "/", "6"}]}]], "Input",
+ CellChangeTimes->{{3.770902697013591*^9, 3.770902710517089*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"6dfc0533-047a-4801-827a-157e89a36ecb"],
+
+Cell[TextData[{
+ "And so a number is pentagonal if  ",
+ Cell[BoxData[
+ "inversePentagonal"],ExpressionUUID->
+  "30767217-da35-470a-8255-3338cdd97e14"],
+ " yields a (positive) integer."
+}], "Text",
+ CellChangeTimes->{{3.7709579988404846`*^9, 
+  3.770958053653417*^9}},ExpressionUUID->"30d9ec3b-fe73-41a6-8b8b-\
+efee495171ce"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pentagonalQ", "[", "p_Integer", "]"}], ":=", 
+  RowBox[{"IntegerQ", "[", 
+   RowBox[{"inversePentagonal", "[", "p", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7708932535865493`*^9, 3.770893254365579*^9}, {
+  3.7709040461264696`*^9, 3.770904049537943*^9}, {3.770955953507799*^9, 
+  3.7709559601795645`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"d3bae7df-04d2-4c2a-847f-360b93677294"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"inversePentagonal", "/@", 
+  RowBox[{"(", 
+   RowBox[{"pentagonal", "/@", 
+    RowBox[{"Range", "[", "10", "]"}]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.770957018965254*^9, 3.7709570231001835`*^9}, {
+  3.770958061953704*^9, 3.770958076692528*^9}},
+ CellLabel->"In[28]:=",ExpressionUUID->"a67f5f3e-18bf-46d0-99a6-74012de7b326"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{3.7709570234781284`*^9, 3.770958077094454*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"3ae7a5e8-1209-4df5-8258-b60cef8be8a7"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The question asks for the positive integers ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"j", "<", "k"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "4fc5add7-1a50-4183-bc55-a61aaacddb9e"],
+ " such that both ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["P", "j"], "+", 
+    SubscriptBox["P", "k"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "75a6fa47-7bd1-4b4f-9592-8c0da1901f5e"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["P", "k"], "-", 
+    SubscriptBox["P", "j"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "eb695c2b-7384-442a-ba3d-0948467fbe4d"],
+ " are pentagonal and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["P", "k"], "-", 
+    SubscriptBox["P", "j"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "710b16ed-cb69-4021-868e-17da3fa185a3"],
+ " is the smallest value possible. At first glance this looks like a \
+straightforward search problem. The most natural search direction is probably \
+to go ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"k", "=", "1"}], ",", "2", ",", "3", ",", "\[Ellipsis]"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "3cca99ab-a3ef-4757-8aaa-2f4f24cf082f"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"j", "=", 
+     RowBox[{"k", "-", "1"}]}], ",", 
+    RowBox[{"k", "-", "2"}], ",", "\[Ellipsis]", ",", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "bea708bc-bef2-4d37-beeb-820d6159872b"],
+ ". This is the approach taken by a majority of solvers (apparently \
+blissfully unaware of the full subtlety of the question), and it turns out \
+(by good luck) to land on the right answer."
+}], "Text",
+ CellChangeTimes->{{3.770958090671774*^9, 3.770958226796553*^9}, {
+  3.7709587012638755`*^9, 3.770958866111083*^9}, {3.7709589220134487`*^9, 
+  3.770959178734109*^9}},ExpressionUUID->"80696f81-bed9-4a4c-b553-\
+d8370b090de8"],
+
+Cell[TextData[{
+ " However, to prove that we have found the solution with ",
+ StyleBox["minimal",
+  FontSlant->"Italic"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["P", "k"], "-", 
+     SubscriptBox["P", "j"]}], "\[Congruent]", 
+    SubscriptBox["P", "d"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "846fb04d-67a1-4df2-aca5-3963a449abe3"],
+ ", we should really search in order of increasing ",
+ Cell[BoxData[
+  FormBox["d", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "6c583fa0-77ba-496d-9cfa-a668cbc5e2a1"],
+ ". Attempting this naively turns out to be futile because, for each ",
+ Cell[BoxData[
+  FormBox["d", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "2a60298e-e682-49ca-b740-e7ff30644e6e"],
+ ", it is necessary to test inordinately large ",
+ Cell[BoxData[
+  FormBox["j", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "cab4b923-f0c0-460a-b822-eab777121bcb"],
+ " to be sure that there is no solution (since we need to go far enough that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["P", 
+      RowBox[{"j", "+", "1"}]], "-", 
+     SubscriptBox["P", "j"]}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"3", "j"}], "+", "1"}], ">", 
+     SubscriptBox["P", "d"]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "87a98555-83d1-4e76-842f-7f149a46eb18"],
+ ")."
+}], "Text",
+ CellChangeTimes->{{3.770958090671774*^9, 3.770958226796553*^9}, {
+  3.7709587012638755`*^9, 3.770958866111083*^9}, {3.7709589220134487`*^9, 
+  3.770958992006195*^9}, {3.770959187710094*^9, 3.770959357058257*^9}, {
+  3.770959387266431*^9, 3.7709593891563644`*^9}, {3.7709602519907055`*^9, 
+  3.7709602599144945`*^9}},ExpressionUUID->"bcac142d-ffa6-4fa3-bf88-\
+76e1c8e4705b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"pentagonal", "[", 
+    RowBox[{"j", "+", "1"}], "]"}], "-", 
+   RowBox[{"pentagonal", "[", "j", "]"}]}], "//", "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.770959366622656*^9, 3.7709593826178603`*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"3ca62931-8f17-4ea6-9083-d6e37460f38f"],
+
+Cell[BoxData[
+ RowBox[{"1", "+", 
+  RowBox[{"3", " ", "j"}]}]], "Output",
+ CellChangeTimes->{{3.770959375464961*^9, 3.770959383054653*^9}},
+ CellLabel->"Out[30]=",ExpressionUUID->"97dd799d-e418-493f-881b-cf43f9e8835f"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The neat trick described by rudimentary_lathe consists of noting the \
+identity ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["P", 
+     RowBox[{"a", "+", "b"}]], "=", 
+    RowBox[{
+     SubscriptBox["P", "a"], "+", 
+     SubscriptBox["P", "b"], "+", 
+     RowBox[{"3", "a", " ", "b"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "2d4af241-f126-4b5b-8f97-b56467d2e164"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.77095940827517*^9, 3.7709595080119867`*^9}, {
+   3.770959581304987*^9, 3.7709596285784836`*^9}, 
+   3.770960276657248*^9},ExpressionUUID->"ed4efbda-4d2b-48d4-a5d9-\
+1c464754ea55"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"pentagonal", "[", 
+    RowBox[{"a", "+", "b"}], "]"}], "\[Equal]", 
+   RowBox[{
+    RowBox[{"pentagonal", "[", "a", "]"}], "+", 
+    RowBox[{"pentagonal", "[", "b", "]"}], "+", 
+    RowBox[{"3", "a", " ", "b"}]}]}], "//", "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.770959632598747*^9, 3.7709596490856113`*^9}},
+ CellLabel->"In[32]:=",ExpressionUUID->"cdc07c58-666b-4257-b6c9-8a700dd85219"],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.7709596496959715`*^9},
+ CellLabel->"Out[32]=",ExpressionUUID->"cb160797-baaf-4cdf-815c-f1817acba5ab"]
+}, Open  ]],
+
+Cell[TextData[{
+ "If then let ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"i", "=", 
+    RowBox[{"k", "-", "j"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "5d5e0d81-f694-4e9d-a3da-ef181b26ca3d"],
+ ", we have ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["P", "d"], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["P", 
+       RowBox[{"i", "+", "j"}]], "-", 
+      SubscriptBox["P", "j"]}], "=", 
+     RowBox[{
+      SubscriptBox["P", "i"], "+", 
+      RowBox[{"3", "i", " ", "j"}]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "9118557d-210f-464d-8588-d4f10e66c449"],
+ " and hence ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"j", "=", 
+    FractionBox[
+     RowBox[{
+      SubscriptBox["P", "d"], "-", 
+      SubscriptBox["P", "i"]}], 
+     RowBox[{"3", "i"}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "4c16f929-f59a-4648-ae2f-35f7025fc40b"],
+ ". This greatly reduces our search space, because now for each ",
+ Cell[BoxData[
+  FormBox["d", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "fb337db9-46c2-4622-b217-151738eff4dd"],
+ ", we just need to search ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", "2", ",", "\[Ellipsis]", ",", 
+    RowBox[{"d", "-", "1"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "b4b54c45-13e2-4367-945e-7397831a802c"],
+ ". The solution will be the first pair ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"d", ",", "i"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "6df9568b-1410-4bd3-a296-7a0c3841b7ed"],
+ " for which ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"j", "=", 
+    FractionBox[
+     RowBox[{
+      SubscriptBox["P", "d"], "-", 
+      SubscriptBox["P", "i"]}], 
+     RowBox[{"3", "i"}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "ff3e4051-463c-4364-983e-d44c47de89e7"],
+ " is an integer, and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["P", "j"], "+", 
+    SubscriptBox["P", 
+     RowBox[{"k", "=", 
+      RowBox[{"i", "+", "j"}]}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "d60751be-29cc-40c6-8993-b497935a0718"],
+ " is pentagonal."
+}], "Text",
+ CellChangeTimes->{{3.7709595246804543`*^9, 3.7709595258014865`*^9}, {
+  3.7709596619581327`*^9, 
+  3.770960027206172*^9}},ExpressionUUID->"82570772-a9d3-4796-9310-\
+2a5676716e96"],
+
+Cell[TextData[{
+ "Here is the Mathematica implementation using ",
+ Cell[BoxData["While"],ExpressionUUID->"e569d437-61c2-4fe2-b68a-dce1608e12c7"],
+ " loops:"
+}], "Text",
+ CellChangeTimes->{{3.770960051646767*^9, 
+  3.770960070801536*^9}},ExpressionUUID->"dc314672-fc6c-4308-9a11-\
+5167de3ba567"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"findMinimalPentagonalPair", "[", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"d", " ", "=", " ", "1"}], ",", " ", "i", ",", " ", "j", ",", 
+      " ", 
+      RowBox[{"notFound", " ", "=", " ", "True"}]}], "}"}], ",", "\n", "\t", 
+    RowBox[{
+     RowBox[{"While", "[", 
+      RowBox[{"notFound", ",", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"i", " ", "=", " ", "1"}], ";", "\n", "\t\t", 
+        RowBox[{"While", "[", 
+         RowBox[{
+          RowBox[{"i", " ", "<", " ", "d"}], ",", "\n", "\t\t\t", 
+          RowBox[{
+           RowBox[{"j", " ", "=", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"pentagonal", "[", "d", "]"}], " ", "-", " ", 
+               RowBox[{"pentagonal", "[", "i", "]"}]}], ")"}], " ", "/", " ", 
+             
+             RowBox[{"(", 
+              RowBox[{"3", "*", "i"}], ")"}]}]}], ";", "\n", "\t\t\t", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"IntegerQ", "[", "j", "]"}], " ", "&&", " ", 
+              RowBox[{"pentagonalQ", "[", 
+               RowBox[{
+                RowBox[{"pentagonal", "[", "j", "]"}], " ", "+", " ", 
+                RowBox[{"pentagonal", "[", 
+                 RowBox[{"i", "+", "j"}], "]"}]}], "]"}]}], ",", "\n", 
+             "\t\t\t\t", 
+             RowBox[{
+              RowBox[{"notFound", " ", "=", " ", "False"}], ";", "\n", 
+              "\t\t\t\t", 
+              RowBox[{"Break", "[", "]"}]}]}], "\n", "\t\t\t", "]"}], ";", 
+           "\n", "\t\t\t", 
+           RowBox[{"i", " ", "+=", " ", "1"}]}]}], "\n", "\t\t", "]"}], ";", 
+        "\n", "\t\t", 
+        RowBox[{"d", " ", "+=", " ", "1"}]}]}], "\n", "\t", "]"}], ";", "\n", 
+     "\t", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", " ", 
+       RowBox[{"i", "+", "j"}], ",", " ", 
+       RowBox[{
+        RowBox[{"pentagonal", "[", 
+         RowBox[{"i", "+", "j"}], "]"}], " ", "-", " ", 
+        RowBox[{"pentagonal", "[", "i", "]"}]}]}], "}"}]}]}], "\n", 
+   "]"}]}]], "Code",
+ CellChangeTimes->{{3.7708932736211953`*^9, 3.7708932991608305`*^9}, {
+   3.7708933973046904`*^9, 3.77089350330751*^9}, {3.770893541434616*^9, 
+   3.7708938529374075`*^9}, {3.7708938836359544`*^9, 3.7708939944430513`*^9}, 
+   3.770894274564646*^9, {3.7708943074192915`*^9, 3.7708943088973274`*^9}, {
+   3.770894348639581*^9, 3.7708943916441264`*^9}, {3.770894427031002*^9, 
+   3.770894486901232*^9}, {3.7708945467395906`*^9, 3.770894548109759*^9}, {
+   3.7708946004114923`*^9, 3.770894600826885*^9}, {3.770895944241486*^9, 
+   3.770896009061016*^9}, {3.7708960447130036`*^9, 3.770896092418733*^9}, {
+   3.7708961811262474`*^9, 3.7708962106736317`*^9}, {3.77089642650013*^9, 
+   3.770896462321102*^9}, {3.7708964945936127`*^9, 3.7708966414419403`*^9}, {
+   3.7708967174416547`*^9, 3.7708967196586804`*^9}, {3.7708967789728165`*^9, 
+   3.770896817098107*^9}, {3.770896866486024*^9, 3.770897096457717*^9}, {
+   3.7708981246739225`*^9, 3.770898132583304*^9}, {3.7708981714932065`*^9, 
+   3.770898208032313*^9}, {3.770898343623001*^9, 3.7708983480371437`*^9}, {
+   3.77089853666615*^9, 3.770898552626547*^9}, {3.7708987322264123`*^9, 
+   3.77089876355652*^9}, {3.770898836487008*^9, 3.770898856156698*^9}, {
+   3.770898911236972*^9, 3.770898920696334*^9}, {3.7709002508769293`*^9, 
+   3.7709003723815174`*^9}, 3.7709004762019835`*^9, {3.77090119991383*^9, 
+   3.770901640526907*^9}, {3.770956041320202*^9, 3.7709562617841816`*^9}, {
+   3.770956304497702*^9, 3.770956421956399*^9}, {3.770956536698205*^9, 
+   3.7709565793525624`*^9}, {3.770956709832307*^9, 3.77095672951759*^9}, 
+   3.77095728311141*^9, {3.770957354005743*^9, 3.770957354469511*^9}, {
+   3.770960301000165*^9, 3.7709603411606936`*^9}},
+ CellLabel->"In[33]:=",ExpressionUUID->"c05c9ebe-5726-44f3-90aa-e92dd8fecda8"],
+
+Cell["\<\
+It is painfully slow compared to even the Python implementations described \
+online:\
+\>", "Text",
+ CellChangeTimes->{{3.770960075246626*^9, 
+  3.770960099847745*^9}},ExpressionUUID->"c861c54a-bd62-471c-9f83-\
+f21511cda043"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"findMinimalPentagonalPair", "[", "]"}], "//", "Timing"}]], "Input",\
+
+ CellChangeTimes->{{3.770897100052859*^9, 3.7708971083224936`*^9}, {
+  3.7709573654371758`*^9, 3.770957367212406*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"f6401f2a-c062-4bfb-818c-16c4ca986d0f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"10.546875`", ",", 
+   RowBox[{"{", 
+    RowBox[{"1020", ",", "2167", ",", "5069910"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.770898058998657*^9, 3.770898279980137*^9, {3.7708985323675275`*^9, 
+   3.770898554320242*^9}, 3.770900190614724*^9, 3.770901632373801*^9, 
+   3.770902672604404*^9, 3.770904107711624*^9, 3.7709567057226725`*^9, 
+   3.770957013038104*^9, 3.7709572988194213`*^9, 3.770957377780156*^9, 
+   3.7709603554264755`*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"721460e2-0199-4353-884d-536426f6827e"]
+}, Open  ]],
+
+Cell[TextData[{
+ "However, it would be straightforward to speed this up considerably, e.g. by \
+using ",
+ Cell[BoxData[
+ "Compile"],ExpressionUUID->"ea927d8d-6824-4461-a6ab-471a63584a26"],
+ " as well as caching ",
+ Cell[BoxData[
+ "pentagonalQ"],ExpressionUUID->"1c25c3ae-5713-49c0-9196-887fc5e4523e"],
+ " values."
+}], "Text",
+ CellChangeTimes->{{3.7709601037902436`*^9, 
+  3.7709601722121305`*^9}},ExpressionUUID->"d96439f9-6a70-4166-a2d2-\
+239c9201b9ff"]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{Automatic, 124}, {42, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 549, 10, 56, "Text",ExpressionUUID->"5c55c2b3-d484-4157-b1f4-2c0c5f88aa50"],
+Cell[1471, 43, 451, 12, 34, "Text",ExpressionUUID->"eff10bee-e095-4e5a-b2a0-0b89ef2fe53c"],
+Cell[1925, 57, 465, 13, 34, "Text",ExpressionUUID->"00a3a4d4-3b40-408b-90a6-e050562b7dcc"],
+Cell[2393, 72, 424, 10, 28, "Input",ExpressionUUID->"6bca50cb-7d9b-4014-82a3-27173436afa2"],
+Cell[CellGroupData[{
+Cell[2842, 86, 239, 4, 28, "Input",ExpressionUUID->"f114747f-786f-4f7e-9f7e-f4ded1dc06c9"],
+Cell[3084, 92, 293, 6, 32, "Output",ExpressionUUID->"10163578-c4c9-4143-a6f8-7897e6342aa4"]
+}, Open  ]],
+Cell[3392, 101, 344, 7, 34, "Text",ExpressionUUID->"e06b07b7-f0be-434c-9d40-2d28e2e10d90"],
+Cell[CellGroupData[{
+Cell[3761, 112, 303, 7, 28, "Input",ExpressionUUID->"41cdb7fe-631e-4f97-b04f-d43102023780"],
+Cell[4067, 121, 704, 23, 55, "Output",ExpressionUUID->"40ea718f-3fa5-4cd8-b817-1e26eb7c90bd"]
+}, Open  ]],
+Cell[4786, 147, 397, 10, 28, "Input",ExpressionUUID->"6dfc0533-047a-4801-827a-157e89a36ecb"],
+Cell[5186, 159, 324, 9, 34, "Text",ExpressionUUID->"30d9ec3b-fe73-41a6-8b8b-efee495171ce"],
+Cell[5513, 170, 425, 8, 28, "Input",ExpressionUUID->"d3bae7df-04d2-4c2a-847f-360b93677294"],
+Cell[CellGroupData[{
+Cell[5963, 182, 354, 7, 28, "Input",ExpressionUUID->"a67f5f3e-18bf-46d0-99a6-74012de7b326"],
+Cell[6320, 191, 306, 6, 32, "Output",ExpressionUUID->"3ae7a5e8-1209-4df5-8258-b60cef8be8a7"]
+}, Open  ]],
+Cell[6641, 200, 2018, 57, 80, "Text",ExpressionUUID->"80696f81-bed9-4a4c-b553-d8370b090de8"],
+Cell[8662, 259, 1839, 50, 60, "Text",ExpressionUUID->"bcac142d-ffa6-4fa3-bf88-76e1c8e4705b"],
+Cell[CellGroupData[{
+Cell[10526, 313, 332, 7, 28, "Input",ExpressionUUID->"3ca62931-8f17-4ea6-9083-d6e37460f38f"],
+Cell[10861, 322, 218, 4, 32, "Output",ExpressionUUID->"97dd799d-e418-493f-881b-cf43f9e8835f"]
+}, Open  ]],
+Cell[11094, 329, 650, 19, 34, "Text",ExpressionUUID->"ed4efbda-4d2b-48d4-a5d9-1c464754ea55"],
+Cell[CellGroupData[{
+Cell[11769, 352, 443, 10, 28, "Input",ExpressionUUID->"cdc07c58-666b-4257-b6c9-8a700dd85219"],
+Cell[12215, 364, 154, 2, 32, "Output",ExpressionUUID->"cb160797-baaf-4cdf-815c-f1817acba5ab"]
+}, Open  ]],
+Cell[12384, 369, 2441, 79, 72, "Text",ExpressionUUID->"82570772-a9d3-4796-9310-2a5676716e96"],
+Cell[14828, 450, 294, 7, 34, "Text",ExpressionUUID->"dc314672-fc6c-4308-9a11-5167de3ba567"],
+Cell[15125, 459, 3920, 78, 321, "Code",ExpressionUUID->"c05c9ebe-5726-44f3-90aa-e92dd8fecda8"],
+Cell[19048, 539, 234, 6, 34, "Text",ExpressionUUID->"c861c54a-bd62-471c-9f83-f21511cda043"],
+Cell[CellGroupData[{
+Cell[19307, 549, 302, 6, 28, "Input",ExpressionUUID->"f6401f2a-c062-4bfb-818c-16c4ca986d0f"],
+Cell[19612, 557, 567, 11, 32, "Output",ExpressionUUID->"721460e2-0199-4353-884d-536426f6827e"]
+}, Open  ]],
+Cell[20194, 571, 455, 12, 34, "Text",ExpressionUUID->"d96439f9-6a70-4166-a2d2-239c9201b9ff"]
+}, Open  ]]
+}
+]
+*)
+

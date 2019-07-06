@@ -1,0 +1,259 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8396,        251]
+NotebookOptionsPosition[      7261,        224]
+NotebookOutlinePosition[      7605,        239]
+CellTagsIndexPosition[      7562,        236]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 78",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=78"], None},
+ ButtonNote->"https://projecteuler.net/problem=78"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"56e297a8-802d-48b9-9f2f-\
+ecee28c1f632"],
+
+Cell["\<\
+This was quite challenging since the obvious straightforward approaches based \
+on recursive calculation with memoization proved too slow and/or memory \
+intensive.\
+\>", "Text",
+ CellChangeTimes->{{3.771236010763874*^9, 
+  3.7712360769894037`*^9}},ExpressionUUID->"c9ab3ba7-0298-48e8-8382-\
+7e72064f5881"],
+
+Cell["\<\
+After finding a few hints online I arrived at the following solution, which \
+has three main necessary ingredients:\
+\>", "Text",
+ CellChangeTimes->{{3.771236079548793*^9, 
+  3.7712361403223615`*^9}},ExpressionUUID->"8832b949-16fc-49db-91d0-\
+5c7eb571a32f"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Use the Euler formula based on pentagonal numbers to calculate ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", "(", "n", ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "17aba665-81bc-49a9-b8e2-2e30726e868f"],
+ " recursively"
+}], "Item",
+ CellChangeTimes->{{3.7712361472274084`*^9, 3.7712361755403385`*^9}, {
+  3.7712362063328133`*^9, 
+  3.7712362093220654`*^9}},ExpressionUUID->"44ee2bf7-462d-42a3-bcdf-\
+252dbfaf7450"],
+
+Cell[TextData[{
+ "In the sum, limit the range of ",
+ Cell[BoxData[
+  FormBox["k", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "6f82462f-159f-4427-8894-997aa79acb48"],
+ " to avoid unnecessarily iterating over ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", "(", "n", ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "7a0bac29-7e07-4866-90df-8aedb7da4877"],
+ " with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "<", "0"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "247d5f00-bec6-49e1-a966-ef90f615a4cd"]
+}], "Item",
+ CellChangeTimes->{{3.7712361472274084`*^9, 3.7712361755403385`*^9}, {
+  3.7712362063328133`*^9, 
+  3.771236276781845*^9}},ExpressionUUID->"84e73ac1-6abb-42df-8792-\
+5fbd016dd801"],
+
+Cell[TextData[{
+ "Use memoization to store values of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"P", "(", "n", ")"}], " "}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "cbf887e9-0ed6-45ba-9d0a-12c5725f61c2"],
+ " as they are calculated, but store values modulo ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["10", "6"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "50417442-ec33-46f8-9b9b-4b5d62bbf358"],
+ " to avoid storing huge integers"
+}], "Item",
+ CellChangeTimes->{{3.7712361472274084`*^9, 3.7712362032521467`*^9}, {
+  3.771236279342346*^9, 
+  3.771236307647171*^9}},ExpressionUUID->"7be2a51b-eede-4b8c-b571-\
+34d555c5c38e"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"findPartitionWithDivisor", "[", "divisor_", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"p", ",", " ", "kmax", ",", " ", 
+      RowBox[{"n", " ", "=", " ", "1"}]}], "}"}], ",", "\n", "\t", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"p", "[", 
+       RowBox[{"_", "?", "Negative"}], "]"}], " ", "=", " ", "0"}], ";", "\n",
+      "\t", 
+     RowBox[{
+      RowBox[{"p", "[", "0", "]"}], " ", "=", " ", 
+      RowBox[{
+       RowBox[{"p", "[", "1", "]"}], " ", "=", " ", "1"}]}], ";", "\n", "\t", 
+     RowBox[{
+      RowBox[{"p", "[", "n_", "]"}], " ", ":=", " ", 
+      RowBox[{
+       RowBox[{"p", "[", "n", "]"}], " ", "=", " ", 
+       RowBox[{"Mod", "[", 
+        RowBox[{
+         RowBox[{"Sum", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"-", "1"}], ")"}], "^", 
+             RowBox[{"(", 
+              RowBox[{"k", "+", "1"}], ")"}]}], 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"p", "[", 
+               RowBox[{"n", "-", 
+                RowBox[{"k", "*", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"3", "k"}], "-", "1"}], ")"}], "/", "2"}]}]}], 
+               "]"}], " ", "+", " ", 
+              RowBox[{"p", "[", 
+               RowBox[{"n", "-", 
+                RowBox[{"k", "*", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"3", "k"}], "+", "1"}], ")"}], "/", "2"}]}]}], 
+               "]"}]}], ")"}]}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"k", ",", " ", "1", ",", " ", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "+", 
+                RowBox[{"Sqrt", "[", 
+                 RowBox[{"1", "+", 
+                  RowBox[{"24", "n"}]}], "]"}]}], ")"}], "/", "6"}]}], 
+            "}"}]}], "]"}], ",", " ", "divisor"}], "]"}]}]}], ";", "\n", "\n",
+      "\t", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"p", "[", "n", "]"}], " ", "\[NotEqual]", " ", "0"}], ",", 
+       " ", 
+       RowBox[{"n", " ", "+=", " ", "1"}]}], "]"}], ";", "\n", "\t", "n"}]}], 
+   "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.771235748019801*^9, 3.7712359200969777`*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"e0adf5f9-d99e-4fa9-ae8c-581ce4e2d5ad"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"d", ",", 
+      RowBox[{"findPartitionWithDivisor", "[", "d", "]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"d", ",", 
+      RowBox[{"10", "^", 
+       RowBox[{"Range", "[", 
+        RowBox[{"2", ",", "6"}], "]"}]}]}], "}"}]}], "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellChangeTimes->{{3.771235954762259*^9, 3.7712359878955793`*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"2b456bc5-1380-4ab0-b117-f2f978cd34f0"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"100", "74"},
+    {"1000", "449"},
+    {"10000", "599"},
+    {"100000", "11224"},
+    {"1000000", "55374"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7712360278631516`*^9},
+ CellLabel->
+  "Out[16]//TableForm=",ExpressionUUID->"55abcc42-502a-4645-af9f-\
+3c80e905ad0c"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"56e297a8-802d-48b9-9f2f-ecee28c1f632"],
+Cell[919, 31, 316, 7, 34, "Text",ExpressionUUID->"c9ab3ba7-0298-48e8-8382-7e72064f5881"],
+Cell[1238, 40, 267, 6, 34, "Text",ExpressionUUID->"8832b949-16fc-49db-91d0-5c7eb571a32f"],
+Cell[CellGroupData[{
+Cell[1530, 50, 464, 12, 31, "Item",ExpressionUUID->"44ee2bf7-462d-42a3-bcdf-252dbfaf7450"],
+Cell[1997, 64, 774, 22, 31, "Item",ExpressionUUID->"84e73ac1-6abb-42df-8792-5fbd016dd801"],
+Cell[2774, 88, 692, 19, 31, "Item",ExpressionUUID->"7be2a51b-eede-4b8c-b571-34d555c5c38e"]
+}, Open  ]],
+Cell[3481, 110, 2455, 67, 177, "Code",ExpressionUUID->"e0adf5f9-d99e-4fa9-ae8c-581ce4e2d5ad"],
+Cell[CellGroupData[{
+Cell[5961, 181, 515, 14, 28, "Input",ExpressionUUID->"2b456bc5-1380-4ab0-b117-f2f978cd34f0"],
+Cell[6479, 197, 754, 23, 113, "Output",ExpressionUUID->"55abcc42-502a-4645-af9f-3c80e905ad0c"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

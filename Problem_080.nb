@@ -1,0 +1,83 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2266,         75]
+NotebookOptionsPosition[      1721,         56]
+NotebookOutlinePosition[      2065,         71]
+CellTagsIndexPosition[      2022,         68]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 80",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=80"], None},
+ ButtonNote->"https://projecteuler.net/problem=80"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"56e297a8-802d-48b9-9f2f-\
+ecee28c1f632"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Total", "[", 
+     RowBox[{"First", "[", 
+      RowBox[{"RealDigits", "[", 
+       RowBox[{"#", ",", "10", ",", "100"}], "]"}], "]"}], "]"}], "&"}], "/@", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{
+     RowBox[{"Sqrt", "[", 
+      RowBox[{"Range", "[", "100", "]"}], "]"}], ",", "_Integer"}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7712492769709573`*^9, 3.7712493320820675`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"8e73e698-da47-416d-bc33-a487069ccf55"],
+
+Cell[BoxData["40886"], "Output",
+ CellChangeTimes->{
+  3.771249286557877*^9, {3.771249328183651*^9, 3.771249332480361*^9}},
+ CellLabel->"Out[13]=",ExpressionUUID->"c356db5b-400c-44e9-8358-aa0aa82e8594"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"56e297a8-802d-48b9-9f2f-ecee28c1f632"],
+Cell[CellGroupData[{
+Cell[941, 33, 547, 14, 28, "Input",ExpressionUUID->"8e73e698-da47-416d-bc33-a487069ccf55"],
+Cell[1491, 49, 202, 3, 32, "Output",ExpressionUUID->"c356db5b-400c-44e9-8358-aa0aa82e8594"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,280 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9515,        272]
+NotebookOptionsPosition[      8318,        246]
+NotebookOutlinePosition[      8662,        261]
+CellTagsIndexPosition[      8619,        258]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 58",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=58"], None},
+ ButtonNote->"https://projecteuler.net/problem=58"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s index the layers 0, 1, 2, \[Ellipsis] so that the \
+layers from 0 to ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "ebdd47ba-d7fa-4b6f-8545-06aa98836656"],
+ " contain the first ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"2", "n"}], "+", "1"}], ")"}], "2"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e47156f4-bbfa-45f0-9a4c-7872ee5f4ba7"],
+ " squares."
+}], "Text",
+ CellChangeTimes->{{3.771041552443277*^9, 3.771041680707101*^9}, {
+  3.7710419190433607`*^9, 
+  3.771041936853674*^9}},ExpressionUUID->"e0d967dc-2ae2-4096-a133-\
+5a2194696974"],
+
+Cell[TextData[{
+ "Layer ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "afb2cec7-c2be-4662-b6c3-c194751ff929"],
+ " itself contains ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", "n"}], "+", "1"}], ")"}], "2"], "-", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", "n"}], "-", "1"}], ")"}], "2"]}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", "n"}], "+", "1"}], ")"}]}], "+", 
+      RowBox[{"2", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", "n"}], "-", "1"}], ")"}]}]}], "=", 
+     RowBox[{"8", "n"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "0a4ed294-7925-4c4e-a572-bc3967efc91f"],
+ " squares."
+}], "Text",
+ CellChangeTimes->{{3.771041552443277*^9, 3.7710416800338736`*^9}, {
+  3.771041807857882*^9, 3.771041807857882*^9}, {3.7710418796976624`*^9, 
+  3.7710418960818157`*^9}, {3.771041938193089*^9, 3.771041972350748*^9}, {
+  3.771042061617901*^9, 
+  3.7710421137104416`*^9}},ExpressionUUID->"62fd608f-e7ee-486f-b4e5-\
+1001849c4bc0"],
+
+Cell[TextData[{
+ "The bottom right square contains the value ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"2", "n"}], "+", "1"}], ")"}], "2"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "6836dfb3-b55e-4f3c-81a5-b81b7f8c59a1"],
+ ";"
+}], "Text",
+ CellChangeTimes->{{3.771041552443277*^9, 3.7710416800338736`*^9}, {
+  3.771041807857882*^9, 3.771041807857882*^9}, {3.7710418796976624`*^9, 
+  3.7710418960818157`*^9}, {3.771041938193089*^9, 3.771041972350748*^9}, {
+  3.771042061617901*^9, 
+  3.771042117382661*^9}},ExpressionUUID->"291a1285-0da4-4ed6-8962-\
+e81dc78af7f3"],
+
+Cell[TextData[{
+ "the bottom left square contains the value ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "n"}], "+", "1"}], ")"}], "2"], "-", 
+    RowBox[{"2", "n"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "05ad39ef-e3e1-414e-bfd1-aede92ae990e"],
+ ";"
+}], "Text",
+ CellChangeTimes->{{3.771041552443277*^9, 3.7710416800338736`*^9}, {
+  3.771041807857882*^9, 3.771041807857882*^9}, {3.7710418796976624`*^9, 
+  3.7710418960818157`*^9}, {3.771041938193089*^9, 3.771041972350748*^9}, {
+  3.771042061617901*^9, 
+  3.771042171146757*^9}},ExpressionUUID->"b1b24805-6e9d-4da6-a579-\
+c2e4a52591f5"],
+
+Cell[TextData[{
+ "the top left square contains the value ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "n"}], "+", "1"}], ")"}], "2"], "-", 
+    RowBox[{"4", "n"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e6d75d2b-821b-4a2d-bf2f-f45d7653acd7"],
+ ";"
+}], "Text",
+ CellChangeTimes->{{3.771041552443277*^9, 3.7710416800338736`*^9}, {
+  3.771041807857882*^9, 3.771041807857882*^9}, {3.7710418796976624`*^9, 
+  3.7710418960818157`*^9}, {3.771041938193089*^9, 3.771041972350748*^9}, {
+  3.771042061617901*^9, 
+  3.7710422167028894`*^9}},ExpressionUUID->"04055147-c5d2-4321-a8a2-\
+b3deca9413ba"],
+
+Cell[TextData[{
+ "the top right square contains the value ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "n"}], "+", "1"}], ")"}], "2"], "-", 
+    RowBox[{"6", "n"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "0c71d2fe-6bab-4e12-8eb5-aa6c268c1c41"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.771041552443277*^9, 3.7710416800338736`*^9}, {
+  3.771041807857882*^9, 3.771041807857882*^9}, {3.7710418796976624`*^9, 
+  3.7710418960818157`*^9}, {3.771041938193089*^9, 3.771041972350748*^9}, {
+  3.771042061617901*^9, 3.771042171146757*^9}, {3.771042221618739*^9, 
+  3.7710422277303476`*^9}},ExpressionUUID->"073371e1-5055-44ef-aea4-\
+f78878d3f295"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sizeForPrimeFraction", "[", "fraction_", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"n", " ", "=", " ", "1"}], ",", " ", "diagonals", ",", " ", 
+      "primeCount", ",", " ", "corners"}], "}"}], ",", "\n", "\t", 
+    RowBox[{
+     RowBox[{"diagonals", " ", "=", " ", 
+      RowBox[{"{", 
+       RowBox[{
+       "1", ",", " ", "3", ",", " ", "5", ",", " ", "7", ",", " ", "9"}], 
+       "}"}]}], ";", "\n", "\t", 
+     RowBox[{"primeCount", " ", "=", " ", 
+      RowBox[{"Length", "[", 
+       RowBox[{"Select", "[", 
+        RowBox[{"diagonals", ",", " ", "PrimeQ"}], "]"}], "]"}]}], ";", "\n", 
+     "\t", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"primeCount", " ", "/", " ", 
+         RowBox[{"Length", "[", "diagonals", "]"}]}], " ", "\[GreaterEqual]", 
+        " ", "fraction"}], ",", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"n", " ", "+=", " ", "1"}], ";", "\n", "\t\t", 
+        RowBox[{"corners", " ", "=", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"2", "n"}], "+", "1"}], ")"}], "^", "2"}], " ", "-", " ", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"6", ",", "4", ",", "2", ",", "0"}], "}"}], "*", 
+           "n"}]}]}], ";", "\n", "\t\t", 
+        RowBox[{"diagonals", " ", "=", " ", 
+         RowBox[{"Join", "[", 
+          RowBox[{"diagonals", ",", " ", "corners"}], "]"}]}], ";", "\n", 
+        "\t\t", 
+        RowBox[{"primeCount", " ", "+=", " ", 
+         RowBox[{"Length", "[", 
+          RowBox[{"Select", "[", 
+           RowBox[{"corners", ",", " ", "PrimeQ"}], "]"}], "]"}]}]}]}], "\n", 
+      "\t", "]"}], ";", "\n", "\t", 
+     RowBox[{
+      RowBox[{"2", "n"}], "+", "1"}]}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.771049646248068*^9, 3.771050125048283*^9}, {
+  3.771050172066425*^9, 3.771050211414171*^9}, {3.7710503002748833`*^9, 
+  3.771050332875687*^9}, {3.7710504016236954`*^9, 3.77105058101169*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"5d8d63ee-d521-4c9c-86dd-ae1cda74699b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sizeForPrimeFraction", "[", "0.1", "]"}]], "Input",
+ CellChangeTimes->{{3.771050140760208*^9, 3.7710501463263*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"753f68d8-9201-4b43-abaf-739b9868fac7"],
+
+Cell[BoxData["26241"], "Output",
+ CellChangeTimes->{
+  3.771050345870881*^9, {3.7710504291350794`*^9, 3.771050544342808*^9}, 
+   3.7710505861688895`*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"ddfa6359-4359-4759-b5de-93d61afcdafa"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{Automatic, 126}, {1, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 718, 21, 34, "Text",ExpressionUUID->"e0d967dc-2ae2-4096-a133-5a2194696974"],
+Cell[1640, 54, 1233, 39, 34, "Text",ExpressionUUID->"62fd608f-e7ee-486f-b4e5-1001849c4bc0"],
+Cell[2876, 95, 644, 17, 34, "Text",ExpressionUUID->"291a1285-0da4-4ed6-8962-e81dc78af7f3"],
+Cell[3523, 114, 691, 19, 34, "Text",ExpressionUUID->"b1b24805-6e9d-4da6-a579-c2e4a52591f5"],
+Cell[4217, 135, 690, 19, 34, "Text",ExpressionUUID->"04055147-c5d2-4321-a8a2-b3deca9413ba"],
+Cell[4910, 156, 737, 19, 34, "Text",ExpressionUUID->"073371e1-5055-44ef-aea4-f78878d3f295"],
+Cell[5650, 177, 2162, 52, 249, "Code",ExpressionUUID->"5d8d63ee-d521-4c9c-86dd-ae1cda74699b"],
+Cell[CellGroupData[{
+Cell[7837, 233, 218, 3, 28, "Input",ExpressionUUID->"753f68d8-9201-4b43-abaf-739b9868fac7"],
+Cell[8058, 238, 232, 4, 32, "Output",ExpressionUUID->"ddfa6359-4359-4759-b5de-93d61afcdafa"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

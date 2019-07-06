@@ -1,0 +1,252 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8277,        244]
+NotebookOptionsPosition[      6702,        209]
+NotebookOutlinePosition[      7044,        224]
+CellTagsIndexPosition[      7001,        221]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 34",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=34"], None},
+ ButtonNote->"https://projecteuler.net/problem=34"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell["\<\
+First, define a function to test for curiousness (curiosity?):\
+\>", "Text",
+ CellChangeTimes->{{3.77080745037208*^9, 
+  3.7708074666866674`*^9}},ExpressionUUID->"ab837f44-5015-4247-8d08-\
+91719c8f5fcd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"curiousQ", "[", "n_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"n", ">", "2"}], "&&", 
+   RowBox[{"n", "==", 
+    RowBox[{"Total", "[", 
+     RowBox[{"Factorial", "/@", 
+      RowBox[{"IntegerDigits", "[", "n", "]"}]}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.7708069736918535`*^9, 3.7708069973882127`*^9}, {
+  3.7708070398117914`*^9, 3.77080705590609*^9}},
+ CellLabel->"In[66]:=",ExpressionUUID->"0efd2d0e-602b-4db1-8fdf-e191bdf51673"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"curiousQ", "[", "145", "]"}]], "Input",
+ CellChangeTimes->{{3.770806998838232*^9, 3.770807004998066*^9}},
+ CellLabel->"In[67]:=",ExpressionUUID->"02bf3c19-8dc7-404e-a64c-bd910e44ee2c"],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.7708070054573774`*^9, 3.770807059633078*^9, 
+  3.7709649080583444`*^9},
+ CellLabel->"Out[67]=",ExpressionUUID->"15022230-b649-4558-bd79-ff07a434c10b"]
+}, Open  ]],
+
+Cell[TextData[{
+ "To be curious, an ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "6efb3dc7-1d89-46ad-bdf8-1138bae30c6e"],
+ "-digit number ",
+ Cell[BoxData[
+  FormBox["x", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "6322d375-e0c4-4aae-ad71-d04d3f8f0a07"],
+ " must satisfy ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["10", 
+     RowBox[{"n", "-", "1"}]], "\[LessEqual]", "x", "\[LessEqual]", 
+    RowBox[{"n", "\[Times]", 
+     RowBox[{"9", "!"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "74fe9f05-403d-44f6-8b88-64a60bf14fe2"],
+ ". Since ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["10", 
+    RowBox[{"n", "-", "1"}]], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "b307e8d6-10bb-417a-be00-4213f284497e"],
+ " increases exponentially while ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "\[Times]", 
+    RowBox[{"9", "!"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e7aaa958-b4b1-4cd9-b648-39de322c2fa7"],
+ " increases linearly, this means there are only finitely many ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "fb3061d9-bf59-4a40-be09-b3af64e6bdcc"],
+ " for which curious numbers can exist:"
+}], "Text",
+ CellChangeTimes->{{3.7708072307663765`*^9, 3.7708073533641696`*^9}, {
+  3.7708075923981347`*^9, 
+  3.7708076691258817`*^9}},ExpressionUUID->"17d0cdfe-ea35-44c6-a37f-\
+3585b2b15adf"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"n", ",", 
+      RowBox[{
+       RowBox[{"9", "!"}], " ", "n"}], ",", 
+      RowBox[{"10", "^", 
+       RowBox[{"(", 
+        RowBox[{"n", "-", "1"}], ")"}]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "10"}], "}"}]}], "]"}], "//", "TableForm"}]], "Input",
+ CellChangeTimes->{{3.770807359623801*^9, 3.770807382848705*^9}},
+ CellLabel->
+  "In[701]:=",ExpressionUUID->"e3d6ea3c-6a76-4789-b7c2-bf05d1c9149e"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"1", "362880", "1"},
+    {"2", "725760", "10"},
+    {"3", "1088640", "100"},
+    {"4", "1451520", "1000"},
+    {"5", "1814400", "10000"},
+    {"6", "2177280", "100000"},
+    {"7", "2540160", "1000000"},
+    {"8", "2903040", "10000000"},
+    {"9", "3265920", "100000000"},
+    {"10", "3628800", "1000000000"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7708073831922827`*^9},
+ CellLabel->
+  "Out[701]//TableForm=",ExpressionUUID->"34a64a10-0303-4bb0-a999-\
+6015c4c6db4f"]
+}, Open  ]],
+
+Cell[TextData[{
+ "i.e. we only need to search up to ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", 
+    SuperscriptBox["10", "8"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "98a5b8c5-6492-47f1-abeb-4dcfb8076df3"],
+ " to be sure of finding all curious numbers:"
+}], "Text",
+ CellChangeTimes->{{3.7708074774962177`*^9, 3.7708075256833887`*^9}, {
+  3.7708076723415775`*^9, 
+  3.7708076802751484`*^9}},ExpressionUUID->"2a2e6887-98bb-4b2b-a743-\
+1c159419b632"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Select", "[", 
+  RowBox[{
+   RowBox[{"Range", "[", "10000000", "]"}], ",", "curiousQ"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.7708070186079035`*^9, 3.770807025223113*^9}, {
+  3.7708071296794434`*^9, 3.7708071601626673`*^9}},
+ CellLabel->"In[68]:=",ExpressionUUID->"52c5de34-a1c9-46f4-a2b8-3d0485d84a08"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"145", ",", "40585"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7708070255786085`*^9, 3.7708070654213037`*^9, {3.770807130282609*^9, 
+   3.770807150623378*^9}, 3.77080722029195*^9, 3.770964974670785*^9},
+ CellLabel->"Out[68]=",ExpressionUUID->"51a96850-e25e-424b-98d2-a9c1b3c12e4e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.7709649421360292`*^9, 3.770964944369088*^9}},
+ CellLabel->"In[69]:=",ExpressionUUID->"d09840b0-2cb3-4888-b426-e8c3788fadc4"],
+
+Cell[BoxData["40730"], "Output",
+ CellChangeTimes->{3.770964974870057*^9},
+ CellLabel->"Out[69]=",ExpressionUUID->"9697233f-108e-4f8b-b4fc-eab7363bdbfb"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 213, 5, 34, "Text",ExpressionUUID->"ab837f44-5015-4247-8d08-91719c8f5fcd"],
+Cell[1135, 38, 471, 11, 28, "Input",ExpressionUUID->"0efd2d0e-602b-4db1-8fdf-e191bdf51673"],
+Cell[CellGroupData[{
+Cell[1631, 53, 208, 3, 28, "Input",ExpressionUUID->"02bf3c19-8dc7-404e-a64c-bd910e44ee2c"],
+Cell[1842, 58, 203, 3, 32, "Output",ExpressionUUID->"15022230-b649-4558-bd79-ff07a434c10b"]
+}, Open  ]],
+Cell[2060, 64, 1537, 45, 56, "Text",ExpressionUUID->"17d0cdfe-ea35-44c6-a37f-3585b2b15adf"],
+Cell[CellGroupData[{
+Cell[3622, 113, 511, 15, 28, "Input",ExpressionUUID->"e3d6ea3c-6a76-4789-b7c2-bf05d1c9149e"],
+Cell[4136, 130, 956, 28, 198, "Output",ExpressionUUID->"34a64a10-0303-4bb0-a999-6015c4c6db4f"]
+}, Open  ]],
+Cell[5107, 161, 488, 13, 34, "Text",ExpressionUUID->"2a2e6887-98bb-4b2b-a743-1c159419b632"],
+Cell[CellGroupData[{
+Cell[5620, 178, 331, 7, 28, "Input",ExpressionUUID->"52c5de34-a1c9-46f4-a2b8-3d0485d84a08"],
+Cell[5954, 187, 322, 6, 32, "Output",ExpressionUUID->"51a96850-e25e-424b-98d2-a9c1b3c12e4e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6313, 198, 205, 3, 28, "Input",ExpressionUUID->"d09840b0-2cb3-4888-b426-e8c3788fadc4"],
+Cell[6521, 203, 153, 2, 32, "Output",ExpressionUUID->"9697233f-108e-4f8b-b4fc-eab7363bdbfb"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

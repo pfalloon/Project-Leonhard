@@ -1,0 +1,156 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5551,        148]
+NotebookOptionsPosition[      4692,        124]
+NotebookOutlinePosition[      5037,        139]
+CellTagsIndexPosition[      4994,        136]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 43",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=43"], None},
+ ButtonNote->"https://projecteuler.net/problem=43"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"divisiblePandigitals", "[", "n_", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", "\n", "\t\t", 
+     RowBox[{
+      RowBox[{"pandigitalNumberDigits", " ", "=", " ", 
+       RowBox[{"DeleteCases", "[", 
+        RowBox[{
+         RowBox[{"Permutations", "[", 
+          RowBox[{"Range", "[", 
+           RowBox[{"0", ",", " ", 
+            RowBox[{"n", " ", "-", " ", "1"}]}], "]"}], "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", " ", "__"}], "}"}]}], "]"}]}], ",", "\n", "\t\t", 
+      
+      RowBox[{"divisors", " ", "=", " ", 
+       RowBox[{"Take", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+          "2", ",", " ", "3", ",", " ", "5", ",", " ", "7", ",", " ", "11", 
+           ",", " ", "13", ",", " ", "17"}], "}"}], ",", " ", 
+         RowBox[{"n", " ", "-", " ", "3"}]}], "]"}]}]}], "\n", "\t", "}"}], 
+    ",", "\n", "\t", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{
+      RowBox[{"Last", "[", 
+       RowBox[{"Reap", "[", "\n", "\t\t", 
+        RowBox[{"Do", "[", "\n", "\t\t\t", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Total", "[", 
+              RowBox[{"Mod", "[", 
+               RowBox[{
+                RowBox[{"FromDigits", " ", "/@", " ", 
+                 RowBox[{"Partition", "[", 
+                  RowBox[{
+                   RowBox[{"Rest", "[", "digits", "]"}], ",", " ", "3", ",", 
+                   " ", "1"}], "]"}]}], ",", " ", "divisors"}], "]"}], "]"}], 
+             " ", "\[Equal]", " ", "0"}], ",", "\n", "\t\t\t\t", 
+            RowBox[{"Sow", "[", 
+             RowBox[{"FromDigits", "[", "digits", "]"}], "]"}]}], "\n", 
+           "\t\t\t", "]"}], ",", "\n", "\t\t\t", 
+          RowBox[{"{", 
+           RowBox[{"digits", ",", " ", "pandigitalNumberDigits"}], "}"}]}], 
+         "\n", "\t\t", "]"}], "\n", "\t", "]"}], "]"}], ",", " ", "1"}], 
+     "]"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.770857083287095*^9, 3.7708572723083067`*^9}, {
+  3.7708573512317753`*^9, 3.770857376329851*^9}, {3.7708574668608217`*^9, 
+  3.770857597009307*^9}, {3.770857637798729*^9, 3.7708576922499247`*^9}, {
+  3.7708578297453127`*^9, 3.77085783004895*^9}, {3.770857907033965*^9, 
+  3.77085790768513*^9}, {3.7708582290800467`*^9, 3.7708582635536346`*^9}},
+ CellLabel->"In[46]:=",ExpressionUUID->"8616657d-b484-4267-b2af-d5aaef77dbf3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pd10", "=", 
+  RowBox[{"divisiblePandigitals", "[", "10", "]"}]}]], "Input",
+ CellChangeTimes->{{3.770857535149001*^9, 3.7708575411599565`*^9}, {
+  3.770857865070071*^9, 3.7708579417603683`*^9}, {3.77085798655155*^9, 
+  3.7708579903783894`*^9}},
+ CellLabel->"In[47]:=",ExpressionUUID->"d736176f-ba1c-457b-8fef-92f5f01f2ad4"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1406357289", ",", "1430952867", ",", "1460357289", ",", "4106357289", ",", 
+   "4130952867", ",", "4160357289"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7708576019666395`*^9, {3.770857639848053*^9, 3.770857701260515*^9}, {
+   3.7708578547279363`*^9, 3.7708578896052585`*^9}, {3.7708579214506803`*^9, 
+   3.77085794505991*^9}, 3.7708580203259907`*^9, 3.7708583165823865`*^9},
+ CellLabel->"Out[47]=",ExpressionUUID->"dd221aa7-5514-4c1b-8df7-78f97393916a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", "pd10", "]"}]], "Input",
+ CellChangeTimes->{{3.7708583511242523`*^9, 3.7708583618978095`*^9}},
+ CellLabel->"In[52]:=",ExpressionUUID->"6cb63c3b-8018-45dc-a9b6-a23c8068e7fb"],
+
+Cell[BoxData["16695334890"], "Output",
+ CellChangeTimes->{3.770858362349222*^9},
+ CellLabel->"Out[52]=",ExpressionUUID->"ac3377ab-7ca8-4553-b692-dd9fb6aa9012"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{Automatic, 124}, {42, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 2461, 56, 285, "Code",ExpressionUUID->"8616657d-b484-4267-b2af-d5aaef77dbf3"],
+Cell[CellGroupData[{
+Cell[3405, 91, 348, 6, 28, "Input",ExpressionUUID->"d736176f-ba1c-457b-8fef-92f5f01f2ad4"],
+Cell[3756, 99, 499, 9, 32, "Output",ExpressionUUID->"dd221aa7-5514-4c1b-8df7-78f97393916a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4292, 113, 210, 3, 28, "Input",ExpressionUUID->"6cb63c3b-8018-45dc-a9b6-a23c8068e7fb"],
+Cell[4505, 118, 159, 2, 32, "Output",ExpressionUUID->"ac3377ab-7ca8-4553-b692-dd9fb6aa9012"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

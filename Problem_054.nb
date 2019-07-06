@@ -1,0 +1,4090 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    176944,       4082]
+NotebookOptionsPosition[    137256,       3638]
+NotebookOutlinePosition[    137600,       3653]
+CellTagsIndexPosition[    137557,       3650]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 54",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=54"], None},
+ ButtonNote->"https://projecteuler.net/problem=54"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"hands", "=", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"raw", "=", 
+      RowBox[{
+      "ReadString", "[", 
+       "\"\<C:\\\\Users\\\\pfall\\\\MyStuff\\\\GitHub\\\\ProjectEuler\\\\p054_\
+poker.txt\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Sort", "/@", 
+       RowBox[{"Characters", "[", 
+        RowBox[{"Partition", "[", 
+         RowBox[{
+          RowBox[{"StringSplit", "[", 
+           RowBox[{"hand", ",", "\"\< \>\""}], "]"}], ",", "5"}], "]"}], 
+        "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"hand", ",", 
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"raw", ",", "\"\<\\n\>\""}], "]"}]}], "}"}]}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.771069972448625*^9, 3.7710700833103237`*^9}, {
+  3.771070119652422*^9, 3.7710701397143865`*^9}, {3.771070209255674*^9, 
+  3.7710702528218803`*^9}, {3.771070341339196*^9, 3.7710703694135866`*^9}, {
+  3.771070608848793*^9, 3.7710706114613047`*^9}, {3.7710771151655083`*^9, 
+  3.771077127832562*^9}},
+ CellLabel->
+  "In[208]:=",ExpressionUUID->"82fb1781-f5a4-4539-acb9-06fdf2779e5d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[
+   FrameBox[GridBox[{
+      {
+       ItemBox[
+        TagBox[
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\<\"4\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"8\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"9\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"K\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"T\"\>", ",", "\<\"S\"\>"}], "}"}]}], "}"}], ",", 
+             
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\<\"2\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"3\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"5\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"7\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"A\"\>", ",", "\<\"C\"\>"}], "}"}]}], "}"}]}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\<\"5\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"5\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"9\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"A\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"A\"\>", ",", "\<\"D\"\>"}], "}"}]}], "}"}], ",", 
+             
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\<\"5\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"7\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"8\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"K\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"T\"\>", ",", "\<\"D\"\>"}], "}"}]}], "}"}]}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\<\"3\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"6\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"7\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"J\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"K\"\>", ",", "\<\"C\"\>"}], "}"}]}], "}"}], ",", 
+             
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\<\"2\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"8\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"J\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"Q\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"T\"\>", ",", "\<\"D\"\>"}], "}"}]}], "}"}]}], 
+            "}"}], ",", 
+           TemplateBox[{"995"},
+            "OutputSizeLimit`Skeleton"], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\<\"3\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"J\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"K\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"K\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"Q\"\>", ",", "\<\"C\"\>"}], "}"}]}], "}"}], ",", 
+             
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\<\"2\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"8\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"A\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"Q\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"T\"\>", ",", "\<\"S\"\>"}], "}"}]}], "}"}]}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\<\"3\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"8\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"A\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"J\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"K\"\>", ",", "\<\"D\"\>"}], "}"}]}], "}"}], ",", 
+             
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\<\"5\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"6\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"7\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"8\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\<\"Q\"\>", ",", "\<\"D\"\>"}], "}"}]}], "}"}]}], 
+            "}"}]}], "}"}],
+         Short[#, 5]& ],
+        BaseStyle->{Deployed -> False},
+        StripOnInput->False]},
+      {GridBox[{
+         {
+          TagBox[
+           TooltipBox[
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource[
+                "FEStrings", "sizeBriefExplanation"], StandardForm],
+               ImageSizeCache->{65., {3., 9.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLText",
+             StripOnInput->False],
+            StyleBox[
+             DynamicBox[
+              ToBoxes[
+               FEPrivate`FrontEndResource["FEStrings", "sizeExplanation"], 
+               StandardForm]], DynamicUpdating -> True, StripOnInput -> 
+             False]],
+           Annotation[#, 
+            Style[
+             Dynamic[
+              FEPrivate`FrontEndResource["FEStrings", "sizeExplanation"]], 
+             DynamicUpdating -> True], "Tooltip"]& ], 
+          ButtonBox[
+           PaneSelectorBox[{False->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowLess"], 
+                StandardForm],
+               ImageSizeCache->{52., {1., 9.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControl",
+             StripOnInput->False], True->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowLess"], 
+                StandardForm]],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControlActive",
+             StripOnInput->False]}, Dynamic[
+             CurrentValue["MouseOver"]],
+            Alignment->Center,
+            FrameMargins->0,
+            ImageSize->{Automatic, 25}],
+           Appearance->None,
+           BaselinePosition->Baseline,
+           
+           ButtonFunction:>OutputSizeLimit`ButtonFunction[
+            OutputSizeLimit`Defer, 208, 16226441008468197953, 5/2],
+           Enabled->True,
+           Evaluator->Automatic,
+           Method->"Queued"], 
+          ButtonBox[
+           PaneSelectorBox[{False->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowMore"], 
+                StandardForm],
+               ImageSizeCache->{62., {1., 9.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControl",
+             StripOnInput->False], True->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowMore"], 
+                StandardForm],
+               ImageSizeCache->{62., {1., 9.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControlActive",
+             StripOnInput->False]}, Dynamic[
+             CurrentValue["MouseOver"]],
+            Alignment->Center,
+            FrameMargins->0,
+            ImageSize->{Automatic, 25}],
+           Appearance->None,
+           BaselinePosition->Baseline,
+           
+           ButtonFunction:>OutputSizeLimit`ButtonFunction[
+            OutputSizeLimit`Defer, 208, 16226441008468197953, 5 2],
+           Enabled->True,
+           Evaluator->Automatic,
+           Method->"Queued"], 
+          ButtonBox[
+           PaneSelectorBox[{False->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowAll"], 
+                StandardForm],
+               ImageSizeCache->{44., {1., 9.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControl",
+             StripOnInput->False], True->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowAll"], 
+                StandardForm],
+               ImageSizeCache->{44., {1., 9.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControlActive",
+             StripOnInput->False]}, Dynamic[
+             CurrentValue["MouseOver"]],
+            Alignment->Center,
+            FrameMargins->0,
+            ImageSize->{Automatic, 25}],
+           Appearance->None,
+           BaselinePosition->Baseline,
+           
+           ButtonFunction:>OutputSizeLimit`ButtonFunction[
+            OutputSizeLimit`Defer, 208, 16226441008468197953, Infinity],
+           Enabled->True,
+           Evaluator->Automatic,
+           Method->"Queued"], 
+          ButtonBox[
+           PaneSelectorBox[{False->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeChangeLimit"], 
+                StandardForm],
+               ImageSizeCache->{78., {1., 9.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControl",
+             StripOnInput->False], True->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeChangeLimit"], 
+                StandardForm]],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControlActive",
+             StripOnInput->False]}, Dynamic[
+             CurrentValue["MouseOver"]],
+            Alignment->Center,
+            FrameMargins->0,
+            ImageSize->{Automatic, 25}],
+           Appearance->None,
+           BaselinePosition->Baseline,
+           ButtonFunction:>FrontEndExecute[{
+              FrontEnd`SetOptions[
+              FrontEnd`$FrontEnd, 
+               FrontEnd`PreferencesSettings -> {"Page" -> "Advanced"}], 
+              FrontEnd`FrontEndToken["PreferencesDialog"]}],
+           Evaluator->None,
+           Method->"Preemptive"]}
+        },
+        AutoDelete->False,
+        FrameStyle->GrayLevel[0.85],
+        GridBoxDividers->{"Columns" -> {False, {True}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+        GridBoxSpacings->{"Columns" -> {{2}}}]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxDividers->{
+      "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
+       "RowsIndexed" -> {}},
+     GridBoxItemSize->{
+      "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], 
+         Offset[1.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    BaseStyle->"OutputSizeLimit",
+    FrameMargins->{{12, 12}, {0, 15}},
+    FrameStyle->GrayLevel[0.85],
+    RoundingRadius->5,
+    StripOnInput->False],
+   Deploy,
+   DefaultBaseStyle->"Deploy"],
+  If[16226441008468197953 === $SessionID, 
+   Out[208], Message[
+     MessageName[Syntax, "noinfoker"]]; Missing["NotAvailable"]; 
+   Null]]], "Output",
+ CellChangeTimes->{{3.771069994518647*^9, 3.7710700107691507`*^9}, 
+   3.7710700839494762`*^9, 3.7710702534170866`*^9, 3.771070299164651*^9, {
+   3.771070341730628*^9, 3.7710703699289527`*^9}, 3.7710706169339666`*^9, 
+   3.771077144312546*^9},
+ CellLabel->
+  "Out[208]=",ExpressionUUID->"19176df0-ed11-4d1a-a58d-90842adefd49"]
+}, Closed]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"suits", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<C\>\"", ",", "\"\<D\>\"", ",", "\"\<H\>\"", ",", "\"\<S\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"faces", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2\>\"", ",", "\"\<3\>\"", ",", "\"\<4\>\"", ",", "\"\<5\>\"", ",", 
+     "\"\<6\>\"", ",", "\"\<7\>\"", ",", "\"\<8\>\"", ",", "\"\<9\>\"", ",", 
+     "\"\<T\>\"", ",", "\"\<J\>\"", ",", "\"\<Q\>\"", ",", "\"\<K\>\"", ",", 
+     "\"\<A\>\""}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7710717856077433`*^9, 3.7710718913318605`*^9}, 
+   3.7710771660994253`*^9},
+ CellLabel->
+  "In[210]:=",ExpressionUUID->"c8293852-81e7-4d83-8c30-50dc30665e18"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"handTypes", "=", 
+   RowBox[{"Reverse", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<straight flush\>\"", ",", " ", "\"\<four of a kind\>\"", ",", 
+      "\"\<full house\>\"", ",", "\"\<flush\>\"", ",", "\"\<straight\>\"", 
+      ",", "\"\<three of a kind\>\"", ",", "\"\<two pair\>\"", ",", 
+      "\"\<pair\>\"", ",", "\"\<high card\>\""}], "}"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.771108331403247*^9, 3.771108399684682*^9}, {
+  3.7711084963627167`*^9, 3.7711084989837*^9}},
+ CellLabel->
+  "In[265]:=",ExpressionUUID->"c4d0d49e-1fd9-4f25-8350-350f4dba63e4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"deck", "=", 
+  RowBox[{"Flatten", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"f", ",", "s"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"f", ",", "faces"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"s", ",", "suits"}], "}"}]}], "]"}], ",", "1"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7710718938324785`*^9, 3.771071928118678*^9}},
+ CellLabel->
+  "In[212]:=",ExpressionUUID->"6338d8ce-5472-4e80-9007-e78ad46fbafe"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"2\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"2\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"2\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"2\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"3\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"3\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"3\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"3\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"4\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"4\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"4\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"4\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"5\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"5\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"5\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"5\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"6\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"6\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"6\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"6\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"7\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"7\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"7\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"7\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"8\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"8\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"8\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"8\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"9\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"9\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"9\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"9\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"T\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"T\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"T\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"T\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"J\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"J\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"J\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"J\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Q\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Q\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Q\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Q\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"K\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"K\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"K\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"K\"\>", ",", "\<\"S\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"A\"\>", ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"A\"\>", ",", "\<\"D\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"A\"\>", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"A\"\>", ",", "\<\"S\"\>"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.771071929956207*^9, 3.771077171747864*^9},
+ CellLabel->
+  "Out[212]=",ExpressionUUID->"92082d78-350f-4e2f-a0fc-ee26fe1a0e95"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sequences", "=", 
+  RowBox[{"Sort", "/@", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"Prepend", "[", 
+      RowBox[{"faces", ",", "\"\<A\>\""}], "]"}], ",", "5", ",", "1"}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7710729384332485`*^9, 3.7710729739537354`*^9}, {
+  3.7711218892946796`*^9, 3.7711218977370825`*^9}},
+ CellLabel->
+  "In[323]:=",ExpressionUUID->"af9e1381-c9fc-4a9c-963e-316390bb5194"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"2\"\>", ",", "\<\"3\"\>", ",", "\<\"4\"\>", ",", "\<\"5\"\>",
+      ",", "\<\"A\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"2\"\>", ",", "\<\"3\"\>", ",", "\<\"4\"\>", ",", "\<\"5\"\>",
+      ",", "\<\"6\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"3\"\>", ",", "\<\"4\"\>", ",", "\<\"5\"\>", ",", "\<\"6\"\>",
+      ",", "\<\"7\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"4\"\>", ",", "\<\"5\"\>", ",", "\<\"6\"\>", ",", "\<\"7\"\>",
+      ",", "\<\"8\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"5\"\>", ",", "\<\"6\"\>", ",", "\<\"7\"\>", ",", "\<\"8\"\>",
+      ",", "\<\"9\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"6\"\>", ",", "\<\"7\"\>", ",", "\<\"8\"\>", ",", "\<\"9\"\>",
+      ",", "\<\"T\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"7\"\>", ",", "\<\"8\"\>", ",", "\<\"9\"\>", ",", "\<\"J\"\>",
+      ",", "\<\"T\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"8\"\>", ",", "\<\"9\"\>", ",", "\<\"J\"\>", ",", "\<\"Q\"\>",
+      ",", "\<\"T\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"9\"\>", ",", "\<\"J\"\>", ",", "\<\"K\"\>", ",", "\<\"Q\"\>",
+      ",", "\<\"T\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"A\"\>", ",", "\<\"J\"\>", ",", "\<\"K\"\>", ",", "\<\"Q\"\>",
+      ",", "\<\"T\"\>"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.771072975411748*^9, 3.771077175482899*^9, 
+  3.771109435500834*^9, 3.771121898849103*^9},
+ CellLabel->
+  "Out[323]=",ExpressionUUID->"f705b57d-6841-43a4-ac77-783e47ac0988"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"faceToScore", "=", 
+  RowBox[{"Association", "[", 
+   RowBox[{"Thread", "[", 
+    RowBox[{"faces", "\[Rule]", 
+     RowBox[{"Range", "[", "13", "]"}]}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.771073319397787*^9, 3.771073345750561*^9}, {
+  3.771108253405945*^9, 3.7711082536054506`*^9}},
+ CellLabel->
+  "In[256]:=",ExpressionUUID->"cb81b53c-7e81-4a0f-8981-8cee04ec799e"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"2\"\>", "\[Rule]", "1"}], ",", 
+   RowBox[{"\<\"3\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"4\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"5\"\>", "\[Rule]", "4"}], ",", 
+   RowBox[{"\<\"6\"\>", "\[Rule]", "5"}], ",", 
+   RowBox[{"\<\"7\"\>", "\[Rule]", "6"}], ",", 
+   RowBox[{"\<\"8\"\>", "\[Rule]", "7"}], ",", 
+   RowBox[{"\<\"9\"\>", "\[Rule]", "8"}], ",", 
+   RowBox[{"\<\"T\"\>", "\[Rule]", "9"}], ",", 
+   RowBox[{"\<\"J\"\>", "\[Rule]", "10"}], ",", 
+   RowBox[{"\<\"Q\"\>", "\[Rule]", "11"}], ",", 
+   RowBox[{"\<\"K\"\>", "\[Rule]", "12"}], ",", 
+   RowBox[{"\<\"A\"\>", "\[Rule]", "13"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{{3.77107333320328*^9, 3.7710733463777256`*^9}, 
+   3.7710771783830214`*^9, 3.7711082542437363`*^9},
+ CellLabel->
+  "Out[256]=",ExpressionUUID->"1dec15d0-9dda-41bf-8d5c-aa934899b804"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"scoreToFace", "=", 
+   RowBox[{"Association", "[", 
+    RowBox[{"Thread", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", "13", "]"}], "\[Rule]", "faces"}], "]"}], "]"}]}],
+   ";", " ", 
+  RowBox[{
+   RowBox[{"scoreToFace", "[", "0", "]"}], "=", "\"\<\>\""}], ";", 
+  "scoreToFace"}]], "Input",
+ CellChangeTimes->{{3.7711082553108997`*^9, 3.771108259440843*^9}, {
+  3.771108301079308*^9, 3.771108314800664*^9}, {3.7711131896724615`*^9, 
+  3.7711132086524715`*^9}},
+ CellLabel->
+  "In[313]:=",ExpressionUUID->"d1dfe70e-ba2d-4d44-9766-19619c30311d"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"1", "\[Rule]", "\<\"2\"\>"}], ",", 
+   RowBox[{"2", "\[Rule]", "\<\"3\"\>"}], ",", 
+   RowBox[{"3", "\[Rule]", "\<\"4\"\>"}], ",", 
+   RowBox[{"4", "\[Rule]", "\<\"5\"\>"}], ",", 
+   RowBox[{"5", "\[Rule]", "\<\"6\"\>"}], ",", 
+   RowBox[{"6", "\[Rule]", "\<\"7\"\>"}], ",", 
+   RowBox[{"7", "\[Rule]", "\<\"8\"\>"}], ",", 
+   RowBox[{"8", "\[Rule]", "\<\"9\"\>"}], ",", 
+   RowBox[{"9", "\[Rule]", "\<\"T\"\>"}], ",", 
+   RowBox[{"10", "\[Rule]", "\<\"J\"\>"}], ",", 
+   RowBox[{"11", "\[Rule]", "\<\"Q\"\>"}], ",", 
+   RowBox[{"12", "\[Rule]", "\<\"K\"\>"}], ",", 
+   RowBox[{"13", "\[Rule]", "\<\"A\"\>"}], ",", 
+   RowBox[{"0", "\[Rule]", "\<\"\"\>"}]}], "\[RightAssociation]"}]], "Output",\
+
+ CellChangeTimes->{3.7711132089067564`*^9},
+ CellLabel->
+  "Out[313]=",ExpressionUUID->"c84cbe28-3a77-426f-8507-b97ada0da993"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"handTypeToScore", "=", 
+  RowBox[{"Association", "[", 
+   RowBox[{"Thread", "[", 
+    RowBox[{"handTypes", "\[Rule]", 
+     RowBox[{"Range", "[", 
+      RowBox[{"Length", "[", "handTypes", "]"}], "]"}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.771108321188536*^9, 3.7711083248707223`*^9}, {
+  3.771108416561245*^9, 3.771108442814995*^9}},
+ CellLabel->
+  "In[266]:=",ExpressionUUID->"0195f051-1494-4211-8822-468d3e6b1050"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"high card\"\>", "\[Rule]", "1"}], ",", 
+   RowBox[{"\<\"pair\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"two pair\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"three of a kind\"\>", "\[Rule]", "4"}], ",", 
+   RowBox[{"\<\"straight\"\>", "\[Rule]", "5"}], ",", 
+   RowBox[{"\<\"flush\"\>", "\[Rule]", "6"}], ",", 
+   RowBox[{"\<\"full house\"\>", "\[Rule]", "7"}], ",", 
+   RowBox[{"\<\"four of a kind\"\>", "\[Rule]", "8"}], ",", 
+   RowBox[{"\<\"straight flush\"\>", "\[Rule]", "9"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.7711084443438683`*^9, 3.7711085065655527`*^9},
+ CellLabel->
+  "Out[266]=",ExpressionUUID->"64cfce35-e6ad-446e-ba30-d000386b2f08"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"scoreToHandType", "=", 
+  RowBox[{"Association", "[", 
+   RowBox[{"Thread", "[", 
+    RowBox[{
+     RowBox[{"Range", "[", 
+      RowBox[{"Length", "[", "handTypes", "]"}], "]"}], "\[Rule]", 
+     "handTypes"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7711084503977146`*^9, 3.7711084801820154`*^9}},
+ CellLabel->
+  "In[267]:=",ExpressionUUID->"a409bb3c-893b-437e-8ef9-de94a58b9a79"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"1", "\[Rule]", "\<\"high card\"\>"}], ",", 
+   RowBox[{"2", "\[Rule]", "\<\"pair\"\>"}], ",", 
+   RowBox[{"3", "\[Rule]", "\<\"two pair\"\>"}], ",", 
+   RowBox[{"4", "\[Rule]", "\<\"three of a kind\"\>"}], ",", 
+   RowBox[{"5", "\[Rule]", "\<\"straight\"\>"}], ",", 
+   RowBox[{"6", "\[Rule]", "\<\"flush\"\>"}], ",", 
+   RowBox[{"7", "\[Rule]", "\<\"full house\"\>"}], ",", 
+   RowBox[{"8", "\[Rule]", "\<\"four of a kind\"\>"}], ",", 
+   RowBox[{"9", "\[Rule]", "\<\"straight flush\"\>"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{{3.771108470912775*^9, 3.7711085089939117`*^9}},
+ CellLabel->
+  "Out[267]=",ExpressionUUID->"33a2657c-f374-4a67-a88b-9ff94e6cd819"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fourOfAKindQ", "[", "hand_", "]"}], ":=", 
+  RowBox[{"MatchQ", "[", 
+   RowBox[{"hand", ",", 
+    RowBox[{"{", 
+     RowBox[{"OrderlessPatternSequence", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"f_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"_", ",", "_"}], "}"}]}], "]"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7710721480644617`*^9, 3.7710722038059254`*^9}, {
+  3.7710722449872346`*^9, 3.771072269764553*^9}},
+ CellLabel->
+  "In[167]:=",ExpressionUUID->"793b9a7a-5b7a-4b06-9f81-566aff19ccb6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fullHouseQ", "[", "hand_", "]"}], ":=", 
+  RowBox[{"MatchQ", "[", 
+   RowBox[{"hand", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"OrderlessPatternSequence", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"f1_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f1_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f1_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f2_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f2_", ",", "_"}], "}"}]}], "]"}], "}"}]}], "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.7710719777842765`*^9, 3.7710720779143915`*^9}, {
+  3.7710722106208115`*^9, 3.7710722258564587`*^9}},
+ CellLabel->
+  "In[164]:=",ExpressionUUID->"3b51e09c-583a-4de7-a4c4-0c14335cb2b9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"flushQ", "[", "hand_", "]"}], ":=", 
+  RowBox[{"MatchQ", "[", 
+   RowBox[{
+    RowBox[{"Union", "[", 
+     RowBox[{"hand", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}], ",", 
+    RowBox[{"{", "_", "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.771073074187726*^9, 3.771073117204102*^9}},
+ CellLabel->
+  "In[192]:=",ExpressionUUID->"153bdaac-6371-43ea-b6e0-20a56e22a694"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"straightQ", "[", "hand_", "]"}], ":=", 
+  RowBox[{"MemberQ", "[", 
+   RowBox[{"sequences", ",", 
+    RowBox[{"Sort", "[", 
+     RowBox[{"hand", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.771072885068596*^9, 3.7710729243161273`*^9}, {
+  3.7710730210907173`*^9, 3.77107306744869*^9}},
+ CellLabel->
+  "In[191]:=",ExpressionUUID->"7138273d-664c-4fa9-8cc4-da5aa84c2df5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"twoPairQ", "[", "hand_", "]"}], ":=", 
+  RowBox[{"MatchQ", "[", 
+   RowBox[{"hand", ",", 
+    RowBox[{"{", 
+     RowBox[{"OrderlessPatternSequence", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"f1_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f1_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f2_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f2_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"_", ",", "_"}], "}"}]}], "]"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7710723911879873`*^9, 3.771072458753703*^9}, {
+   3.771072651835537*^9, 3.771072686724842*^9}, 3.771073487606326*^9, 
+   3.771108909138735*^9},
+ CellLabel->
+  "In[268]:=",ExpressionUUID->"2b3e102c-c3de-448b-9379-dc321ea03ae2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"threeOfAKindQ", "[", "hand_", "]"}], ":=", 
+  RowBox[{"MatchQ", "[", 
+   RowBox[{"hand", ",", 
+    RowBox[{"{", 
+     RowBox[{"OrderlessPatternSequence", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"f1_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f1_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f1_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"_", ",", "_"}], "}"}]}], "]"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7710727414766073`*^9, 3.7710727522741137`*^9}, {
+  3.7710734928073883`*^9, 
+  3.771073493190864*^9}},ExpressionUUID->"f1842d70-0545-4e7b-badb-\
+6e5b1ca301a4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pairQ", "[", "hand_", "]"}], ":=", 
+  RowBox[{"MatchQ", "[", 
+   RowBox[{"hand", ",", 
+    RowBox[{"{", 
+     RowBox[{"OrderlessPatternSequence", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"f_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"f_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"_", ",", "_"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"_", ",", "_"}], "}"}]}], "]"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7710755348986597`*^9, 3.771075554364616*^9}},
+ CellLabel->
+  "In[199]:=",ExpressionUUID->"4de98675-479c-4c48-b250-96f87a8c4916"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"need", " ", "special", " ", "handling", " ", "for", " ", 
+    RowBox[{"high", "/", "low"}], " ", "ace"}], " ", "*)"}], "\n", 
+  RowBox[{
+   RowBox[{"straightScore", "[", 
+    RowBox[{"faces", " ", ":", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "_", ",", " ", "_", ",", " ", "_", ",", " ", "_", ",", " ", "_"}], 
+      "}"}]}], "]"}], " ", ":=", " ", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"FreeQ", "[", 
+      RowBox[{"faces", ",", " ", "\"\<A\>\""}], "]"}], ",", " ", 
+     RowBox[{"Max", "[", 
+      RowBox[{"faceToScore", " ", "/@", " ", "faces"}], "]"}], ",", " ", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"FreeQ", "[", 
+        RowBox[{"faces", ",", " ", "\"\<K\>\""}], "]"}], ",", " ", 
+       RowBox[{"faceToScore", "[", "\"\<5\>\"", "]"}], ",", " ", 
+       RowBox[{"faceToScore", "[", "\"\<A\>\"", "]"}]}], "]"}]}], 
+    "]"}]}]}]], "Code",
+ CellChangeTimes->{{3.7711095969000683`*^9, 3.7711097894088593`*^9}, {
+  3.771112555387741*^9, 
+  3.7711125553917637`*^9}},ExpressionUUID->"ecadb6c1-273b-4358-ae1c-\
+c8d00cc847d9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"handScore", "[", "hand_", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"straightQ", " ", "=", " ", 
+       RowBox[{"straightQ", "[", "hand", "]"}]}], ",", " ", 
+      RowBox[{"flushQ", " ", "=", " ", 
+       RowBox[{"flushQ", "[", "hand", "]"}]}]}], "}"}], ",", "\n", "\n", "\t", 
+    RowBox[{"Which", "[", "\n", "\t\t", 
+     RowBox[{"(*", " ", 
+      RowBox[{"straight", " ", "flush", " ", 
+       RowBox[{"(", 
+        RowBox[{"including", " ", "royal", " ", "flush"}], ")"}]}], " ", 
+      "*)"}], "\n", "\t\t", 
+     RowBox[{
+      RowBox[{"straightQ", " ", "&&", " ", "flushQ"}], ",", "\n", "\t\t", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"handTypeToScore", "[", "\"\<straight flush\>\"", "]"}], ",", 
+        " ", 
+        RowBox[{"straightScore", "[", 
+         RowBox[{"hand", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", " ", "1"}], "]"}], "]"}], "]"}], ",", " ", "0",
+         ",", " ", "0", ",", " ", "0", ",", " ", "0"}], "}"}], "\n", "\t\t", 
+      ",", "\n", "\t\t", 
+      RowBox[{"(*", " ", 
+       RowBox[{"four", " ", "of", " ", "a", " ", "kind"}], " ", "*)"}], "\n", 
+      "\t\t", 
+      RowBox[{"fourOfAKindQ", "[", "hand", "]"}], ",", "\n", "\t\t", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"handTypeToScore", "[", "\"\<four of a kind\>\"", "]"}], ",", 
+        " ", 
+        RowBox[{"Replace", "[", 
+         RowBox[{
+          RowBox[{"hand", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "1"}], "]"}], "]"}], ",", " ", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"OrderlessPatternSequence", "[", 
+             RowBox[{
+             "f_", ",", " ", "f_", ",", " ", "f_", ",", " ", "f_", ",", " ", 
+              "_"}], "]"}], "}"}], " ", "\[RuleDelayed]", " ", 
+           RowBox[{"faceToScore", "[", "f", "]"}]}]}], "]"}], ",", " ", "0", 
+        ",", " ", "0", ",", " ", "0", ",", " ", "0"}], "}"}], "\n", "\t\t", 
+      ",", "\n", "\t\t", 
+      RowBox[{"(*", " ", 
+       RowBox[{"full", " ", "house"}], " ", "*)"}], "\n", "\t\t", 
+      RowBox[{"fullHouseQ", "[", "hand", "]"}], ",", "\n", "\t\t", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"handTypeToScore", "[", "\"\<full house\>\"", "]"}], ",", " ", 
+        RowBox[{"Replace", "[", 
+         RowBox[{
+          RowBox[{"hand", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "1"}], "]"}], "]"}], ",", " ", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"OrderlessPatternSequence", "[", 
+             RowBox[{
+             "f_", ",", " ", "f_", ",", " ", "f_", ",", " ", "_", ",", " ", 
+              "_"}], "]"}], "}"}], " ", "\[RuleDelayed]", " ", 
+           RowBox[{"faceToScore", "[", "f", "]"}]}]}], "]"}], ",", " ", "0", 
+        ",", " ", "0", ",", " ", "0", ",", " ", "0"}], "}"}], "\n", "\t\t", 
+      ",", "\n", "\t\t", 
+      RowBox[{"(*", " ", "flush", " ", "*)"}], "\n", "\t\t", "flushQ", ",", 
+      "\n", "\t\t", 
+      RowBox[{"Prepend", "[", 
+       RowBox[{
+        RowBox[{"ReverseSort", "[", 
+         RowBox[{"faceToScore", " ", "/@", " ", 
+          RowBox[{"hand", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "1"}], "]"}], "]"}]}], "]"}], ",", " ", 
+        RowBox[{"handTypeToScore", "[", "\"\<flush\>\"", "]"}]}], "]"}], "\n",
+       "\t\t", ",", "\n", "\t\t", 
+      RowBox[{"(*", " ", "straight", " ", "*)"}], "\n", "\t\t", "straightQ", 
+      ",", "\n", "\t\t", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"handTypeToScore", "[", "\"\<straight\>\"", "]"}], ",", " ", 
+        RowBox[{"straightScore", "[", 
+         RowBox[{"hand", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", " ", "1"}], "]"}], "]"}], "]"}], ",", " ", "0",
+         ",", " ", "0", ",", " ", "0", ",", " ", "0"}], "}"}], "\n", "\t\t", 
+      ",", "\n", "\t\t", 
+      RowBox[{"(*", " ", 
+       RowBox[{"three", " ", "of", " ", "a", " ", "kind"}], " ", "*)"}], "\n",
+       "\t\t", 
+      RowBox[{"threeOfAKindQ", "[", "hand", "]"}], ",", "\n", "\t\t", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"handTypeToScore", "[", "\"\<three of a kind\>\"", "]"}], ",",
+         " ", 
+        RowBox[{"Replace", "[", 
+         RowBox[{
+          RowBox[{"hand", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "1"}], "]"}], "]"}], ",", " ", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"OrderlessPatternSequence", "[", 
+             RowBox[{
+             "f_", ",", " ", "f_", ",", " ", "f_", ",", " ", "_", ",", " ", 
+              "_"}], "]"}], "}"}], " ", "\[RuleDelayed]", " ", 
+           RowBox[{"faceToScore", "[", "f", "]"}]}]}], "]"}], ",", " ", "0", 
+        ",", " ", "0", ",", " ", "0", ",", " ", "0"}], "}"}], "\n", "\t\t", 
+      ",", "\n", "\t\t", 
+      RowBox[{"(*", " ", 
+       RowBox[{"two", " ", "pairs"}], " ", "*)"}], "\n", "\t\t", 
+      RowBox[{"twoPairQ", "[", "hand", "]"}], ",", "\n", "\t\t", 
+      RowBox[{"Join", "[", "\n", "\t\t\t", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"handTypeToScore", "[", "\"\<two pair\>\"", "]"}], "}"}], 
+        ",", "\n", "\t\t\t", 
+        RowBox[{"Replace", "[", 
+         RowBox[{
+          RowBox[{"hand", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "1"}], "]"}], "]"}], ",", " ", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"OrderlessPatternSequence", "[", 
+             RowBox[{
+             "f1_", ",", " ", "f1_", ",", " ", "f2_", ",", " ", "f2_", ",", 
+              " ", "f3_"}], "]"}], "}"}], " ", "\[RuleDelayed]", " ", 
+           RowBox[{"Append", "[", 
+            RowBox[{
+             RowBox[{"ReverseSort", "[", 
+              RowBox[{"faceToScore", " ", "/@", " ", 
+               RowBox[{"{", 
+                RowBox[{"f1", ",", " ", "f2"}], "}"}]}], "]"}], ",", " ", 
+             RowBox[{"faceToScore", "[", "f3", "]"}]}], "]"}]}]}], "]"}], ",",
+         "\n", "\t\t\t", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", " ", "0"}], "}"}]}], "\n", "\t\t", "]"}], ",", 
+      "\n", "\t\t", 
+      RowBox[{"(*", " ", 
+       RowBox[{"one", " ", "pair"}], " ", "*)"}], "\n", "\t\t", 
+      RowBox[{"pairQ", "[", "hand", "]"}], ",", "\n", "\t\t", 
+      RowBox[{"Join", "[", "\n", "\t\t\t", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"handTypeToScore", "[", "\"\<pair\>\"", "]"}], "}"}], ",", 
+        "\n", "\t\t\t", 
+        RowBox[{"Replace", "[", 
+         RowBox[{
+          RowBox[{"hand", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "1"}], "]"}], "]"}], ",", " ", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"OrderlessPatternSequence", "[", 
+             RowBox[{
+             "f1_", ",", " ", "f1_", ",", " ", "f2_", ",", " ", "f3_", ",", 
+              " ", "f4_"}], "]"}], "}"}], " ", "\[RuleDelayed]", " ", 
+           RowBox[{"Prepend", "[", 
+            RowBox[{
+             RowBox[{"ReverseSort", "[", 
+              RowBox[{"faceToScore", " ", "/@", " ", 
+               RowBox[{"{", 
+                RowBox[{"f2", ",", " ", "f3", ",", " ", "f4"}], "}"}]}], 
+              "]"}], ",", " ", 
+             RowBox[{"faceToScore", "[", "f1", "]"}]}], "]"}]}]}], "]"}], ",",
+         "\n", "\t\t\t", 
+        RowBox[{"{", "0", "}"}]}], "\n", "\t\t", "]"}], ",", "\n", "\t\t", 
+      RowBox[{"(*", " ", 
+       RowBox[{"high", " ", "card"}], " ", "*)"}], "\n", "\t\t", "True", ",", 
+      "\n", "\t\t", 
+      RowBox[{"Prepend", "[", 
+       RowBox[{
+        RowBox[{"ReverseSort", "[", 
+         RowBox[{"faceToScore", " ", "/@", " ", 
+          RowBox[{"hand", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "1"}], "]"}], "]"}]}], "]"}], ",", " ", 
+        RowBox[{"handTypeToScore", "[", "\"\<high card\>\"", "]"}]}], "]"}]}],
+      "\n", "\t", "]"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQA2IQvf3927YDEm8cf3zU7ADRs2qWTgbRSxiPLgPRH76K
+rgbRW1wfHgLRd9b+/QaitzHNZDwIpEt8T7GC6Fcn4oRAtN/XjYkguvTxvnIQ
+fUCttxlEb0yTagfRMuryT0B0WVYrmNYw+nXgApBOXWF/FkTnrTxwGUSbbGq9
+DaJt+73vg2guq1izi0B6T/QfWxDN+upkMIi2qTTIBdG7lr3NA9Eh0k9ngOib
+RZcXgehPP06sAtP3tQ6C6C+Zd4+D6FmiHadB9H7ZOxdAdLZc4F0QPTVe5RGI
+1jlY/wREr0vl5LsEpAubX4qD6CupT0xBdMefDzYgesXiKyGXgfQDb/ZQEP3h
+UU4viL6qmAemAcuRvfU=
+  
+  "],ExpressionUUID->"77ec484a-dd49-413a-b665-4092348526df"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"compareHands", "[", 
+   RowBox[{"hand1_", ",", " ", "hand2_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"compareScores", "[", 
+   RowBox[{
+    RowBox[{"handScore", "[", "hand1", "]"}], ",", " ", 
+    RowBox[{"handScore", "[", "hand2", "]"}]}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.7711099408910136`*^9, 3.7711099952764883`*^9}, {
+  3.77111012733502*^9, 3.771110152152605*^9}},
+ CellLabel->
+  "In[276]:=",ExpressionUUID->"31eca943-391d-428e-9d45-7d5de1de7f96"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"compareScores", "[", 
+   RowBox[{"s1_List", ",", " ", "s2_List"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"w", " ", "=", " ", "0"}], "}"}], ",", " ", 
+    RowBox[{
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"Which", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"s1", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], " ", ">", " ", 
+          RowBox[{"s2", "[", 
+           RowBox[{"[", "k", "]"}], "]"}]}], ",", " ", 
+         RowBox[{
+          RowBox[{"w", " ", "=", " ", "1"}], ";", " ", 
+          RowBox[{"Break", "[", "]"}]}], ",", " ", 
+         RowBox[{
+          RowBox[{"s1", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], " ", "<", " ", 
+          RowBox[{"s2", "[", 
+           RowBox[{"[", "k", "]"}], "]"}]}], ",", " ", 
+         RowBox[{
+          RowBox[{"w", " ", "=", " ", "2"}], ";", " ", 
+          RowBox[{"Break", "[", "]"}]}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", " ", 
+         RowBox[{"Length", "[", "s1", "]"}]}], "}"}]}], "]"}], ";", " ", 
+     "w"}]}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.771110156762271*^9, 3.7711102295310273`*^9}, {
+  3.77111028672309*^9, 3.7711103449901776`*^9}},
+ CellLabel->
+  "In[281]:=",ExpressionUUID->"d66c7e27-b22e-4f8d-a9fa-773d31c55793"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"describeHand", "[", 
+   RowBox[{"score", " ", ":", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "_", ",", " ", "_", ",", " ", "_", ",", " ", "_", ",", " ", "_", ",", 
+      " ", "_"}], "}"}]}], "]"}], " ", ":=", " ", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"handType", " ", "=", " ", 
+       RowBox[{"scoreToHandType", "[", 
+        RowBox[{"score", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ",", " ", 
+      RowBox[{"highCards", " ", "=", " ", 
+       RowBox[{"scoreToFace", " ", "/@", " ", 
+        RowBox[{"Rest", "[", "score", "]"}]}]}]}], "}"}], ",", "\n", "\t", 
+    RowBox[{"Switch", "[", 
+     RowBox[{"handType", ",", "\n", "\t\t", 
+      RowBox[{
+      "\"\<straight flush\>\"", " ", "|", " ", "\"\<full house\>\"", " ", "|",
+        " ", "\"\<straight\>\"", " ", "|", " ", "\"\<three of a kind\>\""}], 
+      ",", "\n", "\t\t", 
+      RowBox[{
+       RowBox[{"highCards", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], " ", "<>", " ", "\"\<-high \>\"", " ",
+        "<>", " ", "handType"}], "\n", "\t\t", ",", "\n", "\t\t", 
+      "\"\<four of a kind\>\"", ",", "\n", "\t\t", 
+      RowBox[{"\"\<four \>\"", " ", "<>", " ", 
+       RowBox[{"highCards", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "\n", "\t\t", ",", "\n", "\t\t", 
+      "\"\<flush\>\"", ",", "\n", "\t\t", 
+      RowBox[{"handType", " ", "<>", " ", "\"\< with \>\"", " ", "<>", " ", 
+       RowBox[{"StringJoin", "[", "highCards", "]"}]}], "\n", "\t\t", ",", 
+      "\n", "\t\t", "\"\<two pair\>\"", ",", "\n", "\t\t", 
+      RowBox[{"\"\<pair of \>\"", " ", "<>", " ", 
+       RowBox[{"highCards", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], " ", "<>", " ", 
+       "\"\< and pair of \>\"", " ", "<>", " ", 
+       RowBox[{"highCards", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], " ", "<>", " ", "\"\< with \>\"", " ",
+        "<>", " ", 
+       RowBox[{"highCards", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], "\n", "\t\t", ",", "\n", "\t\t", 
+      "\"\<pair\>\"", ",", "\n", "\t\t", 
+      RowBox[{"\"\<pair of \>\"", " ", "<>", " ", 
+       RowBox[{"highCards", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], " ", "<>", " ", "\"\< with \>\"", " ",
+        "<>", " ", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Rest", "[", "highCards", "]"}], "]"}]}], "\n", "\t\t", ",", 
+      "\n", "\t\t", "\"\<high card\>\"", ",", "\n", "\t\t", 
+      RowBox[{"\"\<nothing with \>\"", " ", "<>", " ", 
+       RowBox[{"StringJoin", "[", "highCards", "]"}]}], "\n", "\t\t", ",", 
+      "\n", "\t\t", "_", ",", "\n", "\t\t", "\"\<invalid hand\>\""}], "\n", 
+     "\t", "]"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.771112405569301*^9, 3.7711125174950953`*^9}, {
+  3.7711125647636576`*^9, 3.7711130501490593`*^9}, {3.771116491639756*^9, 
+  3.7711164952221546`*^9}},
+ CellLabel->
+  "In[319]:=",ExpressionUUID->"b7f44b59-84c8-46b6-8995-3952cb870954"],
+
+Cell["The question asks how many hands are won by 1:", "Text",
+ CellChangeTimes->{{3.7711220241144853`*^9, 
+  3.771122034634305*^9}},ExpressionUUID->"300169b2-439e-4fd3-946f-\
+186f9e66afee"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Tally", "[", 
+  RowBox[{"compareHands", "@@@", "hands"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7711103699603252`*^9, 3.7711103865469904`*^9}},
+ CellLabel->
+  "In[324]:=",ExpressionUUID->"84752e8c-9c88-4afe-983f-fdeda7ea1329"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "624"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "376"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.771110379045012*^9, 3.7711103875891495`*^9}, 
+   3.771112113529128*^9, 3.77112194194829*^9},
+ CellLabel->
+  "Out[324]=",ExpressionUUID->"3958de3d-4b4b-44f9-887a-a82ad95ee491"]
+}, Open  ]],
+
+Cell["\<\
+For debugging, print out a description of each hand won by 1:\
+\>", "Text",
+ CellChangeTimes->{{3.7711220369969707`*^9, 
+  3.7711220565437937`*^9}},ExpressionUUID->"49bbeeb2-c92c-4c88-8d73-\
+98acc540fbaf"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"compareHands", "@@", "h"}], "\[Equal]", "1"}], ",", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+       RowBox[{"describeHand", "[", 
+        RowBox[{"handScore", "[", 
+         RowBox[{"h", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], "<>", 
+       "\"\< beats \>\"", "<>", 
+       RowBox[{"describeHand", "[", 
+        RowBox[{"handScore", "[", 
+         RowBox[{"h", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"h", ",", "hands"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.771116217443536*^9, 3.7711163050648193`*^9}, {
+  3.7711163401888313`*^9, 3.7711163650884657`*^9}, {3.771121614087093*^9, 
+  3.7711216144859943`*^9}, {3.771122014508292*^9, 3.7711220164451113`*^9}},
+ CellLabel->
+  "In[325]:=",ExpressionUUID->"bff617f9-f37d-4a91-84bc-a4939aaaac45"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"pair of A and pair of 5 with 9 beats nothing with \
+KT875\"\>"], "Print",
+ CellChangeTimes->{3.7711220615862904`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"6eb3ae58-565b-4d1c-a5e7-9e950993f32d"],
+
+Cell[BoxData["\<\"nothing with KJ763 beats nothing with QJT82\"\>"], "Print",
+ CellChangeTimes->{3.771122061588251*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"92a0e40d-0a7a-4c9a-9db4-1ea57b33d285"],
+
+Cell[BoxData["\<\"pair of 9 with K75 beats pair of 5 with A83\"\>"], "Print",
+ CellChangeTimes->{3.7711220615932355`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"880e377e-1a40-410a-80fa-94c218bf2fdb"],
+
+Cell[BoxData["\<\"6-high straight beats nothing with AQ653\"\>"], "Print",
+ CellChangeTimes->{3.771122061595232*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3f20c3b0-cb70-4247-89eb-f30809ed90d7"],
+
+Cell[BoxData["\<\"pair of 2 with J65 beats nothing with AKJ97\"\>"], "Print",
+ CellChangeTimes->{3.7711220615972257`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"212d5cee-ae90-4839-92c7-5a9a6d464fb6"],
+
+Cell[BoxData["\<\"pair of 5 with T42 beats nothing with KJT63\"\>"], "Print",
+ CellChangeTimes->{3.7711220615992546`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a9b66833-33fa-470a-9fb4-f4aea9e21348"],
+
+Cell[BoxData["\<\"nothing with AQJ62 beats nothing with K9843\"\>"], "Print",
+ CellChangeTimes->{3.771122061600218*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2989e261-c1cb-4f86-9b07-ad54f2e2775b"],
+
+Cell[BoxData["\<\"pair of 8 and pair of 6 with 4 beats nothing with \
+QT976\"\>"], "Print",
+ CellChangeTimes->{3.771122061604245*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a111b39a-9bd4-4b2f-8a9b-b3d33c784726"],
+
+Cell[BoxData["\<\"nothing with QJ432 beats nothing with T9832\"\>"], "Print",
+ CellChangeTimes->{3.7711220616062407`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"8f71f878-fab4-44e1-8df2-eb68ce6619f8"],
+
+Cell[BoxData["\<\"nothing with AJT96 beats nothing with KQJ96\"\>"], "Print",
+ CellChangeTimes->{3.7711220616081953`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"b2b17166-f100-45a2-b3e9-45bc15b584fb"],
+
+Cell[BoxData["\<\"nothing with AKQJ4 beats nothing with KQT76\"\>"], "Print",
+ CellChangeTimes->{3.7711220616101923`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"36f86e32-35fe-4197-83f6-f8fd6e08eb3e"],
+
+Cell[BoxData["\<\"pair of 5 with KQ4 beats nothing with KJ743\"\>"], "Print",
+ CellChangeTimes->{3.771122061615179*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"67e64333-0cb8-4486-8569-44579a428f26"],
+
+Cell[BoxData["\<\"pair of 9 with 652 beats nothing with JT962\"\>"], "Print",
+ CellChangeTimes->{3.7711220616181707`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"80f63a06-7ee6-4299-8a26-43d530c3e479"],
+
+Cell[BoxData["\<\"nothing with AQJ76 beats nothing with QJ754\"\>"], "Print",
+ CellChangeTimes->{3.771122061620166*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"218be754-7cae-4247-9821-5c82a3d0e417"],
+
+Cell[BoxData["\<\"nothing with AKQ83 beats nothing with T9853\"\>"], "Print",
+ CellChangeTimes->{3.771122061622162*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9e5a5727-cb21-4365-a709-b80226c454e5"],
+
+Cell[BoxData["\<\"pair of 9 with A84 beats nothing with JT843\"\>"], "Print",
+ CellChangeTimes->{3.7711220616261497`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"838c3c66-93e5-4acd-95f7-79854058f151"],
+
+Cell[BoxData["\<\"pair of 5 with K97 beats nothing with AK432\"\>"], "Print",
+ CellChangeTimes->{3.7711220616281424`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"536a80a0-c3cf-41fb-a680-b37468472011"],
+
+Cell[BoxData["\<\"pair of 9 with J53 beats nothing with AQT94\"\>"], "Print",
+ CellChangeTimes->{3.771122061630137*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"6c403d0a-fa41-41ce-9db4-e5e9c14d1242"],
+
+Cell[BoxData["\<\"pair of J with K97 beats pair of 3 with AK7\"\>"], "Print",
+ CellChangeTimes->{3.7711220616321316`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"918b22ec-953c-4b44-9447-1f68222659b2"],
+
+Cell[BoxData["\<\"pair of K with Q73 beats pair of 5 with AJ7\"\>"], "Print",
+ CellChangeTimes->{3.7711220616341267`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"276b963b-85e2-4b2b-ac5b-34733ef0865c"],
+
+Cell[BoxData["\<\"pair of T and pair of 2 with 6 beats pair of 8 with \
+A74\"\>"], "Print",
+ CellChangeTimes->{3.7711220616391153`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"217d9f5f-a4be-4557-a72e-f1ac296e13d0"],
+
+Cell[BoxData["\<\"pair of T with J75 beats pair of 8 with AQ6\"\>"], "Print",
+ CellChangeTimes->{3.7711220616411095`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"bdeb5500-dcca-4337-9a54-40d90262a82d"],
+
+Cell[BoxData["\<\"pair of K with 942 beats nothing with AK754\"\>"], "Print",
+ CellChangeTimes->{3.7711220616431413`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2a267801-d464-4726-87ed-194ee80e4b5b"],
+
+Cell[BoxData["\<\"3-high three of a kind beats nothing with T9854\"\>"], \
+"Print",
+ CellChangeTimes->{3.771122061647134*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4010f725-2a51-4fce-aba0-18c16d2580ec"],
+
+Cell[BoxData["\<\"pair of Q with 842 beats nothing with AKT93\"\>"], "Print",
+ CellChangeTimes->{3.7711220616481085`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a35b6666-b850-40a3-8ea4-8d0c5bb505fe"],
+
+Cell[BoxData["\<\"3-high three of a kind beats nothing with AQT85\"\>"], \
+"Print",
+ CellChangeTimes->{3.771122061651081*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"92eae273-af2f-4a6d-a737-66ac9c9d0f87"],
+
+Cell[BoxData["\<\"pair of 8 with JT3 beats nothing with 98542\"\>"], "Print",
+ CellChangeTimes->{3.7711220616560693`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"09550e98-71a8-4b7d-81b8-10594d2f2919"],
+
+Cell[BoxData["\<\"nothing with KQT92 beats nothing with QJT94\"\>"], "Print",
+ CellChangeTimes->{3.7711220616580644`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c9e0e3f1-d16d-480c-9d18-fcc96bb81c14"],
+
+Cell[BoxData["\<\"pair of Q with K83 beats pair of 8 with AT4\"\>"], "Print",
+ CellChangeTimes->{3.771122061660059*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5c254c0a-9a7e-47b1-9276-52623e73f79c"],
+
+Cell[BoxData["\<\"pair of T with QJ8 beats nothing with KT763\"\>"], "Print",
+ CellChangeTimes->{3.771122061661056*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ba52e404-5bdd-4605-a337-83257d520da9"],
+
+Cell[BoxData["\<\"pair of 2 with AJ4 beats nothing with JT654\"\>"], "Print",
+ CellChangeTimes->{3.771122061664048*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0ce3106d-dd79-4950-96dc-0c0811d7f0cf"],
+
+Cell[BoxData["\<\"nothing with KQJ98 beats nothing with QJ752\"\>"], "Print",
+ CellChangeTimes->{3.77112206166704*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4eebc211-5f8b-4eee-9fcd-350b006a7383"],
+
+Cell[BoxData["\<\"pair of J and pair of 6 with 4 beats nothing with \
+AQ943\"\>"], "Print",
+ CellChangeTimes->{3.771122061669035*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5ac3e3c6-a99f-4d78-8d59-90609d94e60e"],
+
+Cell[BoxData["\<\"pair of 8 with Q72 beats nothing with AQJ75\"\>"], "Print",
+ CellChangeTimes->{3.7711220616700325`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"459e09a3-3972-4e5c-b7e9-12c1e89799d9"],
+
+Cell[BoxData["\<\"pair of 6 with 832 beats pair of 4 with T87\"\>"], "Print",
+ CellChangeTimes->{3.771122061672027*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0d3c1e95-81de-4563-b0e9-8a13d40a1222"],
+
+Cell[BoxData["\<\"pair of K with J52 beats nothing with K9873\"\>"], "Print",
+ CellChangeTimes->{3.7711220616740217`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"34e202c0-25c4-4d30-9bd9-42c89830cc44"],
+
+Cell[BoxData["\<\"pair of A with QJ8 beats nothing with KT874\"\>"], "Print",
+ CellChangeTimes->{3.771122061676016*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4bf98ea3-d6fd-446e-8ac9-baf3129937c4"],
+
+Cell[BoxData["\<\"pair of 5 with JT7 beats nothing with AKJ84\"\>"], "Print",
+ CellChangeTimes->{3.771122061681003*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e9426eae-0e7e-4336-a53c-3fc911d8e3e6"],
+
+Cell[BoxData["\<\"pair of A with K72 beats nothing with KJ765\"\>"], "Print",
+ CellChangeTimes->{3.7711220616829977`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c278195a-bacc-41f2-bd97-0ad718c6251d"],
+
+Cell[BoxData["\<\"pair of 9 with 865 beats nothing with AJT96\"\>"], "Print",
+ CellChangeTimes->{3.771122061683995*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f8e2083a-95ec-4bc8-ab01-5b72b5017145"],
+
+Cell[BoxData["\<\"pair of K with 763 beats pair of 5 with 832\"\>"], "Print",
+ CellChangeTimes->{3.7711220616859894`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1438c198-4682-429e-8fd8-a7485063bd28"],
+
+Cell[BoxData["\<\"pair of 4 with T98 beats nothing with AT973\"\>"], "Print",
+ CellChangeTimes->{3.77112206168898*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"38c26f89-e94e-4b1b-a675-b4823f1fdd5c"],
+
+Cell[BoxData["\<\"pair of J with Q62 beats nothing with QT943\"\>"], "Print",
+ CellChangeTimes->{3.771122061690974*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f73fcc7b-d739-4dc9-bb81-f80e663d17ba"],
+
+Cell[BoxData["\<\"pair of J with K85 beats nothing with JT542\"\>"], "Print",
+ CellChangeTimes->{3.7711220616929693`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"32c6cbf5-03df-46b9-b86a-0b9a4089ebcd"],
+
+Cell[BoxData["\<\"pair of Q with JT8 beats nothing with AKQ64\"\>"], "Print",
+ CellChangeTimes->{3.7711220616949635`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"dfdc9186-a79e-4406-9665-2ad1690a9f5d"],
+
+Cell[BoxData["\<\"pair of K and pair of 9 with 5 beats nothing with \
+T7532\"\>"], "Print",
+ CellChangeTimes->{3.7711220616969585`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"97b34519-405d-4fa4-a9fe-6d2619046722"],
+
+Cell[BoxData["\<\"nothing with AT854 beats nothing with T9832\"\>"], "Print",
+ CellChangeTimes->{3.771122061699967*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"836ce683-5a46-4d12-93b9-3d4d1ad60b2d"],
+
+Cell[BoxData["\<\"nothing with AKQ72 beats nothing with KQJ73\"\>"], "Print",
+ CellChangeTimes->{3.7711220617019463`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"919e4758-2fde-4c5c-bb1f-a5ca13a19a5b"],
+
+Cell[BoxData["\<\"pair of 6 with K83 beats pair of 5 with QT8\"\>"], "Print",
+ CellChangeTimes->{3.771122061703947*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"adec7974-dbe0-48e2-a87c-283db3b4f3cc"],
+
+Cell[BoxData["\<\"pair of 9 and pair of 4 with 6 beats nothing with \
+KQJ64\"\>"], "Print",
+ CellChangeTimes->{3.7711220617059717`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"56676c51-f032-4fd5-93ca-552e6251bda0"],
+
+Cell[BoxData["\<\"pair of T with AJ7 beats nothing with KQ973\"\>"], "Print",
+ CellChangeTimes->{3.7711220617069654`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4b8dad5e-819d-4a7c-9115-7f0a246e2298"],
+
+Cell[BoxData["\<\"pair of 5 and pair of 4 with 8 beats nothing with \
+KJ732\"\>"], "Print",
+ CellChangeTimes->{3.771122061708927*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"025c9d2a-7447-4165-9022-a967141d684a"],
+
+Cell[BoxData["\<\"pair of A with T83 beats nothing with KJ765\"\>"], "Print",
+ CellChangeTimes->{3.7711220617129183`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"82e30ccf-8375-4434-a558-682348c2f4ea"],
+
+Cell[BoxData["\<\"pair of 2 with KT6 beats nothing with J9862\"\>"], "Print",
+ CellChangeTimes->{3.7711220617159076`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"349bd942-ce23-4e16-89bf-dc084c2060ea"],
+
+Cell[BoxData["\<\"pair of 7 with AK3 beats nothing with AQT82\"\>"], "Print",
+ CellChangeTimes->{3.771122061717902*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9e946f8a-8371-482c-b566-80027ee8057f"],
+
+Cell[BoxData["\<\"pair of T with 872 beats nothing with J9632\"\>"], "Print",
+ CellChangeTimes->{3.771122061719897*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e7fdf421-4eb8-4037-a0c3-e3abada849f2"],
+
+Cell[BoxData["\<\"pair of 9 with QT5 beats pair of 8 with KT6\"\>"], "Print",
+ CellChangeTimes->{3.7711220617238855`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5fd7cdce-3036-43a7-a3ba-adc67431eecf"],
+
+Cell[BoxData["\<\"nothing with KJT76 beats nothing with Q8432\"\>"], "Print",
+ CellChangeTimes->{3.771122061725882*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"92a495d1-a4f5-4e81-9ae4-2f3890d97f13"],
+
+Cell[BoxData["\<\"pair of 9 with KJ2 beats nothing with AJT53\"\>"], "Print",
+ CellChangeTimes->{3.7711220617279096`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"00fa6ee1-85e8-4db1-a2f5-cd55979485eb"],
+
+Cell[BoxData["\<\"pair of A and pair of 5 with 2 beats pair of J with \
+T74\"\>"], "Print",
+ CellChangeTimes->{3.7711220617288733`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9b6a6dc1-6123-4995-8ea5-9dba7b23e9a9"],
+
+Cell[BoxData["\<\"pair of J with Q75 beats nothing with AT843\"\>"], "Print",
+ CellChangeTimes->{3.7711220617308674`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0a8aeba4-ffbc-4cb8-bd2d-bf10596bb234"],
+
+Cell[BoxData["\<\"pair of Q with AK6 beats nothing with KT862\"\>"], "Print",
+ CellChangeTimes->{3.7711220617348995`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f466db4d-83de-4521-b873-a362ae8504fc"],
+
+Cell[BoxData["\<\"nothing with KT974 beats nothing with Q8732\"\>"], "Print",
+ CellChangeTimes->{3.7711220617358556`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f48688f6-63ed-49d9-a2fa-94fdec8dde90"],
+
+Cell[BoxData["\<\"pair of Q and pair of 6 with T beats pair of 7 with \
+954\"\>"], "Print",
+ CellChangeTimes->{3.77112206173888*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9fb7e339-8685-44c4-81cc-e31048512e17"],
+
+Cell[BoxData["\<\"pair of 9 with J65 beats nothing with KJ864\"\>"], "Print",
+ CellChangeTimes->{3.7711220617398434`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2a05c971-9100-4ed8-bb21-83cb55c73f61"],
+
+Cell[BoxData["\<\"pair of 8 with 764 beats nothing with K8765\"\>"], "Print",
+ CellChangeTimes->{3.7711220617418604`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"29cf7456-b2fe-44d4-acbb-d2b5c2209322"],
+
+Cell[BoxData["\<\"nothing with AJ974 beats nothing with KJT97\"\>"], "Print",
+ CellChangeTimes->{3.77112206174483*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1b08cc52-9f8a-49cb-8da9-5501f716a459"],
+
+Cell[BoxData["\<\"nothing with A7432 beats nothing with KQ962\"\>"], "Print",
+ CellChangeTimes->{3.771122061746826*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2847f8e3-ada5-4fe1-901f-0a86bdde12dd"],
+
+Cell[BoxData["\<\"nothing with A8532 beats nothing with T9643\"\>"], "Print",
+ CellChangeTimes->{3.771122061748855*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1be742b2-4e85-4e38-b2d5-8bfefeeab65c"],
+
+Cell[BoxData["\<\"pair of T with Q73 beats nothing with AQ765\"\>"], "Print",
+ CellChangeTimes->{3.7711220617508144`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"038bf0f2-d48c-43a3-bd04-4a34f0489eee"],
+
+Cell[BoxData["\<\"pair of Q with AT9 beats pair of 3 with K85\"\>"], "Print",
+ CellChangeTimes->{3.771122061752843*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ca692358-fb85-4943-96d0-ea82d0caa014"],
+
+Cell[BoxData["\<\"pair of 5 with J62 beats nothing with KT743\"\>"], "Print",
+ CellChangeTimes->{3.7711220617538075`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d3f5b572-4431-448f-a299-9d511a4c7866"],
+
+Cell[BoxData["\<\"pair of A with 982 beats nothing with Q8752\"\>"], "Print",
+ CellChangeTimes->{3.771122061770795*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3b7eb55e-480a-439e-8193-695fe4c27152"],
+
+Cell[BoxData["\<\"Q-high three of a kind beats nothing with JT954\"\>"], \
+"Print",
+ CellChangeTimes->{3.771122061774751*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"88d18e85-6ccc-4bd7-9f1e-47add270f661"],
+
+Cell[BoxData["\<\"pair of 6 and pair of 3 with 5 beats nothing with \
+AK876\"\>"], "Print",
+ CellChangeTimes->{3.771122061779738*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"6e1e6d3a-4958-421e-a008-b882f1885e7a"],
+
+Cell[BoxData["\<\"pair of A with 965 beats nothing with T9832\"\>"], "Print",
+ CellChangeTimes->{3.771122061781767*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"de9260ce-6d14-41e1-9cc2-1a7b3545cf51"],
+
+Cell[BoxData["\<\"pair of 4 with T96 beats nothing with AJ532\"\>"], "Print",
+ CellChangeTimes->{3.7711220617837267`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1d9a74a5-982d-4b27-8f76-f8a8ca5d057b"],
+
+Cell[BoxData["\<\"pair of A with 743 beats nothing with AKJT2\"\>"], "Print",
+ CellChangeTimes->{3.771122061785757*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7722f4e6-355e-4cbb-b8d2-81685689b2db"],
+
+Cell[BoxData["\<\"J-high three of a kind beats nothing with AQ853\"\>"], \
+"Print",
+ CellChangeTimes->{3.771122061787716*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2b57b0c2-4ccb-4fad-98ad-e383d5ed7ade"],
+
+Cell[BoxData["\<\"pair of 5 with K97 beats nothing with T6432\"\>"], "Print",
+ CellChangeTimes->{3.7711220617897105`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"cac5f1b5-2b4a-4713-91ef-94b689cac818"],
+
+Cell[BoxData["\<\"pair of Q and pair of T with 3 beats pair of 7 with \
+AJT\"\>"], "Print",
+ CellChangeTimes->{3.771122061792736*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"00f58c90-e7bf-40e0-b0d3-588c45eefd38"],
+
+Cell[BoxData["\<\"pair of 7 with A64 beats nothing with KJT92\"\>"], "Print",
+ CellChangeTimes->{3.7711220617937355`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e919145b-aea9-43b7-bbea-367e2b4848ce"],
+
+Cell[BoxData["\<\"pair of Q and pair of 2 with A beats nothing with \
+QJ863\"\>"], "Print",
+ CellChangeTimes->{3.7711220617957296`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"aac0b91f-94ae-44d3-adc7-76002851b9ae"],
+
+Cell[BoxData["\<\"nothing with AJT98 beats nothing with Q9873\"\>"], "Print",
+ CellChangeTimes->{3.7711220617976894`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"104d0377-f419-43a2-8945-7fed283a7ba7"],
+
+Cell[BoxData["\<\"pair of K with A74 beats nothing with KQ542\"\>"], "Print",
+ CellChangeTimes->{3.771122061800683*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"64c2d58e-93a0-41c1-9cf6-93521d06c6af"],
+
+Cell[BoxData["\<\"pair of 6 and pair of 5 with T beats pair of Q with \
+973\"\>"], "Print",
+ CellChangeTimes->{3.7711220618027105`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"b0ea4b8d-4b5f-4d4a-ad02-d94e2fe37413"],
+
+Cell[BoxData["\<\"pair of Q with AKJ beats pair of 7 with Q85\"\>"], "Print",
+ CellChangeTimes->{3.7711220618046703`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"dd440734-81fa-4686-921e-a0c7fb72f8a3"],
+
+Cell[BoxData["\<\"nothing with AJ853 beats nothing with JT643\"\>"], "Print",
+ CellChangeTimes->{3.771122061806699*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1049adee-bf00-4180-9859-a370ca948c1b"],
+
+Cell[BoxData["\<\"nothing with AQ974 beats nothing with KJT65\"\>"], "Print",
+ CellChangeTimes->{3.771122061807664*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a1501ea9-7fab-47f0-a162-6d0229640ee3"],
+
+Cell[BoxData["\<\"nothing with AK543 beats nothing with QT742\"\>"], "Print",
+ CellChangeTimes->{3.771122061809658*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"894617ea-6c9c-455f-9d69-36fd4176c689"],
+
+Cell[BoxData["\<\"T-high straight beats nothing with AQ873\"\>"], "Print",
+ CellChangeTimes->{3.771122061812683*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a4439916-7b0b-49da-abf8-3857e82384d7"],
+
+Cell[BoxData["\<\"nothing with AQ987 beats nothing with KJ762\"\>"], "Print",
+ CellChangeTimes->{3.7711220618146772`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"709b83cb-7ea8-434b-b59a-8207e0a2d7e2"],
+
+Cell[BoxData["\<\"pair of T with K76 beats nothing with AJ753\"\>"], "Print",
+ CellChangeTimes->{3.7711220618156404`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"537b2db0-624f-4fe4-ad96-4456b8251277"],
+
+Cell[BoxData["\<\"pair of T and pair of 4 with 3 beats pair of 6 with \
+Q97\"\>"], "Print",
+ CellChangeTimes->{3.7711220618176365`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d508a155-f5d8-4392-b3ef-988b16fd0e6a"],
+
+Cell[BoxData["\<\"pair of 3 with A76 beats nothing with QJ874\"\>"], "Print",
+ CellChangeTimes->{3.7711220618196306`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e11fbc6d-30e4-4e59-84db-710ce766666f"],
+
+Cell[BoxData["\<\"pair of 4 with KQ5 beats nothing with T8765\"\>"], "Print",
+ CellChangeTimes->{3.7711220618226566`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"546c5667-0870-4bed-be89-95048b3b40f2"],
+
+Cell[BoxData["\<\"pair of T and pair of 6 with Q beats pair of 5 with \
+KT9\"\>"], "Print",
+ CellChangeTimes->{3.771122061825614*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2cd89eda-bf82-4be6-9599-6f7fa66e3b5d"],
+
+Cell[BoxData["\<\"pair of 7 with J94 beats nothing with Q9865\"\>"], "Print",
+ CellChangeTimes->{3.771122061827609*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7f85b695-e738-4091-b65d-6da657043307"],
+
+Cell[BoxData["\<\"pair of J with Q96 beats nothing with KJ872\"\>"], "Print",
+ CellChangeTimes->{3.771122061829603*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a297c24a-367a-49a1-be7b-315f931f61a5"],
+
+Cell[BoxData["\<\"pair of 3 with J72 beats nothing with AQ982\"\>"], "Print",
+ CellChangeTimes->{3.771122061831598*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"54972904-b1a4-457a-862e-a25c749f9216"],
+
+Cell[BoxData["\<\"pair of 9 with 742 beats pair of 5 with KJ6\"\>"], "Print",
+ CellChangeTimes->{3.771122061834591*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"110dd6dd-b0ba-4eeb-a4ab-50a384c5712a"],
+
+Cell[BoxData["\<\"pair of Q with JT5 beats nothing with AKQ85\"\>"], "Print",
+ CellChangeTimes->{3.7711220618366213`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9213fe35-1204-4cc5-9c3a-82c06c44d5a9"],
+
+Cell[BoxData["\<\"pair of 4 with 986 beats nothing with KJT97\"\>"], "Print",
+ CellChangeTimes->{3.771122061850548*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"40ccafbd-2099-4262-96c5-c49ec537519a"],
+
+Cell[BoxData["\<\"pair of 5 with QJ4 beats pair of 2 with AJ9\"\>"], "Print",
+ CellChangeTimes->{3.7711220618555746`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"8d24e309-d333-4201-b30c-26d7b204f7a2"],
+
+Cell[BoxData["\<\"pair of A with Q85 beats nothing with QT875\"\>"], "Print",
+ CellChangeTimes->{3.771122061857565*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9d979acc-4df4-4509-9daf-ac31766485c1"],
+
+Cell[BoxData["\<\"pair of J with K72 beats pair of 5 with AQ4\"\>"], "Print",
+ CellChangeTimes->{3.7711220618595576`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"426f0f25-0cd3-42e6-b0d4-3ab013a5bf50"],
+
+Cell[BoxData["\<\"pair of T with A43 beats nothing with JT962\"\>"], "Print",
+ CellChangeTimes->{3.7711220618605247`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0e01887d-6b44-4e33-a886-36f7167aed22"],
+
+Cell[BoxData["\<\"pair of K with 864 beats pair of Q with T97\"\>"], "Print",
+ CellChangeTimes->{3.7711220618625164`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c4da4dd8-4f5d-40df-86f6-08b143cd91ec"],
+
+Cell[BoxData["\<\"pair of A with KJ5 beats nothing with AKQJ5\"\>"], "Print",
+ CellChangeTimes->{3.771122061866539*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e2951f54-5515-49e8-867f-ca49d4e26086"],
+
+Cell[BoxData["\<\"pair of K with 765 beats pair of 3 with J74\"\>"], "Print",
+ CellChangeTimes->{3.771122061868533*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"39243729-e7d9-41ef-b0cc-de0dea218a1f"],
+
+Cell[BoxData["\<\"pair of K with 976 beats pair of 2 with 863\"\>"], "Print",
+ CellChangeTimes->{3.771122061870495*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"89d00eee-04d9-41a1-a8eb-e2a14d2c7028"],
+
+Cell[BoxData["\<\"pair of Q and pair of 7 with J beats nothing with \
+KQT53\"\>"], "Print",
+ CellChangeTimes->{3.771122061872526*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"320d90b1-6ff1-452e-bb26-b42c043326c0"],
+
+Cell[BoxData["\<\"pair of 4 with K82 beats nothing with K9532\"\>"], "Print",
+ CellChangeTimes->{3.771122061877509*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1420b021-23f7-4bbe-a783-1d0232edf16c"],
+
+Cell[BoxData["\<\"pair of T and pair of 7 with Q beats nothing with \
+KJ732\"\>"], "Print",
+ CellChangeTimes->{3.7711220618784723`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"10dcc710-8ed1-40d9-86ad-44d90fd70e9e"],
+
+Cell[BoxData["\<\"pair of 4 with AK6 beats nothing with A9876\"\>"], "Print",
+ CellChangeTimes->{3.7711220618804674`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"035391d0-873e-4249-bcd4-444aeba9f12c"],
+
+Cell[BoxData["\<\"pair of 2 with KJT beats nothing with AKQ85\"\>"], "Print",
+ CellChangeTimes->{3.771122061882462*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f20b977d-c3b2-4f81-b79e-2ca5099353ef"],
+
+Cell[BoxData["\<\"pair of 2 with QJ5 beats nothing with AQJ76\"\>"], "Print",
+ CellChangeTimes->{3.7711220618844585`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"95a1d8ca-95d7-4ae9-9fcc-b6b77b7bda32"],
+
+Cell[BoxData["\<\"pair of Q with J65 beats nothing with K9852\"\>"], "Print",
+ CellChangeTimes->{3.77112206188745*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4ae3fafb-9904-4d9f-9f7c-74cc6bf00eb1"],
+
+Cell[BoxData["\<\"pair of 7 with 543 beats pair of 3 with J65\"\>"], "Print",
+ CellChangeTimes->{3.7711220618894444`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d89f54c1-1c87-4128-aad2-5629efa0efb3"],
+
+Cell[BoxData["\<\"pair of 3 with Q75 beats nothing with KT984\"\>"], "Print",
+ CellChangeTimes->{3.7711220618914394`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d324cb5c-4ffc-4eff-9044-6c8f557e3d24"],
+
+Cell[BoxData["\<\"pair of 7 with Q53 beats nothing with KQJ87\"\>"], "Print",
+ CellChangeTimes->{3.7711220618934326`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"18207021-cbc6-4038-83fa-f10b790a9744"],
+
+Cell[BoxData["\<\"pair of K with 432 beats nothing with AT762\"\>"], "Print",
+ CellChangeTimes->{3.7711220618954268`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7ec051f6-c562-4b43-a9c3-eb4c6ede084f"],
+
+Cell[BoxData["\<\"pair of 4 with QT7 beats nothing with QT983\"\>"], "Print",
+ CellChangeTimes->{3.771122061899455*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"8fc92721-5091-4e07-a30f-194358c00826"],
+
+Cell[BoxData["\<\"pair of 4 with AJ5 beats nothing with AT983\"\>"], "Print",
+ CellChangeTimes->{3.771122061901411*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e782b1de-e422-49f9-8188-607b6a9843af"],
+
+Cell[BoxData["\<\"pair of 3 with 764 beats nothing with AT972\"\>"], "Print",
+ CellChangeTimes->{3.7711220619044046`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d00c86ff-a4fa-4b05-b91c-496c4df3d0b9"],
+
+Cell[BoxData["\<\"pair of 4 with QJ5 beats nothing with AQT83\"\>"], "Print",
+ CellChangeTimes->{3.771122061906432*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"03c80b56-b908-4a9d-ad9d-603e0a95ac18"],
+
+Cell[BoxData["\<\"pair of T with 652 beats pair of 3 with KJ5\"\>"], "Print",
+ CellChangeTimes->{3.7711220619104214`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"52eae601-dc5b-4356-883f-1b116171db1c"],
+
+Cell[BoxData["\<\"nothing with A9743 beats nothing with KT732\"\>"], "Print",
+ CellChangeTimes->{3.7711220619124165`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"b39f1429-a37b-4c2e-b7fa-8da9bed94d57"],
+
+Cell[BoxData["\<\"pair of A with QJ8 beats pair of 4 with KQ6\"\>"], "Print",
+ CellChangeTimes->{3.771122061913416*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3c43212d-a598-4420-a4af-5dcd9e0f7891"],
+
+Cell[BoxData["\<\"pair of T with 932 beats nothing with KQ865\"\>"], "Print",
+ CellChangeTimes->{3.771122061915375*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ee05d9a9-384f-4d50-b604-e4180151149b"],
+
+Cell[BoxData["\<\"pair of K and pair of 8 with 5 beats nothing with \
+AKT74\"\>"], "Print",
+ CellChangeTimes->{3.771122061917369*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"b9e6a06c-df62-415a-b1ed-9cecd1396f5c"],
+
+Cell[BoxData["\<\"pair of 9 with K85 beats pair of 4 with AK2\"\>"], "Print",
+ CellChangeTimes->{3.7711220619203615`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"43b2f011-d909-476d-b6cc-6a80d6ed4f71"],
+
+Cell[BoxData["\<\"nothing with KT963 beats nothing with QJ865\"\>"], "Print",
+ CellChangeTimes->{3.771122061922357*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c984f090-f586-4dbc-9352-d39899fa2410"],
+
+Cell[BoxData["\<\"nothing with KT985 beats nothing with QT764\"\>"], "Print",
+ CellChangeTimes->{3.77112206192435*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"974400ee-a175-42b2-b836-67eadcad9559"],
+
+Cell[BoxData["\<\"pair of 6 with K53 beats nothing with AQ876\"\>"], "Print",
+ CellChangeTimes->{3.7711220619273806`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f59ffae0-b365-45f2-9424-6c793d1a2cd4"],
+
+Cell[BoxData["\<\"nothing with AQJ52 beats nothing with K7632\"\>"], "Print",
+ CellChangeTimes->{3.771122061928339*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"562b93b2-8964-4d57-9aa9-71dee6f6d967"],
+
+Cell[BoxData["\<\"pair of 8 with Q32 beats nothing with AT652\"\>"], "Print",
+ CellChangeTimes->{3.771122061932374*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f56e0aa9-89be-461b-b1e0-ff2c7c4b4ca1"],
+
+Cell[BoxData["\<\"pair of J with T83 beats nothing with KJT65\"\>"], "Print",
+ CellChangeTimes->{3.7711220619343653`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9cbca48c-04fd-4dce-8866-33eddbabf71b"],
+
+Cell[BoxData["\<\"pair of 6 with T43 beats nothing with K9852\"\>"], "Print",
+ CellChangeTimes->{3.7711220619363704`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"306e4cf0-68f8-4ba7-bf4d-99c5f7ffe25e"],
+
+Cell[BoxData["\<\"nothing with K9652 beats nothing with JT743\"\>"], "Print",
+ CellChangeTimes->{3.7711220619513116`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2b6e8d93-3940-47d0-b466-d4751d12b410"],
+
+Cell[BoxData["\<\"pair of 4 with QT8 beats nothing with AJ973\"\>"], "Print",
+ CellChangeTimes->{3.771122061954301*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7aa906dc-aaf5-463c-bdb6-12b0797a4716"],
+
+Cell[BoxData["\<\"pair of 5 with Q83 beats nothing with AKJ94\"\>"], "Print",
+ CellChangeTimes->{3.771122061956266*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0ccd582c-c6e3-46d0-a3c1-cbf2f8548f79"],
+
+Cell[BoxData["\<\"nothing with QJ965 beats nothing with T9832\"\>"], "Print",
+ CellChangeTimes->{3.7711220619582615`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"19b432eb-9517-4b85-ae5b-68eff374a1c4"],
+
+Cell[BoxData["\<\"pair of Q with KJT beats nothing with AKJ52\"\>"], "Print",
+ CellChangeTimes->{3.771122061960255*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"627954c5-b0bd-41d8-850d-08c2172743f2"],
+
+Cell[BoxData["\<\"pair of 7 and pair of 6 with 2 beats nothing with \
+J9853\"\>"], "Print",
+ CellChangeTimes->{3.7711220619622507`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"57daee92-bc20-4363-9ab0-fe9515cec91d"],
+
+Cell[BoxData["\<\"pair of J and pair of 8 with 5 beats nothing with \
+KT954\"\>"], "Print",
+ CellChangeTimes->{3.771122061965242*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e5ff3caa-6c83-41d1-ab90-e840eba51bb0"],
+
+Cell[BoxData["\<\"nothing with AKT32 beats nothing with KT753\"\>"], "Print",
+ CellChangeTimes->{3.771122061968234*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c10b29e0-3546-4c7b-8b9e-83f391f23342"],
+
+Cell[BoxData["\<\"pair of A with 765 beats nothing with AK543\"\>"], "Print",
+ CellChangeTimes->{3.771122061970229*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5eee9dd7-1ad1-4c70-a80e-08b65fd99de3"],
+
+Cell[BoxData["\<\"pair of 8 with AKQ beats nothing with A7652\"\>"], "Print",
+ CellChangeTimes->{3.771122061971227*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a534316e-706c-4881-a42c-640364043266"],
+
+Cell[BoxData["\<\"pair of 9 with Q62 beats nothing with K9852\"\>"], "Print",
+ CellChangeTimes->{3.771122061973221*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f82e6f57-a1f2-4a66-a6c7-1b9f50d24851"],
+
+Cell[BoxData["\<\"nothing with K7643 beats nothing with QT654\"\>"], "Print",
+ CellChangeTimes->{3.771122061976213*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3b0e0b29-e850-47bf-b654-0f099df3e927"],
+
+Cell[BoxData["\<\"pair of 9 with T42 beats nothing with J9532\"\>"], "Print",
+ CellChangeTimes->{3.771122061978207*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"32903645-9d4d-4164-a82f-e35665c495bf"],
+
+Cell[BoxData["\<\"nothing with T8642 beats nothing with 98743\"\>"], "Print",
+ CellChangeTimes->{3.7711220619802017`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"17f876c2-7019-4904-b35f-c6ac079e906b"],
+
+Cell[BoxData["\<\"flush with 97542 beats nothing with AKQ54\"\>"], "Print",
+ CellChangeTimes->{3.771122061982197*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7f03f23b-88c5-47ea-b3d1-e32c7b66b666"],
+
+Cell[BoxData["\<\"pair of A with KQ2 beats nothing with A9732\"\>"], "Print",
+ CellChangeTimes->{3.7711220619831944`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"bb15a1c9-973f-40fa-b619-9ed04a5e7406"],
+
+Cell[BoxData["\<\"pair of T with 863 beats nothing with AK973\"\>"], "Print",
+ CellChangeTimes->{3.7711220619851875`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3e9e409b-5d60-4a4c-b585-b672176a62ee"],
+
+Cell[BoxData["\<\"pair of 8 and pair of 4 with Q beats pair of A with \
+T63\"\>"], "Print",
+ CellChangeTimes->{3.7711220619901752`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c024a3d0-d53f-47b8-a040-b53c6e42a265"],
+
+Cell[BoxData["\<\"pair of Q with T84 beats nothing with AJT43\"\>"], "Print",
+ CellChangeTimes->{3.7711220619922028`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"8ca81c28-963b-492d-b8ed-8f6196b4c7dc"],
+
+Cell[BoxData["\<\"pair of K with 976 beats nothing with AT432\"\>"], "Print",
+ CellChangeTimes->{3.7711220619941645`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4ea88696-9e76-4442-b15b-18c945ea8472"],
+
+Cell[BoxData["\<\"pair of J with T64 beats pair of 4 with 632\"\>"], "Print",
+ CellChangeTimes->{3.77112206199516*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c33258f8-7be0-4839-a960-63c0d8ab597d"],
+
+Cell[BoxData["\<\"pair of A and pair of T with 8 beats nothing with \
+AJ976\"\>"], "Print",
+ CellChangeTimes->{3.771122061997159*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"adaebbb7-92e4-401b-a055-b563ec155046"],
+
+Cell[BoxData["\<\"pair of J with KQ9 beats nothing with AQT32\"\>"], "Print",
+ CellChangeTimes->{3.771122062000185*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5fb1d96a-4e95-45f3-b471-abf39a26a031"],
+
+Cell[BoxData["\<\"pair of 5 with AJ9 beats nothing with KJT84\"\>"], "Print",
+ CellChangeTimes->{3.7711220620021424`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e24fde33-a72c-4dd7-b366-5948fe89ed38"],
+
+Cell[BoxData["\<\"pair of A with T96 beats pair of K with Q94\"\>"], "Print",
+ CellChangeTimes->{3.7711220620151405`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"86409d50-f3df-4b7c-88f6-efb05bcad564"],
+
+Cell[BoxData["\<\"pair of Q with 976 beats pair of 6 with J95\"\>"], "Print",
+ CellChangeTimes->{3.7711220620171385`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"33ae326f-5a34-4790-9e6b-3b8399513f09"],
+
+Cell[BoxData["\<\"pair of Q and pair of 2 with 8 beats pair of K with \
+943\"\>"], "Print",
+ CellChangeTimes->{3.771122062019131*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"95bf2329-62f5-4375-b5db-62f3a74c14d5"],
+
+Cell[BoxData["\<\"pair of A with 852 beats nothing with KJT82\"\>"], "Print",
+ CellChangeTimes->{3.7711220620221252`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"10e3cf9e-26f0-48e1-a87a-0fff2d7d0932"],
+
+Cell[BoxData["\<\"pair of Q with J94 beats pair of 2 with 763\"\>"], "Print",
+ CellChangeTimes->{3.771122062024084*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5134bc97-a5d4-4193-b318-c9ff6f2dc70b"],
+
+Cell[BoxData["\<\"pair of 5 with J94 beats nothing with AT942\"\>"], "Print",
+ CellChangeTimes->{3.771122062026078*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7c709886-a943-42ff-9e66-e2facb3a1678"],
+
+Cell[BoxData["\<\"pair of A with KJ8 beats nothing with T8652\"\>"], "Print",
+ CellChangeTimes->{3.7711220620281067`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"52b520c6-3969-4ce4-b071-80c34cc0d24e"],
+
+Cell[BoxData["\<\"pair of A with K52 beats nothing with QT863\"\>"], "Print",
+ CellChangeTimes->{3.7711220620300694`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"485ce27f-e4b7-4cb3-b114-f9dfc875b6ba"],
+
+Cell[BoxData["\<\"6-high three of a kind beats pair of 8 with KQ2\"\>"], \
+"Print",
+ CellChangeTimes->{3.77112206203409*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d514a447-426f-43c8-a486-4d6eb25bfca2"],
+
+Cell[BoxData["\<\"pair of 7 with 852 beats nothing with KJ876\"\>"], "Print",
+ CellChangeTimes->{3.771122062036085*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"17641d2b-f13c-49a6-9136-79dcd19fe05b"],
+
+Cell[BoxData["\<\"nothing with AQ852 beats nothing with K9743\"\>"], "Print",
+ CellChangeTimes->{3.7711220620370493`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"154fd307-d5d2-4c8c-9ff9-32b05a75e383"],
+
+Cell[BoxData["\<\"pair of A with T42 beats nothing with QJ954\"\>"], "Print",
+ CellChangeTimes->{3.7711220620390763`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e27a947f-4a26-4a1c-ac9b-10e97ea31a22"],
+
+Cell[BoxData["\<\"pair of A with K54 beats nothing with Q9852\"\>"], "Print",
+ CellChangeTimes->{3.7711220620410385`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"cef61786-e6d6-4432-96ca-f7e8c3a98a30"],
+
+Cell[BoxData["\<\"pair of 7 with JT9 beats pair of 5 with 643\"\>"], "Print",
+ CellChangeTimes->{3.771122062045061*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f6ff85bd-4497-4a07-bdef-b946adce08dd"],
+
+Cell[BoxData["\<\"pair of 2 with QJ9 beats nothing with AKT53\"\>"], "Print",
+ CellChangeTimes->{3.7711220620470552`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f83b2488-6dc5-4331-b2c1-c52c16dc5d99"],
+
+Cell[BoxData["\<\"pair of 8 with KT5 beats pair of 2 with AJ4\"\>"], "Print",
+ CellChangeTimes->{3.771122062049018*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"bd2ec3a5-8f08-49d9-985a-d87162207d77"],
+
+Cell[BoxData["\<\"pair of A with K93 beats pair of 6 with KQ9\"\>"], "Print",
+ CellChangeTimes->{3.771122062051013*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7031459b-a833-4778-a6c2-03506b80de3a"],
+
+Cell[BoxData["\<\"pair of 7 with 953 beats nothing with KT864\"\>"], "Print",
+ CellChangeTimes->{3.7711220620540047`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"56ba0796-cd35-401f-8aef-a0a66cf9a0e6"],
+
+Cell[BoxData["\<\"pair of 6 with AQ4 beats nothing with KT975\"\>"], "Print",
+ CellChangeTimes->{3.771122062056035*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"56dd96ac-b47e-4e22-8ee3-6fd377c11874"],
+
+Cell[BoxData["\<\"pair of J with 972 beats pair of 8 with KT5\"\>"], "Print",
+ CellChangeTimes->{3.7711220620570307`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d91bb937-70b9-48e3-830a-7a4556989fe9"],
+
+Cell[BoxData["\<\"pair of 9 with 742 beats pair of 6 with AQ5\"\>"], "Print",
+ CellChangeTimes->{3.7711220620589905`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"6359f0eb-4052-4220-a29d-928ce6b970f8"],
+
+Cell[BoxData["\<\"pair of J with Q76 beats nothing with Q7642\"\>"], "Print",
+ CellChangeTimes->{3.771122062061*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"33fbf358-8e83-4aff-b0c3-897fd1010017"],
+
+Cell[BoxData["\<\"nothing with KJT82 beats nothing with QJ752\"\>"], "Print",
+ CellChangeTimes->{3.7711220620639772`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"02e34ec1-fa86-4d89-9dfe-6f847063cff3"],
+
+Cell[BoxData["\<\"pair of J with A95 beats nothing with K6542\"\>"], "Print",
+ CellChangeTimes->{3.7711220620659704`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"6e323199-ea1f-4b6e-808b-fb9ab4bfd428"],
+
+Cell[BoxData["\<\"pair of K with Q92 beats nothing with T9743\"\>"], "Print",
+ CellChangeTimes->{3.7711220620679665`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3b60cf2c-be84-46a1-9f51-1698f1e6182f"],
+
+Cell[BoxData["\<\"pair of 2 with A65 beats nothing with T8543\"\>"], "Print",
+ CellChangeTimes->{3.7711220620699615`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"8fb6b91a-3f3a-466b-b72e-85702ab5e975"],
+
+Cell[BoxData["\<\"pair of 7 with K85 beats nothing with KQT76\"\>"], "Print",
+ CellChangeTimes->{3.7711220620719566`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"bbd61238-0589-43c1-936d-7090fff07847"],
+
+Cell[BoxData["\<\"pair of K with A75 beats pair of 6 with T53\"\>"], "Print",
+ CellChangeTimes->{3.771122062075944*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4581ee8c-2354-4a89-98f6-30d1f79eda9e"],
+
+Cell[BoxData["\<\"pair of 4 with A87 beats nothing with QT753\"\>"], "Print",
+ CellChangeTimes->{3.7711220620779405`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"37044ea4-2523-410d-84c9-123633683e6b"],
+
+Cell[BoxData["\<\"pair of K with T98 beats nothing with AJ652\"\>"], "Print",
+ CellChangeTimes->{3.771122062079934*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"647c9f11-e8bb-4c89-8566-c92d2285c4de"],
+
+Cell[BoxData["\<\"pair of A with Q62 beats pair of K with T73\"\>"], "Print",
+ CellChangeTimes->{3.771122062081928*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c17bcd9f-cd21-4c7f-85d6-fe339aebf6f2"],
+
+Cell[BoxData["\<\"nothing with AQT95 beats nothing with KT432\"\>"], "Print",
+ CellChangeTimes->{3.7711220620839567`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"66798cee-2dd2-4817-b809-1077dc763d16"],
+
+Cell[BoxData["\<\"pair of T with Q95 beats nothing with AQ952\"\>"], "Print",
+ CellChangeTimes->{3.7711220620859594`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"6155971a-04c5-441d-8db7-f448e961ede2"],
+
+Cell[BoxData["\<\"pair of A with Q75 beats pair of 7 with T92\"\>"], "Print",
+ CellChangeTimes->{3.7711220620999184`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7a4ab188-5080-4ab2-a85b-a8fe30aaf1c8"],
+
+Cell[BoxData["\<\"pair of 2 with T74 beats nothing with QT975\"\>"], "Print",
+ CellChangeTimes->{3.771122062101876*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d92ccbe1-abec-4add-bf74-a5b4341550a9"],
+
+Cell[BoxData["\<\"nothing with AKJ63 beats nothing with KT743\"\>"], "Print",
+ CellChangeTimes->{3.7711220621038704`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e0185ac7-7fab-47c1-b083-b309c480ec3f"],
+
+Cell[BoxData["\<\"nothing with AK874 beats nothing with T9653\"\>"], "Print",
+ CellChangeTimes->{3.7711220621058645`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3f5f2dc4-b808-4000-8792-aa56d43b7233"],
+
+Cell[BoxData["\<\"pair of T with J42 beats pair of 3 with AK7\"\>"], "Print",
+ CellChangeTimes->{3.77112206210786*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9fbd2ef2-4971-42bb-99eb-774242677c1e"],
+
+Cell[BoxData["\<\"pair of 4 with A65 beats nothing with KJ632\"\>"], "Print",
+ CellChangeTimes->{3.7711220621099052`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"363a1d85-ea00-417e-9a65-91299af35851"],
+
+Cell[BoxData["\<\"pair of 7 with K92 beats pair of 5 with J63\"\>"], "Print",
+ CellChangeTimes->{3.7711220621128473`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9a9c8ecc-bdc8-4def-b9f7-41ac9227afe7"],
+
+Cell[BoxData["\<\"nothing with QT943 beats nothing with JT965\"\>"], "Print",
+ CellChangeTimes->{3.7711220621148787`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2bbc4b08-78f5-4e73-b86c-f1422a382ea3"],
+
+Cell[BoxData["\<\"pair of 6 and pair of 5 with 7 beats nothing with \
+A9764\"\>"], "Print",
+ CellChangeTimes->{3.771122062116873*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"615dafc5-85b6-4bee-8b71-fb3e4c59f89a"],
+
+Cell[BoxData["\<\"pair of 2 with AK7 beats nothing with 97432\"\>"], "Print",
+ CellChangeTimes->{3.771122062118869*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"b0e9344e-498a-4ab4-94ae-51073b2b85ca"],
+
+Cell[BoxData["\<\"pair of 4 with AT5 beats nothing with T9765\"\>"], "Print",
+ CellChangeTimes->{3.771122062120825*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0c570fab-a98e-4108-bea6-af55a9897e11"],
+
+Cell[BoxData["\<\"pair of 4 with 853 beats pair of 3 with A65\"\>"], "Print",
+ CellChangeTimes->{3.7711220621228194`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"cda4da3f-656e-4839-baa6-817f586f388c"],
+
+Cell[BoxData["\<\"nothing with AQ943 beats nothing with Q9854\"\>"], "Print",
+ CellChangeTimes->{3.7711220621248536`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"67f0f0e7-d3df-43df-accc-31053b1f3611"],
+
+Cell[BoxData["\<\"nothing with AJT65 beats nothing with QJ987\"\>"], "Print",
+ CellChangeTimes->{3.7711220621268463`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"75034093-1741-4356-998a-39fa72c61645"],
+
+Cell[BoxData["\<\"6-high straight beats pair of 3 with QJ4\"\>"], "Print",
+ CellChangeTimes->{3.771122062128851*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"8605e0fd-efe2-40e7-995c-4d7eb239b9bd"],
+
+Cell[BoxData["\<\"pair of 8 with A73 beats nothing with Q9752\"\>"], "Print",
+ CellChangeTimes->{3.7711220621308374`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"cdca95d5-5212-4d76-ad1d-f7532c48881e"],
+
+Cell[BoxData["\<\"pair of 2 with KQ3 beats nothing with QT743\"\>"], "Print",
+ CellChangeTimes->{3.771122062132792*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"81b48dd6-7bfd-4378-ab0c-e7c8fcccee54"],
+
+Cell[BoxData["\<\"pair of Q with 743 beats pair of T with A85\"\>"], "Print",
+ CellChangeTimes->{3.7711220621348305`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d8bd30f3-7629-46fd-a783-490cec398053"],
+
+Cell[BoxData["\<\"pair of T with J92 beats pair of 3 with QT7\"\>"], "Print",
+ CellChangeTimes->{3.7711220621367817`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"39578f68-3233-4bb2-b0fc-5e2cf513d359"],
+
+Cell[BoxData["\<\"pair of 4 with K72 beats nothing with KQJ73\"\>"], "Print",
+ CellChangeTimes->{3.771122062138777*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5ed99cba-9e28-4968-9a4b-8b80098bfc53"],
+
+Cell[BoxData["\<\"nothing with AJ943 beats nothing with QJ864\"\>"], "Print",
+ CellChangeTimes->{3.771122062140772*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f5a51f6b-6dbc-4179-8876-efb19d54b030"],
+
+Cell[BoxData["\<\"pair of 6 with A87 beats nothing with AKT53\"\>"], "Print",
+ CellChangeTimes->{3.7711220621427665`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"48a1cfec-e9ab-4483-8c94-62969949288c"],
+
+Cell[BoxData["\<\"pair of 8 with KT3 beats pair of 4 with 965\"\>"], "Print",
+ CellChangeTimes->{3.7711220621447997`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d6c4bc3b-4024-4a54-bf0f-0247e8bca5c1"],
+
+Cell[BoxData["\<\"pair of 4 with 975 beats pair of 2 with KJ9\"\>"], "Print",
+ CellChangeTimes->{3.7711220621467943`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c3ad9e53-6af8-41c8-a784-ae6e38add4b6"],
+
+Cell[BoxData["\<\"pair of 9 with JT5 beats nothing with KJ765\"\>"], "Print",
+ CellChangeTimes->{3.7711220621487894`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"da3caa41-40cc-45ea-aaa3-ce7ece46187e"],
+
+Cell[BoxData["\<\"2-high three of a kind beats nothing with KT843\"\>"], \
+"Print",
+ CellChangeTimes->{3.7711220621507826`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"198cac38-e7aa-457b-9ec7-6cfef59c2925"],
+
+Cell[BoxData["\<\"pair of J with AQ3 beats nothing with Q9872\"\>"], "Print",
+ CellChangeTimes->{3.771122062152778*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"8fc1aea5-16d0-4562-a432-556062f450fc"],
+
+Cell[BoxData["\<\"nothing with K7532 beats nothing with Q9876\"\>"], "Print",
+ CellChangeTimes->{3.77112206216475*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"36105d87-d7e7-4151-8c86-c6ce4ad00ba0"],
+
+Cell[BoxData["\<\"pair of K with A82 beats nothing with KJT76\"\>"], "Print",
+ CellChangeTimes->{3.7711220621676984`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9e45b894-dd56-4797-9cc9-be8010ad4ee8"],
+
+Cell[BoxData["\<\"pair of 3 with KQ2 beats nothing with QJT85\"\>"], "Print",
+ CellChangeTimes->{3.771122062169693*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a10a7168-0078-423e-8cf6-e9a722716b16"],
+
+Cell[BoxData["\<\"K-high straight beats pair of 8 with K92\"\>"], "Print",
+ CellChangeTimes->{3.771122062171687*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"62d62860-297f-4218-a1e6-5301832e0b8a"],
+
+Cell[BoxData["\<\"pair of J with A73 beats nothing with QJ985\"\>"], "Print",
+ CellChangeTimes->{3.771122062173682*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"64acf62b-2aef-4239-a7f4-fe4df4fcbb05"],
+
+Cell[BoxData["\<\"nothing with AJ652 beats nothing with J8753\"\>"], "Print",
+ CellChangeTimes->{3.7711220621786695`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1d336c38-5419-41a9-b1ce-838ff5612a1c"],
+
+Cell[BoxData["\<\"pair of 8 with T95 beats nothing with AJ753\"\>"], "Print",
+ CellChangeTimes->{3.771122062180664*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c62b5808-371c-438b-816e-3373bbccb75c"],
+
+Cell[BoxData["\<\"pair of 4 with J87 beats nothing with QJ654\"\>"], "Print",
+ CellChangeTimes->{3.771122062182658*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"6c49c2b4-e6ee-4819-b831-788ef8aedb35"],
+
+Cell[BoxData["\<\"pair of 5 with 876 beats nothing with KJT94\"\>"], "Print",
+ CellChangeTimes->{3.7711220621856513`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1cf34de2-1adb-4201-b922-8f856a8e935b"],
+
+Cell[BoxData["\<\"nothing with AT942 beats nothing with QJ863\"\>"], "Print",
+ CellChangeTimes->{3.7711220621876464`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"fdca150a-d184-4b80-be63-3f58d05a26d1"],
+
+Cell[BoxData["\<\"nothing with AJ532 beats nothing with Q7542\"\>"], "Print",
+ CellChangeTimes->{3.771122062189642*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"bc3b5c2f-8760-45bc-ba4b-5bf3ce0025f1"],
+
+Cell[BoxData["\<\"pair of Q and pair of 7 with 6 beats pair of 2 with \
+J87\"\>"], "Print",
+ CellChangeTimes->{3.7711220621916685`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f70555cf-5dfd-442c-ab99-22555498b17b"],
+
+Cell[BoxData["\<\"2-high three of a kind beats pair of J with 952\"\>"], \
+"Print",
+ CellChangeTimes->{3.771122062193664*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"16f0a563-c986-4621-8a77-c99ca49659cc"],
+
+Cell[BoxData["\<\"pair of 7 with 985 beats pair of 6 with J98\"\>"], "Print",
+ CellChangeTimes->{3.7711220621956244`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0629814a-9268-4df9-8417-19df2f6296c4"],
+
+Cell[BoxData["\<\"pair of 5 with KT6 beats nothing with AT863\"\>"], "Print",
+ CellChangeTimes->{3.7711220621976204`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"723d72c0-d140-4530-b324-ee447b22b9d4"],
+
+Cell[BoxData["\<\"nothing with AKT94 beats nothing with 97654\"\>"], "Print",
+ CellChangeTimes->{3.7711220622006474`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2bfb8e4b-186e-4fcb-8c45-5142d24b68c7"],
+
+Cell[BoxData["\<\"pair of T with Q75 beats pair of 3 with K76\"\>"], "Print",
+ CellChangeTimes->{3.7711220622026396`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e391338d-6b25-4b33-8d59-286cbf65cd1f"],
+
+Cell[BoxData["\<\"pair of 8 and pair of 4 with 2 beats pair of 9 with \
+AT7\"\>"], "Print",
+ CellChangeTimes->{3.7711220622046347`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"87ce6e1d-81ad-4677-8c32-7897f5552d32"],
+
+Cell[BoxData["\<\"pair of 9 with 842 beats nothing with A7653\"\>"], "Print",
+ CellChangeTimes->{3.7711220622056317`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"27d0063d-e912-41a7-8563-006c930347d9"],
+
+Cell[BoxData["\<\"pair of 9 and pair of 4 with T beats nothing with \
+Q9876\"\>"], "Print",
+ CellChangeTimes->{3.771122062208629*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a2958b2f-af93-4923-93e6-69a1a7aa9283"],
+
+Cell[BoxData["\<\"pair of A with 842 beats nothing with AT872\"\>"], "Print",
+ CellChangeTimes->{3.7711220622105846`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4e5b0b0c-dcab-4dae-9ac0-c42217cf8a6a"],
+
+Cell[BoxData["\<\"pair of J with A65 beats nothing with AQJT2\"\>"], "Print",
+ CellChangeTimes->{3.7711220622125797`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4ce0adb0-f6c2-4121-b93e-bd29cd370552"],
+
+Cell[BoxData["\<\"pair of A with T85 beats nothing with AQT65\"\>"], "Print",
+ CellChangeTimes->{3.771122062214576*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"15b687f1-65ff-458b-b6c4-a47f776ce731"],
+
+Cell[BoxData["\<\"pair of 4 with K87 beats nothing with T9632\"\>"], "Print",
+ CellChangeTimes->{3.771122062218562*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2d3ae537-a469-4849-914b-fe2e4ec180e2"],
+
+Cell[BoxData["\<\"pair of Q with K43 beats pair of 8 with T73\"\>"], "Print",
+ CellChangeTimes->{3.7711220622205915`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2aab2435-22eb-4b19-ad36-14eed631e70b"],
+
+Cell[BoxData["\<\"pair of J with AK3 beats nothing with KT942\"\>"], "Print",
+ CellChangeTimes->{3.7711220622225857`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e0be5183-f251-4b5f-b3fd-067afa7404c5"],
+
+Cell[BoxData["\<\"pair of Q with KT2 beats nothing with AQ832\"\>"], "Print",
+ CellChangeTimes->{3.7711220622245827`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"376b49fe-43da-45f6-85e4-11702f24c876"],
+
+Cell[BoxData["\<\"pair of 9 with QJT beats nothing with J7532\"\>"], "Print",
+ CellChangeTimes->{3.7711220622255707`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"2464a2e2-a2a3-4135-bc8a-3ad2f0b38e54"],
+
+Cell[BoxData["\<\"pair of 3 with 642 beats pair of 2 with QT5\"\>"], "Print",
+ CellChangeTimes->{3.7711220622275395`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5b80724f-2b49-4202-ba5d-1380b2fdcf81"],
+
+Cell[BoxData["\<\"pair of 6 and pair of 2 with J beats nothing with \
+AKQ74\"\>"], "Print",
+ CellChangeTimes->{3.771122062230569*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0b739cb3-6610-4524-8885-8b324dfcfee0"],
+
+Cell[BoxData["\<\"pair of 9 and pair of 6 with 4 beats nothing with \
+AK873\"\>"], "Print",
+ CellChangeTimes->{3.7711220622325664`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a70799f0-00a6-4d91-a454-dd3ba815e36f"],
+
+Cell[BoxData["\<\"pair of J with AT6 beats nothing with AQ653\"\>"], "Print",
+ CellChangeTimes->{3.771122062234558*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"a66a3be5-f471-452c-a3a6-a81b70643063"],
+
+Cell[BoxData["\<\"J-high three of a kind beats nothing with QJ843\"\>"], \
+"Print",
+ CellChangeTimes->{3.7711220622365527`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0b312126-8786-4bef-94c4-6bd476ee1dee"],
+
+Cell[BoxData["\<\"pair of 5 with AK2 beats nothing with AQJ72\"\>"], "Print",
+ CellChangeTimes->{3.7711220622385583`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"763e4f98-8274-455b-acf6-b18947418242"],
+
+Cell[BoxData["\<\"pair of 8 with QJT beats pair of 5 with A86\"\>"], "Print",
+ CellChangeTimes->{3.7711220622405057`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c614409e-94ec-4ad9-a44d-c1497a1a91c2"],
+
+Cell[BoxData["\<\"pair of J with Q83 beats pair of 3 with 654\"\>"], "Print",
+ CellChangeTimes->{3.771122062242498*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"8e478537-3e0f-4ea7-98cb-675d2573fe75"],
+
+Cell[BoxData["\<\"pair of 4 with A65 beats nothing with J8753\"\>"], "Print",
+ CellChangeTimes->{3.7711220622444925`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"356a3a65-43e5-4db6-9384-edfb3f783d49"],
+
+Cell[BoxData["\<\"nothing with AJ832 beats nothing with KQ743\"\>"], "Print",
+ CellChangeTimes->{3.771122062246493*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"956b6185-a700-42ac-96ac-d91a22bd0cb9"],
+
+Cell[BoxData["\<\"nothing with K8652 beats nothing with Q8732\"\>"], "Print",
+ CellChangeTimes->{3.771122062248483*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9d505921-548b-4325-99ca-86200b2b2d86"],
+
+Cell[BoxData["\<\"nothing with AKQ72 beats nothing with QT864\"\>"], "Print",
+ CellChangeTimes->{3.771122062250477*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ba14da4c-0af6-4c52-b83e-cd1b72fcb791"],
+
+Cell[BoxData["\<\"pair of 5 with J63 beats nothing with KJT53\"\>"], "Print",
+ CellChangeTimes->{3.771122062252473*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9266285b-34b2-40ec-9b15-58bce1fed7a1"],
+
+Cell[BoxData["\<\"pair of 4 with QJ3 beats nothing with A9762\"\>"], "Print",
+ CellChangeTimes->{3.771122062254468*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f6a83b6c-e7db-4b9f-b753-baf61f74eef1"],
+
+Cell[BoxData["\<\"nothing with AKJT9 beats nothing with JT543\"\>"], "Print",
+ CellChangeTimes->{3.771122062256463*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5eeabb1a-87c7-46a1-bf5a-fbc16f9a00cd"],
+
+Cell[BoxData["\<\"pair of 4 with A97 beats nothing with KQ972\"\>"], "Print",
+ CellChangeTimes->{3.7711220622594995`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5321aec4-5608-4f03-9619-63ff3d4df5b1"],
+
+Cell[BoxData["\<\"8-high three of a kind beats pair of 5 with KJ2\"\>"], \
+"Print",
+ CellChangeTimes->{3.77112206226149*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7f006dad-e752-468b-ae34-b6de3212854d"],
+
+Cell[BoxData["\<\"pair of J and pair of 8 with 7 beats pair of 4 with \
+A96\"\>"], "Print",
+ CellChangeTimes->{3.77112206226348*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f942d3b6-eb9d-4a78-98a9-b7d63fdd3b2f"],
+
+Cell[BoxData["\<\"pair of 8 with Q62 beats nothing with AQT95\"\>"], "Print",
+ CellChangeTimes->{3.7711220622654753`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"db7c2b8f-153f-43c0-aabf-04f280bdd332"],
+
+Cell[BoxData["\<\"pair of Q and pair of 3 with J beats nothing with \
+K8754\"\>"], "Print",
+ CellChangeTimes->{3.771122062267478*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9f90d66f-31c4-4324-a94c-5722b7ac45d1"],
+
+Cell[BoxData["\<\"pair of Q with 954 beats nothing with AKJ43\"\>"], "Print",
+ CellChangeTimes->{3.7711220622694683`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5e75d27a-2093-4d24-bc79-d3875ae40a5e"],
+
+Cell[BoxData["\<\"pair of 2 with A93 beats nothing with KT976\"\>"], "Print",
+ CellChangeTimes->{3.77112206227146*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"6da5b3a9-b34e-4668-ba6d-e0904f2675df"],
+
+Cell[BoxData["\<\"pair of 7 with AQ6 beats nothing with AJT62\"\>"], "Print",
+ CellChangeTimes->{3.7711220622734537`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3b128566-23ee-4fcd-9fdd-63f215ed5d09"],
+
+Cell[BoxData["\<\"nothing with AJ652 beats nothing with QJT43\"\>"], "Print",
+ CellChangeTimes->{3.7711220622754493`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"edd96fce-be95-4f2a-9a48-356c27d511d7"],
+
+Cell[BoxData["\<\"pair of T with 842 beats nothing with KJ962\"\>"], "Print",
+ CellChangeTimes->{3.771122062277447*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ec53244a-56b4-4af7-a1d1-0aa89001c528"],
+
+Cell[BoxData["\<\"pair of Q and pair of 2 with 9 beats nothing with \
+QJ843\"\>"], "Print",
+ CellChangeTimes->{3.7711220622794027`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"12204151-fb87-4222-b221-079da140c230"],
+
+Cell[BoxData["\<\"nothing with T8543 beats nothing with 87642\"\>"], "Print",
+ CellChangeTimes->{3.7711220622824316`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"bfa9756e-4f86-4787-a2dd-a4a81f7e0495"],
+
+Cell[BoxData["\<\"pair of K with A94 beats nothing with J7654\"\>"], "Print",
+ CellChangeTimes->{3.7711220622954097`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ddd5a467-a4f4-4480-8ddf-7f1c81f550dd"],
+
+Cell[BoxData["\<\"pair of J and pair of 9 with A beats pair of 8 with \
+KQ3\"\>"], "Print",
+ CellChangeTimes->{3.7711220622973523`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7e7889f8-b910-495c-9694-3e508e934be2"],
+
+Cell[BoxData["\<\"nothing with AJ832 beats nothing with 98754\"\>"], "Print",
+ CellChangeTimes->{3.7711220623003454`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"aef4c643-e1f0-4121-8d40-e5cdbafdc341"],
+
+Cell[BoxData["\<\"pair of J with 976 beats pair of 9 with 874\"\>"], "Print",
+ CellChangeTimes->{3.7711220623023777`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f02684fc-d9cf-467b-8d4a-7326b909c607"],
+
+Cell[BoxData["\<\"nothing with AKJ76 beats nothing with T7652\"\>"], "Print",
+ CellChangeTimes->{3.771122062304339*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"dc642133-4bda-4f60-9f58-21bc53818c46"],
+
+Cell[BoxData["\<\"nothing with AK843 beats nothing with QJT73\"\>"], "Print",
+ CellChangeTimes->{3.7711220623063526`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3307622e-ef62-4d43-87f7-d205bd9dbe3f"],
+
+Cell[BoxData["\<\"pair of 7 with J96 beats pair of 3 with A64\"\>"], "Print",
+ CellChangeTimes->{3.771122062308324*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e81c11cd-a150-4a84-a5e8-2e2f168f5798"],
+
+Cell[BoxData["\<\"pair of 4 and pair of 2 with 8 beats pair of Q with \
+K85\"\>"], "Print",
+ CellChangeTimes->{3.771122062310318*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"474e0dd1-035c-44a6-a3a2-2efad77a0a79"],
+
+Cell[BoxData["\<\"pair of Q and pair of 3 with 6 beats pair of 2 with \
+965\"\>"], "Print",
+ CellChangeTimes->{3.771122062312312*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c2fca9ce-8308-4d94-bafb-ec5045db2456"],
+
+Cell[BoxData["\<\"pair of 2 with J83 beats nothing with A7652\"\>"], "Print",
+ CellChangeTimes->{3.771122062314313*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"8462faec-8fe3-4958-bbab-e427d8611099"],
+
+Cell[BoxData["\<\"pair of 9 with Q54 beats nothing with K7642\"\>"], "Print",
+ CellChangeTimes->{3.7711220623163023`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7f80d565-1fe3-46ff-b451-0016117a5e3d"],
+
+Cell[BoxData["\<\"pair of 2 with J96 beats nothing with QJT65\"\>"], "Print",
+ CellChangeTimes->{3.7711220623182955`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"54751c2e-64be-49d0-b4a7-1b5f9363b042"],
+
+Cell[BoxData["\<\"pair of 8 with AK7 beats pair of 6 with QJ3\"\>"], "Print",
+ CellChangeTimes->{3.7711220623202915`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"031e3fc3-e805-4cd1-8368-0540bd8b2390"],
+
+Cell[BoxData["\<\"pair of J with 842 beats pair of 6 with A85\"\>"], "Print",
+ CellChangeTimes->{3.7711220623233166`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e9bb9df0-e02e-4d3f-8196-3185ef13f23a"],
+
+Cell[BoxData["\<\"pair of 9 with A53 beats nothing with AJ732\"\>"], "Print",
+ CellChangeTimes->{3.7711220623253117`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"fcea0d28-5d55-4067-95a1-c25ef15ca26a"],
+
+Cell[BoxData["\<\"pair of 9 with QJ3 beats pair of 8 with K54\"\>"], "Print",
+ CellChangeTimes->{3.771122062327306*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5733cf0a-07d5-408f-a9b3-9e4c1027c881"],
+
+Cell[BoxData["\<\"pair of T with AKQ beats nothing with 87642\"\>"], "Print",
+ CellChangeTimes->{3.771122062330298*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"44ed8401-75e7-4656-a956-364c1a324382"],
+
+Cell[BoxData["\<\"nothing with Q9543 beats nothing with J7543\"\>"], "Print",
+ CellChangeTimes->{3.7711220623322916`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1d8498fc-d9ed-4050-9791-b37d12f3a6a4"],
+
+Cell[BoxData["\<\"pair of K with 752 beats pair of Q with A76\"\>"], "Print",
+ CellChangeTimes->{3.7711220623342876`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"47b55e06-f8c3-43fc-83c0-db3ccd7c3d72"],
+
+Cell[BoxData["\<\"pair of 5 with A62 beats pair of 2 with T97\"\>"], "Print",
+ CellChangeTimes->{3.7711220623352675`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e03b91e8-7460-4340-bbbd-636a01dc1d03"],
+
+Cell[BoxData["\<\"pair of 2 with Q87 beats nothing with J8752\"\>"], "Print",
+ CellChangeTimes->{3.771122062337246*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f16208fc-e274-4da4-9765-5b5b6a9f38d7"],
+
+Cell[BoxData["\<\"nothing with A9732 beats nothing with JT942\"\>"], "Print",
+ CellChangeTimes->{3.7711220623392415`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"b68551aa-e67f-460d-99c4-9475208a02e4"],
+
+Cell[BoxData["\<\"pair of T with J43 beats pair of 5 with Q42\"\>"], "Print",
+ CellChangeTimes->{3.7711220623422337`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e5090727-6efb-4466-b81f-d265b405d43e"],
+
+Cell[BoxData["\<\"pair of J with 986 beats nothing with AQT63\"\>"], "Print",
+ CellChangeTimes->{3.7711220623442283`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4ffc605c-555d-4be3-a7f8-657d11a0c6bd"],
+
+Cell[BoxData["\<\"nothing with KT873 beats nothing with 98743\"\>"], "Print",
+ CellChangeTimes->{3.771122062347225*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"da980187-dc32-4099-9ce5-389ac989a629"],
+
+Cell[BoxData["\<\"pair of 5 with 843 beats pair of 3 with A87\"\>"], "Print",
+ CellChangeTimes->{3.7711220623492146`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"55c58c9b-1b21-4a68-8f1d-4db6178bfa97"],
+
+Cell[BoxData["\<\"pair of A with T73 beats pair of 6 with QJ7\"\>"], "Print",
+ CellChangeTimes->{3.7711220623512096`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c6f9de04-5cc6-4506-a998-fabb3225d603"],
+
+Cell[BoxData["\<\"pair of 7 with T65 beats pair of 2 with AJ5\"\>"], "Print",
+ CellChangeTimes->{3.7711220623532043`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"952a6360-435d-4499-9dd7-331ecb943b34"],
+
+Cell[BoxData["\<\"nothing with KT762 beats nothing with QT982\"\>"], "Print",
+ CellChangeTimes->{3.771122062355199*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"fa719712-1967-42dc-8155-d86cd68ec763"],
+
+Cell[BoxData["\<\"J-high three of a kind beats nothing with AK863\"\>"], \
+"Print",
+ CellChangeTimes->{3.771122062357193*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7ff786cc-ca2c-4cbd-974e-76dda2c40198"],
+
+Cell[BoxData["\<\"nothing with KJ954 beats nothing with Q7543\"\>"], "Print",
+ CellChangeTimes->{3.7711220623592243`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"cec86e48-90df-40d8-baac-1858fa1b9dfe"],
+
+Cell[BoxData["\<\"nothing with AQJ83 beats nothing with KQT76\"\>"], "Print",
+ CellChangeTimes->{3.7711220623612223`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c29260d4-8601-451e-816a-ad873153732b"],
+
+Cell[BoxData["\<\"pair of 7 with Q82 beats nothing with AKT62\"\>"], "Print",
+ CellChangeTimes->{3.771122062364212*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"24eb7926-2f9e-4233-99ce-70ae36ae0756"],
+
+Cell[BoxData["\<\"pair of 7 with K65 beats nothing with A8753\"\>"], "Print",
+ CellChangeTimes->{3.7711220623661685`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0d2522e7-c415-43a5-8f42-478344f86269"],
+
+Cell[BoxData["\<\"nothing with AKJ43 beats nothing with T9875\"\>"], "Print",
+ CellChangeTimes->{3.7711220623681636`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1ca1c671-537d-4926-b80c-e8d2b68bd3a9"],
+
+Cell[BoxData["\<\"nothing with AJT74 beats nothing with Q9853\"\>"], "Print",
+ CellChangeTimes->{3.771122062371194*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9de240b7-a109-4e54-8990-bccc16711b99"],
+
+Cell[BoxData["\<\"pair of 9 with 863 beats nothing with AKQJ5\"\>"], "Print",
+ CellChangeTimes->{3.7711220623731947`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f8a1e57b-1c47-46e0-b5f6-560ee91c5233"],
+
+Cell[BoxData["\<\"pair of 4 with AQ5 beats nothing with KQJ96\"\>"], "Print",
+ CellChangeTimes->{3.771122062375182*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f6e9faae-ab8b-4f25-a980-667ee2b3dbb6"],
+
+Cell[BoxData["\<\"pair of 6 with A54 beats nothing with T9753\"\>"], "Print",
+ CellChangeTimes->{3.7711220623771772`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3fab200c-b445-49f3-8434-f8b25f503302"],
+
+Cell[BoxData["\<\"pair of 2 with J96 beats nothing with KJ965\"\>"], "Print",
+ CellChangeTimes->{3.7711220623791847`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"292f8a91-1698-4527-823a-31eca818bc44"],
+
+Cell[BoxData["\<\"pair of 7 with AQ4 beats nothing with AT654\"\>"], "Print",
+ CellChangeTimes->{3.7711220623811283`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e4dd7cc6-579f-4928-8ed2-892724eb52c0"],
+
+Cell[BoxData["\<\"pair of 4 with J83 beats nothing with KQJT7\"\>"], "Print",
+ CellChangeTimes->{3.7711220623831234`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c75e09c4-3e60-4329-84e6-e7a82c77655c"],
+
+Cell[BoxData["\<\"pair of T with Q76 beats nothing with KT652\"\>"], "Print",
+ CellChangeTimes->{3.7711220623861523`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"dbfd7a7b-0ff7-401e-a4a3-e39d5a113927"],
+
+Cell[BoxData["\<\"pair of 7 with 986 beats nothing with AKQJ5\"\>"], "Print",
+ CellChangeTimes->{3.7711220623881474`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"39a058da-a0de-4eda-9a4f-7e2c44d6fee3"],
+
+Cell[BoxData["\<\"nothing with K8753 beats nothing with Q9852\"\>"], "Print",
+ CellChangeTimes->{3.77112206240211*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4f623287-1401-473a-b169-2f258a280162"],
+
+Cell[BoxData["\<\"pair of 6 with QT2 beats pair of 3 with AK4\"\>"], "Print",
+ CellChangeTimes->{3.7711220624060965`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"d10771a4-8f54-44d1-a336-15d0f7640721"],
+
+Cell[BoxData["\<\"3-high three of a kind beats nothing with QJ752\"\>"], \
+"Print",
+ CellChangeTimes->{3.7711220624080915`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"79be7f9d-31c7-4c91-812a-3ba2d266bd6c"],
+
+Cell[BoxData["\<\"pair of 5 with A84 beats pair of 3 with Q42\"\>"], "Print",
+ CellChangeTimes->{3.7711220624110827`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ff6729b2-9e7e-46a2-b97e-aca88490cb06"],
+
+Cell[BoxData["\<\"pair of A with QT7 beats nothing with AT862\"\>"], "Print",
+ CellChangeTimes->{3.771122062413042*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c7279ab9-1afd-4ee5-b552-12fbbe7fbcee"],
+
+Cell[BoxData["\<\"pair of 2 with Q63 beats nothing with AT765\"\>"], "Print",
+ CellChangeTimes->{3.7711220624160347`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ffe8bf3c-e557-48c6-b6a2-a3f250bd2616"],
+
+Cell[BoxData["\<\"pair of 8 with A62 beats nothing with AQJT8\"\>"], "Print",
+ CellChangeTimes->{3.77112206241803*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3fecda70-761a-4314-8154-a6d65b45f12f"],
+
+Cell[BoxData["\<\"pair of 9 with QT2 beats nothing with T8532\"\>"], "Print",
+ CellChangeTimes->{3.7711220624200234`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"7dd70632-b503-40d3-b5e1-6f1b2437172c"],
+
+Cell[BoxData["\<\"pair of K with 832 beats pair of T with J64\"\>"], "Print",
+ CellChangeTimes->{3.771122062422018*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e26541bb-0fe1-4214-b9cb-45ece77393a1"],
+
+Cell[BoxData["\<\"pair of 9 with AKQ beats nothing with A8654\"\>"], "Print",
+ CellChangeTimes->{3.771122062424013*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c1b42e3f-2381-449b-93e1-b40752b9b74d"],
+
+Cell[BoxData["\<\"pair of A with 932 beats pair of 2 with KJ3\"\>"], "Print",
+ CellChangeTimes->{3.771122062429*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"afce562e-0298-4ccc-b322-28e1fe5c6d70"],
+
+Cell[BoxData["\<\"pair of 2 with 753 beats nothing with AKQ93\"\>"], "Print",
+ CellChangeTimes->{3.771122062430994*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"1ee8618c-70bc-4eab-b37e-ba7c32c0e00c"],
+
+Cell[BoxData["\<\"pair of 6 with K73 beats nothing with KJ652\"\>"], "Print",
+ CellChangeTimes->{3.7711220624330244`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5de838a4-a0d5-4820-83ed-d2d134da904f"],
+
+Cell[BoxData["\<\"pair of A with 972 beats nothing with QJ732\"\>"], "Print",
+ CellChangeTimes->{3.771122062434984*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"f31d2fab-b452-46f5-9bb0-88cfd573be01"],
+
+Cell[BoxData["\<\"pair of T with 762 beats nothing with J8542\"\>"], "Print",
+ CellChangeTimes->{3.7711220624369793`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"eb07ba10-696a-4e46-b88d-045b4cfe11f1"],
+
+Cell[BoxData["\<\"pair of Q with KJ8 beats nothing with KJ543\"\>"], "Print",
+ CellChangeTimes->{3.7711220624389734`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4064e751-d326-4afc-b724-bbe4300ba107"],
+
+Cell[BoxData["\<\"pair of 9 with KT6 beats pair of 2 with QJ4\"\>"], "Print",
+ CellChangeTimes->{3.771122062442004*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5663dbea-6ddd-439f-9db8-7decf7df72f1"],
+
+Cell[BoxData["\<\"pair of K and pair of 9 with 2 beats nothing with \
+KJT72\"\>"], "Print",
+ CellChangeTimes->{3.7711220624439983`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c7298437-8f6b-4ce9-bd85-f6d9e7d30d11"],
+
+Cell[BoxData["\<\"pair of 2 with T84 beats nothing with QT752\"\>"], "Print",
+ CellChangeTimes->{3.771122062447*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"35eee74c-3369-4bc9-a2c3-4a2327f680b2"],
+
+Cell[BoxData["\<\"pair of 8 with 942 beats pair of 7 with Q63\"\>"], "Print",
+ CellChangeTimes->{3.7711220624499793`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5899dd8d-d3c5-4a24-8967-f7d8f23862a1"],
+
+Cell[BoxData["\<\"nothing with J8632 beats nothing with 98732\"\>"], "Print",
+ CellChangeTimes->{3.771122062451972*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"83ec81f2-1ec8-4637-ab94-fed88e2c6c98"],
+
+Cell[BoxData["\<\"pair of 3 with 974 beats nothing with JT853\"\>"], "Print",
+ CellChangeTimes->{3.771122062453967*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"9b38204b-d7ed-4398-bb8d-cb67c81bb7e6"],
+
+Cell[BoxData["\<\"pair of K with AT9 beats nothing with 98754\"\>"], "Print",
+ CellChangeTimes->{3.771122062455964*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"42cf17a3-0fe2-47d1-880b-7fa071b5b302"],
+
+Cell[BoxData["\<\"nothing with AK984 beats nothing with QT985\"\>"], "Print",
+ CellChangeTimes->{3.771122062457962*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"c31bd90e-620b-4516-97c1-c7da50e97495"],
+
+Cell[BoxData["\<\"pair of 5 with QT8 beats pair of 3 with 842\"\>"], "Print",
+ CellChangeTimes->{3.77112206245996*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"34297470-d441-4ece-9124-eb609a6d16e4"],
+
+Cell[BoxData["\<\"pair of K with 932 beats nothing with KJ864\"\>"], "Print",
+ CellChangeTimes->{3.7711220624619503`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"49256384-b452-47a3-b699-1bb9164dd4c9"],
+
+Cell[BoxData["\<\"pair of 7 with A86 beats nothing with KQ643\"\>"], "Print",
+ CellChangeTimes->{3.7711220624639444`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"995c406b-1856-4a1a-bc64-79ff9b4975c7"],
+
+Cell[BoxData["\<\"pair of Q with AJ7 beats pair of 5 with K42\"\>"], "Print",
+ CellChangeTimes->{3.7711220624659023`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"22fc3a90-6ae2-4436-a286-5f8d72f8d7f2"],
+
+Cell[BoxData["\<\"nothing with AQJ43 beats nothing with J9872\"\>"], "Print",
+ CellChangeTimes->{3.771122062469924*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ae4541a4-65a0-4115-98ed-25d2df74c809"],
+
+Cell[BoxData["\<\"pair of 4 with 952 beats nothing with Q9872\"\>"], "Print",
+ CellChangeTimes->{3.7711220624719214`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"733da6cd-4106-4761-a446-fb824b43ce4c"],
+
+Cell[BoxData["\<\"pair of 5 with QJ2 beats nothing with KQT82\"\>"], "Print",
+ CellChangeTimes->{3.7711220624739137`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"6253dbe2-0699-4c71-a04c-205212fd87d3"],
+
+Cell[BoxData["\<\"pair of 5 with AJ7 beats nothing with AKT83\"\>"], "Print",
+ CellChangeTimes->{3.7711220624759083`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"94af4881-e377-4715-932a-e24fcd1d1624"],
+
+Cell[BoxData["\<\"nothing with AK974 beats nothing with K9873\"\>"], "Print",
+ CellChangeTimes->{3.7711220624779024`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"073065d3-0ccc-4076-97cc-d5f2759b1c74"],
+
+Cell[BoxData["\<\"pair of 5 with 873 beats nothing with KQJ63\"\>"], "Print",
+ CellChangeTimes->{3.7711220624799023`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"46b8b21a-c530-46df-81b1-7dc3b87c1e43"],
+
+Cell[BoxData["\<\"pair of 6 with T83 beats nothing with T8653\"\>"], "Print",
+ CellChangeTimes->{3.771122062482895*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"46f6acb7-0035-4429-b186-b08f2a1bc9d9"],
+
+Cell[BoxData["\<\"nothing with KJ973 beats nothing with Q9654\"\>"], "Print",
+ CellChangeTimes->{3.771122062487842*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e8757852-b68e-4a9d-aba1-f759f21a82d3"],
+
+Cell[BoxData["\<\"pair of K with Q86 beats pair of 9 with 753\"\>"], "Print",
+ CellChangeTimes->{3.771122062491865*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ee563a6c-cdc9-4d6d-bd9f-a831465c43b5"],
+
+Cell[BoxData["\<\"pair of K with J97 beats nothing with 87632\"\>"], "Print",
+ CellChangeTimes->{3.771122062495822*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e6bf8687-aaee-4217-a64a-b0410c50177e"],
+
+Cell[BoxData["\<\"pair of 7 with A53 beats nothing with KJ943\"\>"], "Print",
+ CellChangeTimes->{3.77112206249785*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4e58831b-f7fb-47c6-98be-0e8410201e6a"],
+
+Cell[BoxData["\<\"pair of Q with K73 beats pair of 5 with AK4\"\>"], "Print",
+ CellChangeTimes->{3.771122062500841*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"031d95b0-5cef-44a9-aa45-ccfb83db8f7a"],
+
+Cell[BoxData["\<\"nothing with T8743 beats nothing with 76542\"\>"], "Print",
+ CellChangeTimes->{3.7711220625038357`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"80fcef1b-33ee-4218-90fa-76aaac61264b"],
+
+Cell[BoxData["\<\"nothing with KJ765 beats nothing with QT862\"\>"], "Print",
+ CellChangeTimes->{3.771122062505828*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e16cd81f-58f0-420a-bdbe-a38c480e04e7"],
+
+Cell[BoxData["\<\"pair of T and pair of 6 with Q beats nothing with \
+Q9842\"\>"], "Print",
+ CellChangeTimes->{3.7711220625087876`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"e7f4ba29-ded3-4983-b3ee-6dbd48a739c0"],
+
+Cell[BoxData["\<\"pair of J and pair of 9 with 3 beats nothing with \
+A8632\"\>"], "Print",
+ CellChangeTimes->{3.7711220625108023`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"545a47c7-9e0f-4671-9bbc-b7de00b9d180"],
+
+Cell[BoxData["\<\"pair of Q with AT5 beats pair of 4 with J65\"\>"], "Print",
+ CellChangeTimes->{3.7711220625138073`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"28d56210-ec2f-406f-aa75-ecd14557ce01"],
+
+Cell[BoxData["\<\"nothing with AT982 beats nothing with T7542\"\>"], "Print",
+ CellChangeTimes->{3.7711220625167985`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"effd97c1-b16d-48a7-8fae-41bb33ae2c7f"],
+
+Cell[BoxData["\<\"pair of Q and pair of T with 3 beats nothing with \
+AJ872\"\>"], "Print",
+ CellChangeTimes->{3.7711220625197926`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"4e5ec99b-e3df-4b2d-966c-9735d90eea3c"],
+
+Cell[BoxData["\<\"pair of 5 with AK3 beats pair of 4 with Q72\"\>"], "Print",
+ CellChangeTimes->{3.771122062521762*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"64e54667-9898-4f60-b43b-a232e4831e76"],
+
+Cell[BoxData["\<\"pair of Q with J72 beats nothing with KQJ84\"\>"], "Print",
+ CellChangeTimes->{3.771122062524745*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"650eeb8d-6991-46bd-b457-82aa7b3be1bc"],
+
+Cell[BoxData["\<\"nothing with AJ954 beats nothing with T7652\"\>"], "Print",
+ CellChangeTimes->{3.771122062526739*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"5385c999-3518-4bd8-b308-aeb3a3edee4c"],
+
+Cell[BoxData["\<\"pair of 6 with K97 beats nothing with KQT54\"\>"], "Print",
+ CellChangeTimes->{3.771122062528734*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"0d0c47a4-f2a1-4d7a-aaa6-0d8186e2380f"],
+
+Cell[BoxData["\<\"pair of A and pair of Q with 4 beats nothing with \
+AK632\"\>"], "Print",
+ CellChangeTimes->{3.771122062531763*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"ed0ac3fc-a32b-4bd8-bb74-b5e14f497565"],
+
+Cell[BoxData["\<\"pair of K with QJ3 beats nothing with AQT82\"\>"], "Print",
+ CellChangeTimes->{3.7711220625337453`*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"3b71b5d2-a523-414c-abcb-b742d6991424"],
+
+Cell[BoxData["\<\"nothing with AKJ83 beats nothing with Q8765\"\>"], "Print",
+ CellChangeTimes->{3.771122062536746*^9},
+ CellLabel->
+  "During evaluation of \
+In[325]:=",ExpressionUUID->"808ee2a4-bfbc-4270-907c-ea0db9445736"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[CellGroupData[{
+Cell[941, 33, 1178, 30, 48, "Input",ExpressionUUID->"82fb1781-f5a4-4539-acb9-06fdf2779e5d"],
+Cell[2122, 65, 13737, 346, 142, "Output",ExpressionUUID->"19176df0-ed11-4d1a-a58d-90842adefd49"]
+}, Closed]],
+Cell[15874, 414, 723, 18, 44, "Input",ExpressionUUID->"c8293852-81e7-4d83-8c30-50dc30665e18"],
+Cell[16600, 434, 614, 14, 28, "Input",ExpressionUUID->"c4d0d49e-1fd9-4f25-8350-350f4dba63e4"],
+Cell[CellGroupData[{
+Cell[17239, 452, 508, 15, 28, "Input",ExpressionUUID->"6338d8ce-5472-4e80-9007-e78ad46fbafe"],
+Cell[17750, 469, 4100, 109, 52, "Output",ExpressionUUID->"92082d78-350f-4e2f-a0fc-ee26fe1a0e95"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21887, 583, 443, 11, 28, "Input",ExpressionUUID->"af9e1381-c9fc-4a9c-963e-316390bb5194"],
+Cell[22333, 596, 1597, 36, 32, "Output",ExpressionUUID->"f705b57d-6841-43a4-ac77-783e47ac0988"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23967, 637, 402, 9, 28, "Input",ExpressionUUID->"cb81b53c-7e81-4a0f-8981-8cee04ec799e"],
+Cell[24372, 648, 921, 20, 32, "Output",ExpressionUUID->"1dec15d0-9dda-41bf-8d5c-aa934899b804"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25330, 673, 582, 15, 28, "Input",ExpressionUUID->"d1dfe70e-ba2d-4d44-9766-19619c30311d"],
+Cell[25915, 690, 892, 20, 32, "Output",ExpressionUUID->"c84cbe28-3a77-426f-8507-b97ada0da993"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26844, 715, 458, 11, 28, "Input",ExpressionUUID->"0195f051-1494-4211-8822-468d3e6b1050"],
+Cell[27305, 728, 752, 15, 32, "Output",ExpressionUUID->"64cfce35-e6ad-446e-ba30-d000386b2f08"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28094, 748, 413, 10, 28, "Input",ExpressionUUID->"a409bb3c-893b-437e-8ef9-de94a58b9a79"],
+Cell[28510, 760, 752, 15, 32, "Output",ExpressionUUID->"33a2657c-f374-4a67-a88b-9ff94e6cd819"]
+}, Open  ]],
+Cell[29277, 778, 782, 21, 28, "Input",ExpressionUUID->"793b9a7a-5b7a-4b06-9f81-566aff19ccb6"],
+Cell[30062, 801, 795, 22, 28, "Input",ExpressionUUID->"3b51e09c-583a-4de7-a4c4-0c14335cb2b9"],
+Cell[30860, 825, 443, 12, 28, "Input",ExpressionUUID->"153bdaac-6371-43ea-b6e0-20a56e22a694"],
+Cell[31306, 839, 481, 12, 28, "Input",ExpressionUUID->"7138273d-664c-4fa9-8cc4-da5aa84c2df5"],
+Cell[31790, 853, 827, 22, 28, "Input",ExpressionUUID->"2b3e102c-c3de-448b-9379-dc321ea03ae2"],
+Cell[32620, 877, 762, 21, 28, "Input",ExpressionUUID->"f1842d70-0545-4e7b-badb-6e5b1ca301a4"],
+Cell[33385, 900, 720, 20, 28, "Input",ExpressionUUID->"4de98675-479c-4c48-b250-96f87a8c4916"],
+Cell[34108, 922, 1118, 28, 69, "Code",ExpressionUUID->"ecadb6c1-273b-4358-ae1c-c8d00cc847d9"],
+Cell[35229, 952, 8406, 195, 879, "Code",ExpressionUUID->"77ec484a-dd49-413a-b665-4092348526df"],
+Cell[43638, 1149, 491, 11, 50, "Code",ExpressionUUID->"31eca943-391d-428e-9d45-7d5de1de7f96"],
+Cell[44132, 1162, 1346, 36, 50, "Code",ExpressionUUID->"d66c7e27-b22e-4f8d-a9fa-773d31c55793"],
+Cell[45481, 1200, 2932, 62, 466, "Code",ExpressionUUID->"b7f44b59-84c8-46b6-8995-3952cb870954"],
+Cell[48416, 1264, 190, 3, 34, "Text",ExpressionUUID->"300169b2-439e-4fd3-946f-186f9e66afee"],
+Cell[CellGroupData[{
+Cell[48631, 1271, 251, 5, 28, "Input",ExpressionUUID->"84752e8c-9c88-4afe-983f-fdeda7ea1329"],
+Cell[48885, 1278, 373, 10, 32, "Output",ExpressionUUID->"3958de3d-4b4b-44f9-887a-a82ad95ee491"]
+}, Open  ]],
+Cell[49273, 1291, 215, 5, 34, "Text",ExpressionUUID->"49bbeeb2-c92c-4c88-8d73-98acc540fbaf"],
+Cell[CellGroupData[{
+Cell[49513, 1300, 961, 24, 28, "Input",ExpressionUUID->"bff617f9-f37d-4a91-84bc-a4939aaaac45"],
+Cell[CellGroupData[{
+Cell[50499, 1328, 241, 5, 22, "Print",ExpressionUUID->"6eb3ae58-565b-4d1c-a5e7-9e950993f32d"],
+Cell[50743, 1335, 225, 4, 22, "Print",ExpressionUUID->"92a0e40d-0a7a-4c9a-9db4-1ea57b33d285"],
+Cell[50971, 1341, 227, 4, 22, "Print",ExpressionUUID->"880e377e-1a40-410a-80fa-94c218bf2fdb"],
+Cell[51201, 1347, 222, 4, 22, "Print",ExpressionUUID->"3f20c3b0-cb70-4247-89eb-f30809ed90d7"],
+Cell[51426, 1353, 227, 4, 22, "Print",ExpressionUUID->"212d5cee-ae90-4839-92c7-5a9a6d464fb6"],
+Cell[51656, 1359, 227, 4, 22, "Print",ExpressionUUID->"a9b66833-33fa-470a-9fb4-f4aea9e21348"],
+Cell[51886, 1365, 225, 4, 22, "Print",ExpressionUUID->"2989e261-c1cb-4f86-9b07-ad54f2e2775b"],
+Cell[52114, 1371, 239, 5, 22, "Print",ExpressionUUID->"a111b39a-9bd4-4b2f-8a9b-b3d33c784726"],
+Cell[52356, 1378, 227, 4, 22, "Print",ExpressionUUID->"8f71f878-fab4-44e1-8df2-eb68ce6619f8"],
+Cell[52586, 1384, 227, 4, 22, "Print",ExpressionUUID->"b2b17166-f100-45a2-b3e9-45bc15b584fb"],
+Cell[52816, 1390, 227, 4, 22, "Print",ExpressionUUID->"36f86e32-35fe-4197-83f6-f8fd6e08eb3e"],
+Cell[53046, 1396, 225, 4, 22, "Print",ExpressionUUID->"67e64333-0cb8-4486-8569-44579a428f26"],
+Cell[53274, 1402, 227, 4, 22, "Print",ExpressionUUID->"80f63a06-7ee6-4299-8a26-43d530c3e479"],
+Cell[53504, 1408, 225, 4, 22, "Print",ExpressionUUID->"218be754-7cae-4247-9821-5c82a3d0e417"],
+Cell[53732, 1414, 225, 4, 22, "Print",ExpressionUUID->"9e5a5727-cb21-4365-a709-b80226c454e5"],
+Cell[53960, 1420, 227, 4, 22, "Print",ExpressionUUID->"838c3c66-93e5-4acd-95f7-79854058f151"],
+Cell[54190, 1426, 227, 4, 22, "Print",ExpressionUUID->"536a80a0-c3cf-41fb-a680-b37468472011"],
+Cell[54420, 1432, 225, 4, 22, "Print",ExpressionUUID->"6c403d0a-fa41-41ce-9db4-e5e9c14d1242"],
+Cell[54648, 1438, 227, 4, 22, "Print",ExpressionUUID->"918b22ec-953c-4b44-9447-1f68222659b2"],
+Cell[54878, 1444, 227, 4, 22, "Print",ExpressionUUID->"276b963b-85e2-4b2b-ac5b-34733ef0865c"],
+Cell[55108, 1450, 241, 5, 22, "Print",ExpressionUUID->"217d9f5f-a4be-4557-a72e-f1ac296e13d0"],
+Cell[55352, 1457, 227, 4, 22, "Print",ExpressionUUID->"bdeb5500-dcca-4337-9a54-40d90262a82d"],
+Cell[55582, 1463, 227, 4, 22, "Print",ExpressionUUID->"2a267801-d464-4726-87ed-194ee80e4b5b"],
+Cell[55812, 1469, 231, 5, 22, "Print",ExpressionUUID->"4010f725-2a51-4fce-aba0-18c16d2580ec"],
+Cell[56046, 1476, 227, 4, 22, "Print",ExpressionUUID->"a35b6666-b850-40a3-8ea4-8d0c5bb505fe"],
+Cell[56276, 1482, 231, 5, 22, "Print",ExpressionUUID->"92eae273-af2f-4a6d-a737-66ac9c9d0f87"],
+Cell[56510, 1489, 227, 4, 22, "Print",ExpressionUUID->"09550e98-71a8-4b7d-81b8-10594d2f2919"],
+Cell[56740, 1495, 227, 4, 22, "Print",ExpressionUUID->"c9e0e3f1-d16d-480c-9d18-fcc96bb81c14"],
+Cell[56970, 1501, 225, 4, 22, "Print",ExpressionUUID->"5c254c0a-9a7e-47b1-9276-52623e73f79c"],
+Cell[57198, 1507, 225, 4, 22, "Print",ExpressionUUID->"ba52e404-5bdd-4605-a337-83257d520da9"],
+Cell[57426, 1513, 225, 4, 22, "Print",ExpressionUUID->"0ce3106d-dd79-4950-96dc-0c0811d7f0cf"],
+Cell[57654, 1519, 224, 4, 22, "Print",ExpressionUUID->"4eebc211-5f8b-4eee-9fcd-350b006a7383"],
+Cell[57881, 1525, 239, 5, 22, "Print",ExpressionUUID->"5ac3e3c6-a99f-4d78-8d59-90609d94e60e"],
+Cell[58123, 1532, 227, 4, 22, "Print",ExpressionUUID->"459e09a3-3972-4e5c-b7e9-12c1e89799d9"],
+Cell[58353, 1538, 225, 4, 22, "Print",ExpressionUUID->"0d3c1e95-81de-4563-b0e9-8a13d40a1222"],
+Cell[58581, 1544, 227, 4, 22, "Print",ExpressionUUID->"34e202c0-25c4-4d30-9bd9-42c89830cc44"],
+Cell[58811, 1550, 225, 4, 22, "Print",ExpressionUUID->"4bf98ea3-d6fd-446e-8ac9-baf3129937c4"],
+Cell[59039, 1556, 225, 4, 22, "Print",ExpressionUUID->"e9426eae-0e7e-4336-a53c-3fc911d8e3e6"],
+Cell[59267, 1562, 227, 4, 22, "Print",ExpressionUUID->"c278195a-bacc-41f2-bd97-0ad718c6251d"],
+Cell[59497, 1568, 225, 4, 22, "Print",ExpressionUUID->"f8e2083a-95ec-4bc8-ab01-5b72b5017145"],
+Cell[59725, 1574, 227, 4, 22, "Print",ExpressionUUID->"1438c198-4682-429e-8fd8-a7485063bd28"],
+Cell[59955, 1580, 224, 4, 22, "Print",ExpressionUUID->"38c26f89-e94e-4b1b-a675-b4823f1fdd5c"],
+Cell[60182, 1586, 225, 4, 22, "Print",ExpressionUUID->"f73fcc7b-d739-4dc9-bb81-f80e663d17ba"],
+Cell[60410, 1592, 227, 4, 22, "Print",ExpressionUUID->"32c6cbf5-03df-46b9-b86a-0b9a4089ebcd"],
+Cell[60640, 1598, 227, 4, 22, "Print",ExpressionUUID->"dfdc9186-a79e-4406-9665-2ad1690a9f5d"],
+Cell[60870, 1604, 241, 5, 22, "Print",ExpressionUUID->"97b34519-405d-4fa4-a9fe-6d2619046722"],
+Cell[61114, 1611, 225, 4, 22, "Print",ExpressionUUID->"836ce683-5a46-4d12-93b9-3d4d1ad60b2d"],
+Cell[61342, 1617, 227, 4, 22, "Print",ExpressionUUID->"919e4758-2fde-4c5c-bb1f-a5ca13a19a5b"],
+Cell[61572, 1623, 225, 4, 22, "Print",ExpressionUUID->"adec7974-dbe0-48e2-a87c-283db3b4f3cc"],
+Cell[61800, 1629, 241, 5, 22, "Print",ExpressionUUID->"56676c51-f032-4fd5-93ca-552e6251bda0"],
+Cell[62044, 1636, 227, 4, 22, "Print",ExpressionUUID->"4b8dad5e-819d-4a7c-9115-7f0a246e2298"],
+Cell[62274, 1642, 239, 5, 22, "Print",ExpressionUUID->"025c9d2a-7447-4165-9022-a967141d684a"],
+Cell[62516, 1649, 227, 4, 22, "Print",ExpressionUUID->"82e30ccf-8375-4434-a558-682348c2f4ea"],
+Cell[62746, 1655, 227, 4, 22, "Print",ExpressionUUID->"349bd942-ce23-4e16-89bf-dc084c2060ea"],
+Cell[62976, 1661, 225, 4, 22, "Print",ExpressionUUID->"9e946f8a-8371-482c-b566-80027ee8057f"],
+Cell[63204, 1667, 225, 4, 22, "Print",ExpressionUUID->"e7fdf421-4eb8-4037-a0c3-e3abada849f2"],
+Cell[63432, 1673, 227, 4, 22, "Print",ExpressionUUID->"5fd7cdce-3036-43a7-a3ba-adc67431eecf"],
+Cell[63662, 1679, 225, 4, 22, "Print",ExpressionUUID->"92a495d1-a4f5-4e81-9ae4-2f3890d97f13"],
+Cell[63890, 1685, 227, 4, 22, "Print",ExpressionUUID->"00fa6ee1-85e8-4db1-a2f5-cd55979485eb"],
+Cell[64120, 1691, 241, 5, 22, "Print",ExpressionUUID->"9b6a6dc1-6123-4995-8ea5-9dba7b23e9a9"],
+Cell[64364, 1698, 227, 4, 22, "Print",ExpressionUUID->"0a8aeba4-ffbc-4cb8-bd2d-bf10596bb234"],
+Cell[64594, 1704, 227, 4, 22, "Print",ExpressionUUID->"f466db4d-83de-4521-b873-a362ae8504fc"],
+Cell[64824, 1710, 227, 4, 22, "Print",ExpressionUUID->"f48688f6-63ed-49d9-a2fa-94fdec8dde90"],
+Cell[65054, 1716, 238, 5, 22, "Print",ExpressionUUID->"9fb7e339-8685-44c4-81cc-e31048512e17"],
+Cell[65295, 1723, 227, 4, 22, "Print",ExpressionUUID->"2a05c971-9100-4ed8-bb21-83cb55c73f61"],
+Cell[65525, 1729, 227, 4, 22, "Print",ExpressionUUID->"29cf7456-b2fe-44d4-acbb-d2b5c2209322"],
+Cell[65755, 1735, 224, 4, 22, "Print",ExpressionUUID->"1b08cc52-9f8a-49cb-8da9-5501f716a459"],
+Cell[65982, 1741, 225, 4, 22, "Print",ExpressionUUID->"2847f8e3-ada5-4fe1-901f-0a86bdde12dd"],
+Cell[66210, 1747, 225, 4, 22, "Print",ExpressionUUID->"1be742b2-4e85-4e38-b2d5-8bfefeeab65c"],
+Cell[66438, 1753, 227, 4, 22, "Print",ExpressionUUID->"038bf0f2-d48c-43a3-bd04-4a34f0489eee"],
+Cell[66668, 1759, 225, 4, 22, "Print",ExpressionUUID->"ca692358-fb85-4943-96d0-ea82d0caa014"],
+Cell[66896, 1765, 227, 4, 22, "Print",ExpressionUUID->"d3f5b572-4431-448f-a299-9d511a4c7866"],
+Cell[67126, 1771, 225, 4, 22, "Print",ExpressionUUID->"3b7eb55e-480a-439e-8193-695fe4c27152"],
+Cell[67354, 1777, 231, 5, 22, "Print",ExpressionUUID->"88d18e85-6ccc-4bd7-9f1e-47add270f661"],
+Cell[67588, 1784, 239, 5, 22, "Print",ExpressionUUID->"6e1e6d3a-4958-421e-a008-b882f1885e7a"],
+Cell[67830, 1791, 225, 4, 22, "Print",ExpressionUUID->"de9260ce-6d14-41e1-9cc2-1a7b3545cf51"],
+Cell[68058, 1797, 227, 4, 22, "Print",ExpressionUUID->"1d9a74a5-982d-4b27-8f76-f8a8ca5d057b"],
+Cell[68288, 1803, 225, 4, 22, "Print",ExpressionUUID->"7722f4e6-355e-4cbb-b8d2-81685689b2db"],
+Cell[68516, 1809, 231, 5, 22, "Print",ExpressionUUID->"2b57b0c2-4ccb-4fad-98ad-e383d5ed7ade"],
+Cell[68750, 1816, 227, 4, 22, "Print",ExpressionUUID->"cac5f1b5-2b4a-4713-91ef-94b689cac818"],
+Cell[68980, 1822, 239, 5, 22, "Print",ExpressionUUID->"00f58c90-e7bf-40e0-b0d3-588c45eefd38"],
+Cell[69222, 1829, 227, 4, 22, "Print",ExpressionUUID->"e919145b-aea9-43b7-bbea-367e2b4848ce"],
+Cell[69452, 1835, 241, 5, 22, "Print",ExpressionUUID->"aac0b91f-94ae-44d3-adc7-76002851b9ae"],
+Cell[69696, 1842, 227, 4, 22, "Print",ExpressionUUID->"104d0377-f419-43a2-8945-7fed283a7ba7"],
+Cell[69926, 1848, 225, 4, 22, "Print",ExpressionUUID->"64c2d58e-93a0-41c1-9cf6-93521d06c6af"],
+Cell[70154, 1854, 241, 5, 22, "Print",ExpressionUUID->"b0ea4b8d-4b5f-4d4a-ad02-d94e2fe37413"],
+Cell[70398, 1861, 227, 4, 22, "Print",ExpressionUUID->"dd440734-81fa-4686-921e-a0c7fb72f8a3"],
+Cell[70628, 1867, 225, 4, 22, "Print",ExpressionUUID->"1049adee-bf00-4180-9859-a370ca948c1b"],
+Cell[70856, 1873, 225, 4, 22, "Print",ExpressionUUID->"a1501ea9-7fab-47f0-a162-6d0229640ee3"],
+Cell[71084, 1879, 225, 4, 22, "Print",ExpressionUUID->"894617ea-6c9c-455f-9d69-36fd4176c689"],
+Cell[71312, 1885, 222, 4, 22, "Print",ExpressionUUID->"a4439916-7b0b-49da-abf8-3857e82384d7"],
+Cell[71537, 1891, 227, 4, 22, "Print",ExpressionUUID->"709b83cb-7ea8-434b-b59a-8207e0a2d7e2"],
+Cell[71767, 1897, 227, 4, 22, "Print",ExpressionUUID->"537b2db0-624f-4fe4-ad96-4456b8251277"],
+Cell[71997, 1903, 241, 5, 22, "Print",ExpressionUUID->"d508a155-f5d8-4392-b3ef-988b16fd0e6a"],
+Cell[72241, 1910, 227, 4, 22, "Print",ExpressionUUID->"e11fbc6d-30e4-4e59-84db-710ce766666f"],
+Cell[72471, 1916, 227, 4, 22, "Print",ExpressionUUID->"546c5667-0870-4bed-be89-95048b3b40f2"],
+Cell[72701, 1922, 239, 5, 22, "Print",ExpressionUUID->"2cd89eda-bf82-4be6-9599-6f7fa66e3b5d"],
+Cell[72943, 1929, 225, 4, 22, "Print",ExpressionUUID->"7f85b695-e738-4091-b65d-6da657043307"],
+Cell[73171, 1935, 225, 4, 22, "Print",ExpressionUUID->"a297c24a-367a-49a1-be7b-315f931f61a5"],
+Cell[73399, 1941, 225, 4, 22, "Print",ExpressionUUID->"54972904-b1a4-457a-862e-a25c749f9216"],
+Cell[73627, 1947, 225, 4, 22, "Print",ExpressionUUID->"110dd6dd-b0ba-4eeb-a4ab-50a384c5712a"],
+Cell[73855, 1953, 227, 4, 22, "Print",ExpressionUUID->"9213fe35-1204-4cc5-9c3a-82c06c44d5a9"],
+Cell[74085, 1959, 225, 4, 22, "Print",ExpressionUUID->"40ccafbd-2099-4262-96c5-c49ec537519a"],
+Cell[74313, 1965, 227, 4, 22, "Print",ExpressionUUID->"8d24e309-d333-4201-b30c-26d7b204f7a2"],
+Cell[74543, 1971, 225, 4, 22, "Print",ExpressionUUID->"9d979acc-4df4-4509-9daf-ac31766485c1"],
+Cell[74771, 1977, 227, 4, 22, "Print",ExpressionUUID->"426f0f25-0cd3-42e6-b0d4-3ab013a5bf50"],
+Cell[75001, 1983, 227, 4, 22, "Print",ExpressionUUID->"0e01887d-6b44-4e33-a886-36f7167aed22"],
+Cell[75231, 1989, 227, 4, 22, "Print",ExpressionUUID->"c4da4dd8-4f5d-40df-86f6-08b143cd91ec"],
+Cell[75461, 1995, 225, 4, 22, "Print",ExpressionUUID->"e2951f54-5515-49e8-867f-ca49d4e26086"],
+Cell[75689, 2001, 225, 4, 22, "Print",ExpressionUUID->"39243729-e7d9-41ef-b0cc-de0dea218a1f"],
+Cell[75917, 2007, 225, 4, 22, "Print",ExpressionUUID->"89d00eee-04d9-41a1-a8eb-e2a14d2c7028"],
+Cell[76145, 2013, 239, 5, 22, "Print",ExpressionUUID->"320d90b1-6ff1-452e-bb26-b42c043326c0"],
+Cell[76387, 2020, 225, 4, 22, "Print",ExpressionUUID->"1420b021-23f7-4bbe-a783-1d0232edf16c"],
+Cell[76615, 2026, 241, 5, 22, "Print",ExpressionUUID->"10dcc710-8ed1-40d9-86ad-44d90fd70e9e"],
+Cell[76859, 2033, 227, 4, 22, "Print",ExpressionUUID->"035391d0-873e-4249-bcd4-444aeba9f12c"],
+Cell[77089, 2039, 225, 4, 22, "Print",ExpressionUUID->"f20b977d-c3b2-4f81-b79e-2ca5099353ef"],
+Cell[77317, 2045, 227, 4, 22, "Print",ExpressionUUID->"95a1d8ca-95d7-4ae9-9fcc-b6b77b7bda32"],
+Cell[77547, 2051, 224, 4, 22, "Print",ExpressionUUID->"4ae3fafb-9904-4d9f-9f7c-74cc6bf00eb1"],
+Cell[77774, 2057, 227, 4, 22, "Print",ExpressionUUID->"d89f54c1-1c87-4128-aad2-5629efa0efb3"],
+Cell[78004, 2063, 227, 4, 22, "Print",ExpressionUUID->"d324cb5c-4ffc-4eff-9044-6c8f557e3d24"],
+Cell[78234, 2069, 227, 4, 22, "Print",ExpressionUUID->"18207021-cbc6-4038-83fa-f10b790a9744"],
+Cell[78464, 2075, 227, 4, 22, "Print",ExpressionUUID->"7ec051f6-c562-4b43-a9c3-eb4c6ede084f"],
+Cell[78694, 2081, 225, 4, 22, "Print",ExpressionUUID->"8fc92721-5091-4e07-a30f-194358c00826"],
+Cell[78922, 2087, 225, 4, 22, "Print",ExpressionUUID->"e782b1de-e422-49f9-8188-607b6a9843af"],
+Cell[79150, 2093, 227, 4, 22, "Print",ExpressionUUID->"d00c86ff-a4fa-4b05-b91c-496c4df3d0b9"],
+Cell[79380, 2099, 225, 4, 22, "Print",ExpressionUUID->"03c80b56-b908-4a9d-ad9d-603e0a95ac18"],
+Cell[79608, 2105, 227, 4, 22, "Print",ExpressionUUID->"52eae601-dc5b-4356-883f-1b116171db1c"],
+Cell[79838, 2111, 227, 4, 22, "Print",ExpressionUUID->"b39f1429-a37b-4c2e-b7fa-8da9bed94d57"],
+Cell[80068, 2117, 225, 4, 22, "Print",ExpressionUUID->"3c43212d-a598-4420-a4af-5dcd9e0f7891"],
+Cell[80296, 2123, 225, 4, 22, "Print",ExpressionUUID->"ee05d9a9-384f-4d50-b604-e4180151149b"],
+Cell[80524, 2129, 239, 5, 22, "Print",ExpressionUUID->"b9e6a06c-df62-415a-b1ed-9cecd1396f5c"],
+Cell[80766, 2136, 227, 4, 22, "Print",ExpressionUUID->"43b2f011-d909-476d-b6cc-6a80d6ed4f71"],
+Cell[80996, 2142, 225, 4, 22, "Print",ExpressionUUID->"c984f090-f586-4dbc-9352-d39899fa2410"],
+Cell[81224, 2148, 224, 4, 22, "Print",ExpressionUUID->"974400ee-a175-42b2-b836-67eadcad9559"],
+Cell[81451, 2154, 227, 4, 22, "Print",ExpressionUUID->"f59ffae0-b365-45f2-9424-6c793d1a2cd4"],
+Cell[81681, 2160, 225, 4, 22, "Print",ExpressionUUID->"562b93b2-8964-4d57-9aa9-71dee6f6d967"],
+Cell[81909, 2166, 225, 4, 22, "Print",ExpressionUUID->"f56e0aa9-89be-461b-b1e0-ff2c7c4b4ca1"],
+Cell[82137, 2172, 227, 4, 22, "Print",ExpressionUUID->"9cbca48c-04fd-4dce-8866-33eddbabf71b"],
+Cell[82367, 2178, 227, 4, 22, "Print",ExpressionUUID->"306e4cf0-68f8-4ba7-bf4d-99c5f7ffe25e"],
+Cell[82597, 2184, 227, 4, 22, "Print",ExpressionUUID->"2b6e8d93-3940-47d0-b466-d4751d12b410"],
+Cell[82827, 2190, 225, 4, 22, "Print",ExpressionUUID->"7aa906dc-aaf5-463c-bdb6-12b0797a4716"],
+Cell[83055, 2196, 225, 4, 22, "Print",ExpressionUUID->"0ccd582c-c6e3-46d0-a3c1-cbf2f8548f79"],
+Cell[83283, 2202, 227, 4, 22, "Print",ExpressionUUID->"19b432eb-9517-4b85-ae5b-68eff374a1c4"],
+Cell[83513, 2208, 225, 4, 22, "Print",ExpressionUUID->"627954c5-b0bd-41d8-850d-08c2172743f2"],
+Cell[83741, 2214, 241, 5, 22, "Print",ExpressionUUID->"57daee92-bc20-4363-9ab0-fe9515cec91d"],
+Cell[83985, 2221, 239, 5, 22, "Print",ExpressionUUID->"e5ff3caa-6c83-41d1-ab90-e840eba51bb0"],
+Cell[84227, 2228, 225, 4, 22, "Print",ExpressionUUID->"c10b29e0-3546-4c7b-8b9e-83f391f23342"],
+Cell[84455, 2234, 225, 4, 22, "Print",ExpressionUUID->"5eee9dd7-1ad1-4c70-a80e-08b65fd99de3"],
+Cell[84683, 2240, 225, 4, 22, "Print",ExpressionUUID->"a534316e-706c-4881-a42c-640364043266"],
+Cell[84911, 2246, 225, 4, 22, "Print",ExpressionUUID->"f82e6f57-a1f2-4a66-a6c7-1b9f50d24851"],
+Cell[85139, 2252, 225, 4, 22, "Print",ExpressionUUID->"3b0e0b29-e850-47bf-b654-0f099df3e927"],
+Cell[85367, 2258, 225, 4, 22, "Print",ExpressionUUID->"32903645-9d4d-4164-a82f-e35665c495bf"],
+Cell[85595, 2264, 227, 4, 22, "Print",ExpressionUUID->"17f876c2-7019-4904-b35f-c6ac079e906b"],
+Cell[85825, 2270, 223, 4, 22, "Print",ExpressionUUID->"7f03f23b-88c5-47ea-b3d1-e32c7b66b666"],
+Cell[86051, 2276, 227, 4, 22, "Print",ExpressionUUID->"bb15a1c9-973f-40fa-b619-9ed04a5e7406"],
+Cell[86281, 2282, 227, 4, 22, "Print",ExpressionUUID->"3e9e409b-5d60-4a4c-b585-b672176a62ee"],
+Cell[86511, 2288, 241, 5, 22, "Print",ExpressionUUID->"c024a3d0-d53f-47b8-a040-b53c6e42a265"],
+Cell[86755, 2295, 227, 4, 22, "Print",ExpressionUUID->"8ca81c28-963b-492d-b8ed-8f6196b4c7dc"],
+Cell[86985, 2301, 227, 4, 22, "Print",ExpressionUUID->"4ea88696-9e76-4442-b15b-18c945ea8472"],
+Cell[87215, 2307, 224, 4, 22, "Print",ExpressionUUID->"c33258f8-7be0-4839-a960-63c0d8ab597d"],
+Cell[87442, 2313, 239, 5, 22, "Print",ExpressionUUID->"adaebbb7-92e4-401b-a055-b563ec155046"],
+Cell[87684, 2320, 225, 4, 22, "Print",ExpressionUUID->"5fb1d96a-4e95-45f3-b471-abf39a26a031"],
+Cell[87912, 2326, 227, 4, 22, "Print",ExpressionUUID->"e24fde33-a72c-4dd7-b366-5948fe89ed38"],
+Cell[88142, 2332, 227, 4, 22, "Print",ExpressionUUID->"86409d50-f3df-4b7c-88f6-efb05bcad564"],
+Cell[88372, 2338, 227, 4, 22, "Print",ExpressionUUID->"33ae326f-5a34-4790-9e6b-3b8399513f09"],
+Cell[88602, 2344, 239, 5, 22, "Print",ExpressionUUID->"95bf2329-62f5-4375-b5db-62f3a74c14d5"],
+Cell[88844, 2351, 227, 4, 22, "Print",ExpressionUUID->"10e3cf9e-26f0-48e1-a87a-0fff2d7d0932"],
+Cell[89074, 2357, 225, 4, 22, "Print",ExpressionUUID->"5134bc97-a5d4-4193-b318-c9ff6f2dc70b"],
+Cell[89302, 2363, 225, 4, 22, "Print",ExpressionUUID->"7c709886-a943-42ff-9e66-e2facb3a1678"],
+Cell[89530, 2369, 227, 4, 22, "Print",ExpressionUUID->"52b520c6-3969-4ce4-b071-80c34cc0d24e"],
+Cell[89760, 2375, 227, 4, 22, "Print",ExpressionUUID->"485ce27f-e4b7-4cb3-b114-f9dfc875b6ba"],
+Cell[89990, 2381, 230, 5, 22, "Print",ExpressionUUID->"d514a447-426f-43c8-a486-4d6eb25bfca2"],
+Cell[90223, 2388, 225, 4, 22, "Print",ExpressionUUID->"17641d2b-f13c-49a6-9136-79dcd19fe05b"],
+Cell[90451, 2394, 227, 4, 22, "Print",ExpressionUUID->"154fd307-d5d2-4c8c-9ff9-32b05a75e383"],
+Cell[90681, 2400, 227, 4, 22, "Print",ExpressionUUID->"e27a947f-4a26-4a1c-ac9b-10e97ea31a22"],
+Cell[90911, 2406, 227, 4, 22, "Print",ExpressionUUID->"cef61786-e6d6-4432-96ca-f7e8c3a98a30"],
+Cell[91141, 2412, 225, 4, 22, "Print",ExpressionUUID->"f6ff85bd-4497-4a07-bdef-b946adce08dd"],
+Cell[91369, 2418, 227, 4, 22, "Print",ExpressionUUID->"f83b2488-6dc5-4331-b2c1-c52c16dc5d99"],
+Cell[91599, 2424, 225, 4, 22, "Print",ExpressionUUID->"bd2ec3a5-8f08-49d9-985a-d87162207d77"],
+Cell[91827, 2430, 225, 4, 22, "Print",ExpressionUUID->"7031459b-a833-4778-a6c2-03506b80de3a"],
+Cell[92055, 2436, 227, 4, 22, "Print",ExpressionUUID->"56ba0796-cd35-401f-8aef-a0a66cf9a0e6"],
+Cell[92285, 2442, 225, 4, 22, "Print",ExpressionUUID->"56dd96ac-b47e-4e22-8ee3-6fd377c11874"],
+Cell[92513, 2448, 227, 4, 22, "Print",ExpressionUUID->"d91bb937-70b9-48e3-830a-7a4556989fe9"],
+Cell[92743, 2454, 227, 4, 22, "Print",ExpressionUUID->"6359f0eb-4052-4220-a29d-928ce6b970f8"],
+Cell[92973, 2460, 222, 4, 22, "Print",ExpressionUUID->"33fbf358-8e83-4aff-b0c3-897fd1010017"],
+Cell[93198, 2466, 227, 4, 22, "Print",ExpressionUUID->"02e34ec1-fa86-4d89-9dfe-6f847063cff3"],
+Cell[93428, 2472, 227, 4, 22, "Print",ExpressionUUID->"6e323199-ea1f-4b6e-808b-fb9ab4bfd428"],
+Cell[93658, 2478, 227, 4, 22, "Print",ExpressionUUID->"3b60cf2c-be84-46a1-9f51-1698f1e6182f"],
+Cell[93888, 2484, 227, 4, 22, "Print",ExpressionUUID->"8fb6b91a-3f3a-466b-b72e-85702ab5e975"],
+Cell[94118, 2490, 227, 4, 22, "Print",ExpressionUUID->"bbd61238-0589-43c1-936d-7090fff07847"],
+Cell[94348, 2496, 225, 4, 22, "Print",ExpressionUUID->"4581ee8c-2354-4a89-98f6-30d1f79eda9e"],
+Cell[94576, 2502, 227, 4, 22, "Print",ExpressionUUID->"37044ea4-2523-410d-84c9-123633683e6b"],
+Cell[94806, 2508, 225, 4, 22, "Print",ExpressionUUID->"647c9f11-e8bb-4c89-8566-c92d2285c4de"],
+Cell[95034, 2514, 225, 4, 22, "Print",ExpressionUUID->"c17bcd9f-cd21-4c7f-85d6-fe339aebf6f2"],
+Cell[95262, 2520, 227, 4, 22, "Print",ExpressionUUID->"66798cee-2dd2-4817-b809-1077dc763d16"],
+Cell[95492, 2526, 227, 4, 22, "Print",ExpressionUUID->"6155971a-04c5-441d-8db7-f448e961ede2"],
+Cell[95722, 2532, 227, 4, 22, "Print",ExpressionUUID->"7a4ab188-5080-4ab2-a85b-a8fe30aaf1c8"],
+Cell[95952, 2538, 225, 4, 22, "Print",ExpressionUUID->"d92ccbe1-abec-4add-bf74-a5b4341550a9"],
+Cell[96180, 2544, 227, 4, 22, "Print",ExpressionUUID->"e0185ac7-7fab-47c1-b083-b309c480ec3f"],
+Cell[96410, 2550, 227, 4, 22, "Print",ExpressionUUID->"3f5f2dc4-b808-4000-8792-aa56d43b7233"],
+Cell[96640, 2556, 224, 4, 22, "Print",ExpressionUUID->"9fbd2ef2-4971-42bb-99eb-774242677c1e"],
+Cell[96867, 2562, 227, 4, 22, "Print",ExpressionUUID->"363a1d85-ea00-417e-9a65-91299af35851"],
+Cell[97097, 2568, 227, 4, 22, "Print",ExpressionUUID->"9a9c8ecc-bdc8-4def-b9f7-41ac9227afe7"],
+Cell[97327, 2574, 227, 4, 22, "Print",ExpressionUUID->"2bbc4b08-78f5-4e73-b86c-f1422a382ea3"],
+Cell[97557, 2580, 239, 5, 22, "Print",ExpressionUUID->"615dafc5-85b6-4bee-8b71-fb3e4c59f89a"],
+Cell[97799, 2587, 225, 4, 22, "Print",ExpressionUUID->"b0e9344e-498a-4ab4-94ae-51073b2b85ca"],
+Cell[98027, 2593, 225, 4, 22, "Print",ExpressionUUID->"0c570fab-a98e-4108-bea6-af55a9897e11"],
+Cell[98255, 2599, 227, 4, 22, "Print",ExpressionUUID->"cda4da3f-656e-4839-baa6-817f586f388c"],
+Cell[98485, 2605, 227, 4, 22, "Print",ExpressionUUID->"67f0f0e7-d3df-43df-accc-31053b1f3611"],
+Cell[98715, 2611, 227, 4, 22, "Print",ExpressionUUID->"75034093-1741-4356-998a-39fa72c61645"],
+Cell[98945, 2617, 222, 4, 22, "Print",ExpressionUUID->"8605e0fd-efe2-40e7-995c-4d7eb239b9bd"],
+Cell[99170, 2623, 227, 4, 22, "Print",ExpressionUUID->"cdca95d5-5212-4d76-ad1d-f7532c48881e"],
+Cell[99400, 2629, 225, 4, 22, "Print",ExpressionUUID->"81b48dd6-7bfd-4378-ab0c-e7c8fcccee54"],
+Cell[99628, 2635, 227, 4, 22, "Print",ExpressionUUID->"d8bd30f3-7629-46fd-a783-490cec398053"],
+Cell[99858, 2641, 227, 4, 22, "Print",ExpressionUUID->"39578f68-3233-4bb2-b0fc-5e2cf513d359"],
+Cell[100088, 2647, 225, 4, 22, "Print",ExpressionUUID->"5ed99cba-9e28-4968-9a4b-8b80098bfc53"],
+Cell[100316, 2653, 225, 4, 22, "Print",ExpressionUUID->"f5a51f6b-6dbc-4179-8876-efb19d54b030"],
+Cell[100544, 2659, 227, 4, 22, "Print",ExpressionUUID->"48a1cfec-e9ab-4483-8c94-62969949288c"],
+Cell[100774, 2665, 227, 4, 22, "Print",ExpressionUUID->"d6c4bc3b-4024-4a54-bf0f-0247e8bca5c1"],
+Cell[101004, 2671, 227, 4, 22, "Print",ExpressionUUID->"c3ad9e53-6af8-41c8-a784-ae6e38add4b6"],
+Cell[101234, 2677, 227, 4, 22, "Print",ExpressionUUID->"da3caa41-40cc-45ea-aaa3-ce7ece46187e"],
+Cell[101464, 2683, 233, 5, 22, "Print",ExpressionUUID->"198cac38-e7aa-457b-9ec7-6cfef59c2925"],
+Cell[101700, 2690, 225, 4, 22, "Print",ExpressionUUID->"8fc1aea5-16d0-4562-a432-556062f450fc"],
+Cell[101928, 2696, 224, 4, 22, "Print",ExpressionUUID->"36105d87-d7e7-4151-8c86-c6ce4ad00ba0"],
+Cell[102155, 2702, 227, 4, 22, "Print",ExpressionUUID->"9e45b894-dd56-4797-9cc9-be8010ad4ee8"],
+Cell[102385, 2708, 225, 4, 22, "Print",ExpressionUUID->"a10a7168-0078-423e-8cf6-e9a722716b16"],
+Cell[102613, 2714, 222, 4, 22, "Print",ExpressionUUID->"62d62860-297f-4218-a1e6-5301832e0b8a"],
+Cell[102838, 2720, 225, 4, 22, "Print",ExpressionUUID->"64acf62b-2aef-4239-a7f4-fe4df4fcbb05"],
+Cell[103066, 2726, 227, 4, 22, "Print",ExpressionUUID->"1d336c38-5419-41a9-b1ce-838ff5612a1c"],
+Cell[103296, 2732, 225, 4, 22, "Print",ExpressionUUID->"c62b5808-371c-438b-816e-3373bbccb75c"],
+Cell[103524, 2738, 225, 4, 22, "Print",ExpressionUUID->"6c49c2b4-e6ee-4819-b831-788ef8aedb35"],
+Cell[103752, 2744, 227, 4, 22, "Print",ExpressionUUID->"1cf34de2-1adb-4201-b922-8f856a8e935b"],
+Cell[103982, 2750, 227, 4, 22, "Print",ExpressionUUID->"fdca150a-d184-4b80-be63-3f58d05a26d1"],
+Cell[104212, 2756, 225, 4, 22, "Print",ExpressionUUID->"bc3b5c2f-8760-45bc-ba4b-5bf3ce0025f1"],
+Cell[104440, 2762, 241, 5, 22, "Print",ExpressionUUID->"f70555cf-5dfd-442c-ab99-22555498b17b"],
+Cell[104684, 2769, 231, 5, 22, "Print",ExpressionUUID->"16f0a563-c986-4621-8a77-c99ca49659cc"],
+Cell[104918, 2776, 227, 4, 22, "Print",ExpressionUUID->"0629814a-9268-4df9-8417-19df2f6296c4"],
+Cell[105148, 2782, 227, 4, 22, "Print",ExpressionUUID->"723d72c0-d140-4530-b324-ee447b22b9d4"],
+Cell[105378, 2788, 227, 4, 22, "Print",ExpressionUUID->"2bfb8e4b-186e-4fcb-8c45-5142d24b68c7"],
+Cell[105608, 2794, 227, 4, 22, "Print",ExpressionUUID->"e391338d-6b25-4b33-8d59-286cbf65cd1f"],
+Cell[105838, 2800, 241, 5, 22, "Print",ExpressionUUID->"87ce6e1d-81ad-4677-8c32-7897f5552d32"],
+Cell[106082, 2807, 227, 4, 22, "Print",ExpressionUUID->"27d0063d-e912-41a7-8563-006c930347d9"],
+Cell[106312, 2813, 239, 5, 22, "Print",ExpressionUUID->"a2958b2f-af93-4923-93e6-69a1a7aa9283"],
+Cell[106554, 2820, 227, 4, 22, "Print",ExpressionUUID->"4e5b0b0c-dcab-4dae-9ac0-c42217cf8a6a"],
+Cell[106784, 2826, 227, 4, 22, "Print",ExpressionUUID->"4ce0adb0-f6c2-4121-b93e-bd29cd370552"],
+Cell[107014, 2832, 225, 4, 22, "Print",ExpressionUUID->"15b687f1-65ff-458b-b6c4-a47f776ce731"],
+Cell[107242, 2838, 225, 4, 22, "Print",ExpressionUUID->"2d3ae537-a469-4849-914b-fe2e4ec180e2"],
+Cell[107470, 2844, 227, 4, 22, "Print",ExpressionUUID->"2aab2435-22eb-4b19-ad36-14eed631e70b"],
+Cell[107700, 2850, 227, 4, 22, "Print",ExpressionUUID->"e0be5183-f251-4b5f-b3fd-067afa7404c5"],
+Cell[107930, 2856, 227, 4, 22, "Print",ExpressionUUID->"376b49fe-43da-45f6-85e4-11702f24c876"],
+Cell[108160, 2862, 227, 4, 22, "Print",ExpressionUUID->"2464a2e2-a2a3-4135-bc8a-3ad2f0b38e54"],
+Cell[108390, 2868, 227, 4, 22, "Print",ExpressionUUID->"5b80724f-2b49-4202-ba5d-1380b2fdcf81"],
+Cell[108620, 2874, 239, 5, 22, "Print",ExpressionUUID->"0b739cb3-6610-4524-8885-8b324dfcfee0"],
+Cell[108862, 2881, 241, 5, 22, "Print",ExpressionUUID->"a70799f0-00a6-4d91-a454-dd3ba815e36f"],
+Cell[109106, 2888, 225, 4, 22, "Print",ExpressionUUID->"a66a3be5-f471-452c-a3a6-a81b70643063"],
+Cell[109334, 2894, 233, 5, 22, "Print",ExpressionUUID->"0b312126-8786-4bef-94c4-6bd476ee1dee"],
+Cell[109570, 2901, 227, 4, 22, "Print",ExpressionUUID->"763e4f98-8274-455b-acf6-b18947418242"],
+Cell[109800, 2907, 227, 4, 22, "Print",ExpressionUUID->"c614409e-94ec-4ad9-a44d-c1497a1a91c2"],
+Cell[110030, 2913, 225, 4, 22, "Print",ExpressionUUID->"8e478537-3e0f-4ea7-98cb-675d2573fe75"],
+Cell[110258, 2919, 227, 4, 22, "Print",ExpressionUUID->"356a3a65-43e5-4db6-9384-edfb3f783d49"],
+Cell[110488, 2925, 225, 4, 22, "Print",ExpressionUUID->"956b6185-a700-42ac-96ac-d91a22bd0cb9"],
+Cell[110716, 2931, 225, 4, 22, "Print",ExpressionUUID->"9d505921-548b-4325-99ca-86200b2b2d86"],
+Cell[110944, 2937, 225, 4, 22, "Print",ExpressionUUID->"ba14da4c-0af6-4c52-b83e-cd1b72fcb791"],
+Cell[111172, 2943, 225, 4, 22, "Print",ExpressionUUID->"9266285b-34b2-40ec-9b15-58bce1fed7a1"],
+Cell[111400, 2949, 225, 4, 22, "Print",ExpressionUUID->"f6a83b6c-e7db-4b9f-b753-baf61f74eef1"],
+Cell[111628, 2955, 225, 4, 22, "Print",ExpressionUUID->"5eeabb1a-87c7-46a1-bf5a-fbc16f9a00cd"],
+Cell[111856, 2961, 227, 4, 22, "Print",ExpressionUUID->"5321aec4-5608-4f03-9619-63ff3d4df5b1"],
+Cell[112086, 2967, 230, 5, 22, "Print",ExpressionUUID->"7f006dad-e752-468b-ae34-b6de3212854d"],
+Cell[112319, 2974, 238, 5, 22, "Print",ExpressionUUID->"f942d3b6-eb9d-4a78-98a9-b7d63fdd3b2f"],
+Cell[112560, 2981, 227, 4, 22, "Print",ExpressionUUID->"db7c2b8f-153f-43c0-aabf-04f280bdd332"],
+Cell[112790, 2987, 239, 5, 22, "Print",ExpressionUUID->"9f90d66f-31c4-4324-a94c-5722b7ac45d1"],
+Cell[113032, 2994, 227, 4, 22, "Print",ExpressionUUID->"5e75d27a-2093-4d24-bc79-d3875ae40a5e"],
+Cell[113262, 3000, 224, 4, 22, "Print",ExpressionUUID->"6da5b3a9-b34e-4668-ba6d-e0904f2675df"],
+Cell[113489, 3006, 227, 4, 22, "Print",ExpressionUUID->"3b128566-23ee-4fcd-9fdd-63f215ed5d09"],
+Cell[113719, 3012, 227, 4, 22, "Print",ExpressionUUID->"edd96fce-be95-4f2a-9a48-356c27d511d7"],
+Cell[113949, 3018, 225, 4, 22, "Print",ExpressionUUID->"ec53244a-56b4-4af7-a1d1-0aa89001c528"],
+Cell[114177, 3024, 241, 5, 22, "Print",ExpressionUUID->"12204151-fb87-4222-b221-079da140c230"],
+Cell[114421, 3031, 227, 4, 22, "Print",ExpressionUUID->"bfa9756e-4f86-4787-a2dd-a4a81f7e0495"],
+Cell[114651, 3037, 227, 4, 22, "Print",ExpressionUUID->"ddd5a467-a4f4-4480-8ddf-7f1c81f550dd"],
+Cell[114881, 3043, 241, 5, 22, "Print",ExpressionUUID->"7e7889f8-b910-495c-9694-3e508e934be2"],
+Cell[115125, 3050, 227, 4, 22, "Print",ExpressionUUID->"aef4c643-e1f0-4121-8d40-e5cdbafdc341"],
+Cell[115355, 3056, 227, 4, 22, "Print",ExpressionUUID->"f02684fc-d9cf-467b-8d4a-7326b909c607"],
+Cell[115585, 3062, 225, 4, 22, "Print",ExpressionUUID->"dc642133-4bda-4f60-9f58-21bc53818c46"],
+Cell[115813, 3068, 227, 4, 22, "Print",ExpressionUUID->"3307622e-ef62-4d43-87f7-d205bd9dbe3f"],
+Cell[116043, 3074, 225, 4, 22, "Print",ExpressionUUID->"e81c11cd-a150-4a84-a5e8-2e2f168f5798"],
+Cell[116271, 3080, 239, 5, 22, "Print",ExpressionUUID->"474e0dd1-035c-44a6-a3a2-2efad77a0a79"],
+Cell[116513, 3087, 239, 5, 22, "Print",ExpressionUUID->"c2fca9ce-8308-4d94-bafb-ec5045db2456"],
+Cell[116755, 3094, 225, 4, 22, "Print",ExpressionUUID->"8462faec-8fe3-4958-bbab-e427d8611099"],
+Cell[116983, 3100, 227, 4, 22, "Print",ExpressionUUID->"7f80d565-1fe3-46ff-b451-0016117a5e3d"],
+Cell[117213, 3106, 227, 4, 22, "Print",ExpressionUUID->"54751c2e-64be-49d0-b4a7-1b5f9363b042"],
+Cell[117443, 3112, 227, 4, 22, "Print",ExpressionUUID->"031e3fc3-e805-4cd1-8368-0540bd8b2390"],
+Cell[117673, 3118, 227, 4, 22, "Print",ExpressionUUID->"e9bb9df0-e02e-4d3f-8196-3185ef13f23a"],
+Cell[117903, 3124, 227, 4, 22, "Print",ExpressionUUID->"fcea0d28-5d55-4067-95a1-c25ef15ca26a"],
+Cell[118133, 3130, 225, 4, 22, "Print",ExpressionUUID->"5733cf0a-07d5-408f-a9b3-9e4c1027c881"],
+Cell[118361, 3136, 225, 4, 22, "Print",ExpressionUUID->"44ed8401-75e7-4656-a956-364c1a324382"],
+Cell[118589, 3142, 227, 4, 22, "Print",ExpressionUUID->"1d8498fc-d9ed-4050-9791-b37d12f3a6a4"],
+Cell[118819, 3148, 227, 4, 22, "Print",ExpressionUUID->"47b55e06-f8c3-43fc-83c0-db3ccd7c3d72"],
+Cell[119049, 3154, 227, 4, 22, "Print",ExpressionUUID->"e03b91e8-7460-4340-bbbd-636a01dc1d03"],
+Cell[119279, 3160, 225, 4, 22, "Print",ExpressionUUID->"f16208fc-e274-4da4-9765-5b5b6a9f38d7"],
+Cell[119507, 3166, 227, 4, 22, "Print",ExpressionUUID->"b68551aa-e67f-460d-99c4-9475208a02e4"],
+Cell[119737, 3172, 227, 4, 22, "Print",ExpressionUUID->"e5090727-6efb-4466-b81f-d265b405d43e"],
+Cell[119967, 3178, 227, 4, 22, "Print",ExpressionUUID->"4ffc605c-555d-4be3-a7f8-657d11a0c6bd"],
+Cell[120197, 3184, 225, 4, 22, "Print",ExpressionUUID->"da980187-dc32-4099-9ce5-389ac989a629"],
+Cell[120425, 3190, 227, 4, 22, "Print",ExpressionUUID->"55c58c9b-1b21-4a68-8f1d-4db6178bfa97"],
+Cell[120655, 3196, 227, 4, 22, "Print",ExpressionUUID->"c6f9de04-5cc6-4506-a998-fabb3225d603"],
+Cell[120885, 3202, 227, 4, 22, "Print",ExpressionUUID->"952a6360-435d-4499-9dd7-331ecb943b34"],
+Cell[121115, 3208, 225, 4, 22, "Print",ExpressionUUID->"fa719712-1967-42dc-8155-d86cd68ec763"],
+Cell[121343, 3214, 231, 5, 22, "Print",ExpressionUUID->"7ff786cc-ca2c-4cbd-974e-76dda2c40198"],
+Cell[121577, 3221, 227, 4, 22, "Print",ExpressionUUID->"cec86e48-90df-40d8-baac-1858fa1b9dfe"],
+Cell[121807, 3227, 227, 4, 22, "Print",ExpressionUUID->"c29260d4-8601-451e-816a-ad873153732b"],
+Cell[122037, 3233, 225, 4, 22, "Print",ExpressionUUID->"24eb7926-2f9e-4233-99ce-70ae36ae0756"],
+Cell[122265, 3239, 227, 4, 22, "Print",ExpressionUUID->"0d2522e7-c415-43a5-8f42-478344f86269"],
+Cell[122495, 3245, 227, 4, 22, "Print",ExpressionUUID->"1ca1c671-537d-4926-b80c-e8d2b68bd3a9"],
+Cell[122725, 3251, 225, 4, 22, "Print",ExpressionUUID->"9de240b7-a109-4e54-8990-bccc16711b99"],
+Cell[122953, 3257, 227, 4, 22, "Print",ExpressionUUID->"f8a1e57b-1c47-46e0-b5f6-560ee91c5233"],
+Cell[123183, 3263, 225, 4, 22, "Print",ExpressionUUID->"f6e9faae-ab8b-4f25-a980-667ee2b3dbb6"],
+Cell[123411, 3269, 227, 4, 22, "Print",ExpressionUUID->"3fab200c-b445-49f3-8434-f8b25f503302"],
+Cell[123641, 3275, 227, 4, 22, "Print",ExpressionUUID->"292f8a91-1698-4527-823a-31eca818bc44"],
+Cell[123871, 3281, 227, 4, 22, "Print",ExpressionUUID->"e4dd7cc6-579f-4928-8ed2-892724eb52c0"],
+Cell[124101, 3287, 227, 4, 22, "Print",ExpressionUUID->"c75e09c4-3e60-4329-84e6-e7a82c77655c"],
+Cell[124331, 3293, 227, 4, 22, "Print",ExpressionUUID->"dbfd7a7b-0ff7-401e-a4a3-e39d5a113927"],
+Cell[124561, 3299, 227, 4, 22, "Print",ExpressionUUID->"39a058da-a0de-4eda-9a4f-7e2c44d6fee3"],
+Cell[124791, 3305, 224, 4, 22, "Print",ExpressionUUID->"4f623287-1401-473a-b169-2f258a280162"],
+Cell[125018, 3311, 227, 4, 22, "Print",ExpressionUUID->"d10771a4-8f54-44d1-a336-15d0f7640721"],
+Cell[125248, 3317, 233, 5, 22, "Print",ExpressionUUID->"79be7f9d-31c7-4c91-812a-3ba2d266bd6c"],
+Cell[125484, 3324, 227, 4, 22, "Print",ExpressionUUID->"ff6729b2-9e7e-46a2-b97e-aca88490cb06"],
+Cell[125714, 3330, 225, 4, 22, "Print",ExpressionUUID->"c7279ab9-1afd-4ee5-b552-12fbbe7fbcee"],
+Cell[125942, 3336, 227, 4, 22, "Print",ExpressionUUID->"ffe8bf3c-e557-48c6-b6a2-a3f250bd2616"],
+Cell[126172, 3342, 224, 4, 22, "Print",ExpressionUUID->"3fecda70-761a-4314-8154-a6d65b45f12f"],
+Cell[126399, 3348, 227, 4, 22, "Print",ExpressionUUID->"7dd70632-b503-40d3-b5e1-6f1b2437172c"],
+Cell[126629, 3354, 225, 4, 22, "Print",ExpressionUUID->"e26541bb-0fe1-4214-b9cb-45ece77393a1"],
+Cell[126857, 3360, 225, 4, 22, "Print",ExpressionUUID->"c1b42e3f-2381-449b-93e1-b40752b9b74d"],
+Cell[127085, 3366, 222, 4, 22, "Print",ExpressionUUID->"afce562e-0298-4ccc-b322-28e1fe5c6d70"],
+Cell[127310, 3372, 225, 4, 22, "Print",ExpressionUUID->"1ee8618c-70bc-4eab-b37e-ba7c32c0e00c"],
+Cell[127538, 3378, 227, 4, 22, "Print",ExpressionUUID->"5de838a4-a0d5-4820-83ed-d2d134da904f"],
+Cell[127768, 3384, 225, 4, 22, "Print",ExpressionUUID->"f31d2fab-b452-46f5-9bb0-88cfd573be01"],
+Cell[127996, 3390, 227, 4, 22, "Print",ExpressionUUID->"eb07ba10-696a-4e46-b88d-045b4cfe11f1"],
+Cell[128226, 3396, 227, 4, 22, "Print",ExpressionUUID->"4064e751-d326-4afc-b724-bbe4300ba107"],
+Cell[128456, 3402, 225, 4, 22, "Print",ExpressionUUID->"5663dbea-6ddd-439f-9db8-7decf7df72f1"],
+Cell[128684, 3408, 241, 5, 22, "Print",ExpressionUUID->"c7298437-8f6b-4ce9-bd85-f6d9e7d30d11"],
+Cell[128928, 3415, 222, 4, 22, "Print",ExpressionUUID->"35eee74c-3369-4bc9-a2c3-4a2327f680b2"],
+Cell[129153, 3421, 227, 4, 22, "Print",ExpressionUUID->"5899dd8d-d3c5-4a24-8967-f7d8f23862a1"],
+Cell[129383, 3427, 225, 4, 22, "Print",ExpressionUUID->"83ec81f2-1ec8-4637-ab94-fed88e2c6c98"],
+Cell[129611, 3433, 225, 4, 22, "Print",ExpressionUUID->"9b38204b-d7ed-4398-bb8d-cb67c81bb7e6"],
+Cell[129839, 3439, 225, 4, 22, "Print",ExpressionUUID->"42cf17a3-0fe2-47d1-880b-7fa071b5b302"],
+Cell[130067, 3445, 225, 4, 22, "Print",ExpressionUUID->"c31bd90e-620b-4516-97c1-c7da50e97495"],
+Cell[130295, 3451, 224, 4, 22, "Print",ExpressionUUID->"34297470-d441-4ece-9124-eb609a6d16e4"],
+Cell[130522, 3457, 227, 4, 22, "Print",ExpressionUUID->"49256384-b452-47a3-b699-1bb9164dd4c9"],
+Cell[130752, 3463, 227, 4, 22, "Print",ExpressionUUID->"995c406b-1856-4a1a-bc64-79ff9b4975c7"],
+Cell[130982, 3469, 227, 4, 22, "Print",ExpressionUUID->"22fc3a90-6ae2-4436-a286-5f8d72f8d7f2"],
+Cell[131212, 3475, 225, 4, 22, "Print",ExpressionUUID->"ae4541a4-65a0-4115-98ed-25d2df74c809"],
+Cell[131440, 3481, 227, 4, 22, "Print",ExpressionUUID->"733da6cd-4106-4761-a446-fb824b43ce4c"],
+Cell[131670, 3487, 227, 4, 22, "Print",ExpressionUUID->"6253dbe2-0699-4c71-a04c-205212fd87d3"],
+Cell[131900, 3493, 227, 4, 22, "Print",ExpressionUUID->"94af4881-e377-4715-932a-e24fcd1d1624"],
+Cell[132130, 3499, 227, 4, 22, "Print",ExpressionUUID->"073065d3-0ccc-4076-97cc-d5f2759b1c74"],
+Cell[132360, 3505, 227, 4, 22, "Print",ExpressionUUID->"46b8b21a-c530-46df-81b1-7dc3b87c1e43"],
+Cell[132590, 3511, 225, 4, 22, "Print",ExpressionUUID->"46f6acb7-0035-4429-b186-b08f2a1bc9d9"],
+Cell[132818, 3517, 225, 4, 22, "Print",ExpressionUUID->"e8757852-b68e-4a9d-aba1-f759f21a82d3"],
+Cell[133046, 3523, 225, 4, 22, "Print",ExpressionUUID->"ee563a6c-cdc9-4d6d-bd9f-a831465c43b5"],
+Cell[133274, 3529, 225, 4, 22, "Print",ExpressionUUID->"e6bf8687-aaee-4217-a64a-b0410c50177e"],
+Cell[133502, 3535, 224, 4, 22, "Print",ExpressionUUID->"4e58831b-f7fb-47c6-98be-0e8410201e6a"],
+Cell[133729, 3541, 225, 4, 22, "Print",ExpressionUUID->"031d95b0-5cef-44a9-aa45-ccfb83db8f7a"],
+Cell[133957, 3547, 227, 4, 22, "Print",ExpressionUUID->"80fcef1b-33ee-4218-90fa-76aaac61264b"],
+Cell[134187, 3553, 225, 4, 22, "Print",ExpressionUUID->"e16cd81f-58f0-420a-bdbe-a38c480e04e7"],
+Cell[134415, 3559, 241, 5, 22, "Print",ExpressionUUID->"e7f4ba29-ded3-4983-b3ee-6dbd48a739c0"],
+Cell[134659, 3566, 241, 5, 22, "Print",ExpressionUUID->"545a47c7-9e0f-4671-9bbc-b7de00b9d180"],
+Cell[134903, 3573, 227, 4, 22, "Print",ExpressionUUID->"28d56210-ec2f-406f-aa75-ecd14557ce01"],
+Cell[135133, 3579, 227, 4, 22, "Print",ExpressionUUID->"effd97c1-b16d-48a7-8fae-41bb33ae2c7f"],
+Cell[135363, 3585, 241, 5, 22, "Print",ExpressionUUID->"4e5ec99b-e3df-4b2d-966c-9735d90eea3c"],
+Cell[135607, 3592, 225, 4, 22, "Print",ExpressionUUID->"64e54667-9898-4f60-b43b-a232e4831e76"],
+Cell[135835, 3598, 225, 4, 22, "Print",ExpressionUUID->"650eeb8d-6991-46bd-b457-82aa7b3be1bc"],
+Cell[136063, 3604, 225, 4, 22, "Print",ExpressionUUID->"5385c999-3518-4bd8-b308-aeb3a3edee4c"],
+Cell[136291, 3610, 225, 4, 22, "Print",ExpressionUUID->"0d0c47a4-f2a1-4d7a-aaa6-0d8186e2380f"],
+Cell[136519, 3616, 239, 5, 22, "Print",ExpressionUUID->"ed0ac3fc-a32b-4bd8-bb74-b5e14f497565"],
+Cell[136761, 3623, 227, 4, 22, "Print",ExpressionUUID->"3b71b5d2-a523-414c-abcb-b742d6991424"],
+Cell[136991, 3629, 225, 4, 22, "Print",ExpressionUUID->"808ee2a4-bfbc-4270-907c-ea0db9445736"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

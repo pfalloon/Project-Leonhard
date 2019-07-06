@@ -1,0 +1,229 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7544,        221]
+NotebookOptionsPosition[      5806,        181]
+NotebookOutlinePosition[      6151,        196]
+CellTagsIndexPosition[      6108,        193]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 52",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=52"], None},
+ ButtonNote->"https://projecteuler.net/problem=52"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"findPermutingMultiples", "[", "multiples_", "]"}], " ", ":=", " ", 
+  
+  RowBox[{"Catch", "[", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"n", " ", "=", " ", "1"}], ",", " ", "vals"}], "}"}], ",", 
+     "\n", "\t", 
+     RowBox[{"While", "[", 
+      RowBox[{"True", ",", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"vals", " ", "=", " ", 
+         RowBox[{"n", " ", "*", " ", "multiples"}]}], ";", "\n", "\t\t", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Equal", " ", "@@", " ", 
+             RowBox[{"IntegerLength", "[", "vals", "]"}]}], ")"}], " ", "&&", 
+           " ", 
+           RowBox[{"(", 
+            RowBox[{"Equal", " ", "@@", " ", 
+             RowBox[{"(", 
+              RowBox[{"Sort", " ", "/@", " ", 
+               RowBox[{"IntegerDigits", "[", "vals", "]"}]}], ")"}]}], 
+            ")"}]}], ",", " ", 
+          RowBox[{"Throw", "[", "n", "]"}]}], "]"}], ";", "\n", "\t\t", 
+        RowBox[{"n", " ", "+=", " ", "1"}], ";", "\n", "\t\t", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"n", " ", ">", " ", "1000000"}], ",", " ", 
+          RowBox[{"Throw", "[", "None", "]"}]}], "]"}]}]}], "\n", "\t", 
+      "]"}]}], "\n", "]"}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.771026361703885*^9, 3.771026672435234*^9}, {
+  3.771026712505705*^9, 3.771026722710856*^9}, {3.7710268089815965`*^9, 
+  3.7710268932117286`*^9}},
+ CellLabel->
+  "In[139]:=",ExpressionUUID->"6de7c691-ba85-4be7-a54a-5ac90ad0e20c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findPermutingMultiples", "[", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.771026679211216*^9, 3.771026689935814*^9}},
+ CellLabel->
+  "In[140]:=",ExpressionUUID->"a7b65b1b-7a4b-465e-94b6-865691081efd"],
+
+Cell[BoxData["125874"], "Output",
+ CellChangeTimes->{
+  3.7710267065913763`*^9, 3.7710267558408995`*^9, 3.771026820615107*^9, {
+   3.7710268507922616`*^9, 3.771026895577655*^9}},
+ CellLabel->
+  "Out[140]=",ExpressionUUID->"11bd2828-2451-4f7c-a59a-9a309a0c0194"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findPermutingMultiples", "[", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "3"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.771026910516409*^9, 3.771026910596732*^9}},
+ CellLabel->
+  "In[141]:=",ExpressionUUID->"93016f3a-3b7c-43ff-a4dc-2a4ac5d122ce"],
+
+Cell[BoxData["142857"], "Output",
+ CellChangeTimes->{3.7710269117721214`*^9},
+ CellLabel->
+  "Out[141]=",ExpressionUUID->"704f98e5-032e-407b-b292-e26b5179244a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findPermutingMultiples", "[", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.771026920868051*^9, 3.771026920944503*^9}},
+ CellLabel->
+  "In[142]:=",ExpressionUUID->"e925aac0-451b-406f-91c9-ff8e90586f4e"],
+
+Cell[BoxData["142857"], "Output",
+ CellChangeTimes->{3.771026922411676*^9},
+ CellLabel->
+  "Out[142]=",ExpressionUUID->"816ce54f-064e-4bb1-8e55-c1bca71f7560"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findPermutingMultiples", "[", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.771026928281579*^9, 3.771026928441414*^9}},
+ CellLabel->
+  "In[143]:=",ExpressionUUID->"7a6786bd-225f-4ba6-a463-aa7a3257503c"],
+
+Cell[BoxData["142857"], "Output",
+ CellChangeTimes->{3.771026929902881*^9},
+ CellLabel->
+  "Out[143]=",ExpressionUUID->"581d28c0-d470-423a-b80a-7982e6166474"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"n", "=", 
+  RowBox[{"findPermutingMultiples", "[", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6"}], "}"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7710269356848373`*^9, 3.7710269484996634`*^9}},
+ CellLabel->
+  "In[145]:=",ExpressionUUID->"75f47a4c-0a63-4fec-8bf3-50788fc7e6e0"],
+
+Cell[BoxData["142857"], "Output",
+ CellChangeTimes->{{3.771026940489694*^9, 3.771026949957721*^9}},
+ CellLabel->
+  "Out[145]=",ExpressionUUID->"12dc6ae3-b438-41f9-ab50-55b1e25c66ef"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Union", "[", 
+  RowBox[{"Sort", "/@", 
+   RowBox[{"IntegerDigits", "[", 
+    RowBox[{"n", " ", 
+     RowBox[{"Range", "[", "6", "]"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.771026955480099*^9, 3.771026973695629*^9}},
+ CellLabel->
+  "In[149]:=",ExpressionUUID->"34feea36-6705-4ffb-b9f7-9dce83944c2e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "4", ",", "5", ",", "7", ",", "8"}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.7710269579415746`*^9, 3.7710269740471573`*^9}},
+ CellLabel->
+  "Out[149]=",ExpressionUUID->"50acfb25-3de7-4ccf-9f44-9c7c4cf02ea0"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{Automatic, 124}, {42, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 1593, 40, 177, "Code",ExpressionUUID->"6de7c691-ba85-4be7-a54a-5ac90ad0e20c"],
+Cell[CellGroupData[{
+Cell[2537, 75, 271, 6, 28, "Input",ExpressionUUID->"a7b65b1b-7a4b-465e-94b6-865691081efd"],
+Cell[2811, 83, 261, 5, 32, "Output",ExpressionUUID->"11bd2828-2451-4f7c-a59a-9a309a0c0194"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3109, 93, 281, 6, 28, "Input",ExpressionUUID->"93016f3a-3b7c-43ff-a4dc-2a4ac5d122ce"],
+Cell[3393, 101, 160, 3, 32, "Output",ExpressionUUID->"704f98e5-032e-407b-b292-e26b5179244a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3590, 109, 291, 6, 28, "Input",ExpressionUUID->"e925aac0-451b-406f-91c9-ff8e90586f4e"],
+Cell[3884, 117, 158, 3, 32, "Output",ExpressionUUID->"816ce54f-064e-4bb1-8e55-c1bca71f7560"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4079, 125, 304, 7, 28, "Input",ExpressionUUID->"7a6786bd-225f-4ba6-a463-aa7a3257503c"],
+Cell[4386, 134, 158, 3, 32, "Output",ExpressionUUID->"581d28c0-d470-423a-b80a-7982e6166474"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4581, 142, 344, 8, 28, "Input",ExpressionUUID->"75f47a4c-0a63-4fec-8bf3-50788fc7e6e0"],
+Cell[4928, 152, 182, 3, 32, "Output",ExpressionUUID->"12dc6ae3-b438-41f9-ab50-55b1e25c66ef"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5147, 160, 335, 8, 28, "Input",ExpressionUUID->"34feea36-6705-4ffb-b9f7-9dce83944c2e"],
+Cell[5485, 170, 293, 7, 32, "Output",ExpressionUUID->"50acfb25-3de7-4ccf-9f44-9c7c4cf02ea0"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

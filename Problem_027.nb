@@ -1,0 +1,310 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10093,        302]
+NotebookOptionsPosition[      8145,        263]
+NotebookOutlinePosition[      8489,        278]
+CellTagsIndexPosition[      8446,        275]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 27",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=27"], None},
+ ButtonNote->"https://projecteuler.net/problem=27"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[TextData[{
+ "Since the value at ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "0"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "45492bf3-d5b6-4667-9fb3-2f06cc73c783"],
+ " is just ",
+ Cell[BoxData[
+  FormBox["b", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "74575954-c66e-4fb7-ad42-8e02e4ece53a"],
+ ", we can immediately reduce the size of the search space by restricting to \
+prime ",
+ Cell[BoxData[
+  FormBox["b", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "70a3121a-7d6d-4923-bbc7-09c92a384bc4"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.7706987437041516`*^9, 
+  3.770698790660159*^9}},ExpressionUUID->"463a9340-20dc-4387-ae2a-\
+91910471489b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"primesUpTo", "[", "M_", "]"}], ":=", 
+  RowBox[{"Prime", "[", 
+   RowBox[{"Range", "[", 
+    RowBox[{"PrimePi", "[", "M", "]"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.770698791690566*^9, 3.7706988284128847`*^9}},
+ CellLabel->
+  "In[229]:=",ExpressionUUID->"28ddfa14-e961-4fcb-8197-d056ea34341d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"primesUpTo", "[", "1000", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.770698829934848*^9, 3.770698840093277*^9}},
+ CellLabel->
+  "In[231]:=",ExpressionUUID->"568110ab-2bbd-4fb3-b934-d1a2464334c4"],
+
+Cell[BoxData["168"], "Output",
+ CellChangeTimes->{{3.770698833126577*^9, 3.770698840420824*^9}},
+ CellLabel->
+  "Out[231]=",ExpressionUUID->"231edffd-d601-4de7-82aa-ebc5b1b892c8"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We need a function to calculate the length of the run of primes for a given \
+",
+ Cell[BoxData[
+  FormBox["a", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "be38a195-5112-4c5c-b3f4-863bb4793394"],
+ ", ",
+ Cell[BoxData[
+  FormBox["b", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "64373d38-7755-482d-a5e7-e1994e8309e9"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.770698719586425*^9, 3.7706987417827215`*^9}, {
+  3.770698847962738*^9, 
+  3.770698851713785*^9}},ExpressionUUID->"d386ada1-8bfa-4f8e-81e5-\
+e895074c32e4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"primeRunLength", "[", 
+   RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"n", "=", "0"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"PrimeQ", "[", 
+        RowBox[{
+         RowBox[{"n", "^", "2"}], "+", 
+         RowBox[{"a", " ", "n"}], "+", "b"}], "]"}], ",", 
+       RowBox[{"n", "+=", "1"}]}], "]"}], ";", "n"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.770698269580612*^9, 3.770698403902415*^9}},
+ CellLabel->
+  "In[200]:=",ExpressionUUID->"c08f1445-3d06-4728-adc1-1183f2a610fd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"primeRunLength", "[", 
+    RowBox[{"1", ",", "41"}], "]"}], ",", 
+   RowBox[{"primeRunLength", "[", 
+    RowBox[{
+     RowBox[{"-", "79"}], ",", "1601"}], "]"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.770698405416341*^9, 3.770698417028641*^9}, {
+  3.7706988703448243`*^9, 3.770698873967969*^9}},
+ CellLabel->
+  "In[234]:=",ExpressionUUID->"ccd50bad-2cf9-4e56-be3e-bfc794665a3f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"40", ",", "80"}], "}"}]], "Output",
+ CellChangeTimes->{3.7706988773874426`*^9},
+ CellLabel->
+  "Out[234]=",ExpressionUUID->"0c8731c9-3459-470d-98db-9a4ebe51a066"]
+}, Open  ]],
+
+Cell[TextData[{
+ "This function searches all ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"-", "M"}], "\[LessEqual]", "a", "\[LessEqual]", "M"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "31bfbf3b-3f95-416a-a770-bbe0606925d5"],
+ " and (prime) ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"-", "M"}], "\[LessEqual]", "b", "\[LessEqual]", "M"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "83c588ba-2ab5-4fb7-b719-8ee97fa0841f"],
+ ", returning a list comprising ",
+ Cell[BoxData[
+  FormBox["a", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "c3594706-5d25-45eb-bbaa-2639bd0f53b3"],
+ ", ",
+ Cell[BoxData[
+  FormBox["b", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "982a1ee4-feff-4a20-a35e-e1c61448dfd3"],
+ ", and the length of the run of primes starting at ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "0"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "704f2710-1081-4405-91b4-b8f1081bc59b"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.77069893606483*^9, 
+  3.770698987654635*^9}},ExpressionUUID->"aca2cee7-653c-4755-98a6-\
+96b842411de6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"longestRunUpTo", "[", "M_", "]"}], ":=", 
+  RowBox[{"Last", "[", 
+   RowBox[{"SortBy", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"a", ",", "b", ",", 
+           RowBox[{"primeRunLength", "[", 
+            RowBox[{"a", ",", "b"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"a", ",", 
+           RowBox[{"-", "M"}], ",", "M"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"b", ",", 
+           RowBox[{"primesUpTo", "[", "M", "]"}]}], "}"}]}], "]"}], ",", 
+       "1"}], "]"}], ",", "Last"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7706988919559193`*^9, 3.7706989344954944`*^9}, {
+  3.7706990134281454`*^9, 3.7706990154534845`*^9}},
+ CellLabel->
+  "In[237]:=",ExpressionUUID->"8ba3d80d-bb93-4125-813b-44a1f19ccbd7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"longestRunUpTo", "[", "1000", "]"}]], "Input",
+ CellChangeTimes->{{3.7706989899795446`*^9, 3.7706990268567176`*^9}},
+ CellLabel->
+  "In[240]:=",ExpressionUUID->"9c458136-d9a9-4d22-90d4-29e0bbe59139"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "61"}], ",", "971", ",", "71"}], "}"}]], "Output",
+ CellChangeTimes->{{3.7706990009568415`*^9, 3.7706990295291357`*^9}},
+ CellLabel->
+  "Out[240]=",ExpressionUUID->"30363641-5fae-48f2-bf53-cdfdcda4a71a"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Finally, to answer the question we compute the product ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", " ", "b"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "1bceabf8-f1ea-48e7-804f-00a2d9c41737"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.7706990704414873`*^9, 
+  3.7706990878666096`*^9}},ExpressionUUID->"f4b0ba98-cb91-4ed2-9542-\
+c826a58a1b4f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solution", "[", "M_", "]"}], ":=", 
+  RowBox[{"Times", "@@", 
+   RowBox[{"Most", "[", 
+    RowBox[{"longestRunUpTo", "[", "M", "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7706990428393803`*^9, 3.77069906144956*^9}},
+ CellLabel->
+  "In[241]:=",ExpressionUUID->"f1d7bf2a-e6db-4223-b67c-efd8a7e7d321"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"solution", "[", "1000", "]"}]], "Input",
+ CellChangeTimes->{{3.77069906379037*^9, 3.7706990660873127`*^9}},
+ CellLabel->
+  "In[242]:=",ExpressionUUID->"6563f1c6-eb15-4f56-9e60-c83c06add7e6"],
+
+Cell[BoxData[
+ RowBox[{"-", "59231"}]], "Output",
+ CellChangeTimes->{3.770699068619916*^9},
+ CellLabel->
+  "Out[242]=",ExpressionUUID->"7575e7ea-e8a3-4a50-a087-d59fadbda149"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 733, 22, 34, "Text",ExpressionUUID->"463a9340-20dc-4387-ae2a-91910471489b"],
+Cell[1655, 55, 340, 8, 28, "Input",ExpressionUUID->"28ddfa14-e961-4fcb-8197-d056ea34341d"],
+Cell[CellGroupData[{
+Cell[2020, 67, 248, 5, 28, "Input",ExpressionUUID->"568110ab-2bbd-4fb3-b934-d1a2464334c4"],
+Cell[2271, 74, 179, 3, 32, "Output",ExpressionUUID->"231edffd-d601-4de7-82aa-ebc5b1b892c8"]
+}, Open  ]],
+Cell[2465, 80, 581, 17, 34, "Text",ExpressionUUID->"d386ada1-8bfa-4f8e-81e5-e895074c32e4"],
+Cell[3049, 99, 627, 18, 28, "Input",ExpressionUUID->"c08f1445-3d06-4728-adc1-1183f2a610fd"],
+Cell[CellGroupData[{
+Cell[3701, 121, 432, 11, 28, "Input",ExpressionUUID->"ccd50bad-2cf9-4e56-be3e-bfc794665a3f"],
+Cell[4136, 134, 202, 5, 32, "Output",ExpressionUUID->"0c8731c9-3459-470d-98db-9a4ebe51a066"]
+}, Open  ]],
+Cell[4353, 142, 1193, 37, 34, "Text",ExpressionUUID->"aca2cee7-653c-4755-98a6-96b842411de6"],
+Cell[5549, 181, 898, 24, 28, "Input",ExpressionUUID->"8ba3d80d-bb93-4125-813b-44a1f19ccbd7"],
+Cell[CellGroupData[{
+Cell[6472, 209, 223, 4, 28, "Input",ExpressionUUID->"9c458136-d9a9-4d22-90d4-29e0bbe59139"],
+Cell[6698, 215, 259, 6, 32, "Output",ExpressionUUID->"30363641-5fae-48f2-bf53-cdfdcda4a71a"]
+}, Open  ]],
+Cell[6972, 224, 387, 11, 34, "Text",ExpressionUUID->"f4b0ba98-cb91-4ed2-9542-c826a58a1b4f"],
+Cell[7362, 237, 339, 8, 28, "Input",ExpressionUUID->"f1d7bf2a-e6db-4223-b67c-efd8a7e7d321"],
+Cell[CellGroupData[{
+Cell[7726, 249, 214, 4, 28, "Input",ExpressionUUID->"6563f1c6-eb15-4f56-9e60-c83c06add7e6"],
+Cell[7943, 255, 174, 4, 32, "Output",ExpressionUUID->"7575e7ea-e8a3-4a50-a087-d59fadbda149"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

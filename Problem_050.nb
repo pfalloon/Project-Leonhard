@@ -1,0 +1,200 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7195,        192]
+NotebookOptionsPosition[      6024,        163]
+NotebookOutlinePosition[      6367,        178]
+CellTagsIndexPosition[      6324,        175]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 50",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=50"], None},
+ ButtonNote->"https://projecteuler.net/problem=50"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"primes", "=", 
+   RowBox[{"Prime", "[", 
+    RowBox[{"Range", "[", 
+     RowBox[{"10", "^", "6"}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7708908321155577`*^9, 3.7708908484777193`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"bc2f911f-f2b0-4f1b-9a30-810f1b54bca2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"longestPrimeSum", "[", "max_", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"bestRunLength", " ", "=", " ", "0"}], ",", " ", 
+      RowBox[{"bestRunStart", " ", "=", " ", 
+       RowBox[{"-", "1"}]}], ",", " ", "len", ",", " ", "sum"}], "}"}], ",", 
+    "\n", "\t", 
+    RowBox[{
+     RowBox[{"Do", "[", "\n", "\t\t", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"len", " ", "=", " ", 
+         RowBox[{"bestRunLength", " ", "+", " ", "1"}]}], ";", " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "only", " ", "check", " ", "sequences", " ", "longer", " ", "than", 
+          " ", "current", " ", "best"}], " ", "*)"}], "\n", "\t\t", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"n", "*", "bestRunLength"}], " ", ">", " ", "max"}], ",", 
+          " ", 
+          RowBox[{"Break", "[", "]"}]}], "]"}], ";", " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "stop", " ", "checking", " ", "when", " ", "starting", " ", "value", 
+          " ", "is", " ", "guaranteed", " ", "to", " ", "exceed", " ", 
+          "max"}], " ", "*)"}], "\n", "\t\t", 
+        RowBox[{"sum", " ", "=", " ", 
+         RowBox[{"Total", "[", 
+          RowBox[{"Prime", "[", 
+           RowBox[{"Range", "[", 
+            RowBox[{"n", ",", " ", 
+             RowBox[{"n", " ", "+", " ", "len", " ", "-", " ", "1"}]}], "]"}],
+            "]"}], "]"}]}], ";", "\n", "\t\t", 
+        RowBox[{"While", "[", 
+         RowBox[{
+          RowBox[{"sum", " ", "<", " ", "max"}], ",", "\n", "\t\t\t", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"PrimeQ", "[", "sum", "]"}], ",", " ", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"bestRunLength", ",", " ", "bestRunStart"}], "}"}], 
+              " ", "=", " ", 
+              RowBox[{"{", 
+               RowBox[{"len", ",", " ", "n"}], "}"}]}]}], "]"}], ";", "\n", 
+           "\t\t\t", 
+           RowBox[{"len", " ", "+=", " ", "1"}], ";", "\n", "\t\t\t", 
+           RowBox[{"sum", " ", "+=", " ", 
+            RowBox[{"Prime", "[", 
+             RowBox[{"n", " ", "+", " ", "len", " ", "-", " ", "1"}], 
+             "]"}]}]}]}], "\n", "\t\t", "]"}]}], ",", "\n", "\t\t", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", " ", "max"}], "}"}]}], "\n", "\t", "]"}], ";", "\n",
+      "\t", 
+     RowBox[{"{", 
+      RowBox[{"bestRunLength", ",", " ", "bestRunStart", ",", " ", 
+       RowBox[{"Total", "[", 
+        RowBox[{"Prime", "[", 
+         RowBox[{"Range", "[", 
+          RowBox[{"bestRunStart", ",", " ", 
+           RowBox[{
+           "bestRunStart", " ", "+", " ", "bestRunLength", " ", "-", " ", 
+            "1"}]}], "]"}], "]"}], "]"}]}], "}"}]}]}], "\n", "]"}]}]], "Code",\
+
+ CellChangeTimes->{{3.770890859526908*^9, 3.7708911764232225`*^9}, {
+  3.7708912602631383`*^9, 3.7708912711965322`*^9}, {3.7708915778956566`*^9, 
+  3.770891595376342*^9}, {3.770891645928754*^9, 3.770891671099042*^9}, {
+  3.770891734737988*^9, 3.770891772163907*^9}, {3.77089182136215*^9, 
+  3.77089183501934*^9}, {3.770891871606467*^9, 3.770892045161725*^9}, {
+  3.770892104466466*^9, 3.770892427773328*^9}},
+ CellLabel->"In[58]:=",ExpressionUUID->"517d0d7c-cf5b-4f68-9f23-d4a01df750f2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"longestPrimeSum", "[", "100", "]"}]], "Input",
+ CellChangeTimes->{{3.7708924044964657`*^9, 3.7708924076082616`*^9}},
+ CellLabel->"In[59]:=",ExpressionUUID->"855394e0-f8e4-403f-a5d4-71d0c17c91bc"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"6", ",", "1", ",", "41"}], "}"}]], "Output",
+ CellChangeTimes->{{3.7708924085749598`*^9, 3.7708924292034364`*^9}},
+ CellLabel->"Out[59]=",ExpressionUUID->"7ffcca08-fa9d-4c96-80eb-c31ba0891335"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"longestPrimeSum", "[", "1000", "]"}]], "Input",
+ CellChangeTimes->{3.770892447295619*^9},
+ CellLabel->"In[60]:=",ExpressionUUID->"8e76ac19-0a2b-47d2-82c9-7f28745aad88"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"21", ",", "4", ",", "953"}], "}"}]], "Output",
+ CellChangeTimes->{3.7708924476307373`*^9},
+ CellLabel->"Out[60]=",ExpressionUUID->"d6549a30-816d-4b81-8534-eb01fb690499"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"longestPrimeSum", "[", 
+  RowBox[{"10", "^", "6"}], "]"}]], "Input",
+ CellChangeTimes->{{3.770892458476239*^9, 3.7708924636413307`*^9}},
+ CellLabel->"In[61]:=",ExpressionUUID->"5ed2d595-910e-4074-9dda-ed3aa56de1ff"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"543", ",", "4", ",", "997651"}], "}"}]], "Output",
+ CellChangeTimes->{3.770892464524149*^9},
+ CellLabel->"Out[61]=",ExpressionUUID->"cd9d2bdf-c017-4521-9eea-6ca0ccdc3485"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1020, 772},
+WindowMargins->{{Automatic, 57}, {Automatic, 0}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 314, 7, 28, "Input",ExpressionUUID->"bc2f911f-f2b0-4f1b-9a30-810f1b54bca2"],
+Cell[1236, 40, 3349, 77, 303, "Code",ExpressionUUID->"517d0d7c-cf5b-4f68-9f23-d4a01df750f2"],
+Cell[CellGroupData[{
+Cell[4610, 121, 219, 3, 28, "Input",ExpressionUUID->"855394e0-f8e4-403f-a5d4-71d0c17c91bc"],
+Cell[4832, 126, 233, 4, 32, "Output",ExpressionUUID->"7ffcca08-fa9d-4c96-80eb-c31ba0891335"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5102, 135, 192, 3, 28, "Input",ExpressionUUID->"8e76ac19-0a2b-47d2-82c9-7f28745aad88"],
+Cell[5297, 140, 209, 4, 32, "Output",ExpressionUUID->"d6549a30-816d-4b81-8534-eb01fb690499"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5543, 149, 239, 4, 28, "Input",ExpressionUUID->"5ed2d595-910e-4074-9dda-ed3aa56de1ff"],
+Cell[5785, 155, 211, 4, 32, "Output",ExpressionUUID->"cd9d2bdf-c017-4521-9eea-6ca0ccdc3485"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

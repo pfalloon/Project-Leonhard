@@ -1,0 +1,141 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4902,        133]
+NotebookOptionsPosition[      3952,        108]
+NotebookOutlinePosition[      4296,        123]
+CellTagsIndexPosition[      4253,        120]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 8",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=8"], None},
+ ButtonNote->"https://projecteuler.net/problem=8"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "n", "=", 
+   "73167176531330624919225119674426574742355349194934969835203127745063262395\
+783180169848018694788518438586156078911294949545950173795833195285320880551112\
+540698747158523863050715693290963295227443043557668966489504452445231617318564\
+030987111217223831136222989342338030813533627661428280644448664523874930358907\
+296290491560440772390713810515859307960866701724271218839987979087922749219016\
+997208880937766572733300105336788122023542180975125454059475224352584907711670\
+556013604839586446706324415722155397536978179778461740649551492908625693219784\
+686224828397224137565705605749026140797296865241453510047482166370484403199890\
+008895243450658541227588666881164271714799244429282308634656748139191231628245\
+861786645835912456652947654568284891288314260769004224219022671055626321111109\
+370544217506941658960408071984038509624554443629812309878799272442849091888458\
+015616609791913387549920052406368991256071760605886116467109405077541002256983\
+15520005593572972571636269561882670428252483600823257530420752963450"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.770626045337723*^9, 3.770626103478895*^9}},
+ CellLabel->"In[31]:=",ExpressionUUID->"b3317904-6f6d-4d7a-8b08-9f240b35727b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solution", "[", 
+   RowBox[{"n_", ",", "k_"}], "]"}], ":=", 
+  RowBox[{"Last", "[", 
+   RowBox[{"Sort", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Times", "@@", "#"}], ",", "#"}], "}"}], "&"}], "/@", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"IntegerDigits", "[", "n", "]"}], ",", "k", ",", "1"}], 
+      "]"}]}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.770626354028456*^9, 3.7706263777852297`*^9}},
+ CellLabel->"In[48]:=",ExpressionUUID->"c30505f2-286f-410b-8cb5-b0b6442765ff"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"solution", "[", 
+  RowBox[{"n", ",", "4"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7706263809597416`*^9, 3.77062638341418*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"3d812956-5a77-44c8-bd64-d9c4586753ec"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"5832", ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "9", ",", "8", ",", "9"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.770626383781145*^9},
+ CellLabel->"Out[49]=",ExpressionUUID->"a21c98bc-c435-4b4e-9702-e782c73b6311"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"solution", "[", 
+  RowBox[{"n", ",", "13"}], "]"}]], "Input",
+ CellChangeTimes->{{3.770626385215358*^9, 3.7706263878802214`*^9}},
+ CellLabel->"In[50]:=",ExpressionUUID->"4bf3f261-0a50-4f37-ba21-ce02a9d4bf34"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"23514624000", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "5", ",", "5", ",", "7", ",", "6", ",", "6", ",", "8", ",", "9", ",", "6",
+      ",", "6", ",", "4", ",", "8", ",", "9", ",", "5"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7706263882911167`*^9},
+ CellLabel->"Out[50]=",ExpressionUUID->"94cb6718-e833-466e-b78d-6338446350f3"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 333, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[916, 31, 1245, 19, 143, "Input",ExpressionUUID->"b3317904-6f6d-4d7a-8b08-9f240b35727b"],
+Cell[2164, 52, 585, 16, 28, "Input",ExpressionUUID->"c30505f2-286f-410b-8cb5-b0b6442765ff"],
+Cell[CellGroupData[{
+Cell[2774, 72, 230, 4, 28, "Input",ExpressionUUID->"3d812956-5a77-44c8-bd64-d9c4586753ec"],
+Cell[3007, 78, 266, 6, 32, "Output",ExpressionUUID->"a21c98bc-c435-4b4e-9702-e782c73b6311"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3310, 89, 232, 4, 28, "Input",ExpressionUUID->"4bf3f261-0a50-4f37-ba21-ce02a9d4bf34"],
+Cell[3545, 95, 379, 9, 32, "Output",ExpressionUUID->"94cb6718-e833-466e-b78d-6338446350f3"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

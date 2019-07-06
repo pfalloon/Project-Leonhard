@@ -1,0 +1,337 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12252,        329]
+NotebookOptionsPosition[     10232,        286]
+NotebookOutlinePosition[     10576,        301]
+CellTagsIndexPosition[     10533,        298]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 4",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=4"], None},
+ ButtonNote->"https://projecteuler.net/problem=4"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Naive solution using ",
+ Cell[BoxData[
+ "PalindromeQ"],ExpressionUUID->"bcbe81a2-5dd0-4fc2-8ad6-973cdabdedf0"],
+ " together with ",
+ Cell[BoxData[
+ "Reap"],ExpressionUUID->"89c0ca6a-ff21-4466-acdc-028afdb6f79f"],
+ " and ",
+ Cell[BoxData["Sow"],ExpressionUUID->"e210d159-214d-45e2-9372-c3946f064f18"]
+}], "Section",
+ CellChangeTimes->{{3.770547782057672*^9, 3.7705477985276484`*^9}, {
+  3.7705931482766514`*^9, 3.7705931490335684`*^9}, {3.7705968575963616`*^9, 
+  3.7705968733451695`*^9}, {3.7705969519907*^9, 3.770596952686056*^9}, {
+  3.7706147819882164`*^9, 3.770614803535465*^9}, {3.77061564223672*^9, 
+  3.770615652886222*^9}, {3.7706158436833277`*^9, 3.770615856730426*^9}, {
+  3.770616160631248*^9, 3.7706161607948027`*^9}, {3.7706193312967606`*^9, 
+  3.7706193516213274`*^9}, {3.770619540789031*^9, 
+  3.7706195455452805`*^9}},ExpressionUUID->"adce8848-c838-48e8-8aa6-\
+99381e6d9aa0"],
+
+Cell["\<\
+We iterate over all pairs of 3 digits numbers, throwing up all palindromes \
+and taking the largest:\
+\>", "Text",
+ CellChangeTimes->{{3.7706193568922696`*^9, 3.7706193764868364`*^9}, {
+  3.770619410831895*^9, 3.770619448294691*^9}, {3.7706207103067045`*^9, 
+  3.770620779572377*^9}},ExpressionUUID->"4090ffbd-0147-4091-855e-\
+447bf22d420f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solution1", "[", "digits_", "]"}], ":=", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"p1", "=", 
+       RowBox[{"10", "^", 
+        RowBox[{"(", 
+         RowBox[{"digits", "-", "1"}], ")"}]}]}], ",", 
+      RowBox[{"p2", "=", 
+       RowBox[{
+        RowBox[{"10", "^", "digits"}], "-", "1"}]}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Last", "[", 
+     RowBox[{"Sort", "[", 
+      RowBox[{
+       RowBox[{"Reap", "[", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"With", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"pq", "=", 
+              RowBox[{"p", " ", "q"}]}], "}"}], ",", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"PalindromeQ", "[", "pq", "]"}], ",", 
+              RowBox[{"Sow", "[", 
+               RowBox[{"{", 
+                RowBox[{"pq", ",", "p", ",", "q"}], "}"}], "]"}]}], "]"}]}], 
+           "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"p", ",", "p1", ",", "p2"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"q", ",", "p", ",", "p2"}], "}"}]}], "]"}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{"2", ",", "1"}], "]"}], "]"}], "]"}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7706186429107304`*^9, 3.7706186544667606`*^9}, {
+  3.7706188874219027`*^9, 3.7706190561636305`*^9}, {3.770619092368809*^9, 
+  3.770619238430977*^9}, {3.770619398678466*^9, 3.770619399638889*^9}, {
+  3.7706195337408867`*^9, 3.7706195349127417`*^9}, {3.770620552390363*^9, 
+  3.770620623009437*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"52a419ff-3b1a-4814-8642-b4508f4d747d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solution1", "[", "3", "]"}], "//", "Timing"}]], "Input",
+ CellChangeTimes->{{3.770620626382408*^9, 3.770620630812567*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"ba938151-3def-4835-8093-2fa05c4a7673"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.265625`", ",", 
+   RowBox[{"{", 
+    RowBox[{"906609", ",", "913", ",", "993"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7706206348339086`*^9, 3.7706212948414063`*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"f0cb16fc-d58f-4346-aa55-a2d5c9776645"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More efficient solution", "Section",
+ CellChangeTimes->{{3.7706195499375377`*^9, 
+  3.7706195583978558`*^9}},ExpressionUUID->"77f1035b-0af3-41cb-a88a-\
+8b76edba3317"],
+
+Cell["\<\
+The above solution is inefficient as it searches too many cases. The \
+following solution reduces the number of cases we need to check by counting \
+backwards and stopping when the product is smaller than our previous maximum:\
+\
+\>", "Text",
+ CellChangeTimes->{{3.7706193568922696`*^9, 3.7706193764868364`*^9}, {
+  3.770619410831895*^9, 3.770619448294691*^9}, {3.770620715977515*^9, 
+  3.770620720266056*^9}, {3.770620783277449*^9, 3.7706208354583845`*^9}, {
+  3.7706209413924932`*^9, 
+  3.7706209422891293`*^9}},ExpressionUUID->"436c2283-c6ca-49b2-906e-\
+4aee253ac7e5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solution2", "[", "digits_", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"p1", " ", "=", " ", 
+       RowBox[{"10", "^", 
+        RowBox[{"(", 
+         RowBox[{"digits", "-", "1"}], ")"}]}]}], ",", " ", 
+      RowBox[{"p2", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"10", "^", "digits"}], " ", "-", " ", "1"}]}], ",", " ", 
+      RowBox[{"palMax", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", " ", "0", ",", " ", "0"}], "}"}]}]}], "}"}], ",", 
+    "\n", "\t", 
+    RowBox[{
+     RowBox[{"Do", "[", "\n", "\t\t", 
+      RowBox[{
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"pq", " ", "=", " ", 
+           RowBox[{"p", " ", "q"}]}], "}"}], ",", " ", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"PalindromeQ", "[", "pq", "]"}], " ", "&&", " ", 
+            RowBox[{"pq", " ", ">", " ", 
+             RowBox[{"First", "[", "palMax", "]"}]}]}], ",", " ", 
+           RowBox[{"palMax", " ", "=", " ", 
+            RowBox[{"{", 
+             RowBox[{"pq", ",", " ", "p", ",", " ", "q"}], "}"}]}]}], "]"}]}],
+         "]"}], ",", "\n", "\t\t", 
+       RowBox[{"{", 
+        RowBox[{"p", ",", " ", "p2", ",", " ", "p1", ",", " ", 
+         RowBox[{"-", "1"}]}], "}"}], ",", "\n", "\t\t", 
+       RowBox[{"{", 
+        RowBox[{"q", ",", " ", 
+         RowBox[{"Max", "[", 
+          RowBox[{"p", ",", " ", 
+           RowBox[{"Ceiling", "[", 
+            RowBox[{
+             RowBox[{"First", "[", "palMax", "]"}], "/", "p"}], "]"}]}], 
+          "]"}], ",", " ", "p2"}], "}"}]}], "\n", "\t", "]"}], ";", "\n", 
+     "\t", "palMax"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.7706196604736314`*^9, 3.7706200037449627`*^9}, {
+   3.7706200418419695`*^9, 3.770620093482847*^9}, {3.7706201372427464`*^9, 
+   3.7706201548386536`*^9}, {3.770620256731017*^9, 3.770620257579751*^9}, 
+   3.7706204180564065`*^9, {3.770620459800722*^9, 3.770620486442417*^9}, {
+   3.770620530004855*^9, 3.770620531062029*^9}, {3.770620653308221*^9, 
+   3.7706206886067734`*^9}, {3.7706208463742185`*^9, 3.770620882323013*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"68c4e281-0e1e-4359-ade6-67e1b766e767"],
+
+Cell[TextData[{
+ "Note how the range for ",
+ Cell[BoxData[
+  FormBox["q", TraditionalForm]],ExpressionUUID->
+  "0b019946-d812-4f32-bec0-173dceedddb1"],
+ " starts at the value for which the product ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"p", " ", "q"}], TraditionalForm]],ExpressionUUID->
+  "0184175f-08d1-429c-9b89-f16189c05501"],
+ " is at least equal to the current largest palindrome. "
+}], "Text",
+ CellChangeTimes->{{3.770620945279129*^9, 
+  3.7706210400712805`*^9}},ExpressionUUID->"6c7fe868-9c2f-4998-a640-\
+c23bbe8dedbe"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solution2", "[", "3", "]"}], "//", "Timing"}]], "Input",
+ CellChangeTimes->{{3.770620096123788*^9, 3.770620099059921*^9}, {
+  3.7706205358352203`*^9, 3.7706205367667623`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"b5c56c98-0876-4db1-aae7-6bb40ceb77e1"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.015625`", ",", 
+   RowBox[{"{", 
+    RowBox[{"906609", ",", "913", ",", "993"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7706204971287904`*^9, {3.770620533887432*^9, 3.77062053751672*^9}, {
+   3.7706206928354087`*^9, 3.7706206962183948`*^9}, {3.7706208926147614`*^9, 
+   3.7706208969231997`*^9}, 3.7706212991738377`*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"8d485042-91f7-4546-827a-a8fae15ea50c"]
+}, Open  ]],
+
+Cell["\<\
+With this more efficient approach we can fearlessly go to higher numbers of \
+digits:\
+\>", "Text",
+ CellChangeTimes->{{3.770621319575268*^9, 
+  3.7706213514789057`*^9}},ExpressionUUID->"4daab329-b59f-4ad2-ac8b-\
+3865e91a1445"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solution2", "[", "4", "]"}], "//", "Timing"}]], "Input",
+ CellChangeTimes->{{3.770621301691129*^9, 3.770621306330716*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"f888e636-d181-4668-a014-d367a07dc115"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.046875`", ",", 
+   RowBox[{"{", 
+    RowBox[{"99000099", ",", "9901", ",", "9999"}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.770621306838307*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"0b6b929c-68a5-4fe0-bd96-f3bdfb53d995"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solution2", "[", "5", "]"}], "//", "Timing"}]], "Input",
+ CellChangeTimes->{{3.77062131037788*^9, 3.7706213143841653`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"e40a3903-9da4-4828-9b44-09069d72b39d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.46875`", ",", 
+   RowBox[{"{", 
+    RowBox[{"9966006699", ",", "99681", ",", "99979"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.77062131517799*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"ded438ed-a684-4979-b768-6aef38e914ea"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 333, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[CellGroupData[{
+Cell[938, 33, 909, 18, 67, "Section",ExpressionUUID->"adce8848-c838-48e8-8aa6-99381e6d9aa0"],
+Cell[1850, 53, 351, 7, 34, "Text",ExpressionUUID->"4090ffbd-0147-4091-855e-447bf22d420f"],
+Cell[2204, 62, 1692, 45, 48, "Input",ExpressionUUID->"52a419ff-3b1a-4814-8642-b4508f4d747d"],
+Cell[CellGroupData[{
+Cell[3921, 111, 235, 4, 28, "Input",ExpressionUUID->"ba938151-3def-4835-8093-2fa05c4a7673"],
+Cell[4159, 117, 295, 6, 32, "Output",ExpressionUUID->"f0cb16fc-d58f-4346-aa55-a2d5c9776645"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4503, 129, 172, 3, 67, "Section",ExpressionUUID->"77f1035b-0af3-41cb-a88a-8b76edba3317"],
+Cell[4678, 134, 581, 11, 34, "Text",ExpressionUUID->"436c2283-c6ca-49b2-906e-4aee253ac7e5"],
+Cell[5262, 147, 2287, 54, 177, "Code",ExpressionUUID->"68c4e281-0e1e-4359-ade6-67e1b766e767"],
+Cell[7552, 203, 529, 14, 34, "Text",ExpressionUUID->"6c7fe868-9c2f-4998-a640-c23bbe8dedbe"],
+Cell[CellGroupData[{
+Cell[8106, 221, 288, 5, 28, "Input",ExpressionUUID->"b5c56c98-0876-4db1-aae7-6bb40ceb77e1"],
+Cell[8397, 228, 451, 9, 32, "Output",ExpressionUUID->"8d485042-91f7-4546-827a-a8fae15ea50c"]
+}, Open  ]],
+Cell[8863, 240, 237, 6, 34, "Text",ExpressionUUID->"4daab329-b59f-4ad2-ac8b-3865e91a1445"],
+Cell[CellGroupData[{
+Cell[9125, 250, 235, 4, 28, "Input",ExpressionUUID->"f888e636-d181-4668-a014-d367a07dc115"],
+Cell[9363, 256, 275, 7, 32, "Output",ExpressionUUID->"0b6b929c-68a5-4fe0-bd96-f3bdfb53d995"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9675, 268, 236, 4, 28, "Input",ExpressionUUID->"e40a3903-9da4-4828-9b44-09069d72b39d"],
+Cell[9914, 274, 278, 7, 32, "Output",ExpressionUUID->"ded438ed-a684-4979-b768-6aef38e914ea"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

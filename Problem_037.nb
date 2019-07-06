@@ -1,0 +1,177 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5886,        169]
+NotebookOptionsPosition[      4807,        141]
+NotebookOutlinePosition[      5152,        156]
+CellTagsIndexPosition[      5109,        153]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 37",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=37"], None},
+ ButtonNote->"https://projecteuler.net/problem=37"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"truncatablePrimeQ", "[", "n_", "]"}], " ", ":=", " ", 
+  RowBox[{"If", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"n", " ", "<", " ", "10"}], " ", "||", " ", 
+     RowBox[{"!", 
+      RowBox[{"PrimeQ", "[", "n", "]"}]}]}], ",", "\n", "\t", "False", ",", 
+    "\n", "\t", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"val", " ", "=", " ", "True"}], ",", " ", 
+        RowBox[{"digits", " ", "=", " ", 
+         RowBox[{"IntegerDigits", "[", "n", "]"}]}]}], "}"}], ",", "\n", 
+      "\t\t", 
+      RowBox[{
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"!", 
+             RowBox[{"PrimeQ", "[", 
+              RowBox[{"FromDigits", "[", 
+               RowBox[{"Drop", "[", 
+                RowBox[{"digits", ",", " ", "k"}], "]"}], "]"}], "]"}]}], " ",
+             "||", " ", 
+            RowBox[{"!", 
+             RowBox[{"PrimeQ", "[", 
+              RowBox[{"FromDigits", "[", 
+               RowBox[{"Drop", "[", 
+                RowBox[{"digits", ",", " ", 
+                 RowBox[{"-", "k"}]}], "]"}], "]"}], "]"}]}]}], ",", " ", 
+           RowBox[{
+            RowBox[{"val", " ", "=", " ", "False"}], ";", " ", 
+            RowBox[{"Break", "[", "]"}]}]}], "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", " ", "1", ",", " ", 
+           RowBox[{
+            RowBox[{"Length", "[", "digits", "]"}], " ", "-", " ", "1"}]}], 
+          "}"}]}], "]"}], ";", "\n", "\t\t", "val"}]}], "\n", "\t", "]"}]}], 
+   "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.770808771183777*^9, 3.7708087985791864`*^9}, {
+  3.7708088531797485`*^9, 3.7708091139369063`*^9}, {3.770809208063394*^9, 
+  3.7708092593388124`*^9}, {3.7708093225634203`*^9, 3.7708093274373784`*^9}, {
+  3.770809419962784*^9, 3.770809474757538*^9}, {3.7708095618291273`*^9, 
+  3.770809584807028*^9}, {3.7708096722043877`*^9, 3.7708096761111507`*^9}},
+ CellLabel->
+  "In[776]:=",ExpressionUUID->"b6c8fc66-490a-4ad7-be8a-3755fbb39cfd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"res", "=", 
+  RowBox[{"Select", "[", 
+   RowBox[{
+    RowBox[{"Range", "[", "1000000", "]"}], ",", "truncatablePrimeQ"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.770809499496436*^9, 3.770809508164833*^9}, {
+  3.7708096854946527`*^9, 3.7708097289925165`*^9}},
+ CellLabel->
+  "In[784]:=",ExpressionUUID->"bc283c95-0f35-4b3a-b8ee-3d15ef95001e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "23", ",", "37", ",", "53", ",", "73", ",", "313", ",", "317", ",", "373", 
+   ",", "797", ",", "3137", ",", "3797", ",", "739397"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.77080950855255*^9, 3.770809607484683*^9, {3.7708096798621674`*^9, 
+   3.7708097325317726`*^9}},
+ CellLabel->
+  "Out[784]=",ExpressionUUID->"fc332376-04b7-4826-9736-aebc90d447b1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "res", "]"}]], "Input",
+ CellChangeTimes->{{3.7708096158600063`*^9, 3.770809617713544*^9}, {
+  3.770809688590517*^9, 3.770809691770225*^9}, {3.7708097328673077`*^9, 
+  3.7708097329991198`*^9}},
+ CellLabel->
+  "In[785]:=",ExpressionUUID->"6f3c978c-2e3b-478f-a981-7f92fabbc612"],
+
+Cell[BoxData["11"], "Output",
+ CellChangeTimes->{
+  3.770809618049075*^9, {3.770809692241618*^9, 3.770809733378582*^9}},
+ CellLabel->
+  "Out[785]=",ExpressionUUID->"891cafcd-bff1-4fef-b726-4bcb2376c1fa"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", "res", "]"}]], "Input",
+ CellChangeTimes->{{3.770809743672825*^9, 3.7708097449631286`*^9}},
+ CellLabel->
+  "In[786]:=",ExpressionUUID->"79337ca2-baf5-4d59-a7cf-bfaef0424ef3"],
+
+Cell[BoxData["748317"], "Output",
+ CellChangeTimes->{3.7708097452706757`*^9},
+ CellLabel->
+  "Out[786]=",ExpressionUUID->"477de0ba-4d17-4250-a2e8-5d2fc2f0123e"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{Automatic, 124}, {42, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 2098, 51, 177, "Code",ExpressionUUID->"b6c8fc66-490a-4ad7-be8a-3755fbb39cfd"],
+Cell[CellGroupData[{
+Cell[3042, 86, 370, 9, 28, "Input",ExpressionUUID->"bc283c95-0f35-4b3a-b8ee-3d15ef95001e"],
+Cell[3415, 97, 396, 9, 32, "Output",ExpressionUUID->"fc332376-04b7-4826-9736-aebc90d447b1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3848, 111, 314, 6, 28, "Input",ExpressionUUID->"6f3c978c-2e3b-478f-a981-7f92fabbc612"],
+Cell[4165, 119, 203, 4, 32, "Output",ExpressionUUID->"891cafcd-bff1-4fef-b726-4bcb2376c1fa"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4405, 128, 211, 4, 28, "Input",ExpressionUUID->"79337ca2-baf5-4d59-a7cf-bfaef0424ef3"],
+Cell[4619, 134, 160, 3, 32, "Output",ExpressionUUID->"477de0ba-4d17-4250-a2e8-5d2fc2f0123e"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

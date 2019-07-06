@@ -1,0 +1,270 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9773,        262]
+NotebookOptionsPosition[      7573,        217]
+NotebookOutlinePosition[      7918,        232]
+CellTagsIndexPosition[      7875,        229]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 62",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=62"], None},
+ ButtonNote->"https://projecteuler.net/problem=62"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell["\<\
+Some experimentation makes it clear that we can\[CloseCurlyQuote]t afford to \
+compute all the permutations of a given set of digits, so we need to be more \
+efficient.\
+\>", "Text",
+ CellChangeTimes->{{3.771033380932439*^9, 3.7710334457699485`*^9}, {
+  3.771034142459147*^9, 
+  3.771034194202691*^9}},ExpressionUUID->"f2b88c5c-449d-452c-996f-\
+0754d7936cda"],
+
+Cell["\<\
+As a first step, this function evaluates all cubes with the given number of \
+digits, and returns the first set of permutations of the given length (if \
+found):\
+\>", "Text",
+ CellChangeTimes->{{3.771033380932439*^9, 3.7710334457699485`*^9}, {
+  3.771034142459147*^9, 
+  3.771034229049452*^9}},ExpressionUUID->"d301cae3-6bbf-422f-9cb6-\
+db81e1cd612a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"firstCubePermutationSet", "[", 
+   RowBox[{"ndigits_", ",", " ", "nperms_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"With", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"cubes", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Range", "[", 
+        RowBox[{
+         RowBox[{"Ceiling", "[", 
+          RowBox[{"CubeRoot", "[", 
+           RowBox[{"10", "^", 
+            RowBox[{"(", 
+             RowBox[{"ndigits", "-", "1"}], ")"}]}], "]"}], "]"}], ",", " ", 
+         RowBox[{"Floor", "[", 
+          RowBox[{"CubeRoot", "[", 
+           RowBox[{
+            RowBox[{"10", "^", "ndigits"}], " ", "-", " ", "1"}], "]"}], 
+          "]"}]}], "]"}], "^", "3"}]}], "}"}], ",", "\n", "\t", 
+    RowBox[{"SelectFirst", "[", 
+     RowBox[{
+      RowBox[{"GatherBy", "[", 
+       RowBox[{"cubes", ",", " ", 
+        RowBox[{"Sort", " ", "@*", " ", "IntegerDigits"}]}], "]"}], ",", " ", 
+      
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", "#", "]"}], " ", "\[Equal]", " ", "nperms"}], 
+       " ", "&"}]}], "]"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.771033537226223*^9, 3.7710338589218793`*^9}},
+ CellLabel->"In[35]:=",ExpressionUUID->"77368d36-754b-4c2f-b7dc-db08e260ffe5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"firstCubePermutationSet", "[", 
+  RowBox[{"3", ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7710337355688996`*^9, 3.7710337487875705`*^9}},
+ CellLabel->"In[36]:=",ExpressionUUID->"c53a0dfb-0eb3-49ae-926c-f94a36c2ea0e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"125", ",", "512"}], "}"}]], "Output",
+ CellChangeTimes->{3.771033749323096*^9, 3.771033868202035*^9},
+ CellLabel->"Out[36]=",ExpressionUUID->"f71c3c32-76cd-42b0-aee1-a5f6a5681dae"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"firstCubePermutationSet", "[", 
+  RowBox[{"8", ",", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.77103389075665*^9, 3.7710338974347816`*^9}},
+ CellLabel->"In[38]:=",ExpressionUUID->"f0821415-8780-4631-a467-ce3013b98fc9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"41063625", ",", "56623104", ",", "66430125"}], "}"}]], "Output",
+ CellChangeTimes->{{3.7710338921600184`*^9, 3.771033897811808*^9}},
+ CellLabel->"Out[38]=",ExpressionUUID->"42d7ee2c-1431-4796-8d12-ba8cb66ba7f5"]
+}, Open  ]],
+
+Cell["\<\
+We don\[CloseCurlyQuote]t know in advance how many digits the first set of \
+cube permutations of the given length will have, so this function iterates \
+over number of digits until it finds the first one:\
+\>", "Text",
+ CellChangeTimes->{{3.7710342341528335`*^9, 
+  3.7710342899196343`*^9}},ExpressionUUID->"04d5e863-d0af-4052-8992-\
+742644ef68c9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"findCubePermutationSet", "[", "nperms_", "]"}], " ", ":=", " ", 
+  RowBox[{"Catch", "[", 
+   RowBox[{"Module", "[", "\n", "\t", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ndigits", " ", "=", " ", "1"}], ",", " ", "result"}], "}"}], 
+     ",", "\n", "\t", 
+     RowBox[{"While", "[", 
+      RowBox[{"True", ",", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"result", " ", "=", " ", 
+         RowBox[{"firstCubePermutationSet", "[", 
+          RowBox[{"ndigits", ",", " ", "nperms"}], "]"}]}], ";", "\n", "\t\t", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"MatchQ", "[", 
+           RowBox[{"result", ",", " ", "_List"}], "]"}], ",", " ", 
+          RowBox[{"Throw", "[", "result", "]"}]}], "]"}], ";", "\n", "\t\t", 
+        RowBox[{"ndigits", " ", "+=", " ", "1"}]}]}], "\n", "\t", "]"}]}], 
+    "\n", "]"}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.771033922305236*^9, 3.7710340399784155`*^9}, {
+  3.771034072889302*^9, 3.7710340906408415`*^9}},
+ CellLabel->"In[40]:=",ExpressionUUID->"3bcc53af-b3a7-43b6-ae60-4cfa8c4f9701"],
+
+Cell["The result is surprisingly fast:", "Text",
+ CellChangeTimes->{{3.7710343391449347`*^9, 
+  3.771034344544483*^9}},ExpressionUUID->"4622e988-282d-4d58-9f13-\
+ce1c88d236b4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findCubePermutationSet", "[", "2", "]"}]], "Input",
+ CellChangeTimes->{3.771034103774658*^9},
+ CellLabel->"In[43]:=",ExpressionUUID->"f8724a6a-3685-458e-a7ea-9a860ea07df0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"125", ",", "512"}], "}"}]], "Output",
+ CellChangeTimes->{3.7710341041439133`*^9},
+ CellLabel->"Out[43]=",ExpressionUUID->"b6369b5f-8b63-4489-9002-4b73c605b1f4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findCubePermutationSet", "[", "3", "]"}]], "Input",
+ CellChangeTimes->{{3.771034092803049*^9, 3.7710340996328034`*^9}},
+ CellLabel->"In[42]:=",ExpressionUUID->"a8d5fdc0-0659-464b-94f9-f39513b6e62e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"41063625", ",", "56623104", ",", "66430125"}], "}"}]], "Output",
+ CellChangeTimes->{{3.771034097759752*^9, 3.771034100021699*^9}},
+ CellLabel->"Out[42]=",ExpressionUUID->"cd1615bc-d406-408a-ade2-c142d744ee45"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findCubePermutationSet", "[", "4", "]"}]], "Input",
+ CellChangeTimes->{3.7710341089458213`*^9},
+ CellLabel->"In[44]:=",ExpressionUUID->"76e73187-42b1-4c12-87d4-4aa7cc2b2275"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1006012008", ",", "1061208000", ",", "8012006001", ",", "8120601000"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.771034111588749*^9},
+ CellLabel->"Out[44]=",ExpressionUUID->"48b332b3-1271-47f4-82c8-fc271d7498e2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findCubePermutationSet", "[", "5", "]"}]], "Input",
+ CellChangeTimes->{3.771034116728038*^9},
+ CellLabel->"In[45]:=",ExpressionUUID->"9a43f8f8-4e15-4d4c-8788-7bd43d666d80"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "127035954683", ",", "352045367981", ",", "373559126408", ",", 
+   "569310543872", ",", "589323567104"}], "}"}]], "Output",
+ CellChangeTimes->{3.7710341173094487`*^9},
+ CellLabel->"Out[45]=",ExpressionUUID->"2bbd01fb-c1d5-41ff-91e8-4e3f7f4c5dd3"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{Automatic, 124}, {42, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 369, 8, 34, "Text",ExpressionUUID->"f2b88c5c-449d-452c-996f-0754d7936cda"],
+Cell[1291, 41, 362, 8, 34, "Text",ExpressionUUID->"d301cae3-6bbf-422f-9cb6-db81e1cd612a"],
+Cell[1656, 51, 1244, 32, 105, "Code",ExpressionUUID->"77368d36-754b-4c2f-b7dc-db08e260ffe5"],
+Cell[CellGroupData[{
+Cell[2925, 87, 248, 4, 28, "Input",ExpressionUUID->"c53a0dfb-0eb3-49ae-926c-f94a36c2ea0e"],
+Cell[3176, 93, 220, 4, 32, "Output",ExpressionUUID->"f71c3c32-76cd-42b0-aee1-a5f6a5681dae"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3433, 102, 245, 4, 28, "Input",ExpressionUUID->"f0821415-8780-4631-a467-ce3013b98fc9"],
+Cell[3681, 108, 251, 4, 32, "Output",ExpressionUUID->"42d7ee2c-1431-4796-8d12-ba8cb66ba7f5"]
+}, Open  ]],
+Cell[3947, 115, 359, 7, 34, "Text",ExpressionUUID->"04d5e863-d0af-4052-8992-742644ef68c9"],
+Cell[4309, 124, 1104, 25, 177, "Code",ExpressionUUID->"3bcc53af-b3a7-43b6-ae60-4cfa8c4f9701"],
+Cell[5416, 151, 176, 3, 34, "Text",ExpressionUUID->"4622e988-282d-4d58-9f13-ce1c88d236b4"],
+Cell[CellGroupData[{
+Cell[5617, 158, 196, 3, 28, "Input",ExpressionUUID->"f8724a6a-3685-458e-a7ea-9a860ea07df0"],
+Cell[5816, 163, 200, 4, 32, "Output",ExpressionUUID->"b6369b5f-8b63-4489-9002-4b73c605b1f4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6053, 172, 222, 3, 28, "Input",ExpressionUUID->"a8d5fdc0-0659-464b-94f9-f39513b6e62e"],
+Cell[6278, 177, 249, 4, 32, "Output",ExpressionUUID->"cd1615bc-d406-408a-ade2-c142d744ee45"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6564, 186, 198, 3, 28, "Input",ExpressionUUID->"76e73187-42b1-4c12-87d4-4aa7cc2b2275"],
+Cell[6765, 191, 256, 6, 32, "Output",ExpressionUUID->"48b332b3-1271-47f4-82c8-fc271d7498e2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7058, 202, 196, 3, 28, "Input",ExpressionUUID->"9a43f8f8-4e15-4d4c-8788-7bd43d666d80"],
+Cell[7257, 207, 288, 6, 32, "Output",ExpressionUUID->"2bbd01fb-c1d5-41ff-91e8-4e3f7f4c5dd3"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

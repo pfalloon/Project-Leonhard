@@ -1,0 +1,228 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8770,        220]
+NotebookOptionsPosition[      7813,        195]
+NotebookOutlinePosition[      8157,        210]
+CellTagsIndexPosition[      8114,        207]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 74",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=74"], None},
+ ButtonNote->"https://projecteuler.net/problem=74"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"56e297a8-802d-48b9-9f2f-\
+ecee28c1f632"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "digitFactorialSum", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"digitFactorialSum", "[", 
+   RowBox[{"{", "d_", "}"}], "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"digitFactorialSum", "[", 
+    RowBox[{"{", "d", "}"}], "]"}], " ", "=", " ", 
+   RowBox[{"d", "!"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"digitFactorialSum", "[", 
+   RowBox[{"{", 
+    RowBox[{"d_", ",", " ", "rest__"}], "}"}], "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"digitFactorialSum", "[", 
+    RowBox[{"{", 
+     RowBox[{"d", ",", " ", "rest"}], "}"}], "]"}], " ", "=", " ", 
+   RowBox[{
+    RowBox[{"d", "!"}], " ", "+", " ", 
+    RowBox[{"digitFactorialSum", "[", 
+     RowBox[{"{", "rest", "}"}], "]"}]}]}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"digitFactorialSum", "[", "d_Integer", "]"}], " ", ":=", " ", 
+   RowBox[{"digitFactorialSum", "[", 
+    RowBox[{"Sort", "[", 
+     RowBox[{"IntegerDigits", "[", "d", "]"}], "]"}], "]"}]}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"lastMemberMostQ", "[", 
+   RowBox[{"most___", ",", " ", "last_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"MemberQ", "[", 
+   RowBox[{
+    RowBox[{"{", "most", "}"}], ",", " ", "last"}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"digitFactorialSumCycle", "[", "n_", "]"}], " ", ":=", " ", 
+  RowBox[{"NestWhileList", "[", 
+   RowBox[{"digitFactorialSum", ",", " ", "n", ",", " ", 
+    RowBox[{"Not", " ", "@*", " ", "lastMemberMostQ"}], ",", " ", "All"}], 
+   "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"digitFactorialSumCycleLength", "[", "n_", "]"}], " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"Length", "[", 
+     RowBox[{"digitFactorialSumCycle", "[", "n", "]"}], "]"}], " ", "-", " ", 
+    "1"}]}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"Clear", "[", "digitFactorialSumCycleLength", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"digitFactorialSumCycleLength", "[", "digits_List", "]"}], " ", ":=",
+   " ", 
+  RowBox[{
+   RowBox[{"digitFactorialSumCycleLength", "[", "digits", "]"}], " ", "=", 
+   " ", 
+   RowBox[{
+    RowBox[{"Length", "[", 
+     RowBox[{"digitFactorialSumCycle", "[", "digits", "]"}], "]"}], " ", "-", 
+    " ", "1"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"digitFactorialSumCycleLength", "[", "n_Integer", "]"}], " ", ":=", 
+  " ", 
+  RowBox[{"digitFactorialSumCycleLength", "[", 
+   RowBox[{"Sort", "[", 
+    RowBox[{"IntegerDigits", "[", "n", "]"}], "]"}], "]"}]}]}], "Code",
+ CellChangeTimes->{{3.7712786160467167`*^9, 3.7712786438812084`*^9}, {
+  3.771278711063608*^9, 3.7712788365795703`*^9}, {3.771279680938754*^9, 
+  3.7712796913974905`*^9}, {3.771280044890585*^9, 3.7712802026897507`*^9}, {
+  3.7712815904131117`*^9, 3.7712816043055825`*^9}},
+ CellLabel->"In[33]:=",ExpressionUUID->"08c4bfd8-2f54-46fe-8304-8124ac9e45e2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cycleLengths", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"digitFactorialSumCycleLength", "[", "k", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", 
+       RowBox[{
+        RowBox[{"10", "^", "6"}], "-", "1"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7712814787967196`*^9, 3.7712815104551*^9}},
+ CellLabel->"In[43]:=",ExpressionUUID->"15ae876c-e4d2-4af3-a30b-60a266699a72"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Histogram", "[", "cycleLengths", "]"}]], "Input",
+ CellChangeTimes->{{3.771281518717555*^9, 3.771281522541397*^9}},
+ CellLabel->"In[44]:=",ExpressionUUID->"a986c312-507c-4328-9e0f-0f7c5c7fa93b"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+    Opacity[0.476], Thickness[Small]}], {}, 
+    {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+     Opacity[0.476], Thickness[Small]}], RectangleBox[{2., 0}, {4., 3784.},
+      RoundingRadius->0], RectangleBox[{4., 0}, {6., 23703.},
+      RoundingRadius->0], RectangleBox[{6., 0}, {8., 19056.},
+      RoundingRadius->0], RectangleBox[{8., 0}, {10., 26070.},
+      RoundingRadius->0], RectangleBox[{10., 0}, {12., 40227.},
+      RoundingRadius->0], RectangleBox[{12., 0}, {14., 22917.},
+      RoundingRadius->0], RectangleBox[{14., 0}, {16., 35607.},
+      RoundingRadius->0], RectangleBox[{16., 0}, {18., 36039.},
+      RoundingRadius->0], RectangleBox[{18., 0}, {20., 39496.},
+      RoundingRadius->0], RectangleBox[{20., 0}, {22., 14935.},
+      RoundingRadius->0], RectangleBox[{22., 0}, {24., 21493.},
+      RoundingRadius->0], RectangleBox[{24., 0}, {26., 44198.},
+      RoundingRadius->0], RectangleBox[{26., 0}, {28., 37480.},
+      RoundingRadius->0], RectangleBox[{28., 0}, {30., 23212.},
+      RoundingRadius->0], RectangleBox[{30., 0}, {32., 38024.},
+      RoundingRadius->0], RectangleBox[{32., 0}, {34., 43341.},
+      RoundingRadius->0], RectangleBox[{34., 0}, {36., 57000.},
+      RoundingRadius->0], RectangleBox[{36., 0}, {38., 36708.},
+      RoundingRadius->0], RectangleBox[{38., 0}, {40., 48673.},
+      RoundingRadius->0], RectangleBox[{40., 0}, {42., 67496.},
+      RoundingRadius->0], RectangleBox[{42., 0}, {44., 98581.},
+      RoundingRadius->0], RectangleBox[{44., 0}, {46., 81256.},
+      RoundingRadius->0], RectangleBox[{46., 0}, {48., 43150.},
+      RoundingRadius->0], RectangleBox[{48., 0}, {50., 35581.},
+      RoundingRadius->0], RectangleBox[{50., 0}, {52., 14723.},
+      RoundingRadius->0], RectangleBox[{52., 0}, {54., 10280.},
+      RoundingRadius->0], RectangleBox[{54., 0}, {56., 16705.},
+      RoundingRadius->0], RectangleBox[{56., 0}, {58., 15662.},
+      RoundingRadius->0], RectangleBox[{58., 0}, {60., 4200.},
+      RoundingRadius->0], RectangleBox[{60., 0}, {62., 402.},
+      RoundingRadius->
+       0]}, {}, {}}, {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8, 0},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  PlotRange->{{2., 62.}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.771281524250554*^9, 3.7712816238330116`*^9},
+ CellLabel->"Out[44]=",ExpressionUUID->"b633856c-a82b-443c-89af-ac6c16011066"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Count", "[", 
+  RowBox[{"cycleLengths", ",", "60"}], "]"}]], "Input",
+ CellChangeTimes->{{3.771281535338683*^9, 3.7712815495230646`*^9}},
+ CellLabel->"In[45]:=",ExpressionUUID->"7ab25429-402b-45bd-b652-a524a0a6260b"],
+
+Cell[BoxData["402"], "Output",
+ CellChangeTimes->{3.7712815500812387`*^9, 3.771281623902825*^9},
+ CellLabel->"Out[45]=",ExpressionUUID->"ab114684-044c-465d-9c33-11c67b4e9344"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"56e297a8-802d-48b9-9f2f-ecee28c1f632"],
+Cell[919, 31, 2730, 69, 249, "Code",ExpressionUUID->"08c4bfd8-2f54-46fe-8304-8124ac9e45e2"],
+Cell[3652, 102, 453, 12, 28, "Input",ExpressionUUID->"15ae876c-e4d2-4af3-a30b-60a266699a72"],
+Cell[CellGroupData[{
+Cell[4130, 118, 218, 3, 28, "Input",ExpressionUUID->"a986c312-507c-4328-9e0f-0f7c5c7fa93b"],
+Cell[4351, 123, 2979, 55, 227, "Output",ExpressionUUID->"b633856c-a82b-443c-89af-ac6c16011066"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7367, 183, 240, 4, 28, "Input",ExpressionUUID->"7ab25429-402b-45bd-b652-a524a0a6260b"],
+Cell[7610, 189, 175, 2, 32, "Output",ExpressionUUID->"ab114684-044c-465d-9c33-11c67b4e9344"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

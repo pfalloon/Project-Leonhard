@@ -1,0 +1,97 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2892,         89]
+NotebookOptionsPosition[      2254,         69]
+NotebookOutlinePosition[      2599,         84]
+CellTagsIndexPosition[      2556,         81]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 67",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=67"], None},
+ ButtonNote->"https://projecteuler.net/problem=67"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"triangle", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<C:\\\\Users\\\\pfall\\\\MyStuff\\\\GitHub\\\\ProjectEuler\\\\p067_\
+triangle.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.771203162240732*^9, 3.7712031998091955`*^9}, {
+  3.7712032740219955`*^9, 3.7712032853263206`*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"cd0f1581-03d8-4c13-bce4-94b5f7285169"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Fold", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Max", "/@", 
+       RowBox[{"Partition", "[", 
+        RowBox[{"#1", ",", "2", ",", "1"}], "]"}]}], ")"}], "+", "#2"}], 
+    "&"}], ",", 
+   RowBox[{"Last", "[", "triangle", "]"}], ",", 
+   RowBox[{"Reverse", "[", 
+    RowBox[{"Most", "[", "triangle", "]"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.771203398356877*^9, 3.7712034622796917`*^9}, {
+  3.7712035112274103`*^9, 3.771203606311846*^9}},
+ CellLabel->"In[33]:=",ExpressionUUID->"e7719261-8dba-4d6c-9b72-48ab49df1833"],
+
+Cell[BoxData[
+ RowBox[{"{", "7273", "}"}]], "Output",
+ CellChangeTimes->{{3.7712034451295376`*^9, 3.7712034639719844`*^9}, {
+  3.7712035422617207`*^9, 3.771203609712999*^9}},
+ CellLabel->"Out[33]=",ExpressionUUID->"3b0fbde5-eace-49ad-9831-a818d623cdf0"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{Automatic, 124}, {42, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 437, 9, 28, "Input",ExpressionUUID->"cd0f1581-03d8-4c13-bce4-94b5f7285169"],
+Cell[CellGroupData[{
+Cell[1381, 44, 589, 15, 28, "Input",ExpressionUUID->"e7719261-8dba-4d6c-9b72-48ab49df1833"],
+Cell[1973, 61, 253, 4, 32, "Output",ExpressionUUID->"3b0fbde5-eace-49ad-9831-a818d623cdf0"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

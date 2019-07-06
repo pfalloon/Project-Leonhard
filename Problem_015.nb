@@ -1,0 +1,242 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7855,        234]
+NotebookOptionsPosition[      6497,        203]
+NotebookOutlinePosition[      6841,        218]
+CellTagsIndexPosition[      6798,        215]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 15",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=15"], None},
+ ButtonNote->"https://projecteuler.net/problem=15"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[TextData[{
+ "For an ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "\[Times]", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "81aae932-f47c-48a0-9625-877365a3800b"],
+ " grid, travelling from top left to bottom right corner requires ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "f245e835-a940-4222-82d9-74402ddad938"],
+ " right steps and ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "6b0cbb67-cd0e-4aa8-8a06-174867f008df"],
+ " down steps. So the number of paths just the number of permutations: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"2", "n"}], ")"}], "!"}], "/", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"n", "!"}], ")"}], "2"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "8913cfa7-e4a3-40db-b011-f8ea32752c47"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.770635045473691*^9, 
+  3.770635249788057*^9}},ExpressionUUID->"46fc1bb1-9483-4bbd-a488-\
+99cfa34ccc76"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pathCount", "[", "n_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"2", "n"}], ")"}], "!"}], "/", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"n", "!"}], ")"}], "^", "2"}]}]}]], "Input",
+ CellChangeTimes->{{3.770635252036999*^9, 3.770635270476401*^9}, {
+  3.770635648912184*^9, 3.7706356510747957`*^9}},
+ CellLabel->
+  "In[238]:=",ExpressionUUID->"922d6670-5f94-4902-a357-7fbf1cc3e76a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pathCount", "[", "2", "]"}]], "Input",
+ CellChangeTimes->{{3.7706356591322265`*^9, 3.770635662683414*^9}},
+ CellLabel->
+  "In[240]:=",ExpressionUUID->"b7aace88-ee7d-476c-ae24-90b2b29a4166"],
+
+Cell[BoxData["6"], "Output",
+ CellChangeTimes->{3.770635663003024*^9},
+ CellLabel->
+  "Out[240]=",ExpressionUUID->"78f98e9e-03e2-4e07-92dc-b3d982343346"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pathCount", "[", "20", "]"}]], "Input",
+ CellChangeTimes->{{3.770635654226758*^9, 3.7706356561721754`*^9}},
+ CellLabel->
+  "In[239]:=",ExpressionUUID->"f033d2e9-ed6e-44a7-ba76-5eb13311e782"],
+
+Cell[BoxData["137846528820"], "Output",
+ CellChangeTimes->{3.7706356571987457`*^9},
+ CellLabel->
+  "Out[239]=",ExpressionUUID->"4763dbe1-f7ff-4d45-b07a-1adb7c238f5e"]
+}, Open  ]],
+
+Cell["\<\
+A more Mathematica-oriented challenge is to generate some sample paths:\
+\>", "Text",
+ CellChangeTimes->{{3.7706356693508663`*^9, 3.7706356952439394`*^9}, {
+  3.7706361530687904`*^9, 
+  3.770636183539795*^9}},ExpressionUUID->"55b7d853-f061-4093-9408-\
+efff0d7a3c1a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"randomPath", "[", "n_", "]"}], ":=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"Thick", ",", 
+      RowBox[{"Line", "[", 
+       RowBox[{"Accumulate", "[", 
+        RowBox[{"Prepend", "[", 
+         RowBox[{
+          RowBox[{"RandomSample", "[", 
+           RowBox[{"Join", "[", 
+            RowBox[{
+             RowBox[{"ConstantArray", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"1", ",", "0"}], "}"}], ",", "n"}], "]"}], ",", 
+             RowBox[{"ConstantArray", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", 
+                 RowBox[{"-", "1"}]}], "}"}], ",", "n"}], "]"}]}], "]"}], 
+           "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}]}], "]"}], "]"}], "]"}]}], "}"}], 
+    ",", 
+    RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+    RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+    RowBox[{"GridLines", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Range", "[", 
+        RowBox[{"0", ",", "n"}], "]"}], ",", 
+       RowBox[{"-", 
+        RowBox[{"Range", "[", 
+         RowBox[{"0", ",", "n"}], "]"}]}]}], "}"}]}], ",", 
+    RowBox[{"GridLinesStyle", "\[Rule]", 
+     RowBox[{"Directive", "[", 
+      RowBox[{"Gray", ",", "Dotted"}], "]"}]}], ",", 
+    RowBox[{"FrameTicks", "\[Rule]", "False"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", 
+     RowBox[{"Directive", "[", 
+      RowBox[{"Gray", ",", "Thick"}], "]"}]}], ",", 
+    RowBox[{"Background", "\[Rule]", "LightGray"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.770635717170619*^9, 3.770635739974223*^9}, {
+  3.7706360924097815`*^9, 3.770636114140731*^9}},
+ CellLabel->
+  "In[284]:=",ExpressionUUID->"346d5248-65b9-4c90-b0f2-649d6c6d1192"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"randomPath", "[", "20", "]"}]], "Input",
+ CellChangeTimes->{{3.770636100670742*^9, 3.770636102763939*^9}},
+ CellLabel->
+  "In[285]:=",ExpressionUUID->"f37115a7-6cc9-432d-b78f-6bfe629118ac"],
+
+Cell[BoxData[
+ GraphicsBox[
+  {Thickness[Large], LineBox[CompressedData["
+1:eJxNxVkOwWAAReFfDUVNVRvwaDuWYAFsHC1qptwmp8k9ycm33OzW2yiEsNK1
+TS3zp2orGWEbO9g1v7JnfvAtY+zjwHzhEx94l0NMzBte5QjHOMGpWeIFz3jC
+Qs4wxbmZy8w8yoV5wL38A5L/naU=
+    "]]},
+  Axes->False,
+  Background->GrayLevel[0.85],
+  Frame->True,
+  FrameStyle->Directive[
+    GrayLevel[0.5], 
+    Thickness[Large]],
+  FrameTicks->False,
+  GridLines->{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 
+   18, 19, 20}, {
+   0, -1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12, -13, -14, -15, -16, \
+-17, -18, -19, -20}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5], 
+    Dashing[{0, Small}]]]], "Output",
+ CellChangeTimes->{{3.7706361031194553`*^9, 3.770636138897914*^9}, 
+   3.770636187138975*^9},
+ CellLabel->
+  "Out[285]=",ExpressionUUID->"c19d4ca6-4d0c-4158-b742-6b477aa4d675"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 1096, 33, 36, "Text",ExpressionUUID->"46fc1bb1-9483-4bbd-a488-99cfa34ccc76"],
+Cell[2018, 66, 445, 13, 28, "Input",ExpressionUUID->"922d6670-5f94-4902-a357-7fbf1cc3e76a"],
+Cell[CellGroupData[{
+Cell[2488, 83, 213, 4, 28, "Input",ExpressionUUID->"b7aace88-ee7d-476c-ae24-90b2b29a4166"],
+Cell[2704, 89, 153, 3, 32, "Output",ExpressionUUID->"78f98e9e-03e2-4e07-92dc-b3d982343346"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2894, 97, 214, 4, 28, "Input",ExpressionUUID->"f033d2e9-ed6e-44a7-ba76-5eb13311e782"],
+Cell[3111, 103, 166, 3, 32, "Output",ExpressionUUID->"4763dbe1-f7ff-4d45-b07a-1adb7c238f5e"]
+}, Open  ]],
+Cell[3292, 109, 276, 6, 34, "Text",ExpressionUUID->"55b7d853-f061-4093-9408-efff0d7a3c1a"],
+Cell[3571, 117, 1808, 48, 48, "Input",ExpressionUUID->"346d5248-65b9-4c90-b0f2-649d6c6d1192"],
+Cell[CellGroupData[{
+Cell[5404, 169, 213, 4, 28, "Input",ExpressionUUID->"f37115a7-6cc9-432d-b78f-6bfe629118ac"],
+Cell[5620, 175, 849, 24, 376, "Output",ExpressionUUID->"c19d4ca6-4d0c-4158-b742-6b477aa4d675"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,240 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7781,        232]
+NotebookOptionsPosition[      6364,        202]
+NotebookOutlinePosition[      6708,        217]
+CellTagsIndexPosition[      6665,        214]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 28",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=28"], None},
+ ButtonNote->"https://projecteuler.net/problem=28"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[TextData[{
+ "Before trying to brute-force things, it should be possible to infer the \
+values on the corners of each layer. Consider the layer with dimensions ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "\[Times]", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e93e3b82-1a2a-46f9-a10d-3d2b6bd3b2f2"],
+ ". The square inside this is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"n", "-", "2"}], ")"}], "\[Times]", 
+    RowBox[{"(", 
+     RowBox[{"n", "-", "2"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "7d832c38-5c6a-4ff1-96f5-57f03e7430ef"],
+ ", so the first value in layer ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "fe55d252-0e33-4abc-806b-b2171260f983"],
+ " must be ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"n", "-", "2"}], ")"}], "2"], "+", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e399299e-2cfd-40d3-8c16-809059148246"],
+ ". We then add ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "-", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "af2018db-1691-4dba-9dc9-6155d59be6ad"],
+ " to get to the first corner, i.e. ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"n", "-", "2"}], ")"}], "2"], "+", 
+    RowBox[{"(", 
+     RowBox[{"n", "-", "1"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "f4f386a4-6786-4e93-a512-96dd63454564"],
+ ", and then add ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "-", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "9cc446be-8e7d-4bdf-bb83-56180fa1ae26"],
+ " to get each subsequent one. We thus have:"
+}], "Text",
+ CellChangeTimes->{{3.7706993156100383`*^9, 3.7706994294806395`*^9}, {
+  3.77069947586263*^9, 3.7706995264055457`*^9}, {3.770699596518038*^9, 
+  3.770699615450009*^9}, {3.7706997277713594`*^9, 
+  3.7706997369590464`*^9}},ExpressionUUID->"e3bedcbe-0baa-40c4-be83-\
+98cbbb9f92c4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"layerValues", "[", "n_", "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"n", "-", "2"}], ")"}], "^", "2"}], "+", 
+     RowBox[{"k", 
+      RowBox[{"(", 
+       RowBox[{"n", "-", "1"}], ")"}]}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "4"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7706995275359926`*^9, 3.7706995443532887`*^9}, {
+  3.77069962629957*^9, 3.7706996398848886`*^9}},
+ CellLabel->
+  "In[250]:=",ExpressionUUID->"23003db7-d6ea-4166-b62f-5f07589fa519"],
+
+Cell[TextData[{
+ "We check that we have the ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "3"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "dea05919-be5e-43b5-bc44-9a1a074098c9"],
+ " and ",
+ Cell[BoxData[
+  FormBox["5", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "7092834e-b41b-4a86-b438-2853a161aec0"],
+ " layers correct:"
+}], "Text",
+ CellChangeTimes->{{3.7706997783918514`*^9, 
+  3.770699817691517*^9}},ExpressionUUID->"55eb6ed4-6a1e-40fd-81d7-\
+bfea7c6e44ad"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"layerValues", "/@", 
+  RowBox[{"{", 
+   RowBox[{"3", ",", "5"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.7706998185065765`*^9, 3.770699825244985*^9}},
+ CellLabel->
+  "In[258]:=",ExpressionUUID->"5b71c818-0d1e-4803-ac24-6cecbb752b12"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"3", ",", "5", ",", "7", ",", "9"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"13", ",", "17", ",", "21", ",", "25"}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.770699825820217*^9},
+ CellLabel->
+  "Out[258]=",ExpressionUUID->"dc4204d4-333b-4cc1-88e0-6ff2019db5e4"]
+}, Open  ]],
+
+Cell["The first layer is a special case:", "Text",
+ CellChangeTimes->{{3.7706996683592005`*^9, 
+  3.7706996737196407`*^9}},ExpressionUUID->"c63ba741-a6c4-4682-8621-\
+f1d39854d192"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"layerValues", "[", "1", "]"}], "=", 
+   RowBox[{"{", "1", "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.770699641095214*^9, 3.77069968068229*^9}},
+ CellLabel->
+  "In[253]:=",ExpressionUUID->"0410f54d-b76b-4563-9b1b-aee7fe4b2a57"],
+
+Cell["We can now sum the layers to get the answer:", "Text",
+ CellChangeTimes->{{3.770699833082508*^9, 
+  3.77069987743707*^9}},ExpressionUUID->"8e1e04f9-55e9-40fa-a097-\
+3bd77895308e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"solution", "[", "M_", "]"}], ":=", 
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{"Total", "[", 
+     RowBox[{"layerValues", "[", "n", "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "1", ",", "M", ",", "2"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7706997462426205`*^9, 3.7706997638071795`*^9}, {
+  3.770699862233467*^9, 3.7706998682613897`*^9}},
+ CellLabel->
+  "In[259]:=",ExpressionUUID->"7d359793-ff19-4809-8956-0d9ab0aa2829"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"solution", "[", "1001", "]"}]], "Input",
+ CellChangeTimes->{{3.770699878359832*^9, 3.7706998800176134`*^9}},
+ CellLabel->
+  "In[260]:=",ExpressionUUID->"bea8e4bd-bc70-4d7f-b080-5be64cd8890d"],
+
+Cell[BoxData["669171001"], "Output",
+ CellChangeTimes->{3.770699880429063*^9},
+ CellLabel->
+  "Out[260]=",ExpressionUUID->"393d22d2-36bd-44d3-8843-c75e24103f02"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 2119, 61, 56, "Text",ExpressionUUID->"e3bedcbe-0baa-40c4-be83-98cbbb9f92c4"],
+Cell[3041, 94, 581, 17, 28, "Input",ExpressionUUID->"23003db7-d6ea-4166-b62f-5f07589fa519"],
+Cell[3625, 113, 522, 16, 34, "Text",ExpressionUUID->"55eb6ed4-6a1e-40fd-81d7-bfea7c6e44ad"],
+Cell[CellGroupData[{
+Cell[4172, 133, 258, 6, 28, "Input",ExpressionUUID->"5b71c818-0d1e-4803-ac24-6cecbb752b12"],
+Cell[4433, 141, 342, 10, 32, "Output",ExpressionUUID->"dc4204d4-333b-4cc1-88e0-6ff2019db5e4"]
+}, Open  ]],
+Cell[4790, 154, 180, 3, 34, "Text",ExpressionUUID->"c63ba741-a6c4-4682-8621-f1d39854d192"],
+Cell[4973, 159, 278, 7, 28, "Input",ExpressionUUID->"0410f54d-b76b-4563-9b1b-aee7fe4b2a57"],
+Cell[5254, 168, 185, 3, 34, "Text",ExpressionUUID->"8e1e04f9-55e9-40fa-a097-3bd77895308e"],
+Cell[5442, 173, 490, 12, 28, "Input",ExpressionUUID->"7d359793-ff19-4809-8956-0d9ab0aa2829"],
+Cell[CellGroupData[{
+Cell[5957, 189, 215, 4, 28, "Input",ExpressionUUID->"bea8e4bd-bc70-4d7f-b080-5be64cd8890d"],
+Cell[6175, 195, 161, 3, 32, "Output",ExpressionUUID->"393d22d2-36bd-44d3-8843-c75e24103f02"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

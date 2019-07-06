@@ -1,0 +1,149 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4682,        141]
+NotebookOptionsPosition[      3915,        118]
+NotebookOutlinePosition[      4260,        133]
+CellTagsIndexPosition[      4217,        130]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 46",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=46"], None},
+ ButtonNote->"https://projecteuler.net/problem=46"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"n", " ", "=", " ", "7"}], ";"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "9", " ", "is", " ", "the", " ", "smallest", " ", "odd", " ", 
+    "composite"}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"valid", " ", "=", " ", "True"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"While", "[", 
+   RowBox[{"valid", ",", "\n", "\t", 
+    RowBox[{
+     RowBox[{"n", " ", "+=", " ", "2"}], ";", "\n", "\t", 
+     RowBox[{"valid", " ", "=", " ", 
+      RowBox[{"PrimeQ", "[", "n", "]"}]}], ";", "\n", "\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"!", "valid"}], ",", "\n", "\t\t", 
+       RowBox[{"Do", "[", "\n", "\t\t\t", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"PrimeQ", "[", 
+            RowBox[{"n", "-", 
+             RowBox[{"2", 
+              RowBox[{"k", "^", "2"}]}]}], "]"}], ",", " ", 
+           RowBox[{
+            RowBox[{"valid", " ", "=", " ", "True"}], ";", " ", 
+            RowBox[{"Break", "[", "]"}]}]}], "]"}], ",", "\n", "\t\t\t", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", " ", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{"n", "/", "2"}], "]"}]}], "}"}]}], "\n", "\t\t", "]"}]}], 
+      "\n", "\t", "]"}], ";", "\n", "\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"n", " ", ">", " ", "10000"}], ",", " ", 
+       RowBox[{
+        RowBox[{"n", " ", "=", " ", 
+         RowBox[{"-", "1"}]}], ";", " ", 
+        RowBox[{"Break", "[", "]"}]}]}], "]"}], ";"}]}], "\n", "]"}], 
+  ";"}], "\n", "n"}], "Code",
+ CellChangeTimes->{{3.7708660485771456`*^9, 3.7708661905091915`*^9}, {
+   3.7708662553087378`*^9, 3.7708663604849815`*^9}, {3.770866416130588*^9, 
+   3.770866430359514*^9}, {3.7708664715764503`*^9, 3.770866486863963*^9}, 
+   3.770866525304612*^9, {3.7708665904308615`*^9, 3.770866621601209*^9}},
+ CellLabel->
+  "In[155]:=",ExpressionUUID->"31e51a7a-93ca-499a-8017-596c3ddf6ef5"],
+
+Cell[BoxData["5777"], "Output",
+ CellChangeTimes->{
+  3.770866487199503*^9, 3.7708665264030824`*^9, {3.7708666146465187`*^9, 
+   3.770866622184428*^9}},
+ CellLabel->
+  "Out[158]=",ExpressionUUID->"eef37b38-fe02-4d5c-8c0b-f2cbbc706294"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Or", "@@", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"PrimeQ", "[", 
+     RowBox[{"n", "-", 
+      RowBox[{"2", 
+       RowBox[{"k", "^", "2"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "1", ",", 
+      RowBox[{"Sqrt", "[", 
+       RowBox[{"n", "/", "2"}], "]"}]}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7708666833818164`*^9, 3.7708666985427847`*^9}, {
+  3.7708667468257914`*^9, 3.7708668441835985`*^9}},
+ CellLabel->
+  "In[165]:=",ExpressionUUID->"611ce5bf-1a1d-41ef-9574-a6be1d0602c8"],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{{3.7708667724315023`*^9, 3.7708668447947474`*^9}},
+ CellLabel->
+  "Out[165]=",ExpressionUUID->"28e798c4-fa64-4021-aba2-9899da6bef5d"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{Automatic, 124}, {42, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[CellGroupData[{
+Cell[941, 33, 1935, 49, 285, "Code",ExpressionUUID->"31e51a7a-93ca-499a-8017-596c3ddf6ef5"],
+Cell[2879, 84, 235, 5, 32, "Output",ExpressionUUID->"eef37b38-fe02-4d5c-8c0b-f2cbbc706294"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3151, 94, 548, 15, 28, "Input",ExpressionUUID->"611ce5bf-1a1d-41ef-9574-a6be1d0602c8"],
+Cell[3702, 111, 185, 3, 32, "Output",ExpressionUUID->"28e798c4-fa64-4021-aba2-9899da6bef5d"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

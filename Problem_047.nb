@@ -1,0 +1,189 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6323,        181]
+NotebookOptionsPosition[      4933,        148]
+NotebookOutlinePosition[      5278,        163]
+CellTagsIndexPosition[      5235,        160]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 47",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=47"], None},
+ ButtonNote->"https://projecteuler.net/problem=47"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"5824601c-c80f-40b8-9985-\
+ed541087eb35"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"primeFactorCount", "[", "n_", "]"}], " ", ":=", " ", 
+  RowBox[{"Length", "[", 
+   RowBox[{"FactorInteger", "[", "n", "]"}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.7708737225010157`*^9, 3.770873725896475*^9}, {
+  3.7708737869083366`*^9, 3.770873851162659*^9}, {3.770873899194682*^9, 
+  3.770873981933263*^9}},
+ CellLabel->
+  "In[170]:=",ExpressionUUID->"f452c781-5144-4ed4-933a-cdb9fab01689"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"findPrimeFactorCountRun", "[", 
+   RowBox[{"count_", ",", " ", "length_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", "\n", "\t\t", 
+     RowBox[{
+      RowBox[{"latest", " ", "=", " ", 
+       RowBox[{"primeFactorCount", " ", "/@", " ", 
+        RowBox[{"Range", "[", "length", "]"}]}]}], ",", "\n", "\t\t", 
+      RowBox[{"n", " ", "=", " ", "length"}]}], "\n", "\t", "}"}], ",", "\n", 
+    "\t", 
+    RowBox[{
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Union", "[", "latest", "]"}], " ", "\[NotEqual]", " ", 
+        RowBox[{"{", "count", "}"}]}], ",", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"n", " ", "+=", " ", "1"}], ";", "\n", "\t\t", 
+        RowBox[{"latest", " ", "=", " ", 
+         RowBox[{"Append", "[", 
+          RowBox[{
+           RowBox[{"Rest", "[", "latest", "]"}], ",", " ", 
+           RowBox[{"primeFactorCount", "[", "n", "]"}]}], "]"}]}]}]}], "\n", 
+      "\t", "]"}], ";", "\n", "\t", 
+     RowBox[{"Range", "[", 
+      RowBox[{
+       RowBox[{"n", " ", "-", " ", "length", " ", "+", " ", "1"}], ",", " ", 
+       "n"}], "]"}]}]}], " ", "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.7708737225010157`*^9, 3.770873725896475*^9}, {
+  3.7708737869083366`*^9, 3.770873851162659*^9}, {3.770873899194682*^9, 
+  3.770873962034989*^9}, {3.770874009651704*^9, 3.7708740198461065`*^9}, {
+  3.770874052905908*^9, 3.770874092964323*^9}, {3.770874134604617*^9, 
+  3.770874226887424*^9}},
+ CellLabel->
+  "In[172]:=",ExpressionUUID->"123892fb-8a4d-4c8a-a52c-fdf31658eeba"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findPrimeFactorCountRun", "[", 
+  RowBox[{"2", ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7708742312535954`*^9, 3.770874251490561*^9}},
+ CellLabel->
+  "In[173]:=",ExpressionUUID->"645d0a35-4dd3-4449-9812-f87c92cc3d9a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"14", ",", "15"}], "}"}]], "Output",
+ CellChangeTimes->{3.770874251866028*^9},
+ CellLabel->
+  "Out[173]=",ExpressionUUID->"16ef9bcb-b521-42bd-97b6-75dae020c81d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findPrimeFactorCountRun", "[", 
+  RowBox[{"3", ",", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7708742549259453`*^9, 3.7708742640417876`*^9}},
+ CellLabel->
+  "In[174]:=",ExpressionUUID->"12c74e48-b64c-4f24-9ce7-855adea64211"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"644", ",", "645", ",", "646"}], "}"}]], "Output",
+ CellChangeTimes->{3.7708742647847886`*^9},
+ CellLabel->
+  "Out[174]=",ExpressionUUID->"1defd0d8-7fd1-42ac-a1f8-1024135c6ac8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findPrimeFactorCountRun", "[", 
+  RowBox[{"4", ",", "4"}], "]"}]], "Input",
+ CellChangeTimes->{{3.77087427397692*^9, 3.7708742747953796`*^9}},
+ CellLabel->
+  "In[177]:=",ExpressionUUID->"83a0fb03-cab6-4c4d-8d6b-77a3c3bf2420"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"134043", ",", "134044", ",", "134045", ",", "134046"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7708742829764657`*^9, 3.770874367140194*^9},
+ CellLabel->
+  "Out[177]=",ExpressionUUID->"1a1e74ce-8e58-45fe-b9cb-52c2f87d5858"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"First", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.770874356714184*^9, 3.7708743594504814`*^9}},
+ CellLabel->
+  "In[178]:=",ExpressionUUID->"c609a8d8-bdda-43e5-a0bc-c5bd9f88431e"],
+
+Cell[BoxData["134043"], "Output",
+ CellChangeTimes->{3.770874369129534*^9},
+ CellLabel->
+  "Out[178]=",ExpressionUUID->"d32b0120-b03e-4daf-b920-39fb27ab56a7"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1264, 636},
+WindowMargins->{{Automatic, 124}, {42, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"5824601c-c80f-40b8-9985-ed541087eb35"],
+Cell[919, 31, 428, 9, 50, "Code",ExpressionUUID->"f452c781-5144-4ed4-933a-cdb9fab01689"],
+Cell[1350, 42, 1608, 37, 231, "Code",ExpressionUUID->"123892fb-8a4d-4c8a-a52c-fdf31658eeba"],
+Cell[CellGroupData[{
+Cell[2983, 83, 250, 5, 28, "Input",ExpressionUUID->"645d0a35-4dd3-4449-9812-f87c92cc3d9a"],
+Cell[3236, 90, 200, 5, 32, "Output",ExpressionUUID->"16ef9bcb-b521-42bd-97b6-75dae020c81d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3473, 100, 252, 5, 28, "Input",ExpressionUUID->"12c74e48-b64c-4f24-9ce7-855adea64211"],
+Cell[3728, 107, 216, 5, 32, "Output",ExpressionUUID->"1defd0d8-7fd1-42ac-a1f8-1024135c6ac8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3981, 117, 249, 5, 28, "Input",ExpressionUUID->"83a0fb03-cab6-4c4d-8d6b-77a3c3bf2420"],
+Cell[4233, 124, 265, 6, 32, "Output",ExpressionUUID->"1a1e74ce-8e58-45fe-b9cb-52c2f87d5858"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4535, 135, 209, 4, 28, "Input",ExpressionUUID->"c609a8d8-bdda-43e5-a0bc-c5bd9f88431e"],
+Cell[4747, 141, 158, 3, 32, "Output",ExpressionUUID->"d32b0120-b03e-4daf-b920-39fb27ab56a7"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

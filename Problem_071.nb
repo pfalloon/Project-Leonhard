@@ -1,0 +1,76 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2084,         68]
+NotebookOptionsPosition[      1540,         49]
+NotebookOutlinePosition[      1884,         64]
+CellTagsIndexPosition[      1841,         61]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 71",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=71"], None},
+ ButtonNote->"https://projecteuler.net/problem=71"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"56e297a8-802d-48b9-9f2f-\
+ecee28c1f632"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", 
+  RowBox[{"EulerPhi", "[", 
+   RowBox[{"Range", "[", 
+    RowBox[{"2", ",", "1000000"}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7712422909495525`*^9, 3.77124231452744*^9}, {
+  3.771242351323736*^9, 3.771242351429452*^9}},
+ CellLabel->"In[37]:=",ExpressionUUID->"425c2e50-bd9c-4d41-b7bc-99cc97c3a807"],
+
+Cell[BoxData["303963552391"], "Output",
+ CellChangeTimes->{{3.7712423013421316`*^9, 3.7712423181864443`*^9}, 
+   3.7712423553509045`*^9},
+ CellLabel->"Out[37]=",ExpressionUUID->"95e9a8a5-fdb0-4272-86f1-f622e7b6d3d8"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"56e297a8-802d-48b9-9f2f-ecee28c1f632"],
+Cell[CellGroupData[{
+Cell[941, 33, 352, 7, 28, "Input",ExpressionUUID->"425c2e50-bd9c-4d41-b7bc-99cc97c3a807"],
+Cell[1296, 42, 216, 3, 32, "Output",ExpressionUUID->"95e9a8a5-fdb0-4272-86f1-f622e7b6d3d8"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
