@@ -1,0 +1,210 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7441,        202]
+NotebookOptionsPosition[      6706,        181]
+NotebookOutlinePosition[      7051,        196]
+CellTagsIndexPosition[      7008,        193]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 90",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=90"], None},
+ ButtonNote->"https://projecteuler.net/problem=90"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"56e297a8-802d-48b9-9f2f-\
+ecee28c1f632"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"digitSets", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Association", "[", 
+      RowBox[{"Thread", "[", 
+       RowBox[{"#", " ", "\[Rule]", " ", "True"}], "]"}], "]"}], "&"}], " ", "/@",
+     " ", "\n", "\t", 
+    RowBox[{"Replace", "[", 
+     RowBox[{
+      RowBox[{"Subsets", "[", 
+       RowBox[{
+        RowBox[{"Range", "[", 
+         RowBox[{"0", ",", " ", "9"}], "]"}], ",", " ", 
+        RowBox[{"{", "6", "}"}]}], "]"}], ",", " ", 
+      RowBox[{"{", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a___", ",", " ", "6", ",", " ", "b___"}], "}"}], " ", "/;",
+           " ", 
+          RowBox[{"FreeQ", "[", 
+           RowBox[{
+            RowBox[{"{", "b", "}"}], ",", " ", "9"}], "]"}]}], " ", 
+         "\[RuleDelayed]", " ", 
+         RowBox[{"{", 
+          RowBox[{"a", ",", " ", "6", ",", " ", "b", ",", " ", "9"}], "}"}]}],
+         ",", "\n", "\t\t", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a___", ",", " ", "9"}], "}"}], " ", "/;", " ", 
+          RowBox[{"FreeQ", "[", 
+           RowBox[{
+            RowBox[{"{", "a", "}"}], ",", " ", "6"}], "]"}]}], " ", 
+         "\[RuleDelayed]", " ", 
+         RowBox[{"Sort", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", " ", "6", ",", " ", "9"}], "}"}], "]"}]}]}], 
+       "\n", "\t", "}"}], ",", " ", 
+      RowBox[{"{", "1", "}"}]}], "]"}]}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.771711825187541*^9, 3.7717118433170285`*^9}, {
+  3.7717119490410986`*^9, 3.771712114670892*^9}, {3.7717133144825583`*^9, 
+  3.7717133796965227`*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"afe34657-9d46-42a0-8379-d69b50b6c5f3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"squareDigits", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "4"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "9"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "6"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "5"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "6"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "9"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"6", ",", "4"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"8", ",", "1"}], "}"}]}], "}"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.7717124377745924`*^9, 3.7717125188684654`*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"3d0eebb1-f09c-4c5d-b828-be34b4187da3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"cnt", " ", "=", " ", "0"}], ",", " ", "d1", ",", " ", "d2", ",",
+      " ", "valid", ",", " ", "a", ",", " ", "b"}], "}"}], ",", "\n", "\t", 
+   RowBox[{
+    RowBox[{"cnt", " ", "=", " ", "0"}], ";", "\n", "\t", 
+    RowBox[{"Do", "[", "\n", "\t\t", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"d1", " ", "=", " ", 
+        RowBox[{"digitSets", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ";", "\n", "\t\t", 
+       RowBox[{"d2", " ", "=", " ", 
+        RowBox[{"digitSets", "[", 
+         RowBox[{"[", "j", "]"}], "]"}]}], ";", "\n", "\t\t", 
+       RowBox[{"valid", " ", "=", " ", "True"}], ";", "\n", "\t\t", 
+       RowBox[{"Do", "[", "\n", "\t\t\t", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"a", ",", " ", "b"}], "}"}], " ", "=", " ", 
+           RowBox[{"squareDigits", "[", 
+            RowBox[{"[", "k", "]"}], "]"}]}], ";", "\n", "\t\t\t", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"!", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"KeyExistsQ", "[", 
+                 RowBox[{"d1", ",", " ", "a"}], "]"}], " ", "&&", " ", 
+                RowBox[{"KeyExistsQ", "[", 
+                 RowBox[{"d2", ",", " ", "b"}], "]"}]}], " ", "||", " ", 
+               RowBox[{
+                RowBox[{"KeyExistsQ", "[", 
+                 RowBox[{"d1", ",", " ", "b"}], "]"}], " ", "&&", " ", 
+                RowBox[{"KeyExistsQ", "[", 
+                 RowBox[{"d2", ",", " ", "a"}], "]"}]}]}], ")"}]}], ",", "\n",
+             "\t\t\t\t", 
+            RowBox[{
+             RowBox[{"valid", " ", "=", " ", "False"}], ";", "\n", "\t\t\t\t", 
+             RowBox[{"Break", "[", "]"}]}]}], "\n", "\t\t\t", "]"}]}], ",", 
+         "\n", "\t\t\t", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", " ", 
+           RowBox[{"Length", "[", "squareDigits", "]"}]}], "}"}]}], "\n", 
+        "\t\t", "]"}], ";", "\n", "\t\t", 
+       RowBox[{"If", "[", 
+        RowBox[{"valid", ",", " ", 
+         RowBox[{"++", "cnt"}]}], "]"}]}], ",", "\n", "\t\t", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", " ", 
+        RowBox[{"Length", "[", "digitSets", "]"}]}], "}"}], ",", "\n", "\t\t", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", " ", "i", ",", " ", 
+        RowBox[{"Length", "[", "digitSets", "]"}]}], "}"}]}], "\n", "\t", 
+     "]"}], ";", "\n", "\t", "cnt"}]}], "\n", "]"}]], "Code",
+ CellChangeTimes->{{3.771712667536212*^9, 3.771712689522856*^9}, {
+  3.771712908466688*^9, 3.7717129593336463`*^9}, {3.7717130807680264`*^9, 
+  3.77171311028454*^9}, {3.771713151936822*^9, 3.771713162605629*^9}, {
+  3.771713389618742*^9, 3.7717135619749684`*^9}, {3.771713616700959*^9, 
+  3.7717137671518307`*^9}, {3.7717138003554797`*^9, 3.771713801214287*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"efaf12b6-ed55-42c4-ba64-c7d6d63e6021"],
+
+Cell[BoxData["1217"], "Output",
+ CellChangeTimes->{3.7717138030558205`*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"3d0f85d9-8ded-4115-882e-2bd4868c7ded"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1234, 614},
+WindowMargins->{{Automatic, 104}, {-4, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"56e297a8-802d-48b9-9f2f-ecee28c1f632"],
+Cell[919, 31, 1740, 46, 123, "Code",ExpressionUUID->"afe34657-9d46-42a0-8379-d69b50b6c5f3"],
+Cell[2662, 79, 872, 24, 50, "Code",ExpressionUUID->"3d0eebb1-f09c-4c5d-b828-be34b4187da3"],
+Cell[CellGroupData[{
+Cell[3559, 107, 2962, 66, 393, "Code",ExpressionUUID->"efaf12b6-ed55-42c4-ba64-c7d6d63e6021"],
+Cell[6524, 175, 154, 2, 32, "Output",ExpressionUUID->"3d0f85d9-8ded-4115-882e-2bd4868c7ded"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

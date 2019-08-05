@@ -1,0 +1,301 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10560,        293]
+NotebookOptionsPosition[      9455,        268]
+NotebookOutlinePosition[      9799,        283]
+CellTagsIndexPosition[      9756,        280]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 88",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=88"], None},
+ ButtonNote->"https://projecteuler.net/problem=88"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"56e297a8-802d-48b9-9f2f-\
+ecee28c1f632"],
+
+Cell[TextData[{
+ "The approach we take here is to iterate over product-sum numbers ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],ExpressionUUID->
+  "501f8bca-8712-47cc-b904-da06d558fdb9"],
+ " and calculate all the possible ",
+ Cell[BoxData[
+  FormBox["k", TraditionalForm]],ExpressionUUID->
+  "17cb7909-a7da-4445-a06b-2d2327462aae"],
+ " values. For each ",
+ Cell[BoxData[
+  FormBox["k", TraditionalForm]],ExpressionUUID->
+  "c916ec94-b7f6-438d-9ff8-f5965effd699"],
+ " value the smallest ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],ExpressionUUID->
+  "d16ce7d9-60d5-4e8c-9d5b-740fa4a1a0e9"],
+ " is the minimal product-sum number."
+}], "Text",
+ CellChangeTimes->{{3.771561235729635*^9, 3.7715613464709992`*^9}, {
+  3.771561377760244*^9, 3.771561453016958*^9}, {3.7739125113410997`*^9, 
+  3.7739125115687704`*^9}},ExpressionUUID->"62d5b3d4-42f2-4f89-9c3f-\
+dfa218c56c53"],
+
+Cell[TextData[{
+ "The first step is to generate all possible representations of ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "fc7ea073-bd0b-4a99-a8cf-1d34bc08de0c"],
+ " as a product of proper divisors greater than one. We use recursion with \
+memoization:"
+}], "Text",
+ CellChangeTimes->{{3.7715613491528244`*^9, 3.7715613745259304`*^9}, {
+  3.771561456519041*^9, 
+  3.771561491183645*^9}},ExpressionUUID->"07cd396f-5cb8-408b-b14c-\
+e84e64f52e60"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "factorProducts", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"factorProducts", "[", "n_", "]"}], " ", "/;", " ", 
+   RowBox[{"PrimeQ", "[", "n", "]"}]}], " ", ":=", " ", 
+  RowBox[{"{", "}"}]}], "\n", 
+ RowBox[{
+  RowBox[{"factorProducts", "[", "n_", "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"factorProducts", "[", "n", "]"}], " ", "=", " ", 
+   RowBox[{"Module", "[", "\n", "\t", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"sqrtn", " ", "=", " ", 
+        RowBox[{"N", "[", 
+         RowBox[{"Sqrt", "[", "n", "]"}], "]"}]}], ",", " ", "divisors"}], 
+      "}"}], ",", "\n", "\t", 
+     RowBox[{
+      RowBox[{"divisors", " ", "=", " ", 
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"Rest", "[", 
+          RowBox[{"Divisors", "[", "n", "]"}], "]"}], ",", " ", 
+         RowBox[{
+          RowBox[{"#", " ", "\[LessEqual]", " ", "sqrtn"}], " ", "&"}]}], 
+        "]"}]}], ";", "\n", "\t", 
+      RowBox[{"Join", " ", "@@", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Prepend", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Prepend", "[", 
+              RowBox[{"#", ",", " ", "d"}], "]"}], "&"}], " ", "/@", " ", 
+            RowBox[{"Select", "[", 
+             RowBox[{
+              RowBox[{"factorProducts", "[", 
+               RowBox[{"n", "/", "d"}], "]"}], ",", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"First", "[", "#", "]"}], " ", "\[GreaterEqual]", " ",
+                 "d"}], " ", "&"}]}], "]"}]}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"d", ",", " ", 
+             RowBox[{"n", "/", "d"}]}], "}"}]}], "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"d", ",", " ", "divisors"}], "}"}]}], "]"}]}]}]}], "\n", 
+    "]"}]}]}]}], "Code",
+ CellChangeTimes->{{3.771558075916339*^9, 3.7715581299128046`*^9}, {
+  3.7715581689124823`*^9, 3.771558315890853*^9}, {3.7715583843546224`*^9, 
+  3.7715584658296533`*^9}, {3.771558533827746*^9, 3.7715585457797956`*^9}, {
+  3.7715587433083763`*^9, 3.771558743946681*^9}, {3.7715587783346195`*^9, 
+  3.7715588000405397`*^9}, {3.771558905161664*^9, 3.7715589063614535`*^9}, {
+  3.7715597946329937`*^9, 3.771559821945899*^9}},
+ CellLabel->
+  "In[173]:=",ExpressionUUID->"a23d6d42-5f8c-4410-884e-88855a90eb23"],
+
+Cell[TextData[{
+ "The ",
+ Cell[BoxData[
+  FormBox["k", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "8cda857a-515e-4cdf-83b3-9a48a72ad7a1"],
+ " value corresponding to a particular product is found by padding with the \
+required number of ones (which affect the sum but not the product) to make \
+the product equal the sum:"
+}], "Text",
+ CellChangeTimes->{{3.7715614945665607`*^9, 
+  3.771561573687936*^9}},ExpressionUUID->"97520328-564a-4637-9a28-\
+4c3c0ef0d2ae"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"kValue", "[", "fprod_", "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"Times", " ", "@@", " ", "fprod"}], " ", "-", " ", 
+   RowBox[{"Plus", " ", "@@", " ", "fprod"}], " ", "+", " ", 
+   RowBox[{"Length", "[", "fprod", "]"}]}]}]], "Code",
+ CellChangeTimes->{{3.771559887464552*^9, 3.7715599537222595`*^9}},
+ CellLabel->
+  "In[180]:=",ExpressionUUID->"28ea3b3c-8c5d-4543-bb7d-88f3d727ad69"],
+
+Cell[TextData[{
+ "We now iterate over ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "c6f9fa7a-6362-4bee-8e7d-e34aacbd80e2"],
+ " values. For a given ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["k", "max"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "70531143-52c9-4b5b-ab0c-c548236014de"],
+ ", an upper bound on ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["n", "max"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "bc9f097f-af0f-410f-badd-5b5cd3ad7d1c"],
+ " is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"2", 
+     SubscriptBox["k", "max"]}], "+", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "d1287c6c-f6a0-4429-84e8-3b02059b0e3e"],
+ ", since the largest sum possible for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"N", "\[GreaterEqual]", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "2f727690-080b-48ed-86c6-f805bd296fe5"],
+ " is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "+", 
+    RowBox[{"(", 
+     RowBox[{"N", "/", "2"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "24738bc6-d9c1-4286-ae27-4ce53d725a1b"],
+ ", and therefore at least ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"N", "/", "2"}], "-", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "df9ff355-ee62-431b-8806-95a63251a580"],
+ " ones are needed. Note that the answer to the question is the sum of ",
+ StyleBox["distinct",
+  FontSlant->"Italic"],
+ " minimal product-sum numbers."
+}], "Text",
+ CellChangeTimes->{{3.7715615765482807`*^9, 3.771561724295173*^9}, {
+  3.771561757953648*^9, 
+  3.7715617895080357`*^9}},ExpressionUUID->"313f0df8-d704-46fd-ba14-\
+184684112f55"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"kMax", " ", "=", " ", "12000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"nMax", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"2", " ", "kMax"}], " ", "+", " ", "2"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"minProductSumLU", " ", "=", " ", 
+   RowBox[{"ConstantArray", "[", 
+    RowBox[{"Infinity", ",", " ", "kMax"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"minProductSumLU", "[", 
+       RowBox[{"[", "k", "]"}], "]"}], " ", ">", " ", "n"}], ",", " ", 
+     RowBox[{
+      RowBox[{"minProductSumLU", "[", 
+       RowBox[{"[", "k", "]"}], "]"}], " ", "=", " ", "n"}]}], "]"}], ",", 
+   " ", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", " ", "nMax"}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", " ", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"kValue", " ", "/@", " ", 
+        RowBox[{"factorProducts", "[", "n", "]"}]}], ",", " ", 
+       RowBox[{
+        RowBox[{"#", " ", "\[LessEqual]", " ", "kMax"}], " ", "&"}]}], 
+      "]"}]}], "}"}]}], "]"}], "\n", 
+ RowBox[{"Total", "[", 
+  RowBox[{"Union", "[", 
+   RowBox[{"Rest", "[", "minProductSumLU", "]"}], "]"}], "]"}]}], "Code",
+ CellChangeTimes->{{3.7715601402121925`*^9, 3.771560143888356*^9}, {
+   3.771560249337229*^9, 3.771560263228027*^9}, {3.7715604573995104`*^9, 
+   3.7715604788979836`*^9}, {3.7715605494144473`*^9, 3.771560552234962*^9}, {
+   3.7715606170585155`*^9, 3.7715606198141737`*^9}, {3.7715606498707156`*^9, 
+   3.7715606793877764`*^9}, {3.7715607155739403`*^9, 3.771560723874729*^9}, 
+   3.7715616047697654`*^9},
+ CellLabel->
+  "In[255]:=",ExpressionUUID->"7e87431e-f67c-4be7-8a0b-3dc4395b34b5"],
+
+Cell[BoxData["7587457"], "Output",
+ CellChangeTimes->{
+  3.7715605582329645`*^9, {3.771560629896161*^9, 3.771560680246436*^9}, {
+   3.771560718308589*^9, 3.771560730284544*^9}, 3.7715616122806334`*^9},
+ CellLabel->
+  "Out[259]=",ExpressionUUID->"8a5293e7-e9b3-4001-a11f-073f13c68cfa"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"56e297a8-802d-48b9-9f2f-ecee28c1f632"],
+Cell[919, 31, 880, 22, 34, "Text",ExpressionUUID->"62d5b3d4-42f2-4f89-9c3f-dfa218c56c53"],
+Cell[1802, 55, 505, 12, 34, "Text",ExpressionUUID->"07cd396f-5cb8-408b-b14c-e84e64f52e60"],
+Cell[2310, 69, 2391, 59, 159, "Code",ExpressionUUID->"a23d6d42-5f8c-4410-884e-88855a90eb23"],
+Cell[4704, 130, 488, 12, 34, "Text",ExpressionUUID->"97520328-564a-4637-9a28-4c3c0ef0d2ae"],
+Cell[5195, 144, 424, 9, 50, "Code",ExpressionUUID->"28ea3b3c-8c5d-4543-bb7d-88f3d727ad69"],
+Cell[5622, 155, 1795, 55, 56, "Text",ExpressionUUID->"313f0df8-d704-46fd-ba14-184684112f55"],
+Cell[CellGroupData[{
+Cell[7442, 214, 1698, 43, 123, "Code",ExpressionUUID->"7e87431e-f67c-4be7-8a0b-3dc4395b34b5"],
+Cell[9143, 259, 284, 5, 32, "Output",ExpressionUUID->"8a5293e7-e9b3-4001-a11f-073f13c68cfa"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

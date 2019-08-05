@@ -1,0 +1,432 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14222,        424]
+NotebookOptionsPosition[     13170,        398]
+NotebookOutlinePosition[     13514,        413]
+CellTagsIndexPosition[     13471,        410]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[ButtonBox["Project Euler Problem 91",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://projecteuler.net/problem=91"], None},
+ ButtonNote->"https://projecteuler.net/problem=91"]], "Title",
+ CellChangeTimes->{{3.743489905836628*^9, 
+  3.7434899245038967`*^9}},ExpressionUUID->"56e297a8-802d-48b9-9f2f-\
+ecee28c1f632"],
+
+Cell["Plenty of room for optimization here!", "Text",
+ CellChangeTimes->{{3.771663746240652*^9, 
+  3.7716637521877327`*^9}},ExpressionUUID->"00d38715-13c1-49a7-a2fa-\
+2a46d80db4a2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rightTriangleQ", "[", 
+   RowBox[{"v1_", ",", " ", "v2_"}], "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"v1", " ", "\[NotEqual]", " ", "v2", " ", "\[NotEqual]", " ", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", " ", "0"}], "}"}]}], " ", "&&", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"v1", ".", "v2"}], " ", "\[Equal]", " ", "0"}], " ", "||", " ", 
+     RowBox[{
+      RowBox[{"v1", ".", 
+       RowBox[{"(", 
+        RowBox[{"v2", "-", "v1"}], ")"}]}], " ", "\[Equal]", " ", "0"}], " ", 
+     "||", " ", 
+     RowBox[{
+      RowBox[{"v2", ".", 
+       RowBox[{"(", 
+        RowBox[{"v1", "-", "v2"}], ")"}]}], " ", "\[Equal]", " ", "0"}]}], 
+    ")"}]}]}]], "Code",
+ CellChangeTimes->{{3.771662906992094*^9, 3.771663066228052*^9}},
+ CellLabel->
+  "In[112]:=",ExpressionUUID->"02954af5-fad0-4127-bdc5-89d6dac1153f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"drawTriangle", "[", 
+   RowBox[{"v1_", ",", " ", "v2_", ",", " ", "M_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{
+    RowBox[{"Triangle", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", " ", "0"}], "}"}], ",", " ", "v1", ",", " ", "v2"}],
+       "}"}], "]"}], ",", "\n", "\t", 
+    RowBox[{"ImageSize", " ", "\[Rule]", " ", 
+     RowBox[{"{", 
+      RowBox[{"200", ",", "200"}], "}"}]}], ",", "\n", "\t", 
+    RowBox[{"PlotRange", " ", "\[Rule]", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", " ", "M"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", " ", "M"}], "}"}]}], "}"}]}], ",", "\n", "\t", 
+    RowBox[{"GridLines", " ", "\[Rule]", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Range", "[", 
+        RowBox[{"0", ",", " ", "M"}], "]"}], ",", " ", 
+       RowBox[{"Range", "[", 
+        RowBox[{"0", ",", " ", "M"}], "]"}]}], "}"}]}]}], "\n", 
+   "]"}]}]], "Code",
+ CellChangeTimes->{{3.771663131041622*^9, 3.7716631879094577`*^9}},
+ CellLabel->
+  "In[113]:=",ExpressionUUID->"a4e5e359-c0c9-4e23-bb79-391933f400b5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"M", " ", "=", " ", "2"}], ",", " ", 
+     RowBox[{"n", " ", "=", " ", "0"}]}], "}"}], ",", "\n", "\t", 
+   RowBox[{"Grid", "[", 
+    RowBox[{"Partition", "[", 
+     RowBox[{
+      RowBox[{"Flatten", "[", "\n", "\t\t", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"rightTriangleQ", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"x1", ",", " ", "y1"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"x2", ",", " ", "y2"}], "}"}]}], "]"}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\"\<n = \>\"", " ", "<>", " ", 
+              RowBox[{"ToString", "[", 
+               RowBox[{"++", "n"}], "]"}]}], ",", " ", 
+             RowBox[{"drawTriangle", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"x1", ",", " ", "y1"}], "}"}], ",", " ", 
+               RowBox[{"{", 
+                RowBox[{"x2", ",", " ", "y2"}], "}"}], ",", " ", "M"}], 
+              "]"}]}], "}"}], ",", " ", "Nothing"}], "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"x1", ",", " ", "0", ",", " ", "M"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"x2", ",", " ", "0", ",", " ", "M"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"y1", ",", " ", "0", ",", " ", "M"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"y2", ",", " ", "0", ",", " ", "M"}], "}"}]}], "]"}], "\n", 
+       "\t", "]"}], ",", " ", "2"}], "]"}], "]"}]}], "\n", "]"}]], "Code",
+ CellChangeTimes->{{3.771663104586413*^9, 3.771663128325923*^9}, {
+  3.771663194620532*^9, 3.771663414788376*^9}},
+ CellLabel->
+  "In[119]:=",ExpressionUUID->"bdc940cb-7e8f-45d7-aef1-041c94014bc0"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"n = 1\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {0, 1}, {1, 0}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 2\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {0, 1}, {1, 1}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 3\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {0, 2}, {1, 0}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 4\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {0, 2}, {1, 1}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 5\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {0, 2}, {1, 2}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 6\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {0, 1}, {2, 0}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 7\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {0, 1}, {2, 1}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 8\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {0, 2}, {2, 0}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 9\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {0, 2}, {2, 2}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 10\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {1, 0}, {0, 1}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 11\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {1, 0}, {0, 2}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 12\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {1, 1}, {0, 1}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 13\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {1, 1}, {0, 2}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 14\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {1, 2}, {0, 2}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 15\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {1, 0}, {1, 1}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 16\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {1, 0}, {1, 2}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 17\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {1, 1}, {1, 0}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 18\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {1, 2}, {1, 0}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 19\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {1, 1}, {2, 0}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 20\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {2, 0}, {0, 1}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 21\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {2, 0}, {0, 2}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 22\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {2, 1}, {0, 1}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 23\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {2, 2}, {0, 2}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 24\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {2, 0}, {1, 1}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 25\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {2, 0}, {2, 1}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 26\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {2, 0}, {2, 2}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 27\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {2, 1}, {2, 0}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]},
+    {"\<\"n = 28\"\>", 
+     GraphicsBox[
+      TagBox[PolygonBox[{{0, 0}, {2, 2}, {2, 0}}],
+       "Triangle"],
+      GridLines->{{0, 1, 2}, {0, 1, 2}},
+      ImageSize->{200, 200},
+      PlotRange->{{0, 2}, {0, 2}}]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.7716632492483253`*^9, 3.77166327238741*^9}, {
+  3.7716633644071856`*^9, 3.7716634152182255`*^9}},
+ CellLabel->
+  "Out[119]=",ExpressionUUID->"512bf0db-9b54-467a-a801-2cc686b4d1f5"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"M", " ", "=", " ", "50"}], ",", " ", 
+     RowBox[{"n", " ", "=", " ", "0"}]}], "}"}], ",", "\n", "\t", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"rightTriangleQ", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x1", ",", " ", "y1"}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x2", ",", " ", "y2"}], "}"}]}], "]"}], ",", " ", 
+        RowBox[{"++", "n"}]}], "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"x1", ",", " ", "0", ",", " ", "M"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"x2", ",", " ", "0", ",", " ", "M"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"y1", ",", " ", "0", ",", " ", "M"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"y2", ",", " ", "0", ",", " ", "M"}], "}"}]}], "]"}], ";", 
+    "\n", "\t", 
+    RowBox[{"n", " ", "/", " ", "2"}]}]}], "\n", "]"}]], "Code",
+ CellChangeTimes->{{3.771663104586413*^9, 3.771663128325923*^9}, {
+  3.771663194620532*^9, 3.771663414788376*^9}, {3.7716635056143847`*^9, 
+  3.7716635184001627`*^9}, {3.7716635519902525`*^9, 3.7716636271112885`*^9}},
+ CellLabel->
+  "In[126]:=",ExpressionUUID->"67ead929-ef9f-4c3b-bc5e-5c1abbed1c73"],
+
+Cell[BoxData["14234"], "Output",
+ CellChangeTimes->{{3.7716635628262568`*^9, 3.771663621654888*^9}, 
+   3.7716636842962723`*^9},
+ CellLabel->
+  "Out[126]=",ExpressionUUID->"0c086e96-2515-4ff7-808e-b683c73e8c6a"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (April 30, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"56e297a8-802d-48b9-9f2f-ecee28c1f632"],
+Cell[919, 31, 181, 3, 34, "Text",ExpressionUUID->"00d38715-13c1-49a7-a2fa-2a46d80db4a2"],
+Cell[1103, 36, 872, 24, 50, "Code",ExpressionUUID->"02954af5-fad0-4127-bdc5-89d6dac1153f"],
+Cell[1978, 62, 1190, 32, 123, "Code",ExpressionUUID->"a4e5e359-c0c9-4e23-bb79-391933f400b5"],
+Cell[CellGroupData[{
+Cell[3193, 98, 1858, 45, 123, "Code",ExpressionUUID->"bdc940cb-7e8f-45d7-aef1-041c94014bc0"],
+Cell[5054, 145, 6510, 205, 5754, "Output",ExpressionUUID->"512bf0db-9b54-467a-a801-2cc686b4d1f5"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[11601, 355, 1327, 33, 99, "Code",ExpressionUUID->"67ead929-ef9f-4c3b-bc5e-5c1abbed1c73"],
+Cell[12931, 390, 211, 4, 32, "Output",ExpressionUUID->"0c086e96-2515-4ff7-808e-b683c73e8c6a"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
