@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      3217,        100]
-NotebookOptionsPosition[      2579,         80]
-NotebookOutlinePosition[      2923,         95]
-CellTagsIndexPosition[      2880,         92]
+NotebookDataLength[      2084,         68]
+NotebookOptionsPosition[      1540,         49]
+NotebookOutlinePosition[      1884,         64]
+CellTagsIndexPosition[      1841,         61]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -29,52 +29,21 @@ Cell[TextData[ButtonBox["Project Euler Problem 72",
   3.7434899245038967`*^9}},ExpressionUUID->"56e297a8-802d-48b9-9f2f-\
 ecee28c1f632"],
 
-Cell[BoxData[
- RowBox[{
-  RowBox[{"q1", "=", 
-   RowBox[{"N", "[", 
-    RowBox[{"1", "/", "3"}], "]"}]}], ";", 
-  RowBox[{"q2", "=", 
-   RowBox[{"N", "[", 
-    RowBox[{"1", "/", "2"}], "]"}]}], ";"}]], "Input",
- CellChangeTimes->{{3.7712425375961933`*^9, 3.7712425461766586`*^9}, {
-  3.771242591630416*^9, 3.7712425999483223`*^9}},
- CellLabel->"In[40]:=",ExpressionUUID->"eb4d5d60-3a28-46f4-bc20-d2d73e4fadbb"],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Total", "[", 
-  RowBox[{"Table", "[", 
-   RowBox[{
-    RowBox[{"Count", "[", 
-     RowBox[{
-      RowBox[{"Denominator", "[", 
-       RowBox[{"Select", "[", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"Range", "[", 
-           RowBox[{
-            RowBox[{"Ceiling", "[", 
-             RowBox[{"q1", " ", "d"}], "]"}], ",", " ", 
-            RowBox[{"Floor", "[", 
-             RowBox[{"q2", " ", "d"}], "]"}]}], "]"}], "/", "d"}], ",", 
-         RowBox[{
-          RowBox[{"q1", "<", "#", "<", "q2"}], "&"}]}], "]"}], "]"}], ",", 
-      "d"}], "]"}], ",", 
-    RowBox[{"{", 
-     RowBox[{"d", ",", 
-      RowBox[{"Range", "[", 
-       RowBox[{"2", ",", "12000"}], "]"}]}], "}"}]}], "]"}], "]"}]], "Input",
- CellChangeTimes->{{3.7712426507897644`*^9, 3.7712427457270703`*^9}, {
-  3.77124288106846*^9, 3.771242898111041*^9}, {3.7712429554884844`*^9, 
-  3.771242985268304*^9}},
- CellLabel->"In[53]:=",ExpressionUUID->"75d45430-bdcb-4991-994e-72a14463c061"],
+  RowBox[{"EulerPhi", "[", 
+   RowBox[{"Range", "[", 
+    RowBox[{"2", ",", "1000000"}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7712422909495525`*^9, 3.77124231452744*^9}, {
+  3.771242351323736*^9, 3.771242351429452*^9}},
+ CellLabel->"In[37]:=",ExpressionUUID->"425c2e50-bd9c-4d41-b7bc-99cc97c3a807"],
 
-Cell[BoxData["7295372"], "Output",
- CellChangeTimes->{{3.77124268854891*^9, 3.7712427560484056`*^9}, 
-   3.771242999841915*^9},
- CellLabel->"Out[53]=",ExpressionUUID->"e1c18ba5-bb93-460f-8b8c-fa0da061d915"]
+Cell[BoxData["303963552391"], "Output",
+ CellChangeTimes->{{3.7712423013421316`*^9, 3.7712423181864443`*^9}, 
+   3.7712423553509045`*^9},
+ CellLabel->"Out[37]=",ExpressionUUID->"95e9a8a5-fdb0-4272-86f1-f622e7b6d3d8"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -96,10 +65,9 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 336, 7, 96, "Title",ExpressionUUID->"56e297a8-802d-48b9-9f2f-ecee28c1f632"],
-Cell[919, 31, 410, 10, 28, "Input",ExpressionUUID->"eb4d5d60-3a28-46f4-bc20-d2d73e4fadbb"],
 Cell[CellGroupData[{
-Cell[1354, 45, 988, 26, 28, "Input",ExpressionUUID->"75d45430-bdcb-4991-994e-72a14463c061"],
-Cell[2345, 73, 206, 3, 32, "Output",ExpressionUUID->"e1c18ba5-bb93-460f-8b8c-fa0da061d915"]
+Cell[941, 33, 352, 7, 28, "Input",ExpressionUUID->"425c2e50-bd9c-4d41-b7bc-99cc97c3a807"],
+Cell[1296, 42, 216, 3, 32, "Output",ExpressionUUID->"95e9a8a5-fdb0-4272-86f1-f622e7b6d3d8"]
 }, Open  ]]
 }, Open  ]]
 }
